@@ -2,11 +2,24 @@ Package: quickcode
 Type: Package
 Title: A Compilation of Some Frequently Used R Functions
 Version: 0.1
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+    person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")))
+Maintainer: Obinna Obianom <idonshayo@gmail.com>
+Description: A variation of various functions compiled for easy usage
+License: MIT + file LICENSE
+URL: https://quickcode.obi.obianom.com
+BugReports: https://github.com/oobianom/quickcode
+Depends: 
+    R (>= 3.6)
+Imports: 
+    utils,
+    htmltools
+Suggests: 
+    rmarkdown,
+    knitr,
+    qpdf
 Encoding: UTF-8
-LazyData: true
+VignetteBuilder: knitr
+Language: en-US
+LazyData: false
 RoxygenNote: 7.2.3
