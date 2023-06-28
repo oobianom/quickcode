@@ -3,6 +3,7 @@
 export("%!in%")
 export(clean)
 export(cv.gm)
+export(data_push)
 export(data_shuffle)
 export(has)
 export(header)
