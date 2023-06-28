@@ -24,7 +24,7 @@ not.data <- function(x) !is.data.frame(x)
 
 #' @export
 
-library <- function(..., lib.loc = NULL, quietly = FALSE) {
+libraryAll <- function(..., lib.loc = NULL, quietly = FALSE) {
   lib.names <- as.list(substitute(args(...))[-1L])
 
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
