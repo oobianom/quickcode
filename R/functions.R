@@ -73,9 +73,7 @@ cv.gm <- function(x, na.rm = TRUE, `%` = TRUE) {
 
 
 #' Add to a vector just like array_push in php
-
 #' @export
-
 #'
 
 
@@ -86,6 +84,31 @@ vector_push <- function(., add) {
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   assign(as.character(..), c(get(..), add), envir = parent.frame())
+}
+
+
+#' Add to a data just like array_push in php
+#' @export
+#'
+
+
+data_push <- function(., add, which = c("rows", "cols")) {
+  which <- match.arg(which)
+  .. <- substitute(.)
+
+  if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+
+  data <- get(..)
+    switch(which,
+           "rows" = {
+             data <- rbind(data,add)
+           },
+           "cols" = {
+             data <- cbind(data,add)
+           }
+    )
+
+  assign(as.character(..), data, envir = parent.frame())
 }
 
 
@@ -129,7 +152,6 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 
   data <- get(..)
 
-  data <-
     switch(which,
       "rows" = {
         data <- data[sample(nrow(data)), ]
