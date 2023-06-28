@@ -41,9 +41,10 @@ print(p1)
 #add to a data frame in one code
 
 p1 <- data.frame(ID=1:10,ID2=1:10)
-p2 <- data.frame(ID3=1:10,ID4=1:10)
+p2 <- data.frame(ID=11:20,ID2=21:30)
 
-data_push(p1,p2)
+data_push(p1,p2,"rows")
 
 print(p1)
+
 ```
