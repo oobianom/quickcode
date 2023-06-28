@@ -7,6 +7,10 @@
 ```
 #clear R environment, set directory and load data
 
+quickcode::clean()
+
+#or
+
 quickcode::clean(
   setwd = "/wd/",
   source = c(
