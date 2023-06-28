@@ -21,7 +21,7 @@ not.environment <- function(x) !is.environment(x)
 not.data <- function(x) !is.data.frame(x)
 
 
-
+#' library call and clear
 #' @export
 
 libraryAll <- function(..., lib.loc = NULL, quietly = FALSE) {
