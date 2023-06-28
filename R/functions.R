@@ -24,7 +24,7 @@ not.data <- function(x) !is.data.frame(x)
 
 #' @export
 
-libraryAll <- function(..., lib.loc = NULL, quietly = FALSE) {
+library <- function(..., lib.loc = NULL, quietly = FALSE) {
   lib.names <- as.list(substitute(args(...))[-1L])
 
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
@@ -314,76 +314,6 @@ sample_by_column <- function(.dt, col, n) {
 
 
 
-
-#' Run R script in batch mode
-
-#'
-
-#' Run R script as a job and generate log file
-
-#'
-
-#' @param file.in OPTIONAL. Input file, if absent, current opened file will be used.
-
-#'
-
-#' @export
-
-#'
-
-runl <- function(file.in = NULL) {
-  job::job({
-    target.file <- ifelse(is.null(file.in), rstudioapi::getSourceEditorContext()$path, file.in)
-
-    rout.file <- paste0(target.file, "out")
-
-    setwd(dirname(target.file))
-
-    sink(rout.file)
-
-    source(target.file)
-
-    sink()
-  })
-}
-
-
-
-
-
-
-
-#' Run R script in batch mode
-
-#'
-
-#' Run R script as a job and generate log file
-
-#'
-
-#' @param file.in OPTIONAL. Input file, if absent, current opened file will be used.
-
-#'
-
-#' @export
-
-#'
-
-runl2 <- function(file.in = NULL) {
-  target.file <- ifelse(is.null(file.in), rstudioapi::getSourceEditorContext()$path, file.in)
-
-  rout.file <- paste0(target.file, "out")
-
-  writeLines(c(paste0("sink('", rout.file, "')"), readLines(target.file), "sink()"), rout.file)
-
-
-
-  job::job({
-    setwd(dirname(target.file))
-
-    source(rout.file)
-  })
-}
 
 
 
