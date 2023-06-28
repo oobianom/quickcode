@@ -19,14 +19,13 @@ quickcode::clean(
   )
 )
 
+#shorthand for not in vector
 
-#load libraries
+p1 <- 4
+p2 <- c(1:10)
 
-quickcode::libraryAll(
-  dplyr,
-  r2resize,
-  ggplot2
-)
+p1 %!in% p2
+
 
 
 #add to a vector in one code
@@ -47,6 +46,15 @@ data_push(p1,p2,"rows")
 
 print(p1)
 
+
+
+#load libraries
+
+quickcode::libraryAll(
+  dplyr,
+  r2resize,
+  ggplot2
+)
 ```
 
 
