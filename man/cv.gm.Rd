@@ -2,10 +2,10 @@
 % Please edit documentation in R/functions.R
 \name{cv.gm}
 \alias{cv.gm}
-\title{function to calculate geometric %CV}
+\title{function to calculate geometric percent CV}
 \usage{
 cv.gm(x, na.rm = TRUE, `\%` = TRUE)
 }
 \description{
-function to calculate geometric %CV
+function to calculate geometric percent CV
 }
