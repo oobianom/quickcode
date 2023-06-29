@@ -59,9 +59,7 @@ sd.gm <- function(x, na.rm = TRUE) {
 
 cv.gm <- function(x, na.rm = TRUE, `%` = TRUE) {
   res <- sqrt(exp(sd(log(x[x > 0]), na.rm = na.rm)^2) - 1)
-
   if (`%`) res <- res * 100
-
   res
 }
 
