@@ -54,8 +54,7 @@ sd.gm <- function(x, na.rm = TRUE) {
 
 
 
-#' function to calculate geometric %CV
-
+#' function to calculate geometric percent CV
 #' @export
 
 cv.gm <- function(x, na.rm = TRUE, `%` = TRUE) {
@@ -67,17 +66,9 @@ cv.gm <- function(x, na.rm = TRUE, `%` = TRUE) {
 }
 
 
-
-
-
-
-
 #' Add to a vector just like array_push in php
 #' @export
 #'
-
-
-
 vector_push <- function(., add) {
   .. <- substitute(.)
 
