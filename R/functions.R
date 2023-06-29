@@ -83,7 +83,7 @@ vector_push <- function(., add) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  assign(as.character(..), c(get(..), add), envir = parent.frame())
+  assign(as.character(..), c(get(.., envir = parent.frame()), add), envir = parent.frame())
 }
 
 
@@ -98,7 +98,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- as.data.frame(get(..))
+  data <- as.data.frame(get(.., envir = parent.frame()))
   add <- as.data.frame(add)
     switch(which,
            "rows" = {
@@ -128,7 +128,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  val <- get(..)
+  val <- get(.., envir = parent.frame())
 
   assign(as.character(..), sample(val, length(val), replace = replace, prob = prob), envir = parent.frame())
 }
@@ -150,7 +150,7 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- as.data.frame(get(..))
+  data <- as.data.frame(get(.., envir = parent.frame()))
 
     switch(which,
       "rows" = {
