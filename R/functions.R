@@ -98,7 +98,8 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- get(..)
+  data <- as.data.frame(get(..))
+  add <- as.data.frame(add)
     switch(which,
            "rows" = {
              data <- rbind(data,add)
@@ -107,7 +108,6 @@ data_push <- function(., add, which = c("rows", "cols")) {
              data <- cbind(data,add)
            }
     )
-
   assign(as.character(..), data, envir = parent.frame())
 }
 
@@ -150,7 +150,7 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- get(..)
+  data <- as.data.frame(get(..))
 
     switch(which,
       "rows" = {
