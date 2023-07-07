@@ -29,7 +29,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = T) {
 
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
-  if(clear)cat("\014")
+  if(clear)erase("\014")
 }
 
 #' function to calculate geometric mean
@@ -160,7 +160,7 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 clean <- function(setwd = NULL, source = c(), load = c()) {
   # clear console, clean garbage and shut devices
 
-  cat("\014")
+  erase("\014")
 
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
 
@@ -361,3 +361,5 @@ has <- function(., var, col, row) {
     # check if var exists in number
   }
 }
+
+erase <- cat
