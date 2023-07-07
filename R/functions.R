@@ -24,17 +24,13 @@ not.data <- function(x) !is.data.frame(x)
 #' library call and clear
 #' @export
 
-libraryAll <- function(..., lib.loc = NULL, quietly = FALSE) {
+libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = T) {
   lib.names <- as.list(substitute(args(...))[-1L])
 
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
-  cat()
+  if(clear)cat("\014")
 }
-
-
-
-
 
 #' function to calculate geometric mean
 
@@ -166,7 +162,7 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
 
   cat("\014")
 
-  rm(list = setdiff(ls(), c("setwd", "source", "load")))
+  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
 
   graphics.off()
 
