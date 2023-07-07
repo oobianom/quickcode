@@ -362,4 +362,5 @@ has <- function(., var, col, row) {
   }
 }
 
+# shorthand print to erase
 erase <- cat
