@@ -2,10 +2,28 @@
 % Please edit documentation in R/functions.R
 \name{vector_push}
 \alias{vector_push}
-\title{Add to a vector just like array_push in php}
+\title{Calculate elements to a vector like array_push in php}
 \usage{
 vector_push(., add)
 }
+\arguments{
+\item{num}{vector of numbers}
+
+\item{rm.na}{remove NAs from the vector}
+
+\item{`%`}{TRUE or FALSE. should result be in percent}
+
+\item{round}{round result to decimal place}
+}
+\value{
+the geometric mean of a set of numbers
+}
 \description{
-Add to a vector just like array_push in php
+Shorthand to add elements to a vector and save as the same name
+}
+\examples{
+num1 <- sample(330:400,10)
+num2 <-"rpkg.net"
+vector_push(num1, add= num2)
+
 }

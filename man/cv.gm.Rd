@@ -2,10 +2,27 @@
 % Please edit documentation in R/functions.R
 \name{cv.gm}
 \alias{cv.gm}
-\title{function to calculate geometric percent CV}
+\title{Calculate geometric coefficient of variation and round}
 \usage{
-cv.gm(x, na.rm = TRUE, `\%` = TRUE)
+cv.gm(num, rm.na = TRUE, `\%` = TRUE, round = 2)
+}
+\arguments{
+\item{num}{vector of numbers}
+
+\item{rm.na}{remove NAs from the vector}
+
+\item{round}{round result to decimal place}
+
+\item{`%`}{TRUE or FALSE. should result be in percent}
+}
+\value{
+the geometric mean of a set of numbers
 }
 \description{
-function to calculate geometric percent CV
+Calculate the coefficient of variation and round
+}
+\examples{
+num1 <- sample(330:400,15)
+cv.gm(num1,round = 3)
+
 }

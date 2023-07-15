@@ -2,10 +2,25 @@
 % Please edit documentation in R/functions.R
 \name{sd.gm}
 \alias{sd.gm}
-\title{function to calculate geometric sd}
+\title{Calculate geometric standard deviation and round}
 \usage{
-sd.gm(x, na.rm = TRUE)
+sd.gm(num, rm.na = TRUE, round = 2)
+}
+\arguments{
+\item{num}{vector of numbers}
+
+\item{rm.na}{remove NAs from the vector}
+
+\item{round}{round result to decimal place}
+}
+\value{
+the geometric standard deviation of a set of numbers
 }
 \description{
-function to calculate geometric sd
+Calculate the geometric standard deviation
+}
+\examples{
+num1 <- sample(330:400,10)
+sd.gm(num1,rm.na=FALSE)
+
 }

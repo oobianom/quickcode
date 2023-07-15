@@ -143,7 +143,7 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 #' @param rm.na remove NAs from the vector
 #' @param `%` TRUE or FALSE. should result be in percent
 #' @param round round result to decimal place
-#' @return the geometric mean of a set of numbers
+#' @return the geometric cv of a set of numbers
 #' @examples
 #' num1 <- sample(330:400,15)
 #' cv.gm(num1,round = 3)
@@ -162,16 +162,13 @@ cv.gm <- function(num, rm.na = TRUE, `%` = TRUE, round = 2) {
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
-#' @param num vector of numbers
-#' @param rm.na remove NAs from the vector
-#' @param `%` TRUE or FALSE. should result be in percent
-#' @param round round result to decimal place
-#' @return the geometric mean of a set of numbers
+#' @param . first vecotr
+#' @param add vector to add
+#' @return vector combining fist and second vector, but have name set to the first
 #' @examples
 #' num1 <- sample(330:400,10)
 #' num2 <-"rpkg.net"
 #' vector_push(num1, add= num2)
-#'
 #' @export
 #'
 vector_push <- function(., add) {
@@ -181,11 +178,19 @@ vector_push <- function(., add) {
 }
 
 
-#' Add to a data just like array_push in php
-#' @export
+#' Calculate data to another data like array_push in php
 #'
-
-
+#' Shorthand to add data to a dataset and save as the same name
+#'
+#' @param . first data set
+#' @param add data set to add
+#' @param which where to append the new data e.g. rows or cols
+#' @return the combined dataset store to a variable with the name of the first
+#' @examples
+#' p1 <- data.frame(PK=1:10,ID2=1:10)
+#' p2 <- data.frame(PK=11:20,ID2=21:30)
+#' data_push(p1,p2,"rows")
+#'
 data_push <- function(., add, which = c("rows", "cols")) {
   which <- match.arg(which)
   .. <- substitute(.)

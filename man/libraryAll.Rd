@@ -7,7 +7,13 @@
 libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = TRUE)
 }
 \arguments{
-\item{x}{multiple library names}
+\item{...}{multiple library names}
+
+\item{lib.loc}{OPTIONAL. library store location}
+
+\item{quietly}{OPTIONAL. attach library quietly}
+
+\item{clear}{OPTIONAL. clear environment after attach}
 }
 \value{
 loaded libraries and clear environment

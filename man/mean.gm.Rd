@@ -2,10 +2,25 @@
 % Please edit documentation in R/functions.R
 \name{mean.gm}
 \alias{mean.gm}
-\title{function to calculate geometric mean}
+\title{Calculate geometric mean and round}
 \usage{
-\method{mean}{gm}(x, na.rm = TRUE)
+\method{mean}{gm}(num, rm.na = TRUE, round = 2)
+}
+\arguments{
+\item{num}{vector of numbers}
+
+\item{rm.na}{remove NAs from the vector}
+
+\item{round}{round result to decimal place}
+}
+\value{
+the geometric mean of a set of numbers
 }
 \description{
-function to calculate geometric mean
+Calculate the geometric mean
+}
+\examples{
+num1 <- sample(300:3000,10)
+mean.gm(num1)
+
 }
