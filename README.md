@@ -23,7 +23,7 @@ not.integer(45L) #returns FALSE
 
 quickcode::clean()
 
-#or
+#or combine with setwd and source and load
 
 quickcode::clean(
   setwd = "/wd/",
