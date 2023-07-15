@@ -71,14 +71,16 @@ not.data <- function(x) !is.data.frame(x)
 #' Only include libraries, don't install if library doesn't exist
 #'
 #' @param x multiple library names
-#' @return loaded libraries
+#' @return loaded libraries and clear environment
 #' @examples
+#' \dontrun{
 #' libraryAll() # show installed libraries
 #' libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
 #' libraryAll("r2ymbols")
+#' }
 #' @export
 
-libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = T) {
+libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   lib.names <- as.list(substitute(args(...))[-1L])
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
