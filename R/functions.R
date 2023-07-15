@@ -301,7 +301,6 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
 
 
-
 #' Shuffle a vector just like shuffle in php
 #'
 #' Shorthand to shuffle a vector and save

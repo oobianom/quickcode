@@ -1,0 +1,26 @@
+---
+title: "quickcode: just my compilation of useful functions across various processes"
+author: "O.N Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Define with the r2dictionary package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+### A compilation of some useful function to simply R programmging, keep the console neat, and save memory usage 
+
+## Install
+
+
+## Functions to use
+
