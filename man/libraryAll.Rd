@@ -4,7 +4,7 @@
 \alias{libraryAll}
 \title{library call and clear}
 \usage{
-libraryAll(..., lib.loc = NULL, quietly = FALSE)
+libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = T)
 }
 \description{
 library call and clear
