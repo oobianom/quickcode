@@ -1,3 +1,64 @@
+#' Clear environment, clear console, set work directory and load files
+#'
+#' Shorthand to quickly clear console, clear environment, set working directory, load files
+#'
+#' @param setwd OPTIONAL. set working directory
+#' @param source OPTIONAL. source in file(s)
+#' @param load OPTIONAL. load in Rdata file(s)
+#' @return cleared environment and set directory
+#'
+#' @examples
+#' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+#' data_shuffle(df1)
+#'
+#' @export
+#'
+
+
+
+clean <- function(setwd = NULL, source = c(), load = c()) {
+  # clear console, clean garbage and shut devices
+  erase("\014")
+  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
+  graphics.off()
+  gc()
+  # set directory if it exists
+  if ((!is.null(setwd)) & dir.exists(setwd)) {
+    setwd(setwd)
+  }
+  # source in any required files
+  if (length(source)) {
+    for (sourced in source) {
+      if (file.exists(sourced)) source(sourced)
+    }
+  }
+  # load in any required data
+  if (length(load)) {
+    for (loaded in load) {
+      if (file.exists(loaded)) load(loaded, envir = parent.frame())
+    }
+  }
+}
+
+
+#' Not in vector or array
+#'
+#' Check if entry is in vector
+#'
+#' @param x vector entry
+#' @param table table of items to check
+#' @return a boolean value to indicate if entry is present
+#' @examples
+#' 5 %!in% c(1:10) #FALSE
+#' 5 %!in% c(11:20) #TRUE
+#'
+#' @export
+
+`%!in%` <- function(x, table) {
+  !(x %in% table)
+}
+
+
 #' Not numeric
 #'
 #' Check if entry is not numeric
@@ -12,6 +73,25 @@
 #' @export
 
 not.numeric <- function(x) !is.numeric(x)
+
+
+
+#' Not a vector
+#'
+#' Check if entry is not vector
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is vector
+#' @examples
+#' vect1 = list(r=1,t=3:10)
+#' vect2 = LETTERS
+#' not.vector(vect1) # FALSE
+#' not.vector(vect2) # FALSE
+#' if(not.vector(vect1)) print("yes") # NULL
+#'
+#' @export
+
+not.vector <- function(x) !is.vector(x)
 
 
 #' Not an integer
@@ -279,70 +359,6 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 }
 
 
-#' Clear environment, clear console, set work directory and load files
-#'
-#' Shorthand to quickly clear console, clear environment, set working directory, load files
-#'
-#' @param . data to shuffle as data frame
-#' @param which what to shuffle, rows or columns
-#' @return shuffled data frame of items store to the data frame name
-#'
-#' @examples
-#' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
-#' data_shuffle(df1)
-#'
-#' @export
-#'
-
-
-
-clean <- function(setwd = NULL, source = c(), load = c()) {
-  # clear console, clean garbage and shut devices
-
-  erase("\014")
-
-  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
-
-  graphics.off()
-
-  gc()
-
-
-
-  # set directory if it exists
-
-  if ((!is.null(setwd)) & dir.exists(setwd)) {
-    setwd(setwd)
-  }
-
-
-
-  # source in any required files
-
-  if (length(source)) {
-    for (sourced in source) {
-      if (file.exists(sourced)) source(sourced)
-    }
-  }
-
-
-
-  # load in any required data
-
-  if (length(load)) {
-    for (loaded in load) {
-      if (file.exists(loaded)) load(loaded, envir = parent.frame())
-    }
-  }
-}
-
-
-
-#' @export
-
-`%!in%` <- function(x, table) {
-  !(x %in% table)
-}
 
 
 
@@ -351,32 +367,6 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
 #' @export
 
 refresh <- clean
-
-
-
-
-
-
-
-#' @export
-
-libraryOne <- function(..., lib.loc = NULL, quietly = FALSE) {
-  # Purpose: include all needed libraries with one call
-
-  # 1: Get the current document
-
-  # 2: Extract all the functions within the document
-
-  # 3: For each of the functions, find the packages
-
-  # 4: match the most likely packages and import
-
-  # 5: reshape text to indicate included packages
-}
-
-
-
-
 
 
 
