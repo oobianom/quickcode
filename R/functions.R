@@ -93,20 +93,44 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   if(clear)erase("\014")
 }
 
-#' function to calculate geometric mean
+#' Calculate geometric mean and round
+#'
+#' Calculate the geometric mean
+#'
+#' @param num vector of numbers
+#' @param rm.na remove NAs from the vector
+#' @param round round result to decimal place
+#' @return the geometric mean of a set of numbers
+#' @examples
+#' num1 <- sample(300:3000,10)
+#' mean.gm(num1)
+#'
+#' @export
 
-mean.gm <- function(x, na.rm = TRUE) {
-  exp(sum(log(x[x > 0]), na.rm = na.rm) / length(x))
+mean.gm <- function(num, rm.na = TRUE, round = 2) {
+  if(not.numeric(num)) stop("The vector must have numbers only")
+  return(round(exp(sum(log(num[num > 0]), na.rm = rm.na) / length(x)),round))
 }
 
 
 
-#' function to calculate geometric sd
-
+#' Calculate geometric standard deviation and round
+#'
+#' Calculate the geometric standard deviation
+#'
+#' @param num vector of numbers
+#' @param rm.na remove NAs from the vector
+#' @param round round result to decimal place
+#' @return the geometric mean of a set of numbers
+#' @examples
+#' num1 <- sample(330:400,10)
+#' sd.gm(num1,rm.na=FALSE)
+#'
 #' @export
 
-sd.gm <- function(x, na.rm = TRUE) {
-  exp(sd(log(x[x > 0]), na.rm = na.rm))
+sd.gm <- function(num, rm.na = TRUE, round = 2) {
+  if(not.numeric(num)) stop("The vector must have numbers only")
+  return(round(exp(sd(log(num[num > 0]), na.rm = rm.na)),round))
 }
 
 
