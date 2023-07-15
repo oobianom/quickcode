@@ -70,7 +70,10 @@ not.data <- function(x) !is.data.frame(x)
 #'
 #' Only include libraries, don't install if library doesn't exist
 #'
-#' @param x multiple library names
+#' @param ... multiple library names
+#' @param lib.loc OPTIONAL. library store location
+#' @param quietly OPTIONAL. attach library quietly
+#' @param clear OPTIONAL. clear environment after attach
 #' @return loaded libraries and clear environment
 #' @examples
 #' \dontrun{
