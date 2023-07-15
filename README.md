@@ -1,4 +1,4 @@
-# quickcode: A compilation of some my quick and often used R codes
+# quickcode: just a compilation of some simple quick and often used R functions
 
 ## Install
 
