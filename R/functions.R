@@ -19,7 +19,7 @@ not.numeric <- function(x) !is.numeric(x)
 #' Check if entry is not an integer
 #'
 #' @param x vector entry
-#' @return a boolean value to indicate if entry is integer
+#' @return a boolean value to indicate if entry is an integer
 #' @examples
 #' not.integer(23.43) # TRUE
 #' not.integer(45L) # FALSE
@@ -30,15 +30,37 @@ not.numeric <- function(x) !is.numeric(x)
 not.integer <- function(x) !is.integer(x)
 
 
-#' Not numeric
+#' Not an environment
 #'
-#' Check if entry is not numeric
+#' Check if entry is not an environment object
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is an environment
+#' @examples
+#' test.env <- new.env()
+#' test.notenv <- list(t=1)
+#' not.environment(test.env) # FALSE
+#' not.environment(test.notenv) # TRUE
+#' if(not.environment(test.notenv)) print("yes") # yes
+#'
 #' @export
 
 not.environment <- function(x) !is.environment(x)
 
 
-
+#' Not a data
+#'
+#' Check if entry is not a data object
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is a data table
+#' @examples
+#' test.dt <- data.frame(ID=1:200,Type="RPKG.net")
+#' test.notenv <- list(t=1)
+#' not.data(test.dt) # FALSE
+#' not.data(test.notenv) # TRUE
+#' if(not.data(test.dt)) print("yes") # NULL
+#'
 #' @export
 
 not.data <- function(x) !is.data.frame(x)
