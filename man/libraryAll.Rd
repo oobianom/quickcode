@@ -4,19 +4,21 @@
 \alias{libraryAll}
 \title{Load specific R libraries and clear environment}
 \usage{
-libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = T)
+libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = TRUE)
 }
 \arguments{
 \item{x}{multiple library names}
 }
 \value{
-loaded libraries
+loaded libraries and clear environment
 }
 \description{
 Only include libraries, don't install if library doesn't exist
 }
 \examples{
+\dontrun{
 libraryAll() # show installed libraries
 libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
 libraryAll("r2ymbols")
+}
 }
