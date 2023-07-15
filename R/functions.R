@@ -215,14 +215,23 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
 
 #' Shuffle a vector just like shuffle in php
-
+#'
+#' Shorthand to shuffle a vector and save
+#'
+#' @param . vector to shuffle
+#' @param replace replace selected value
+#' @param prob probability of occurrence
+#' @return shuffled vector of items store to the vector name
+#'
+#' @examples
+#' v1<-c(3,45,23,3,2,4,1)
+#' vector_shuffle(v1)
+#'
 #' @export
-
 #'
 
-
-
 vector_shuffle <- function(., replace = FALSE, prob = NULL) {
+  if(not.vector(.)) stop("The first element must be a vector")
   .. <- substitute(.)
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
@@ -234,13 +243,20 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL) {
 
 
 
-#' Shuffle a dataframe just like shuffle but for data frame
-
-#' @export
-
+#' Shuffle a data frame just like shuffle in php
 #'
-
-
+#' Shorthand to shuffle a data frame and save
+#'
+#' @param . data to shuffle as data frame
+#' @param which what to shuffle, rows or columns
+#' @return shuffled data frame of items store to the data frame name
+#'
+#' @examples
+#' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+#' data_shuffle(df1)
+#'
+#' @export
+#'
 
 data_shuffle <- function(., which = c("rows", "cols")) {
   which <- match.arg(which)
@@ -259,15 +275,24 @@ data_shuffle <- function(., which = c("rows", "cols")) {
         data <- data[, sample(ncol(data))]
       }
     )
-
   assign(as.character(..), data, envir = parent.frame())
 }
 
 
-
-#' clear console, clear environment, and setwd
-
+#' Clear environment, clear console, set work directory and load files
+#'
+#' Shorthand to quickly clear console, clear environment, set working directory, load files
+#'
+#' @param . data to shuffle as data frame
+#' @param which what to shuffle, rows or columns
+#' @return shuffled data frame of items store to the data frame name
+#'
+#' @examples
+#' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+#' data_shuffle(df1)
+#'
 #' @export
+#'
 
 
 
