@@ -23,5 +23,4 @@ Shorthand to add data to a dataset and save as the same name
 p1 <- data.frame(PK=1:10,ID2=1:10)
 p2 <- data.frame(PK=11:20,ID2=21:30)
 data_push(p1,p2,"rows")
-
 }

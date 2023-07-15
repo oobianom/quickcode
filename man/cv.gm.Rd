@@ -4,12 +4,12 @@
 \alias{cv.gm}
 \title{Calculate geometric coefficient of variation and round}
 \usage{
-cv.gm(num, rm.na = TRUE, pct = TRUE, round = 2)
+cv.gm(num, na.rm = TRUE, pct = TRUE, round = 2)
 }
 \arguments{
 \item{num}{vector of numbers}
 
-\item{rm.na}{remove NAs from the vector}
+\item{na.rm}{remove NAs from the vector}
 
 \item{pct}{TRUE or FALSE. should result be in percent}
 

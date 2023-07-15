@@ -4,12 +4,12 @@
 \alias{sd.gm}
 \title{Calculate geometric standard deviation and round}
 \usage{
-sd.gm(num, rm.na = TRUE, round = 2)
+sd.gm(num, na.rm = TRUE, round = 2)
 }
 \arguments{
 \item{num}{vector of numbers}
 
-\item{rm.na}{remove NAs from the vector}
+\item{na.rm}{remove NAs from the vector}
 
 \item{round}{round result to decimal place}
 }
@@ -21,6 +21,6 @@ Calculate the geometric standard deviation
 }
 \examples{
 num1 <- sample(330:400,10)
-sd.gm(num1,rm.na=FALSE)
+sd.gm(num1,na.rm=FALSE)
 
 }

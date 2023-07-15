@@ -9,11 +9,11 @@
 #'
 #' @examples
 #' \dontrun{
-#' clean()
-#' clean(setwd = "/home/")
-#' clean(source = c("/home/file1.R","file2"))
-#' clean(setwd = "/home/",source = c("file1","file2))
-#' clean(setwd = "/home/",source="file1.R",load="obi.RData")
+#' quickcode::clean()
+#' quickcode::clean(setwd = "/home/")
+#' quickcode::clean(source = c("/home/file1.R","file2"))
+#' quickcode::clean(setwd = "/home/",source = c("file1","file2))
+#' quickcode::clean(setwd = "/home/",source="file1.R",load="obi.RData")
 #' }
 #'
 #' @export
@@ -23,7 +23,7 @@
 
 clean <- function(setwd = NULL, source = c(), load = c()) {
   # clear console, clean garbage and shut devices
-  erase("\014")
+  cat("\014")
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
   graphics.off()
   gc()
@@ -54,12 +54,12 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
 #' @param table table of items to check
 #' @return a boolean value to indicate if entry is present
 #' @examples
-#' 5 %!in% c(1:10) #FALSE
-#' 5 %!in% c(11:20) #TRUE
+#' 5 %nin% c(1:10) #FALSE
+#' 5 %nin% c(11:20) #TRUE
 #'
 #' @export
 
-`%!in%` <- function(x, table) {
+`%nin%` <- function(x, table) {
   !(x %in% table)
 }
 
@@ -175,7 +175,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   if(!length(lib.names)){
     utils::installed.packages()
   }
-  if(clear)erase("\014")
+  if(clear)cat("\014")
 }
 
 #' Calculate geometric mean and round
@@ -183,18 +183,18 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
 #' Calculate the geometric mean
 #'
 #' @param num vector of numbers
-#' @param rm.na remove NAs from the vector
+#' @param na.rm remove NAs from the vector
 #' @param round round result to decimal place
 #' @return the geometric mean of a set of numbers
 #' @examples
 #' num1 <- sample(300:3000,10)
-#' mean.gm(num1)
+#' g.mean(num1)
 #'
 #' @export
 
-mean.gm <- function(num, rm.na = TRUE, round = 2) {
+g.mean <- function(num, na.rm = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  return(round(exp(base::sum(log(num[num > 0]), na.rm = rm.na) / length(x)),round))
+  return(round(exp(base::sum(log(num[num > 0]), na.rm = na.rm) / length(num)),round))
 }
 
 
@@ -204,18 +204,18 @@ mean.gm <- function(num, rm.na = TRUE, round = 2) {
 #' Calculate the geometric standard deviation
 #'
 #' @param num vector of numbers
-#' @param rm.na remove NAs from the vector
+#' @param na.rm remove NAs from the vector
 #' @param round round result to decimal place
 #' @return the geometric standard deviation of a set of numbers
 #' @examples
 #' num1 <- sample(330:400,10)
-#' sd.gm(num1,rm.na=FALSE)
+#' sd.gm(num1,na.rm=FALSE)
 #'
 #' @export
 
-sd.gm <- function(num, rm.na = TRUE, round = 2) {
+sd.gm <- function(num, na.rm = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  return(round(exp(stats::sd(log(num[num > 0]), na.rm = rm.na)),round))
+  return(round(exp(stats::sd(log(num[num > 0]), na.rm = na.rm)),round))
 }
 
 
@@ -225,7 +225,7 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 #' Calculate the coefficient of variation and round
 #'
 #' @param num vector of numbers
-#' @param rm.na remove NAs from the vector
+#' @param na.rm remove NAs from the vector
 #' @param pct TRUE or FALSE. should result be in percent
 #' @param round round result to decimal place
 #' @return the geometric cv of a set of numbers
@@ -235,9 +235,9 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 #'
 #' @export
 
-cv.gm <- function(num, rm.na = TRUE, pct = TRUE, round = 2) {
+cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  res <- sqrt(exp(sd(log(num[num > 0]), na.rm = rm.na)^2) - 1)
+  res <- sqrt(exp(sd(log(num[num > 0]), na.rm = na.rm)^2) - 1)
   if (pct) res <- res * 100
   round(res,round)
 }
@@ -259,7 +259,7 @@ cv.gm <- function(num, rm.na = TRUE, pct = TRUE, round = 2) {
 vector_push <- function(., add) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-  assign(as.character(..), c(get(.., envir = parent.frame()), add), envir = parent.frame())
+  assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
 }
 
 
@@ -275,6 +275,7 @@ vector_push <- function(., add) {
 #' p1 <- data.frame(PK=1:10,ID2=1:10)
 #' p2 <- data.frame(PK=11:20,ID2=21:30)
 #' data_push(p1,p2,"rows")
+#' @export
 #'
 data_push <- function(., add, which = c("rows", "cols")) {
   which <- match.arg(which)
@@ -282,7 +283,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- as.data.frame(get(.., envir = parent.frame()))
+  data <- as.data.frame(get(as.character(..), envir = parent.frame()))
   add <- as.data.frame(add)
     switch(which,
            "rows" = {
@@ -320,7 +321,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  val <- get(.., envir = parent.frame())
+  val <- get(as.character(..), envir = parent.frame())
 
   assign(as.character(..), sample(val, length(val), replace = replace, prob = prob), envir = parent.frame())
 }
@@ -349,7 +350,7 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
-  data <- as.data.frame(get(.., envir = parent.frame()))
+  data <- as.data.frame(get(as.character(..), envir = parent.frame()))
 
     switch(which,
       "rows" = {
@@ -506,5 +507,7 @@ header.rmd <- function() {
 #'   }
 #' }
 
-# shorthand print to erase
-erase <- cat
+#' @export
+
+`%nin%` -> `%!in%`
+

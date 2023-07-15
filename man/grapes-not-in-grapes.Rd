@@ -2,23 +2,43 @@
 % Please edit documentation in R/functions.R
 \name{\%!in\%}
 \alias{\%!in\%}
-\title{Not in vector or array}
+\title{#' @export
+#' Next version}
 \usage{
 x \%!in\% table
 }
-\arguments{
-\item{x}{vector entry}
-
-\item{table}{table of items to check}
-}
-\value{
-a boolean value to indicate if entry is present
-}
 \description{
-Check if entry is in vector
+sample_by_column <- function(.dt, col, n) {
+  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n), ]
 }
-\examples{
-5 \%!in\% c(1:10) #FALSE
-5 \%!in\% c(11:20) #TRUE
+}
+\details{
+#' @export
+#' Next version
 
+has <- function(., var, col, row) {
+  stop("Not completed")
+
+  object <- .
+
+  if (is.data.frame(object)) {
+    # check if var exists in data.frame
+
+    # check if column exists in data.frame
+
+    # check if row exists in data.frame
+  }
+
+  if (is.vector(object)) {
+    # check if var exists in vector
+  }
+
+  if (is.character(object)) {
+    # check if var exists in character
+  }
+
+  if (is.numeric(object)) {
+    # check if var exists in number
+  }
+}
 }
