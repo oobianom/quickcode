@@ -8,8 +8,16 @@
 #' @return cleared environment and set directory
 #'
 #' @examples
-#' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
-#' data_shuffle(df1)
+#' \dontrun{
+#' clean()
+#' clean(setwd = "/home/")
+#' clean(source = c("/home/file1.R","file2")
+#' clean(setwd = "/home/",
+#' source = c("file1","file2))
+#' clean(setwd = "/home/",
+#' source="file1.R",
+#' load="obi.RData")
+#' }
 #'
 #' @export
 #'
@@ -362,27 +370,69 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 
 
 
-#' clear console, clear environment, and setwd
-
+#' Clear environment, clear console, set work directory and load files
+#'
+#' Shorthand to quickly clear console, clear environment, set working directory, load files
+#'
+#' @param setwd OPTIONAL. set working directory
+#' @param source OPTIONAL. source in file(s)
+#' @param load OPTIONAL. load in Rdata file(s)
+#' @return cleared environment and set directory
+#'
+#' @examples
+#' \dontrun{
+#' refresh()
+#' refresh(setwd = "/home/")
+#' refresh(source = c("/home/file1.R","file2")
+#' refresh(setwd = "/home/",
+#' source = c("file1","file2))
+#' refresh(setwd = "/home/",
+#' source="file1.R",
+#' load="obi.RData")
+#' }
+#'
 #' @export
-
+#'
 refresh <- clean
 
 
 
+#' Shiny app function to insert string to current file in RStudio
+#'
+#' Shorthand to insert content to opened file
+#'
+#' @param string what to insert
+#' @return Inserts into current position on opened file
+#'
+#' @examples
+#' \dontrun{
+#' insertInText('hello rpkg.net')
+#' insertInText('hello world')
+#' }
 #' @export
+#'
 
 insertInText <- function(string) {
   adc <- rstudioapi::getActiveDocumentContext()
-
   rstudioapi::insertText(location = adc$selection[[1]]$range$start, string)
 }
 
 
 
+#' Snippet function to add header to a current opened file
+#'
+#' Shorthand to add header
+#'
+#' @return Inserts header content for file
+#'
+#' @examples
+#' \dontrun{
+#' add.header()
+#' }
 #' @export
+#'
 
-header <- function() {
+add.header <- function() {
   insertInText(paste0("
 
   ############################################################################

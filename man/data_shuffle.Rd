@@ -2,10 +2,23 @@
 % Please edit documentation in R/functions.R
 \name{data_shuffle}
 \alias{data_shuffle}
-\title{Shuffle a dataframe just like shuffle but for data frame}
+\title{Shuffle a data frame just like shuffle in php}
 \usage{
 data_shuffle(., which = c("rows", "cols"))
 }
+\arguments{
+\item{.}{data to shuffle as data frame}
+
+\item{which}{what to shuffle, rows or columns}
+}
+\value{
+shuffled data frame of items store to the data frame name
+}
 \description{
-Shuffle a dataframe just like shuffle but for data frame
+Shorthand to shuffle a data frame and save
+}
+\examples{
+df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+data_shuffle(df1)
+
 }

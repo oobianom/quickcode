@@ -2,10 +2,26 @@
 % Please edit documentation in R/functions.R
 \name{data_push}
 \alias{data_push}
-\title{Add to a data just like array_push in php}
+\title{Calculate data to another data like array_push in php}
 \usage{
 data_push(., add, which = c("rows", "cols"))
 }
+\arguments{
+\item{.}{first data set}
+
+\item{add}{data set to add}
+
+\item{which}{where to append the new data e.g. rows or cols}
+}
+\value{
+the combined dataset store to a variable with the name of the first
+}
 \description{
-Add to a data just like array_push in php
+Shorthand to add data to a dataset and save as the same name
+}
+\examples{
+p1 <- data.frame(PK=1:10,ID2=1:10)
+p2 <- data.frame(PK=11:20,ID2=21:30)
+data_push(p1,p2,"rows")
+
 }

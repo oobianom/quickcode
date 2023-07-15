@@ -6,6 +6,21 @@
 \usage{
 vector_shuffle(., replace = FALSE, prob = NULL)
 }
+\arguments{
+\item{.}{vector to shuffle}
+
+\item{replace}{replace selected value}
+
+\item{prob}{probability of occurrence}
+}
+\value{
+shuffled vector of items store to the vector name
+}
 \description{
-Shuffle a vector just like shuffle in php
+Shorthand to shuffle a vector and save
+}
+\examples{
+v1<-c(3,45,23,3,2,4,1)
+vector_shuffle(v1)
+
 }

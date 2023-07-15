@@ -7,16 +7,12 @@
 vector_push(., add)
 }
 \arguments{
-\item{num}{vector of numbers}
+\item{.}{first vecotr}
 
-\item{rm.na}{remove NAs from the vector}
-
-\item{`%`}{TRUE or FALSE. should result be in percent}
-
-\item{round}{round result to decimal place}
+\item{add}{vector to add}
 }
 \value{
-the geometric mean of a set of numbers
+vector combining fist and second vector, but have name set to the first
 }
 \description{
 Shorthand to add elements to a vector and save as the same name
@@ -25,5 +21,4 @@ Shorthand to add elements to a vector and save as the same name
 num1 <- sample(330:400,10)
 num2 <-"rpkg.net"
 vector_push(num1, add= num2)
-
 }

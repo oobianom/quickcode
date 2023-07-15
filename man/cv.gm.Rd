@@ -16,7 +16,7 @@ cv.gm(num, rm.na = TRUE, `\%` = TRUE, round = 2)
 \item{`%`}{TRUE or FALSE. should result be in percent}
 }
 \value{
-the geometric mean of a set of numbers
+the geometric cv of a set of numbers
 }
 \description{
 Calculate the coefficient of variation and round
