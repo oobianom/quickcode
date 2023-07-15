@@ -32,9 +32,11 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
   if("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
 
   # set directory if it exists
-  if ((!is.null(setwd)) & dir.exists(setwd)) {
+  if (not.null(setwd) & (setwd != "")){
+    if(dir.exists(setwd)) {
     setwd(setwd)
-  }
+    }
+}
   # source in any required files
   if (length(source)) {
     for (sourced in source) {
@@ -82,6 +84,22 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
 #' @export
 
 not.numeric <- function(x) !is.numeric(x)
+
+
+#' Not NULL
+#'
+#' Check if entry is not NULL
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is NULL
+#' @examples
+#' not.null("") # TRUE
+#' not.null(NULL) # FALSE
+#' if(not.null(45)) print("yes") # yes
+#'
+#' @export
+
+not.null <- function(x) !is.null(x)
 
 
 
