@@ -2,10 +2,20 @@
 % Please edit documentation in R/functions.R
 \name{refresh}
 \alias{refresh}
-\title{clear console, clear environment, and setwd}
+\title{Clear environment, clear console, set work directory and load files}
 \usage{
 refresh(setwd = NULL, source = c(), load = c())
 }
+\arguments{
+\item{setwd}{OPTIONAL. set working directory}
+
+\item{source}{OPTIONAL. source in file(s)}
+
+\item{load}{OPTIONAL. load in Rdata file(s)}
+}
+\value{
+cleared environment and set directory
+}
 \description{
-clear console, clear environment, and setwd
+Shorthand to quickly clear console, clear environment, set working directory, load files
 }
