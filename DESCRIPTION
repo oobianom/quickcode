@@ -14,7 +14,8 @@ Depends:
 Imports: 
     utils,
     grDevices,
-    stats
+    stats,
+    rstudioapi
 Suggests: 
     rmarkdown,
     knitr,

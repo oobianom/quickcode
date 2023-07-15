@@ -194,7 +194,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
 
 mean.gm <- function(num, rm.na = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  return(round(exp(sum(log(num[num > 0]), na.rm = rm.na) / length(x)),round))
+  return(round(exp(base::sum(log(num[num > 0]), na.rm = rm.na) / length(x)),round))
 }
 
 
@@ -215,7 +215,7 @@ mean.gm <- function(num, rm.na = TRUE, round = 2) {
 
 sd.gm <- function(num, rm.na = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  return(round(exp(sd(log(num[num > 0]), na.rm = rm.na)),round))
+  return(round(exp(stats::sd(log(num[num > 0]), na.rm = rm.na)),round))
 }
 
 
