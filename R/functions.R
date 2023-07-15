@@ -66,15 +66,26 @@ not.environment <- function(x) !is.environment(x)
 not.data <- function(x) !is.data.frame(x)
 
 
-#' library call and clear
+#' Load specific R libraries and clear environment
+#'
+#' Only include libraries, don't install if library doesn't exist
+#'
+#' @param x multiple library names
+#' @return loaded libraries
+#' @examples
+#' l
+#'
 #' @export
 
 libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = T) {
   lib.names <- as.list(substitute(args(...))[-1L])
-
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
-  if(clear)erase("\014")
+  if(length(lib.names)){
+    if(clear)erase("\014")
+  }else{
+    installed.packages()
+  }
 }
 
 #' function to calculate geometric mean
