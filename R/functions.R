@@ -32,7 +32,7 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
   if ("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
 
   # set directory if it exists
-  if (not.null(setwd) & (setwd != "")) {
+  if (not.null(setwd)) {
     if (dir.exists(setwd)) {
       setwd(setwd)
     }
