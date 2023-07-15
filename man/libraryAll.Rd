@@ -2,10 +2,21 @@
 % Please edit documentation in R/functions.R
 \name{libraryAll}
 \alias{libraryAll}
-\title{library call and clear}
+\title{Load specific R libraries and clear environment}
 \usage{
 libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = T)
 }
+\arguments{
+\item{x}{multiple library names}
+}
+\value{
+loaded libraries
+}
 \description{
-library call and clear
+Only include libraries, don't install if library doesn't exist
+}
+\examples{
+libraryAll() # show installed libraries
+libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
+libraryAll("r2ymbols")
 }
