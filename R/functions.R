@@ -27,6 +27,10 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
   graphics.off()
   gc()
+
+  # load quickcode if not loaded
+  if("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
+
   # set directory if it exists
   if ((!is.null(setwd)) & dir.exists(setwd)) {
     setwd(setwd)
@@ -169,6 +173,9 @@ not.data <- function(x) !is.data.frame(x)
 #' @export
 
 libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
+  # load quickcode if not loaded
+  if("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
+  # load user requested libraries
   lib.names <- as.list(substitute(args(...))[-1L])
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
