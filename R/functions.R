@@ -1,15 +1,38 @@
+#' Not numeric
+#'
+#' Check if entry is not numeric
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is numeric
+#' @examples
+#' not.numeric("45") # TRUE
+#' not.numeric(45) # FALSE
+#' if(not.numeric(45)) print("yes") # yes
+#'
 #' @export
 
 not.numeric <- function(x) !is.numeric(x)
 
 
-
+#' Not an integer
+#'
+#' Check if entry is not an integer
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is integer
+#' @examples
+#' not.integer(23.43) # TRUE
+#' not.integer(45L) # FALSE
+#' if(not.integer(4L)) print("yes") # NULL
+#'
 #' @export
 
 not.integer <- function(x) !is.integer(x)
 
 
-
+#' Not numeric
+#'
+#' Check if entry is not numeric
 #' @export
 
 not.environment <- function(x) !is.environment(x)
