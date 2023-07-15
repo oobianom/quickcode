@@ -15,3 +15,9 @@ a boolean value to indicate if entry is empty
 \description{
 Check if entry is not empty
 }
+\examples{
+not.empty("empty") # TRUE
+not.empty('') # FALSE
+not.empty(NULL) # logical(0)
+if(not.empty('')) print("yes") # NULL
+}
