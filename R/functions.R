@@ -476,81 +476,42 @@ header.rmd <- function() {
 
 
 
-#' @export
 
-requireAll <- function(..., lib.loc = NULL, quietly = TRUE) {
-  lib.names <- as.list(substitute(args(...))[-1L])
-
-  lapply(as.character(lib.names), function(lib) {
-    if (length(lib)) {
-      if (!try(require(lib, lib.loc = lib.loc, quietly = TRUE))) {
-        if (install.packages(lib)) {
-          if (!try(require(lib, lib.loc = lib.loc, quietly = quietly))) {
-            warning(paste0(lib, " package does not exist"))
-          }
-        }
-      }
-    }
-  })
-}
-
-
-
-
-
-
-
-
-
-#' @export
-
-sample_by_column <- function(.dt, col, n) {
-  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n), ]
-}
-
-
-
-
-
-
-
-#' @export
-
-has <- function(., var, col, row) {
-  stop("Not completed")
-
-  object <- .
-
-  if (is.data.frame(object)) {
-    # check if var exists in data.frame
-
-
-
-    # check if column exists in data.frame
-
-
-
-    # check if row exists in data.frame
-  }
-
-
-
-  if (is.vector(object)) {
-    # check if var exists in vector
-  }
-
-
-
-  if (is.character(object)) {
-    # check if var exists in character
-  }
-
-
-
-  if (is.numeric(object)) {
-    # check if var exists in number
-  }
-}
+#' #' @export
+#' #' Next version
+#'
+#' sample_by_column <- function(.dt, col, n) {
+#'   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n), ]
+#' }
+#'
+#' #' @export
+#' #' Next version
+#'
+#' has <- function(., var, col, row) {
+#'   stop("Not completed")
+#'
+#'   object <- .
+#'
+#'   if (is.data.frame(object)) {
+#'     # check if var exists in data.frame
+#'
+#'     # check if column exists in data.frame
+#'
+#'     # check if row exists in data.frame
+#'   }
+#'
+#'   if (is.vector(object)) {
+#'     # check if var exists in vector
+#'   }
+#'
+#'   if (is.character(object)) {
+#'     # check if var exists in character
+#'   }
+#'
+#'   if (is.numeric(object)) {
+#'     # check if var exists in number
+#'   }
+#' }
 
 # shorthand print to erase
 erase <- cat
