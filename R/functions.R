@@ -121,7 +121,7 @@ mean.gm <- function(num, rm.na = TRUE, round = 2) {
 #' @param num vector of numbers
 #' @param rm.na remove NAs from the vector
 #' @param round round result to decimal place
-#' @return the geometric mean of a set of numbers
+#' @return the geometric standard deviation of a set of numbers
 #' @examples
 #' num1 <- sample(330:400,10)
 #' sd.gm(num1,rm.na=FALSE)
@@ -135,17 +135,42 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 
 
 
-#' function to calculate geometric percent CV
+#' Calculate geometric coefficient of variation and round
+#'
+#' Calculate the coefficient of variation and round
+#'
+#' @param num vector of numbers
+#' @param rm.na remove NAs from the vector
+#' @param `%` TRUE or FALSE. should result be in percent
+#' @param round round result to decimal place
+#' @return the geometric mean of a set of numbers
+#' @examples
+#' num1 <- sample(330:400,15)
+#' cv.gm(num1,round = 3)
+#'
 #' @export
 
-cv.gm <- function(x, na.rm = TRUE, `%` = TRUE) {
-  res <- sqrt(exp(sd(log(x[x > 0]), na.rm = na.rm)^2) - 1)
+cv.gm <- function(num, rm.na = TRUE, `%` = TRUE, round = 2) {
+  if(not.numeric(num)) stop("The vector must have numbers only")
+  res <- sqrt(exp(sd(log(num[num > 0]), na.rm = rm.na)^2) - 1)
   if (`%`) res <- res * 100
-  res
+  round(res,round)
 }
 
 
-#' Add to a vector just like array_push in php
+#' Calculate elements to a vector like array_push in php
+#'
+#' Calculate the coefficient of variation and round
+#'
+#' @param num vector of numbers
+#' @param rm.na remove NAs from the vector
+#' @param `%` TRUE or FALSE. should result be in percent
+#' @param round round result to decimal place
+#' @return the geometric mean of a set of numbers
+#' @examples
+#' num1 <- sample(330:400,10)
+#' cv.gm(num1,round = 3)
+#'
 #' @export
 #'
 vector_push <- function(., add) {
