@@ -11,12 +11,9 @@
 #' \dontrun{
 #' clean()
 #' clean(setwd = "/home/")
-#' clean(source = c("/home/file1.R","file2")
-#' clean(setwd = "/home/",
-#' source = c("file1","file2))
-#' clean(setwd = "/home/",
-#' source="file1.R",
-#' load="obi.RData")
+#' clean(source = c("/home/file1.R","file2"))
+#' clean(setwd = "/home/",source = c("file1","file2))
+#' clean(setwd = "/home/",source="file1.R",load="obi.RData")
 #' }
 #'
 #' @export
@@ -382,12 +379,9 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 #' \dontrun{
 #' refresh()
 #' refresh(setwd = "/home/")
-#' refresh(source = c("/home/file1.R","file2")
-#' refresh(setwd = "/home/",
-#' source = c("file1","file2))
-#' refresh(setwd = "/home/",
-#' source="file1.R",
-#' load="obi.RData")
+#' refresh(source = c("/home/file1.R","file2"))
+#' refresh(setwd = "/home/",source = c("file1","file2))
+#' refresh(setwd = "/home/",source="file1.R",load="obi.RData")
 #' }
 #'
 #' @export

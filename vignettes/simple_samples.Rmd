@@ -1,10 +1,10 @@
 ---
-title: "quickcode: just my compilation of useful functions across various processes"
+title: "quickcode: R package that is just my compilation of useful functions across various processes"
 author: "O.N Obianom"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Define with the r2dictionary package}
+  %\VignetteIndexEntry{quickcode: R package that is just my compilation of useful functions across various processes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,10 +17,40 @@ knitr::opts_chunk$set(
 ```
 
 
-### A compilation of some useful function to simply R programmging, keep the console neat, and save memory usage 
+### A compilation of some useful functions to simply R programming, keep the console neat, and save memory usage 
 
 ## Install
 
+```
+devtools::install_github("oobianom/quickcode")
+
+install.packages("quickcode") # when published
+
+```
 
 ## Functions to use
+
+```
+add.header.Rd
+clean.Rd
+cv.gm.Rd
+data_push.Rd
+data_shuffle.Rd
+erase.Rd
+grapes-not-in-grapes.Rd
+header.rmd.Rd
+insertInText.Rd
+libraryAll.Rd
+mean.gm.Rd
+not.data.Rd
+not.environment.Rd
+not.integer.Rd
+not.numeric.Rd
+not.vector.Rd
+refresh.Rd
+sd.gm.Rd
+vector_push.Rd
+vector_shuffle.Rd
+
+```
 
