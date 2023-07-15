@@ -1,10 +1,24 @@
 # quickcode: A compilation of some my quick and often used R codes
 
-### An experiment in progress...
+## Install
+
+```
+devtools::install_github("oobianom/quickcode")
+
+install.packages("quickcode") # when published
+
+```
 
 ## Examples
 
 ```
+
+#check if a number is not integer
+
+not.integer(45) #returns TRUE
+not.integer(45.) #returns TRUE
+not.integer(45L) #returns FALSE
+
 #clear R environment, set directory and load data
 
 quickcode::clean()
