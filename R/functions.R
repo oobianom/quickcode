@@ -24,19 +24,19 @@
 clean <- function(setwd = NULL, source = c(), load = c()) {
   # clear console, clean garbage and shut devices
   cat("\014")
-  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")),envir = parent.frame())
+  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")), envir = parent.frame())
   graphics.off()
   gc()
 
   # load quickcode if not loaded
-  if("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
+  if ("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
 
   # set directory if it exists
-  if (not.null(setwd) & (setwd != "")){
-    if(dir.exists(setwd)) {
-    setwd(setwd)
+  if (not.null(setwd) & (setwd != "")) {
+    if (dir.exists(setwd)) {
+      setwd(setwd)
     }
-}
+  }
   # source in any required files
   if (length(source)) {
     for (sourced in source) {
@@ -101,6 +101,21 @@ not.numeric <- function(x) !is.numeric(x)
 
 not.null <- function(x) !is.null(x)
 
+
+#' Not empty
+#'
+#' Check if entry is not empty
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is empty
+#' @examples
+#' not.empty("empty") # TRUE
+#' not.empty('') # FALSE
+#' not.empty(NULL) # logical(0)
+#' if(not.empty('')) print("yes") # NULL
+#' @export
+
+not.empty <- function(x) not.null(x) & (x != '')
 
 
 #' Not a vector
