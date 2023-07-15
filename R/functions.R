@@ -449,7 +449,18 @@ add.header <- function() {
 
 
 
+#' Snippet function to add header to a current Rmd opened file
+#'
+#' Shorthand to add Rmd header
+#'
+#' @return Inserts header content for Rmd file
+#'
+#' @examples
+#' \dontrun{
+#' header.rmd()
+#' }
 #' @export
+#'
 
 header.rmd <- function() {
   insertInText(paste0("<!---
