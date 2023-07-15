@@ -12,7 +12,9 @@ BugReports: https://github.com/oobianom/quickcode
 Depends: 
     R (>= 3.6)
 Imports: 
-    utils
+    utils,
+    grDevices,
+    stats
 Suggests: 
     rmarkdown,
     knitr,

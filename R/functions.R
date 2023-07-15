@@ -173,7 +173,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
   if(!length(lib.names)){
-    installed.packages()
+    utils::installed.packages()
   }
   if(clear)erase("\014")
 }
