@@ -4,16 +4,16 @@
 \alias{cv.gm}
 \title{Calculate geometric coefficient of variation and round}
 \usage{
-cv.gm(num, rm.na = TRUE, `\%` = TRUE, round = 2)
+cv.gm(num, rm.na = TRUE, pct = TRUE, round = 2)
 }
 \arguments{
 \item{num}{vector of numbers}
 
 \item{rm.na}{remove NAs from the vector}
 
-\item{round}{round result to decimal place}
+\item{pct}{TRUE or FALSE. should result be in percent}
 
-\item{`%`}{TRUE or FALSE. should result be in percent}
+\item{round}{round result to decimal place}
 }
 \value{
 the geometric cv of a set of numbers

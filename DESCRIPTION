@@ -12,8 +12,7 @@ BugReports: https://github.com/oobianom/quickcode
 Depends: 
     R (>= 3.6)
 Imports: 
-    utils,
-    htmltools
+    utils
 Suggests: 
     rmarkdown,
     knitr,

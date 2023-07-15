@@ -226,7 +226,7 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 #'
 #' @param num vector of numbers
 #' @param rm.na remove NAs from the vector
-#' @param `%` TRUE or FALSE. should result be in percent
+#' @param pct TRUE or FALSE. should result be in percent
 #' @param round round result to decimal place
 #' @return the geometric cv of a set of numbers
 #' @examples
@@ -235,10 +235,10 @@ sd.gm <- function(num, rm.na = TRUE, round = 2) {
 #'
 #' @export
 
-cv.gm <- function(num, rm.na = TRUE, `%` = TRUE, round = 2) {
+cv.gm <- function(num, rm.na = TRUE, pct = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   res <- sqrt(exp(sd(log(num[num > 0]), na.rm = rm.na)^2) - 1)
-  if (`%`) res <- res * 100
+  if (pct) res <- res * 100
   round(res,round)
 }
 
@@ -378,10 +378,10 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 #' @examples
 #' \dontrun{
 #' refresh()
-#' refresh(setwd = "/home/")
-#' refresh(source = c("/home/file1.R","file2"))
-#' refresh(setwd = "/home/",source = c("file1","file2))
-#' refresh(setwd = "/home/",source="file1.R",load="obi.RData")
+#' refresh(setwd = "home")
+#' refresh(setwd = "home",source = c("home/file1.R","file2"))
+#' refresh(setwd = "home/",source = c("file1","file2))
+#' refresh(setwd = "home/",source="file1.R",load="obi.RData")
 #' }
 #'
 #' @export
