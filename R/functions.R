@@ -160,7 +160,7 @@ cv.gm <- function(num, rm.na = TRUE, `%` = TRUE, round = 2) {
 
 #' Calculate elements to a vector like array_push in php
 #'
-#' Calculate the coefficient of variation and round
+#' Shorthand to add elements to a vector and save as the same name
 #'
 #' @param num vector of numbers
 #' @param rm.na remove NAs from the vector
@@ -169,15 +169,14 @@ cv.gm <- function(num, rm.na = TRUE, `%` = TRUE, round = 2) {
 #' @return the geometric mean of a set of numbers
 #' @examples
 #' num1 <- sample(330:400,10)
-#' cv.gm(num1,round = 3)
+#' num2 <-"rpkg.net"
+#' vector_push(num1, add= num2)
 #'
 #' @export
 #'
 vector_push <- function(., add) {
   .. <- substitute(.)
-
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-
   assign(as.character(..), c(get(.., envir = parent.frame()), add), envir = parent.frame())
 }
 
