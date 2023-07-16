@@ -13,7 +13,7 @@ install.packages("quickcode") # when published
 
 ```
 
-#check if a number is not integer
+#check if the entry is not integer
 
 not.integer(45) #returns TRUE
 not.integer(45.) #returns TRUE
