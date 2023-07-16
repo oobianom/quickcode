@@ -11,3 +11,4 @@
 .onLoad <- function(libname,pkgname){
   utils::globalVariables(c("graphics.off", "sd", "x"))
 }
+

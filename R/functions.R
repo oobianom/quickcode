@@ -469,14 +469,14 @@ insertInText <- function(string) {
 add.header <- function() {
   insertInText(paste0("
 
-  ############################################################################
-  #  Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
-  #
-  #  Written by USERNAME on ", Sys.Date(), "
-  #
-  #  R Version: ", version$version.string, "
-  #
-  #############################################################################
+############################################################################
+#  Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
+#
+#  Written by USERNAME on ", Sys.Date(), "
+#
+#  R Version: ", version$version.string, "
+#
+#############################################################################
 
   "))
 }
@@ -496,15 +496,15 @@ add.header <- function() {
 
 add.snippet.clear <- function() {
   insertInText(paste0("
-                      # clear console and set working directory
-                      # automatically load quickcode library
-                      quickcode::clean(
-                        setwd = 'ADDPATH'
-                      )
+# clear console and set working directory
+# automatically load quickcode library
+quickcode::clean(
+  setwd = 'ADDPATH'
+)
 
-                      # session information
-                      sessionInfo()
-                      "))
+# session information
+  sessionInfo()
+"))
 }
 
 
@@ -523,15 +523,18 @@ add.snippet.clear <- function() {
 #'
 
 header.rmd <- function() {
-  insertInText(paste0("<!---
+  insertInText(paste0("
+<!---
+-------------------------------------------------------------
 
-   Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
+Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
 
-   Written by USERNAME on ", Sys.Date(), "
+Written by USERNAME on ", Sys.Date(), "
 
-   R Version: ", version$version.string, "
+R Version: ", version$version.string, "
 
-  -->"))
+-------------------------------------------------------------
+-->"))
 }
 
 
