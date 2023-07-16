@@ -534,7 +534,7 @@ Written by USERNAME on ", Sys.Date(), "
 R Version: ", version$version.string, "
 
 -------------------------------------------------------------
--->"))
+--->"))
 }
 
 
