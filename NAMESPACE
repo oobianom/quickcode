@@ -3,6 +3,7 @@
 export("%!in%")
 export("%nin%")
 export(add.header)
+export(add.snippet.clear)
 export(clean)
 export(cv.gm)
 export(data_push)

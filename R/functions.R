@@ -481,6 +481,32 @@ add.header <- function() {
   "))
 }
 
+#' Snippet R function to clear console and set directory
+#'
+#' Shorthand to add clear console code to current file
+#'
+#' @return Inserts code to clear console
+#'
+#' @examples
+#' \dontrun{
+#' add.snippet.clear()
+#' }
+#' @export
+#'
+
+add.snippet.clear <- function() {
+  insertInText(paste0("
+                      # clear console and set working directory
+                      # automatically load quickcode library
+                      quickcode::clean(
+                        setwd = " / "
+                      )
+
+                      # session information
+                      sessionInfo()
+                      "))
+}
+
 
 
 #' Snippet function to add header to a current Rmd opened file
