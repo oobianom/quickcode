@@ -1,0 +1,9 @@
+Name: Add File Header 🌟(R)
+Description: Add a header description to opened R file
+Binding: add.header
+Interactive: true
+
+Name: Add File Header 🌟(Rmd)
+Description: Add a header description to opened Rmd file
+Binding: header.rmd
+Interactive: true
