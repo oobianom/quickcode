@@ -499,7 +499,7 @@ add.snippet.clear <- function() {
                       # clear console and set working directory
                       # automatically load quickcode library
                       quickcode::clean(
-                        setwd = " / "
+                        setwd = 'ADDPATH'
                       )
 
                       # session information
