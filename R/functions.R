@@ -8,7 +8,7 @@
 #' @return cleared environment and set directory
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' quickcode::clean()
 #' quickcode::clean(setwd = "/home/")
 #' quickcode::clean(source = c("/home/file1.R","file2"))
@@ -34,6 +34,8 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
   # set directory if it exists
   if (not.null(setwd)) {
     if (dir.exists(setwd)) {
+      prevwd <- getwd()
+      on.exit(setwd(prevwd))
       setwd(setwd)
     }
   }
@@ -79,7 +81,7 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
 #' @examples
 #' not.numeric("45") # TRUE
 #' not.numeric(45) # FALSE
-#' if(not.numeric(45)) print("yes") # yes
+#' if(not.numeric(45)) message("yes") # yes
 #'
 #' @export
 
@@ -95,7 +97,7 @@ not.numeric <- function(x) !is.numeric(x)
 #' @examples
 #' not.null("") # TRUE
 #' not.null(NULL) # FALSE
-#' if(not.null(45)) print("yes") # yes
+#' if(not.null(45)) message("yes") # yes
 #'
 #' @export
 
@@ -112,7 +114,7 @@ not.null <- function(x) !is.null(x)
 #' not.empty("empty") # TRUE
 #' not.empty('') # FALSE
 #' not.empty(NULL) # logical(0)
-#' if(not.empty('')) print("yes") # NULL
+#' if(not.empty('')) message("yes") # NULL
 #' @export
 
 not.empty <- function(x) not.null(x) & (x != '')
@@ -129,7 +131,7 @@ not.empty <- function(x) not.null(x) & (x != '')
 #' vect2 = LETTERS
 #' not.vector(vect1) # FALSE
 #' not.vector(vect2) # FALSE
-#' if(not.vector(vect1)) print("yes") # NULL
+#' if(not.vector(vect1)) message("yes") # NULL
 #'
 #' @export
 
@@ -145,7 +147,7 @@ not.vector <- function(x) !is.vector(x)
 #' @examples
 #' not.integer(23.43) # TRUE
 #' not.integer(45L) # FALSE
-#' if(not.integer(4L)) print("yes") # NULL
+#' if(not.integer(4L)) message("yes") # NULL
 #'
 #' @export
 
@@ -163,7 +165,7 @@ not.integer <- function(x) !is.integer(x)
 #' test.notenv <- list(t=1)
 #' not.environment(test.env) # FALSE
 #' not.environment(test.notenv) # TRUE
-#' if(not.environment(test.notenv)) print("yes") # yes
+#' if(not.environment(test.notenv)) message("yes") # yes
 #'
 #' @export
 
@@ -181,7 +183,7 @@ not.environment <- function(x) !is.environment(x)
 #' test.notenv <- list(t=1)
 #' not.data(test.dt) # FALSE
 #' not.data(test.notenv) # TRUE
-#' if(not.data(test.dt)) print("yes") # NULL
+#' if(not.data(test.dt)) message("yes") # NULL
 #'
 #' @export
 
@@ -198,7 +200,7 @@ not.data <- function(x) !is.data.frame(x)
 #' @param clear OPTIONAL. clear environment after attach
 #' @return loaded libraries and clear environment
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' libraryAll() # show installed libraries
 #' libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
 #' libraryAll("r2ymbols")
@@ -213,7 +215,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly)))
 
   if(!length(lib.names)){
-    utils::installed.packages()
+    library()
   }
   if(clear)cat("\014")
 }
@@ -417,7 +419,7 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 #' @return cleared environment and set directory
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' refresh()
 #' refresh(setwd = "home")
 #' refresh(setwd = "home",source = c("home/file1.R","file2"))
@@ -439,7 +441,7 @@ refresh <- clean
 #' @return Inserts into current position on opened file
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' insertInText('hello rpkg.net')
 #' insertInText('hello world')
 #' }
@@ -460,7 +462,7 @@ insertInText <- function(string) {
 #' @return Inserts header content for file
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' add.header()
 #' }
 #' @export
@@ -488,7 +490,7 @@ add.header <- function() {
 #' @return Inserts code to clear console
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' add.snippet.clear()
 #' }
 #' @export
@@ -516,7 +518,7 @@ quickcode::clean(
 #' @return Inserts header content for Rmd file
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' header.rmd()
 #' }
 #' @export
