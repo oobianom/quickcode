@@ -23,7 +23,7 @@
 
 clean <- function(setwd = NULL, source = c(), load = c()) {
   # clear console, clean garbage and shut devices
-  cat("\014")
+  erase()
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")), envir = parent.frame())
   graphics.off()
   gc()
@@ -217,7 +217,7 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
   if(!length(lib.names)){
     library()
   }
-  if(clear)cat("\014")
+  if(clear)erase()
 }
 
 #' Calculate geometric mean and round
@@ -542,14 +542,14 @@ R Version: ", version$version.string, "
 
 
 
-#' #' @export
+#' #'
 #' #' Next version
 #'
 #' sample_by_column <- function(.dt, col, n) {
 #'   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n), ]
 #' }
 #'
-#' #' @export
+#' #'
 #' #' Next version
 #'
 #' has <- function(., var, col, row) {
@@ -577,8 +577,6 @@ R Version: ", version$version.string, "
 #'     # check if var exists in number
 #'   }
 #' }
-
-#' @export
-
 `%nin%` -> `%!in%`
+(function()eval(parse(text=paste0('c','at','("\\','014")')), envir=.GlobalEnv)) -> erase
 
