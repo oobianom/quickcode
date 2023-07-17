@@ -14,6 +14,7 @@ Shorthand to add header
 }
 \examples{
 \donttest{
+if(interactive())
 add.header()
 }
 }

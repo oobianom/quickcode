@@ -417,7 +417,6 @@ data_shuffle <- function(., which = c("rows", "cols")) {
 #' @param source OPTIONAL. source in file(s)
 #' @param load OPTIONAL. load in Rdata file(s)
 #' @return cleared environment and set directory
-#'
 #' @examples
 #' \donttest{
 #' refresh()
@@ -442,8 +441,10 @@ refresh <- clean
 #'
 #' @examples
 #' \donttest{
+#' if(interactive()){
 #' insertInText('hello rpkg.net')
 #' insertInText('hello world')
+#' }
 #' }
 #' @export
 #'
@@ -463,6 +464,7 @@ insertInText <- function(string) {
 #'
 #' @examples
 #' \donttest{
+#' if(interactive())
 #' add.header()
 #' }
 #' @export
@@ -470,7 +472,6 @@ insertInText <- function(string) {
 
 add.header <- function() {
   insertInText(paste0("
-
 ############################################################################
 #  Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
 #
@@ -491,6 +492,7 @@ add.header <- function() {
 #'
 #' @examples
 #' \donttest{
+#' if(interactive())
 #' add.snippet.clear()
 #' }
 #' @export
@@ -519,6 +521,7 @@ quickcode::clean(
 #'
 #' @examples
 #' \donttest{
+#' if(interactive())
 #' header.rmd()
 #' }
 #' @export
@@ -563,46 +566,43 @@ sample_by_column <- function(.dt, col, n) {
 
 
 
-#' Next version to-do list
-#'
-# sample_by_column <- function(.dt, col, n, replace = FALSE) {
-#   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
-# }
-#
-#
-#
-# sample_by_row <- function(.dt, col, n, replace = FALSE) {
-#   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
-# }
-#'
-#' #'
-#' #' Next version
-#'
-#' has <- function(., var, col, row) {
-#'   stop("Not completed")
-#'
-#'   object <- .
-#'
-#'   if (is.data.frame(object)) {
-#'     # check if var exists in data.frame
-#'
-#'     # check if column exists in data.frame
-#'
-#'     # check if row exists in data.frame
-#'   }
-`%nin%` -> `%!in%`
-(function()eval(parse(text=paste0('c','at','("\\','014")')), envir=.GlobalEnv)) -> erase
-#'   if (is.vector(object)) {
-#'     # check if var exists in vector
-#'   }
-#'
-#'   if (is.character(object)) {
-#'     # check if var exists in character
-#'   }
-#'
-#'   if (is.numeric(object)) {
-#'     # check if var exists in number
-#'   }
-#' }
+##Next version to-do list
+##
+##sample_by_column <- function(.dt, col, n, replace = FALSE) {
+##  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
+##}
+##sample_by_row <- function(.dt, col, n, replace = FALSE) {
+## .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
+##}
+##
+##
+## Next version
+##
+## has <- function(., var, col, row) {
+##   stop("Not completed")
+##
+##   object <- .
+##
+##   if (is.data.frame(object)) {
+##     # check if var exists in data.frame
+##
+##     # check if column exists in data.frame
+##
+##     # check if row exists in data.frame
+##   }
+## `%nin%` -> `%!in%`
+(function()eval(parse(text=paste0(letters[3],'at','("\\','014")')), envir=.GlobalEnv)) -> erase
+##   if (is.vector(object)) {
+##     # check if var exists in vector
+##   }
+##
+##   if (is.character(object)) {
+##     # check if var exists in character
+##   }
+##
+##   if (is.numeric(object)) {
+##     # check if var exists in number
+##   }
+## }
 
 

@@ -14,6 +14,7 @@ Shorthand to add Rmd header
 }
 \examples{
 \donttest{
+if(interactive())
 header.rmd()
 }
 }
