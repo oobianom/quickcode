@@ -13,8 +13,6 @@ Inserts header content for Rmd file
 Shorthand to add Rmd header
 }
 \examples{
-\donttest{
 if(interactive())
 header.rmd()
-}
 }

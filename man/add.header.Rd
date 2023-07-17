@@ -13,8 +13,6 @@ Inserts header content for file
 Shorthand to add header
 }
 \examples{
-\donttest{
 if(interactive())
 add.header()
-}
 }

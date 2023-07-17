@@ -440,11 +440,9 @@ refresh <- clean
 #' @return Inserts into current position on opened file
 #'
 #' @examples
-#' \donttest{
 #' if(interactive()){
 #' insertInText('hello rpkg.net')
 #' insertInText('hello world')
-#' }
 #' }
 #' @export
 #'
@@ -463,10 +461,8 @@ insertInText <- function(string) {
 #' @return Inserts header content for file
 #'
 #' @examples
-#' \donttest{
 #' if(interactive())
 #' add.header()
-#' }
 #' @export
 #'
 
@@ -491,10 +487,8 @@ add.header <- function() {
 #' @return Inserts code to clear console
 #'
 #' @examples
-#' \donttest{
 #' if(interactive())
 #' add.snippet.clear()
-#' }
 #' @export
 #'
 
@@ -520,10 +514,8 @@ quickcode::clean(
 #' @return Inserts header content for Rmd file
 #'
 #' @examples
-#' \donttest{
 #' if(interactive())
 #' header.rmd()
-#' }
 #' @export
 #'
 

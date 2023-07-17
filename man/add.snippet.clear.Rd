@@ -13,8 +13,6 @@ Inserts code to clear console
 Shorthand to add clear console code to current file
 }
 \examples{
-\donttest{
 if(interactive())
 add.snippet.clear()
-}
 }
