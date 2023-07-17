@@ -20,6 +20,6 @@ vect1 = list(r=1,t=3:10)
 vect2 = LETTERS
 not.vector(vect1) # FALSE
 not.vector(vect2) # FALSE
-if(not.vector(vect1)) print("yes") # NULL
+if(not.vector(vect1)) message("yes") # NULL
 
 }

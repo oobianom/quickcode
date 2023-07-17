@@ -13,7 +13,7 @@ Inserts header content for Rmd file
 Shorthand to add Rmd header
 }
 \examples{
-\dontrun{
+\donttest{
 header.rmd()
 }
 }

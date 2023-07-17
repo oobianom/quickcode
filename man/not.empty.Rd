@@ -19,5 +19,5 @@ Check if entry is not empty
 not.empty("empty") # TRUE
 not.empty('') # FALSE
 not.empty(NULL) # logical(0)
-if(not.empty('')) print("yes") # NULL
+if(not.empty('')) message("yes") # NULL
 }

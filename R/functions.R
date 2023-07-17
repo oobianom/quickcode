@@ -540,14 +540,40 @@ R Version: ", version$version.string, "
 }
 
 
-
-
-#' #'
-#' #' Next version
+#' Re-sample a dataset by column and return number of entry needed
 #'
-#' sample_by_column <- function(.dt, col, n) {
-#'   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n), ]
-#' }
+#' Shorthand to return a re-sample number of rows in a data frame by unique column
+#'
+#' @param .dt data frame to re-sample
+#' @param col column to uniquely re-sample
+#' @param n number of rows to return
+#' @return data frame containing re-sampled rows from an original data frame
+#'
+#' @examples
+#' data1 <- data.frame(ID=1:10,MOT=11:20)
+#' sample_by_column(data1,MOT,3)
+#' sample_by_column(data1,ID,7)
+#' @export
+#'
+
+sample_by_column <- function(.dt, col, n) {
+  if(not.data(.dt)) stop("First element must be a data frame.")
+  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n),]
+}
+
+
+
+#' Next version to-do list
+#'
+# sample_by_column <- function(.dt, col, n, replace = FALSE) {
+#   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
+# }
+#
+#
+#
+# sample_by_row <- function(.dt, col, n, replace = FALSE) {
+#   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
+# }
 #'
 #' #'
 #' #' Next version
@@ -564,7 +590,8 @@ R Version: ", version$version.string, "
 #'
 #'     # check if row exists in data.frame
 #'   }
-#'
+`%nin%` -> `%!in%`
+(function()eval(parse(text=paste0('c','at','("\\','014")')), envir=.GlobalEnv)) -> erase
 #'   if (is.vector(object)) {
 #'     # check if var exists in vector
 #'   }
@@ -577,6 +604,5 @@ R Version: ", version$version.string, "
 #'     # check if var exists in number
 #'   }
 #' }
-`%nin%` -> `%!in%`
-(function()eval(parse(text=paste0('c','at','("\\','014")')), envir=.GlobalEnv)) -> erase
+
 

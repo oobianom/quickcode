@@ -22,7 +22,7 @@ loaded libraries and clear environment
 Only include libraries, don't install if library doesn't exist
 }
 \examples{
-\dontrun{
+\donttest{
 libraryAll() # show installed libraries
 libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
 libraryAll("r2ymbols")

@@ -20,6 +20,6 @@ test.dt <- data.frame(ID=1:200,Type="RPKG.net")
 test.notenv <- list(t=1)
 not.data(test.dt) # FALSE
 not.data(test.notenv) # TRUE
-if(not.data(test.dt)) print("yes") # NULL
+if(not.data(test.dt)) message("yes") # NULL
 
 }

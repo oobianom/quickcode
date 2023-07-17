@@ -13,7 +13,7 @@ Inserts header content for file
 Shorthand to add header
 }
 \examples{
-\dontrun{
+\donttest{
 add.header()
 }
 }

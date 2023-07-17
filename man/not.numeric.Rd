@@ -18,6 +18,6 @@ Check if entry is not numeric
 \examples{
 not.numeric("45") # TRUE
 not.numeric(45) # FALSE
-if(not.numeric(45)) print("yes") # yes
+if(not.numeric(45)) message("yes") # yes
 
 }

@@ -18,6 +18,6 @@ Check if entry is not an integer
 \examples{
 not.integer(23.43) # TRUE
 not.integer(45L) # FALSE
-if(not.integer(4L)) print("yes") # NULL
+if(not.integer(4L)) message("yes") # NULL
 
 }

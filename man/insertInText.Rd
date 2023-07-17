@@ -16,7 +16,7 @@ Inserts into current position on opened file
 Shorthand to insert content to opened file
 }
 \examples{
-\dontrun{
+\donttest{
 insertInText('hello rpkg.net')
 insertInText('hello world')
 }

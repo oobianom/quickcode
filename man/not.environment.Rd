@@ -20,6 +20,6 @@ test.env <- new.env()
 test.notenv <- list(t=1)
 not.environment(test.env) # FALSE
 not.environment(test.notenv) # TRUE
-if(not.environment(test.notenv)) print("yes") # yes
+if(not.environment(test.notenv)) message("yes") # yes
 
 }
