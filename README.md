@@ -42,7 +42,7 @@ quickcode::clean(
 p1 <- 4
 p2 <- c(1:10)
 
-p1 %!in% p2
+p1 %nin% p2
 
 
 
