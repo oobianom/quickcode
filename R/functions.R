@@ -542,6 +542,7 @@ R Version: ", version$version.string, "
 #' @param .dt data frame to re-sample
 #' @param col column to uniquely re-sample
 #' @param n number of rows to return
+#' @param seed unique numeric value for reproducibility
 #' @return data frame containing re-sampled rows from an original data frame
 #'
 #' @examples
@@ -551,7 +552,8 @@ R Version: ", version$version.string, "
 #' @export
 #'
 
-sample_by_column <- function(.dt, col, n) {
+sample_by_column <- function(.dt, col, n, seed = 354354) {
+  set.seed(seed)
   if(not.data(.dt)) stop("First element must be a data frame.")
   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n),]
 }
