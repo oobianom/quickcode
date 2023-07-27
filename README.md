@@ -5,7 +5,9 @@
 ```
 devtools::install_github("oobianom/quickcode")
 
-install.packages("quickcode") # when published
+#or from CRAN
+
+install.packages("quickcode") 
 
 ```
 
