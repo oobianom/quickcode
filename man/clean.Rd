@@ -4,7 +4,7 @@
 \alias{clean}
 \title{Clear environment, clear console, set work directory and load files}
 \usage{
-clean(setwd = NULL, source = c(), load = c())
+clean(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE)
 }
 \arguments{
 \item{setwd}{OPTIONAL. set working directory}
@@ -12,6 +12,8 @@ clean(setwd = NULL, source = c(), load = c())
 \item{source}{OPTIONAL. source in file(s)}
 
 \item{load}{OPTIONAL. load in Rdata file(s)}
+
+\item{clearPkgs}{Clear previous loaded packages, TRUE or FALSE}
 }
 \value{
 cleared environment and set directory
