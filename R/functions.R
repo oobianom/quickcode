@@ -606,10 +606,11 @@ add_key <- function(vector){
   . = list()
   iky = 1
   for(i in vector){
-    list_push(.,list(key = iky, value = i))
+    vector_push(.,list(key = iky, value = i))
     inc(iky)
   }
-  .
+  .. <- substitute(vector)
+  assign(as.character(..), ., envir = parent.frame())
 }
 
 
