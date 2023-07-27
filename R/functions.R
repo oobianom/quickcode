@@ -572,7 +572,14 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 
 duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
-  file.copy(file,new.name)
+  #get initial file
+  .file.1 <- readLines(file)
+  #substitute text
+  if(not.null(pattern))
+  .file.1 <- gsub(pattern,replacement,.file.1)
+
+  #write to new file
+  writeLines(.file.1,new.name)
   rstudioapi::navigateToFile(new.name)
 }
 
