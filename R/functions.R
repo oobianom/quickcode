@@ -565,16 +565,16 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 
 #Duplicate a file and open for editing
-
-duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
-  file.copy(file,new.name)
-
-}
-
 #Duplicate a file and change a string within
 
 
 #Duplicate a file using the console prompt
+
+
+duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
+  file.copy(file,new.name)
+  rstudioapi::navigateToFile(new.name)
+}
 
 
 
