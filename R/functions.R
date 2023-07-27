@@ -289,7 +289,7 @@ cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
-#' @param . first vecotr
+#' @param . first list
 #' @param add vector to add
 #' @return vector combining fist and second vector, but have name set to the first
 #' @examples
@@ -302,6 +302,26 @@ vector_push <- function(., add) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
+}
+
+
+#' Calculate elements to a vector like array_push in php
+#'
+#' Shorthand to add elements to a vector and save as the same name
+#'
+#' @param . first list
+#' @param add list to add
+#' @return vector combining fist and second vector, but have name set to the first
+#' @examples
+#' num1 <- list(sample(330:400,10))
+#' num2 <-list("rpkg.net")
+#' list_push(num1, add= num2)
+#' @export
+#'
+list_push <- function(., add) {
+  .. <- substitute(.)
+  if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+  assign(as.character(..), list(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
 }
 
 
@@ -586,8 +606,8 @@ add_key <- function(vector){
   . = c()
   iky = 1
   for(i in vector){
-    vector_push(.,list(key = iky, value = i))
-
+    list_push(.,list(key = iky, value = i))
+    inc(iky)
   }
 }
 
