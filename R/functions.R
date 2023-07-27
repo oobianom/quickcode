@@ -305,6 +305,27 @@ vector_push <- function(., add) {
 }
 
 
+#' Increment vector by value
+#'
+#' Increment the content of a vector and resave as the vector
+#'
+#' @param . vector of number(s)
+#' @param add number to add
+#' @return vector combining fist and second vector, but have name set to the first
+#' @examples
+#' num1 <- sample(330:400,10)
+#' inc(num1)
+#' inc(num1, add= 5)
+#' @export
+#'
+inc <- function(., add = 1) {
+  .. <- substitute(.)
+  if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+  assign(as.character(..), (get(as.character(..), envir = parent.frame()) + add), envir = parent.frame())
+}
+
+
+
 #' Calculate data to another data like array_push in php
 #'
 #' Shorthand to add data to a dataset and save as the same name
@@ -558,6 +579,17 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n),]
 }
 
+
+#' @export
+#'
+add_key <- function(vector){
+  . = c()
+  iky = 1
+  for(i in vector){
+    vector_push(.,list(key = iky, value = i))
+
+  }
+}
 
 
 #' Duplicate a file and global replace
