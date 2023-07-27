@@ -560,17 +560,9 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 
 
-##Next version to-do list
-
-
-
-#Duplicate a file and open for editing
-#Duplicate a file and change a string within
-
-
-#Duplicate a file using the console prompt
 
 #' @export
+#'
 duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
   #get initial file
   .file.1 <- readLines(file)
@@ -583,12 +575,37 @@ duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
   rstudioapi::navigateToFile(new.name)
 }
 
+#' @export
+#'
+ai.duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
+  if(is.null(file))
+  file = readline(prompt = "What file are you trying to edit?")
+
+  #get initial file
+  .file.1 <- readLines(file)
+  #substitute text
+  if(not.null(pattern))
+    .file.1 <- gsub(pattern,replacement,.file.1)
+
+  #write to new file
+  writeLines(.file.1,new.name)
+  rstudioapi::navigateToFile(new.name)
+}
 
 
 
 
 
 
+##Next version to-do list
+
+
+
+#Duplicate a file and open for editing
+#Duplicate a file and change a string within
+
+
+#Duplicate a file using the console prompt
 
 
 
