@@ -561,6 +561,43 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 
 ##Next version to-do list
+
+
+
+#Duplicate a file and open for editing
+
+duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
+  file.copy(file,new.name)
+
+}
+
+#Duplicate a file and change a string within
+
+
+#Duplicate a file using the console prompt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##
 ##sample_by_column <- function(.dt, col, n, replace = FALSE) {
 ##  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
