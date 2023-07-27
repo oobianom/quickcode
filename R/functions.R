@@ -285,7 +285,7 @@ cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
 }
 
 
-#' Calculate elements to a vector like array_push in php
+#' Add elements to a vector like array_push in php
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
@@ -305,7 +305,7 @@ vector_push <- function(., add) {
 }
 
 
-#' Calculate elements to a vector like array_push in php
+#' Add elements to a list like array_push in php
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
