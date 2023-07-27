@@ -52,7 +52,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
     deftPkg <- c("base", getOption("defaultPackages"))
     for (i in grep("package:", search(), value = TRUE)) {
       curr <- strsplit(i, ":")[[1]][2]
-      if (curr %nin% deftPkg) detach(name = i, character.only = TRUE)
+      if (curr %nin% deftPkg) detach(name = i, character.only = TRUE, force = TRUE)
     }
   }
 
