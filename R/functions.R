@@ -603,12 +603,13 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 #' @export
 #'
 add_key <- function(vector){
-  . = c()
+  . = list()
   iky = 1
   for(i in vector){
     list_push(.,list(key = iky, value = i))
     inc(iky)
   }
+  .
 }
 
 
