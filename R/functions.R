@@ -570,7 +570,7 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 #Duplicate a file using the console prompt
 
-
+#' @export
 duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
   #get initial file
   .file.1 <- readLines(file)
