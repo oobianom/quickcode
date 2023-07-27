@@ -606,7 +606,7 @@ add_key <- function(vector){
   . = list()
   iky = 1
   for(i in vector){
-    vector_push(.,list(key = iky, value = i))
+    list_push(.,list(key = iky, value = i))
     inc(iky)
   }
   .. <- substitute(vector)
