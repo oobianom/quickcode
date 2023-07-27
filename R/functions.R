@@ -29,8 +29,6 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE) {
   graphics.off()
   gc()
 
-  # load quickcode if not loaded
-  if ("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
 
   # set directory if it exists
   if (not.null(setwd)) {
@@ -49,14 +47,19 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE) {
 
   # remove previous loaded packages
   if (clearPkgs) {
-    deftPkg <- c("base", getOption("defaultPackages"))
+    deftPkg <- c("base", "quickcode", getOption("defaultPackages"))
     for (i in grep("package:", search(), value = TRUE)) {
       curr <- strsplit(i, ":")[[1]][2]
-      if (curr %nin% deftPkg) unloadNamespace(curr)
-        #detach(name = i, character.only = TRUE, force = TRUE)
+      if (curr %nin% deftPkg){
+        detach(name = i, character.only = TRUE, force = TRUE)
+        unloadNamespace(curr)
+      }
     }
   }
 
+  # load quickcode if not loaded
+  if ("quickcode" %nin% (.packages()))
+    library(quickcode, quietly = TRUE)
 
 
   # load in any required data
