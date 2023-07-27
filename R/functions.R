@@ -600,7 +600,7 @@ ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
 
   replace.more <- TRUE
 
-
+  #strings to replace
   while (replace.more) {
     if (is.null(pattern)) {
       vector_push(pattern,readline(prompt = "What string would you like to replace?"))
