@@ -22,7 +22,7 @@
 
 
 
-clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
+clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE) {
   # clear console, clean garbage and shut devices
   erase()
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
