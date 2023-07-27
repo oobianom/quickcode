@@ -5,6 +5,7 @@
 #' @param setwd OPTIONAL. set working directory
 #' @param source OPTIONAL. source in file(s)
 #' @param load OPTIONAL. load in Rdata file(s)
+#' @param clearPkgs Clear previous loaded packages, TRUE or FALSE
 #' @return cleared environment and set directory
 #'
 #' @examples
@@ -21,10 +22,10 @@
 
 
 
-clean <- function(setwd = NULL, source = c(), load = c()) {
+clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # clear console, clean garbage and shut devices
   erase()
-  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load")), envir = parent.frame())
+  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
   graphics.off()
   gc()
 
@@ -45,6 +46,19 @@ clean <- function(setwd = NULL, source = c(), load = c()) {
       if (file.exists(sourced)) source(sourced)
     }
   }
+
+  # remove previous loaded packages
+  if(clearPkgs){
+     deftPkg <- c("base",getOption("defaultPackages"))
+    for(i in grep("package:",search(),value = TRUE)){
+      curr <- strsplit(i,":")[[1]][1]
+      print(i)
+      if(curr %nin% deftPkg) detach(name = i, character.only = TRUE)
+    }
+  }
+
+
+
   # load in any required data
   if (length(load)) {
     for (loaded in load) {
