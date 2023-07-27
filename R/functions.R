@@ -560,7 +560,19 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 
 
-
+#' Duplicate a file and global replace
+#'
+#' Shorthand to return a re-sample number of rows in a data frame by unique column
+#'
+#' @param file data frame to re-sample
+#' @param new.name column to uniquely re-sample
+#' @param pattern number of rows to return
+#' @param replacement unique numeric value for reproducibility
+#' @param open description
+#' @return data frame containing re-sampled rows from an original data frame
+#'
+#' @examples
+#' duplicate('file.R')
 #' @export
 #'
 duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
@@ -602,7 +614,7 @@ ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
       replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more?")))
     }
   }
-  duplicate(file, new.name, pattern1, replacement, open = TRUE)
+  duplicate(file, new.name, pattern, replacement, open = TRUE)
 }
 
 
