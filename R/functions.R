@@ -643,6 +643,26 @@ duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
   rstudioapi::navigateToFile(new.name)
 }
 
+
+
+#' Generate a random number
+#'
+#' Shorthand code to generate a random number
+#'
+#' @param n how many numbers to generate
+#' @return random numbers between 1 and 1 billion
+#'
+#' @examples
+#' number(1)
+#' number(10)
+#' @export
+#'
+number <- function(n){
+  sample(1L:1000000000L, num)
+}
+
+
+
 #' @export
 #'
 ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
