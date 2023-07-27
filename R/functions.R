@@ -563,7 +563,7 @@ sample_by_column <- function(.dt, col, n, seed = 354354) {
 
 #' @export
 #'
-duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
+duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
   #get initial file
   .file.1 <- readLines(file)
   #substitute text
@@ -577,19 +577,27 @@ duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
 
 #' @export
 #'
-ai.duplicate <- function(file, new.name,pattern, replacement="",open=TRUE){
+ai.duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
   if(is.null(file))
-  file = readline(prompt = "What file are you trying to edit?")
+  file = readline(prompt = "What file are you trying to duplicate?")
 
-  #get initial file
-  .file.1 <- readLines(file)
-  #substitute text
-  if(not.null(pattern))
-    .file.1 <- gsub(pattern,replacement,.file.1)
+  if(is.null(new.name))
+    new.name = readline(prompt = "What is the new file name?")
 
-  #write to new file
-  writeLines(.file.1,new.name)
-  rstudioapi::navigateToFile(new.name)
+  replace.more = TRUE
+
+  while (replace.more) {
+
+    if(is.null(pattern))
+    pattern = readline(prompt = "What string would you like to replace?")
+
+  if(is.null(replacement))
+    replacement = readline(prompt = "What will you like to replace with?")
+
+  }
+
+
+  duplicate(file, new.name,pattern, replacement,open=TRUE)
 }
 
 
