@@ -626,7 +626,9 @@ add_key <- function(vector){
 #' @return data frame containing re-sampled rows from an original data frame
 #'
 #' @examples
+#' \donttest{
 #' duplicate('file.R')
+#' }
 #' @export
 #'
 duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
