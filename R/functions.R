@@ -594,6 +594,12 @@ ai.duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
   if(is.null(replacement))
     replacement = readline(prompt = "What will you like to replace with?")
 
+  if(replace.more){
+    replace.more = as.logical(readline(prompt = "Would you like to replace more?"))
+  }
+
+
+
   }
 
 
