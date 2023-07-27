@@ -577,33 +577,32 @@ duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
 
 #' @export
 #'
-ai.duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
-  if(is.null(file))
-  file = readline(prompt = "What file are you trying to duplicate?")
+ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
+  if (is.null(file)) {
+    file <- readline(prompt = "What file are you trying to duplicate?")
+  }
 
-  if(is.null(new.name))
-    new.name = readline(prompt = "What is the new file name?")
+  if (is.null(new.name)) {
+    new.name <- readline(prompt = "What is the new file name?")
+  }
 
-  replace.more = TRUE
+  replace.more <- TRUE
+
 
   while (replace.more) {
+    if (is.null(pattern)) {
+      vector_push(pattern,readline(prompt = "What string would you like to replace?"))
+    }
 
-    if(is.null(pattern))
-    pattern = readline(prompt = "What string would you like to replace?")
+    if (is.null(replacement)) {
+      vector_push(replacement,readline(prompt = "What will you like to replace with?"))
+    }
 
-  if(is.null(replacement))
-    replacement = readline(prompt = "What will you like to replace with?")
-
-  if(replace.more){
-    replace.more = as.logical(readline(prompt = "Would you like to replace more?"))
+    if (replace.more) {
+      replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more?")))
+    }
   }
-
-
-
-  }
-
-
-  duplicate(file, new.name,pattern, replacement,open=TRUE)
+  duplicate(file, new.name, pattern1, replacement, open = TRUE)
 }
 
 
