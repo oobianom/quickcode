@@ -4,7 +4,7 @@
 \alias{refresh}
 \title{Clear environment, clear console, set work directory and load files}
 \usage{
-refresh(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE)
+refresh(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE)
 }
 \arguments{
 \item{setwd}{OPTIONAL. set working directory}

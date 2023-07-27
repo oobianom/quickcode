@@ -4,7 +4,7 @@
 \alias{clean}
 \title{Clear environment, clear console, set work directory and load files}
 \usage{
-clean(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE)
+clean(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE)
 }
 \arguments{
 \item{setwd}{OPTIONAL. set working directory}
