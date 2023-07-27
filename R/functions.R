@@ -48,12 +48,12 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   }
 
   # remove previous loaded packages
-  if(clearPkgs){
-     deftPkg <- c("base",getOption("defaultPackages"))
-    for(i in grep("package:",search(),value = TRUE)){
-      curr <- strsplit(i,":")[[1]][1]
+  if (clearPkgs) {
+    deftPkg <- c("base", getOption("defaultPackages"))
+    for (i in grep("package:", search(), value = TRUE)) {
+      curr <- strsplit(i, ":")[[1]][1]
       print(i)
-      if(curr %nin% deftPkg) detach(name = i, character.only = TRUE)
+      if (curr %nin% deftPkg) detach(name = i, character.only = TRUE)
     }
   }
 
