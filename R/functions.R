@@ -649,12 +649,18 @@ add_key <- function(vector){
 #' }
 #' @export
 #'
-duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
+duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
   #get initial file
   .file.1 <- readLines(file)
+
   #substitute text
-  if(not.null(pattern))
-  .file.1 <- gsub(pattern,replacement,.file.1)
+  if(not.null(pattern) & not.null(replacement)){
+    ..i = 0
+      for(.i in 1:length(pattern)){
+        inc(..i)
+        .file.1 <- gsub(pattern[.i],replacement[.i],.file.1)
+      }
+  }
 
   #write to new file
   writeLines(.file.1,new.name)
