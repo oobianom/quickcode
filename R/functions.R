@@ -711,9 +711,9 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
       vector_push(replacement,readline(prompt = "What will you like to replace with?"))
     }
 
-    if (replace.more) {
-      replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more (T = Yes, F = No) ?")))
-    }
+
+    replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more (T = Yes, F = No) ?")))
+
   }
   #duplicate file with entered parameters
   duplicate(file, new.name, pattern, replacement, open = TRUE)
