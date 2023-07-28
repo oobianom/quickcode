@@ -14,6 +14,12 @@ install.packages("quickcode")
 ## Examples
 
 ```
+#initialize one more variables
+
+init(r,y,u,b,value = 5)
+print(r) # r = 5
+print(b) # b = 5
+print(z) # Error: object 'z' not found
 
 #check if the entry is not integer
 
