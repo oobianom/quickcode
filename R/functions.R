@@ -711,7 +711,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
     }
   }
   duplicate(file, new.name, pattern, replacement, open = TRUE)
-  invisible(self)
+  invisible(file)
 }
 
 
