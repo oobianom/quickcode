@@ -14,7 +14,12 @@ install.packages("quickcode")
 ## Examples
 
 ```
-#initialize one more variables
+#initialize one or more variables
+
+print(g) # Error: object 'g' not found
+
+init(g,h,i,o)
+print(g) # q = NULL
 
 init(r,y,u,b,value = 5)
 print(r) # r = 5
