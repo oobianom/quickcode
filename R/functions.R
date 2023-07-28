@@ -22,7 +22,7 @@
 
 
 
-clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE) {
+clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # clear console, clean garbage and shut devices
   erase()
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
@@ -52,7 +52,6 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = TRUE) {
       curr <- strsplit(i, ":")[[1]][2]
       if (curr %nin% deftPkg){
         detach(name = i, character.only = TRUE, force = TRUE)
-        unloadNamespace(curr)
       }
     }
   }
