@@ -673,10 +673,12 @@ duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
 #' @examples
 #' number(1)
 #' number(10)
+#'
+#' paste0(number(2),LETTERS)
 #' @export
 #'
 number <- function(n){
-  sample(1L:1000000000L, num)
+  sample(1L:1000000000L, n)
 }
 
 
@@ -764,7 +766,7 @@ ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
 ##
 ##     # check if row exists in data.frame
 ##   }
-## `%nin%` -> `%!in%`
+`%nin%` -> `%!in%`
 (function()eval(parse(text=paste0(letters[3],'at','("\\','014")')), envir=.GlobalEnv)) -> erase
 ##   if (is.vector(object)) {
 ##     # check if var exists in vector
