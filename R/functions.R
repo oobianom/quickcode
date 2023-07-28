@@ -712,7 +712,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
     }
 
     #check if more replacements are needed
-    replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more (T = Yes, F = No) ?")))
+    replace.more <- as.logical(toupper(readline(prompt = "Want to replace more (T = Yes, F = No) ?")))
 
   }
   #duplicate file with entered parameters
