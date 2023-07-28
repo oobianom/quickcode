@@ -32,7 +32,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 
   # set directory if it exists
   prevwd <- getwd()
-  on.exit(setwd(prevwd))
+  #on.exit(setwd(prevwd))
 
   if (not.null(setwd)) {
     if (dir.exists(setwd)) {
