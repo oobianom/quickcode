@@ -28,29 +28,39 @@ install.packages("quickcode") # when published
 
 ```
 
-## Functions to use
+## List of many cool functions to use
 
 ```
-add.header.Rd
-clean.Rd
-cv.gm.Rd
-data_push.Rd
-data_shuffle.Rd
-erase.Rd
-grapes-not-in-grapes.Rd
-header.rmd.Rd
-insertInText.Rd
-libraryAll.Rd
-mean.gm.Rd
-not.data.Rd
-not.environment.Rd
-not.integer.Rd
-not.numeric.Rd
-not.vector.Rd
-refresh.Rd
-sd.gm.Rd
-vector_push.Rd
-vector_shuffle.Rd
+clean
+grapes-nin-grapes
+not.numeric
+not.null
+not.empty
+not.vector
+not.integer
+not.environment
+not.data
+not.logical
+libraryAll
+g.mean
+sd.gm
+cv.gm
+vector_push
+list_push
+inc
+data_push
+vector_shuffle
+data_shuffle
+refresh
+insertInText
+add.header
+add.snippet.clear
+header.rmd
+sample_by_column
+duplicate
+number
+init
 
 ```
 
+Check out some examples at <u>quickcode.obi.obianom.com</u>
