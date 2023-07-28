@@ -207,6 +207,26 @@ not.environment <- function(x) !is.environment(x)
 not.data <- function(x) !is.data.frame(x)
 
 
+
+#' Not logical
+#'
+#' Check if entry is a logical object
+#'
+#' @param x vector entry
+#' @return a boolean value to indicate if entry is logical
+#' @examples
+#' test.env <- TRUE
+#' test.notenv <- 0
+#' not.logical(test.env) # FALSE
+#' not.logical(test.notenv) # TRUE
+#' if(not.logical(test.notenv)) message("yes") # yes
+#'
+#' @export
+
+not.logical <- function(x) !is.logical(x)
+
+
+
 #' Load specific R libraries and clear environment
 #'
 #' Only include libraries, don't install if library doesn't exist
@@ -729,17 +749,14 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
     new.name <- readline(prompt = "What is the new file name?")
   }
 
-  #toggle for whether to continue replacing
-  replace.more <- TRUE
-
   #strings to replace
-  while (replace.more) {
+  repeat{
     vector_push(pattern,readline(prompt = "What string would you like to replace?"))
     vector_push(replacement,readline(prompt = "What will you like to replace with?"))
 
     #check if more replacements are needed
-    replace.more <- as.logical(toupper(readline(prompt = "Want to replace more (T = Yes, F = No) ?")))
-
+    if(!as.logical(toupper(readline(prompt = "Want to replace more (T = Yes, F = No) ?"))))
+      break
   }
   #duplicate file with entered parameters
   duplicate(file, new.name, pattern, replacement, open = TRUE)
