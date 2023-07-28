@@ -26,11 +26,15 @@ print(r) # r = 5
 print(b) # b = 5
 print(z) # Error: object 'z' not found
 
+
+
 #check if the entry is not integer
 
 not.integer(45) #returns TRUE
 not.integer(45.) #returns TRUE
 not.integer(45L) #returns FALSE
+
+
 
 #clear R environment, set directory and load data
 
