@@ -710,6 +710,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
       replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more (T = Yes, F = No) ?")))
     }
   }
+  #duplicate file with entered parameters
   duplicate(file, new.name, pattern, replacement, open = TRUE)
   invisible(file)
 }
