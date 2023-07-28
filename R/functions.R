@@ -709,7 +709,7 @@ number <- function(n,max.digits=10){
 init <- function(...,value = NULL){
   .v <- as.list(substitute(args(...))[-1L])
   for(i in .v)
-    assign(as.character(i), NULL , envir = parent.frame())
+    assign(as.character(i), value , envir = parent.frame())
 }
 
 
