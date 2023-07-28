@@ -1,9 +1,9 @@
-# quickcode: just a compilation of some simple quick and often used R functions
+# quickcode: NOT functions and a compilation of some simple quick plus often used R functions
 
 ## Install
 
 ```
-devtools::install_github("oobianom/quickcode")
+remotes::install_github("oobianom/quickcode")
 
 #or from CRAN
 
@@ -11,7 +11,7 @@ install.packages("quickcode")
 
 ```
 
-## Examples
+## Some Quick Examples
 
 ```
 #initialize one or more variables
@@ -38,7 +38,10 @@ not.integer(45L) #returns FALSE
 
 
 #clear R environment, set directory and load data
+#note: the code below also automatically loads the quickcode library so that all other functions within package can be used easily
 
+
+quickcode::refresh()
 quickcode::clean()
 
 #or combine with setwd and source and load
