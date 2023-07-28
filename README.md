@@ -19,7 +19,8 @@ install.packages("quickcode")
 print(g) # Error: object 'g' not found
 
 init(g,h,i,o)
-print(g) # q = NULL
+print(g) # g = NULL
+print(h) # h = NULL
 
 init(r,y,u,b,value = 5)
 print(r) # r = 5
