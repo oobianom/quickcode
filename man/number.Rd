@@ -4,10 +4,12 @@
 \alias{number}
 \title{Generate a random number}
 \usage{
-number(n)
+number(n, max.digits = 10)
 }
 \arguments{
 \item{n}{how many numbers to generate}
+
+\item{max.digits}{maximum number of digits in each number}
 }
 \value{
 random numbers between 1 and 1 billion
@@ -18,4 +20,5 @@ Shorthand code to generate a random number
 \examples{
 number(1)
 number(10)
+paste0(number(2),LETTERS)
 }
