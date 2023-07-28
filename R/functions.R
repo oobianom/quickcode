@@ -689,7 +689,11 @@ number <- function(n,max.digits=10){
 
 #' @export
 #'
-ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replacement = NULL, open = TRUE) {
+ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
+
+  pattern = NULL
+  replacement = NULL
+
   if (is.null(file)) {
     file <- readline(prompt = "What file are you trying to duplicate?")
   }
@@ -703,13 +707,8 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
 
   #strings to replace
   while (replace.more) {
-    if (is.null(pattern)) {
-      vector_push(pattern,readline(prompt = "What string would you like to replace?"))
-    }
-
-    if (is.null(replacement)) {
-      vector_push(replacement,readline(prompt = "What will you like to replace with?"))
-    }
+    vector_push(pattern,readline(prompt = "What string would you like to replace?"))
+    vector_push(replacement,readline(prompt = "What will you like to replace with?"))
 
     #check if more replacements are needed
     replace.more <- as.logical(toupper(readline(prompt = "Want to replace more (T = Yes, F = No) ?")))
