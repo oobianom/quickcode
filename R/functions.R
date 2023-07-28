@@ -668,17 +668,17 @@ duplicate <- function(file, new.name,pattern, replacement,open=TRUE){
 #' Shorthand code to generate a random number
 #'
 #' @param n how many numbers to generate
+#' @param max.digits maximum number of digits in each number
 #' @return random numbers between 1 and 1 billion
 #'
 #' @examples
 #' number(1)
 #' number(10)
-#'
 #' paste0(number(2),LETTERS)
 #' @export
 #'
-number <- function(n){
-  sample(1L:1000000000L, n)
+number <- function(n,max.digits=10){
+  substr(sample(1L:1000000000L, n),0,max.digits)
 }
 
 
