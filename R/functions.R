@@ -711,7 +711,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
       vector_push(replacement,readline(prompt = "What will you like to replace with?"))
     }
 
-
+    #check if more replacements are needed
     replace.more <- as.logical(toupper(readline(prompt = "Would you like to replace more (T = Yes, F = No) ?")))
 
   }
