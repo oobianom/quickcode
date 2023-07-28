@@ -655,9 +655,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 
   #substitute text
   if(not.null(pattern) & not.null(replacement)){
-    ..i = 0
       for(.i in 1:length(pattern)){
-        inc(..i)
         .file.1 <- gsub(pattern[.i],replacement[.i],.file.1)
       }
   }
