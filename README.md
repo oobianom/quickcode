@@ -27,6 +27,15 @@ print(r) # r = 5
 print(b) # b = 5
 print(z) # Error: object 'z' not found
 
+#add keys to number a vector
+
+ver1 <- c("Test 1","Test 2","Test 3")
+add_key(ver1)
+
+for(i in ver1){
+message(sprintf("%s is the key for this %s", i$key, i$value))
+}
+
 
 
 #check if the entry is not integer
