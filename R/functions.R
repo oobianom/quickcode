@@ -685,7 +685,7 @@ number <- function(n,max.digits=10){
 
 #' @export
 #'
-ai.duplicate <- function(file, new.name, pattern, replacement, open = TRUE) {
+ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replacement = NULL, open = TRUE) {
   if (is.null(file)) {
     file <- readline(prompt = "What file are you trying to duplicate?")
   }
