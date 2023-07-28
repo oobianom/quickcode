@@ -27,7 +27,7 @@ print(r) # r = 5
 print(b) # b = 5
 print(z) # Error: object 'z' not found
 
-#add keys to number a vector
+#add keys to a vector content for use in downstream processes
 
 ver1 <- c("Test 1","Test 2","Test 3")
 add_key(ver1)
