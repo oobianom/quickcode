@@ -31,7 +31,7 @@ install.packages("quickcode") # when published
 ## List of many cool functions to use
 
 ```
-"%nin%"
+%nin%
 add.header
 add.snippet.clear
 add_key
