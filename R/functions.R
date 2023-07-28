@@ -694,6 +694,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL, pattern = NULL, replaceme
     new.name <- readline(prompt = "What is the new file name?")
   }
 
+  #toggle for whether to continue replacing
   replace.more <- TRUE
 
   #strings to replace
