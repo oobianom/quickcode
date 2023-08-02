@@ -610,7 +610,6 @@ quickcode::clean(
 header.rmd <- function() {
   insertInText(paste0("
 <!---
--------------------------------------------------------------
 
 Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
 
@@ -628,7 +627,7 @@ Exported Files:
 
 R Version: ", version$version.string, "
 
--------------------------------------------------------------
+
 --->"))
 }
 
