@@ -582,11 +582,16 @@ add.header <- function() {
 
 add.snippet.clear <- function() {
   insertInText(paste0("
-# clear console and set working directory
-# automatically load quickcode library
-quickcode::clean(
-  setwd = 'ADDPATH'
+# script header
+quickcode::libraryAll(
+  ...
 )
+quickcode::clean(
+  setwd = '...'
+)
+
+# script body
+
 
 # session information
   sessionInfo()
