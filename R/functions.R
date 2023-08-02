@@ -614,7 +614,17 @@ header.rmd <- function() {
 
 Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
 
-Written by USERNAME on ", Sys.Date(), "
+Author:
+
+Date: ", Sys.Date(), "
+
+Title:
+
+Description:
+
+Required Files:
+
+Exported Files:
 
 R Version: ", version$version.string, "
 
