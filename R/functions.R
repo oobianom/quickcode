@@ -820,27 +820,11 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
 
 ##Next version to-do list
 
-
-
 #Duplicate a file and open for editing
 #Duplicate a file and change a string within
 
 
 #Duplicate a file using the console prompt
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##
