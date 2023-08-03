@@ -24,10 +24,11 @@
 
 clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # clear console, clean garbage and shut devices
-  erase()
+  erase() #clear console
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
-  graphics.off()
-  gc()
+  graphics.off() #graphics off
+  closeAllConnections() #close any option connections
+  gc() #garbage cleanup
 
 
   # set directory if it exists
