@@ -18,6 +18,6 @@ Check if entry is not NULL
 \examples{
 not.null("") # TRUE
 not.null(NULL) # FALSE
-if(not.null(45)) message("yes") # yes
+if(not.null(45)) message("something") # yes
 
 }

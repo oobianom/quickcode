@@ -4,7 +4,7 @@
 \alias{vector_shuffle}
 \title{Shuffle a vector just like shuffle in php}
 \usage{
-vector_shuffle(., replace = FALSE, prob = NULL)
+vector_shuffle(., replace = FALSE, prob = NULL, seed = NULL)
 }
 \arguments{
 \item{.}{vector to shuffle}
@@ -12,6 +12,8 @@ vector_shuffle(., replace = FALSE, prob = NULL)
 \item{replace}{replace selected value}
 
 \item{prob}{probability of occurrence}
+
+\item{seed}{apply seed if indicated for reproducibility}
 }
 \value{
 shuffled vector of items store to the vector name
@@ -21,6 +23,10 @@ Shorthand to shuffle a vector and save
 }
 \examples{
 v1<-c(3,45,23,3,2,4,1)
-vector_shuffle(v1)
 
+vector_shuffle(v1)
+vector_shuffle(v1) # different output from top
+
+vector_shuffle(v1,seed = 232L)
+vector_shuffle(v1,seed = 232L) # the same output as top
 }

@@ -21,4 +21,6 @@ Check if entry is in vector
 5 \%nin\% c(1:10) #FALSE
 5 \%nin\% c(11:20) #TRUE
 
+x = "a"
+if(x \%nin\% letters) x
 }
