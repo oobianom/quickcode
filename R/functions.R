@@ -441,6 +441,12 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' @examples
 #' v1<-c(3,45,23,3,2,4,1)
 #'
+#'
+#' #demonstrate vector_shuffle
+#' vector_shuffle(v1)
+#' v1 # show outputs
+#'
+#' #demonstrate reproducibility in shuffle with seed
 #' v0<-v1
 #' vector_shuffle(v0)
 #' v0 #first output
