@@ -440,8 +440,12 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #'
 #' @examples
 #' v1<-c(3,45,23,3,2,4,1)
-#' vector_shuffle(v1)
 #'
+#' vector_shuffle(v1)
+#' vector_shuffle(v1) # different output from top
+#'
+#' vector_shuffle(v1,seed = 232L)
+#' vector_shuffle(v1,seed = 232L) # the same output as top
 #' @export
 #'
 
@@ -471,7 +475,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #' @examples
 #' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
 #' data_shuffle(df1)
-#'
+#' data_shuffle(df1,seed = 1003)
 #' @export
 #'
 
