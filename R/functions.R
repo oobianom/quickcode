@@ -89,6 +89,8 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' 5 %nin% c(1:10) #FALSE
 #' 5 %nin% c(11:20) #TRUE
 #'
+#' x = "a"
+#' if(x %nin% letters) x
 #' @export
 
 `%nin%` <- function(x, table) {
@@ -121,7 +123,7 @@ not.numeric <- function(x) !is.numeric(x)
 #' @examples
 #' not.null("") # TRUE
 #' not.null(NULL) # FALSE
-#' if(not.null(45)) message("yes") # yes
+#' if(not.null(45)) message("something") # yes
 #'
 #' @export
 
