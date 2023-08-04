@@ -435,6 +435,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' @param . vector to shuffle
 #' @param replace replace selected value
 #' @param prob probability of occurrence
+#' @param seed apply seed if indicated for reproducibility
 #' @return shuffled vector of items store to the vector name
 #'
 #' @examples
@@ -444,7 +445,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' @export
 #'
 
-vector_shuffle <- function(., replace = FALSE, prob = NULL) {
+vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
   if(not.vector(.)) stop("The first element must be a vector")
   .. <- substitute(.)
 
@@ -452,6 +453,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL) {
 
   val <- get(as.character(..), envir = parent.frame())
 
+  if(not.null(seed))set.seed(seed)
   assign(as.character(..), sample(val, length(val), replace = replace, prob = prob), envir = parent.frame())
 }
 
