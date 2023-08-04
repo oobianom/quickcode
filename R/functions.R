@@ -41,12 +41,6 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
       setwd(setwd)
     }
   }
-  # source in any required files
-  if (length(source)) {
-    for (sourced in source) {
-      if (file.exists(sourced)) source(sourced)
-    }
-  }
 
   # remove previous loaded packages
   if (clearPkgs) {
@@ -68,6 +62,12 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   if ("quickcode" %nin% (.packages()))
     library(quickcode, quietly = TRUE)
 
+  # source in any required files
+  if (length(source)) {
+    for (sourced in source) {
+      if (file.exists(sourced)) source(sourced)
+    }
+  }
 
   # load in any required data
   if (length(load)) {
