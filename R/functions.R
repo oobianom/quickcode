@@ -465,6 +465,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #'
 #' @param . data to shuffle as data frame
 #' @param which what to shuffle, rows or columns
+#' @param seed apply seed if indicated for reproducibility
 #' @return shuffled data frame of items store to the data frame name
 #'
 #' @examples
@@ -474,7 +475,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #' @export
 #'
 
-data_shuffle <- function(., which = c("rows", "cols")) {
+data_shuffle <- function(., which = c("rows", "cols"), seed = NULL) {
   which <- match.arg(which)
 
   .. <- substitute(.)
@@ -482,6 +483,8 @@ data_shuffle <- function(., which = c("rows", "cols")) {
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
+
+  if(not.null(seed))set.seed(seed)
 
     switch(which,
       "rows" = {
