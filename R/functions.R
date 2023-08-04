@@ -449,11 +449,13 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' vector_shuffle(v0)
 #' v0 # different output from first output top
 #'
-#'
+#' v0<-v1
 #' vector_shuffle(v0,seed = 232L)
 #' v0 #second output
-#' vector_shuffle(v0,seed = 232L) # the same output as top
-#' v0
+#'
+#' v0<-v1
+#' vector_shuffle(v0,seed = 232L)
+#' v0 #the same output as second output top
 #' @export
 #'
 
