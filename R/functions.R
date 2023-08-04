@@ -11,7 +11,8 @@
 #' @examples
 #' \donttest{
 #' quickcode::clean()
-#' quickcode::clean(setwd = "/home/")
+#' quickcode::clean(clearPkgs = TRUE) #clear all previously loaded packages
+#' quickcode::clean(setwd = "/home/") #clear env and set working directory
 #' quickcode::clean(source = c("/home/file1.R","file2"))
 #' quickcode::clean(setwd = "/home/",source = c("file1","file2))
 #' quickcode::clean(setwd = "/home/",source="file1.R",load="obi.RData")
@@ -819,6 +820,8 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
 
 
 ##Next version to-do list
+
+#ggplot
 
 #Duplicate a file and open for editing
 #Duplicate a file and change a string within
