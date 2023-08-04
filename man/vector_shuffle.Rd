@@ -24,9 +24,25 @@ Shorthand to shuffle a vector and save
 \examples{
 v1<-c(3,45,23,3,2,4,1)
 
-vector_shuffle(v1)
-vector_shuffle(v1) # different output from top
 
-vector_shuffle(v1,seed = 232L)
-vector_shuffle(v1,seed = 232L) # the same output as top
+#demonstrate vector_shuffle
+vector_shuffle(v1)
+v1 # show outputs
+
+#demonstrate reproducibility in shuffle with seed
+v0<-v1
+vector_shuffle(v0)
+v0 #first output
+
+v0<-v1
+vector_shuffle(v0)
+v0 # different output from first output top
+
+v0<-v1
+vector_shuffle(v0,seed = 232L)
+v0 #second output
+
+v0<-v1
+vector_shuffle(v0,seed = 232L)
+v0 #the same output as second output top
 }
