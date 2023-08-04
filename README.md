@@ -46,7 +46,8 @@ not.integer(45) #returns TRUE
 not.integer(45.) #returns TRUE
 not.integer(45L) #returns FALSE
 
-
+not.null(45L) #returns TRUE
+not.null(h<-NULL) #returns FALSE
 
 #clear R environment, set directory and load data
 #note: the code below also automatically loads the quickcode library so that all other functions within package can be used easily
