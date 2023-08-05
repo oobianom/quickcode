@@ -813,7 +813,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #'
 number <- function(n,max.digits=10,seed=NULL){
   if(not.null(seed))set.seed(seed)
-  substr(sample(1L:1000000000L, n),0,max.digits)
+  as.integer(substr(sample(1L:1000000000L, n),0,max.digits))
 }
 
 
