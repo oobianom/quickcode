@@ -707,8 +707,8 @@ R Version: ", version$version.string, "
 #' @export
 #'
 
-sample_by_column <- function(.dt, col, n, seed = 354354) {
-  set.seed(seed)
+sample_by_column <- function(.dt, col, n, seed = NULL) {
+  if(not.null(seed))set.seed(seed)
   if(not.data(.dt)) stop("First element must be a data frame.")
   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n),]
 }
@@ -790,6 +790,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #'
 #' @param n how many numbers to generate
 #' @param max.digits maximum number of digits in each number
+#' @param seed set seed for sampling to maintain reproducibility
 #' @return random numbers between 1 and 1 billion
 #'
 #' @examples
@@ -799,6 +800,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #' @export
 #'
 number <- function(n,max.digits=10,seed=NULL){
+  if(not.null(seed))set.seed(seed)
   substr(sample(1L:1000000000L, n),0,max.digits)
 }
 
