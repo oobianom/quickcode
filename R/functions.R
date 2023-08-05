@@ -490,8 +490,25 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #'
 #' @examples
 #' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+#'
+#' #illustrate basic functionality
 #' data_shuffle(df1)
-#' data_shuffle(df1,seed = 1003)
+#'
+#' data.f2<-df1
+#' data_shuffle(data.f2)
+#' data.f2 #first output
+#'
+#' data.f2<-df1
+#' data_shuffle(data.f2)
+#' data.f2 # different output from first output top
+#'
+#' data.f2<-df1
+#' data_shuffle(data.f2,seed = 232L)
+#' data.f2 #second output
+#'
+#' data.f2<-df1
+#' data_shuffle(data.f2,seed = 232L)
+#' data.f2 #the same output as second output top
 #' @export
 #'
 
