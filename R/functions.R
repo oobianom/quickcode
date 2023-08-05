@@ -797,6 +797,18 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #' number(1)
 #' number(10)
 #' paste0(number(2),LETTERS)
+#'
+#' #set maximum number of digits
+#' number(1,max.digits = 5)
+#' number(10,max.digits = 4)
+#'
+#' #set seed for reproducibilit
+#' #without seed
+#' number(6) #result 1
+#' number(6) #result 2, different from result 1
+#' #with seed
+#' number(6,seed=1)#result 3
+#' number(6,seed=1)#result 4, same as result 3
 #' @export
 #'
 number <- function(n,max.digits=10,seed=NULL){
