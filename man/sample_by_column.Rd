@@ -4,7 +4,7 @@
 \alias{sample_by_column}
 \title{Re-sample a dataset by column and return number of entry needed}
 \usage{
-sample_by_column(.dt, col, n, seed = 354354)
+sample_by_column(.dt, col, n, seed = NULL)
 }
 \arguments{
 \item{.dt}{data frame to re-sample}

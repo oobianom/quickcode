@@ -4,12 +4,14 @@
 \alias{number}
 \title{Generate a random number}
 \usage{
-number(n, max.digits = 10)
+number(n, max.digits = 10, seed = NULL)
 }
 \arguments{
 \item{n}{how many numbers to generate}
 
 \item{max.digits}{maximum number of digits in each number}
+
+\item{seed}{set seed for sampling to maintain reproducibility}
 }
 \value{
 random numbers between 1 and 1 billion
@@ -21,4 +23,16 @@ Shorthand code to generate a random number
 number(1)
 number(10)
 paste0(number(2),LETTERS)
+
+#set maximum number of digits
+number(1,max.digits = 5)
+number(10,max.digits = 4)
+
+#set seed for reproducibilit
+#without seed
+number(6) #result 1
+number(6) #result 2, different from result 1
+#with seed
+number(6,seed=1)#result 3
+number(6,seed=1)#result 4, same as result 3
 }
