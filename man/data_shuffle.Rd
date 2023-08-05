@@ -24,6 +24,7 @@ df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
 
 #illustrate basic functionality
 data_shuffle(df1)
+df1 #shuffle and resaved to variable
 
 data.f2<-df1
 data_shuffle(data.f2)
