@@ -474,6 +474,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
   val <- get(as.character(..), envir = parent.frame())
 
   if(not.null(seed))set.seed(seed)
+
   assign(as.character(..), sample(val, length(val), replace = replace, prob = prob), envir = parent.frame())
 }
 
