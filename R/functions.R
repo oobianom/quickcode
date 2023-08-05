@@ -802,7 +802,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #' number(1,max.digits = 5)
 #' number(10,max.digits = 4)
 #'
-#' #set seed for reproducibilit
+#' #set seed for reproducibility
 #' #without seed
 #' number(6) #result 1
 #' number(6) #result 2, different from result 1
