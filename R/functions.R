@@ -493,6 +493,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #'
 #' #illustrate basic functionality
 #' data_shuffle(df1)
+#' df1 #shuffle and resaved to variable
 #'
 #' data.f2<-df1
 #' data_shuffle(data.f2)
