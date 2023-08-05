@@ -762,7 +762,7 @@ add_key <- function(vector){
 #'
 #' @examples
 #' \donttest{
-#' duplicate('file.R')
+#' duplicate('./file.R')
 #' }
 #' @export
 #'
@@ -798,7 +798,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 #' paste0(number(2),LETTERS)
 #' @export
 #'
-number <- function(n,max.digits=10){
+number <- function(n,max.digits=10,seed=NULL){
   substr(sample(1L:1000000000L, n),0,max.digits)
 }
 
