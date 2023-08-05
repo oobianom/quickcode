@@ -503,12 +503,13 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 #' data.f2 # different output from first output top
 #'
 #' data.f2<-df1
-#' data_shuffle(data.f2,seed = 232L)
+#' data_shuffle(data.f2,seed = 344L)
 #' data.f2 #second output
 #'
 #' data.f2<-df1
-#' data_shuffle(data.f2,seed = 232L)
+#' data_shuffle(data.f2,seed = 344L)
 #' data.f2 #the same output as second output top
+#'
 #' @export
 #'
 
