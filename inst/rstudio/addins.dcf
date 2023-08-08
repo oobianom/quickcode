@@ -8,12 +8,12 @@ Description: Add a header description to opened Rmd file
 Binding: header.rmd
 Interactive: true
 
-Name: Add clean code ♻
+Name: Add Refresh Code ♻
 Description: Add code to clear console and set wd
 Binding: add.snippet.clear
 Interactive: true
 
-Name: Duplicate and edit a file ❒
+Name: Duplicate and Edit a File ❒
 Description: Duplicate a file and make edits to the duplicated file
 Binding: ai.duplicate
 Interactive: false
