@@ -29,6 +29,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
   graphics.off() #graphics off
   closeAllConnections() #close any open connections
+  assign("last.warning",NULL, envir = baseenv()) #NULL last warnings
   gc() #garbage cleanup to free memory
 
 
