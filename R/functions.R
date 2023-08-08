@@ -28,12 +28,12 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   erase() #clear console
   rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
   graphics.off() #graphics off
-  closeAllConnections() #close any option connections
-  gc() #garbage cleanup
+  closeAllConnections() #close any open connections
+  gc() #garbage cleanup to free memory
 
 
   # set directory if it exists
-  #prevwd <- getwd()
+  prevwd <- getwd()
   #on.exit(setwd(prevwd))
 
   if (not.null(setwd)) {
