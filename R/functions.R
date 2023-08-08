@@ -769,6 +769,9 @@ add_key <- function(vector){
 #' @export
 #'
 duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
+  #exit if the file does not exist
+  if(!file.exists(file)) stop("The file you are trying to duplicate does not exist.")
+
   #get initial file
   .file.1 <- readLines(file)
 
@@ -872,6 +875,8 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
   if (is.null(file)) {
     file <- readline(prompt = "What file are you trying to duplicate?")
   }
+
+  if(!file.exists(file)) stop("The file you are trying to duplicate does not exist.")
 
   if (is.null(new.name)) {
     new.name <- readline(prompt = "What is the new file name?")
