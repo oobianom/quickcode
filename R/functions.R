@@ -787,7 +787,7 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 
   message(sprintf("The new file '%s' was successfully created!",new.name))
 
-  rstudioapi::navigateToFile(new.name)
+  if(open) rstudioapi::navigateToFile(new.name)
 }
 
 
