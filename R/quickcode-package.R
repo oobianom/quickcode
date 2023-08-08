@@ -9,6 +9,6 @@
 "_PACKAGE"
 
 .onLoad <- function(libname,pkgname){
-  utils::globalVariables(c("graphics.off", "sd", "x"))
+  utils::globalVariables(c("graphics.off", "sd", "x",'pattern','replacement'))
 }
 
