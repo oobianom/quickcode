@@ -784,6 +784,9 @@ duplicate <- function(file, new.name,pattern, replacement,open = TRUE){
 
   #write to new file
   writeLines(.file.1,new.name)
+
+  message(sprintf("The new file '%s' was successfully created!",new.name))
+
   rstudioapi::navigateToFile(new.name)
 }
 
@@ -893,8 +896,6 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
   }
   #duplicate file with entered parameters
   duplicate(file, new.name, pattern, replacement, open = open)
-
-  message(sprintf("The new file '%s' was successfully created!",new.name))
   invisible(file)
 }
 
