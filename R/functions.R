@@ -866,9 +866,8 @@ init <- function(...,value = NULL){
 #' @export
 #'
 ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
-
-  pattern = NULL
-  replacement = NULL
+  #declare initial pattern and replacement
+  init(pattern, replacement)
 
   if (is.null(file)) {
     file <- readline(prompt = "What file are you trying to duplicate?")
