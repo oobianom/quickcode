@@ -11,6 +11,8 @@ remotes::install_github("oobianom/quickcode")
 install.packages("quickcode") 
 
 ```
+# 31 great R functions to add to you scripts!
+
 ## Featured function
 ### Add one-line code in your R script to clear console, set working directory and load files
 ![](https://quickcode.obi.obianom.com/quickcode.png)
