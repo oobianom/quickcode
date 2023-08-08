@@ -14,7 +14,7 @@ install.packages("quickcode")
 # 30+ great R functions to add to you scripts!
 
 ## Featured function
-### Add one-line code in your R script to clear console, set working directory and load files
+### Add one-line code in your R script to clear environment, clear console, set working directory and load files
 ![](https://quickcode.obi.obianom.com/quickcode.png)
 
 ## Some Quick R Examples
