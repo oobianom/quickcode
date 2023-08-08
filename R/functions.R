@@ -128,7 +128,7 @@ not.numeric <- function(x) !is.numeric(x)
 #' set.seed(08082023)
 #' dtf <- sample(1:10,15, replace = TRUE)
 #' dtf # 3  9 10  3  8  9  6 10  5  1  2  2  2  9  8
-#' dtf[not.duplicated(dtf)] # 3  9 10  8  6  5  1  2
+#' dtf[ dtf > 4 & not.duplicated(dtf) ] # 9 10  8  6  5
 #'
 #' @export
 
