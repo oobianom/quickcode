@@ -892,7 +892,9 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
       break
   }
   #duplicate file with entered parameters
-  duplicate(file, new.name, pattern, replacement, open = TRUE)
+  duplicate(file, new.name, pattern, replacement, open = open)
+
+  message(sprintf("The new file '%s' was successfully created!",new.name))
   invisible(file)
 }
 
