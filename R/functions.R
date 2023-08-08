@@ -855,7 +855,7 @@ init <- function(...,value = NULL){
 #' @param new.name OPTIONAL.name of new file
 #' @param open open file after duplication
 #'
-#' @return duplicated and edited files
+#' @return duplicated files with edited texts
 #'
 #' @examples
 #' \donttest{
@@ -897,16 +897,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
 
 
 
-##Next version to-do list
-
-#ggplot
-
-#Duplicate a file and open for editing
-#Duplicate a file and change a string within
-
-
-#Duplicate a file using the console prompt
-
+##Next version to-do list 0.3
 
 ##
 ##sample_by_column <- function(.dt, col, n, replace = FALSE) {
