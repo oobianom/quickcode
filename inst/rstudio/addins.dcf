@@ -12,3 +12,8 @@ Name: Add clean code ♻
 Description: Add code to clear console and set wd
 Binding: add.snippet.clear
 Interactive: true
+
+Name: Duplicate and edit a file ❒
+Description: Duplicate a file and make edits to the duplicated file
+Binding: ai.duplicate
+Interactive: false
