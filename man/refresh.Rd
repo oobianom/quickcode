@@ -12,6 +12,8 @@ refresh(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE)
 \item{source}{OPTIONAL. source in file(s)}
 
 \item{load}{OPTIONAL. load in Rdata file(s)}
+
+\item{clearPkgs}{clear previously loaded packages}
 }
 \value{
 cleared environment and set directory

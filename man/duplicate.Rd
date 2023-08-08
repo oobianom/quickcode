@@ -25,6 +25,6 @@ Shorthand to return a re-sample number of rows in a data frame by unique column
 }
 \examples{
 \donttest{
-duplicate('./file.R')
+duplicate('./file.R','file2.R','text1','replacement1')
 }
 }

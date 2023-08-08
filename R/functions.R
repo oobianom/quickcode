@@ -548,6 +548,7 @@ data_shuffle <- function(., which = c("rows", "cols"), seed = NULL) {
 #' @param setwd OPTIONAL. set working directory
 #' @param source OPTIONAL. source in file(s)
 #' @param load OPTIONAL. load in Rdata file(s)
+#' @param clearPkgs clear previously loaded packages
 #' @return cleared environment and set directory
 #' @examples
 #' \donttest{
@@ -763,7 +764,7 @@ add_key <- function(vector){
 #'
 #' @examples
 #' \donttest{
-#' duplicate('./file.R')
+#' duplicate('./file.R','file2.R','text1','replacement1')
 #' }
 #' @export
 #'
@@ -846,6 +847,22 @@ init <- function(...,value = NULL){
 
 
 
+#' Prompt guided duplication if files
+#'
+#' AI like duplication and editing of files
+#'
+#' @param file file to duplicate
+#' @param new.name OPTIONAL.name of new file
+#' @param open open file after duplication
+#'
+#' @return duplicated and edited files
+#'
+#' @examples
+#' \donttest{
+#' ai.duplicate('./file.R','file2.R')
+#' }
+#'
+#'
 #' @export
 #'
 ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
