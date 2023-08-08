@@ -26,7 +26,8 @@
 clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # clear console, clean garbage and shut devices
   erase() #clear console
-  rm(list = setdiff(ls(envir = parent.frame()), c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
+  rm(list = setdiff(ls(envir = parent.frame()),
+                    c("setwd", "source", "load", "clearPkgs"),all.names = TRUE), envir = parent.frame())
   graphics.off() #graphics off
   closeAllConnections() #close any open connections
   assign("last.warning",NULL, envir = baseenv()) #NULL last warnings
