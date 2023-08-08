@@ -14,14 +14,14 @@ ai.duplicate(file = NULL, new.name = NULL, open = TRUE)
 \item{open}{open file after duplication}
 }
 \value{
-duplicated and edited files
+duplicated files with edited texts
 }
 \description{
 AI like duplication and editing of files
 }
 \examples{
 \donttest{
-ai.duplicate('./file.R')
+ai.duplicate('./file.R','file2.R')
 }
 
 

@@ -881,7 +881,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
   #strings to replace
   repeat{
     vector_push(pattern,readline(prompt = "What string would you like to replace?"))
-    vector_push(replacement,readline(prompt = "What will you like to replace with?"))
+    vector_push(replacement,readline(prompt = "What will you like to replace it with?"))
 
     #check if more replacements are needed
     if(!as.logical(toupper(readline(prompt = "Want to replace more (T = Yes, F = No) ?"))))
