@@ -723,6 +723,7 @@ R Version: ", version$version.string, "
 #' @param col column to uniquely re-sample
 #' @param n number of rows to return
 #' @param seed unique numeric value for reproducibility
+#' @param replace should sampling be with replacement
 #' @return data frame containing re-sampled rows from an original data frame
 #'
 #' @examples
@@ -732,10 +733,10 @@ R Version: ", version$version.string, "
 #' @export
 #'
 
-sample_by_column <- function(.dt, col, n, seed = NULL) {
+sample_by_column <- function(.dt, col, n, seed = NULL, replace = FALSE) {
   if(not.null(seed))set.seed(seed)
   if(not.data(.dt)) stop("First element must be a data frame.")
-  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n),]
+  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace),]
 }
 
 
