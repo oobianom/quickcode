@@ -735,6 +735,7 @@ R Version: ", version$version.string, "
 
 sample_by_column <- function(.dt, col, n, seed = NULL, replace = FALSE) {
   if(not.null(seed))set.seed(seed)
+  warning("Work on function still in progress. Use with caution.")
   if(not.data(.dt)) stop("First element must be a data frame.")
   .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace),][1:n,]
 }
