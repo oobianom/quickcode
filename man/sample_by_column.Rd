@@ -4,7 +4,7 @@
 \alias{sample_by_column}
 \title{Re-sample a dataset by column and return number of entry needed}
 \usage{
-sample_by_column(.dt, col, n, seed = NULL)
+sample_by_column(.dt, col, n, seed = NULL, replace = FALSE)
 }
 \arguments{
 \item{.dt}{data frame to re-sample}
@@ -14,6 +14,8 @@ sample_by_column(.dt, col, n, seed = NULL)
 \item{n}{number of rows to return}
 
 \item{seed}{unique numeric value for reproducibility}
+
+\item{replace}{should sampling be with replacement}
 }
 \value{
 data frame containing re-sampled rows from an original data frame
