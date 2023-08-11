@@ -354,7 +354,7 @@ cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
 }
 
 
-#' Add elements to a vector like array_push in php
+#' Add elements to a vector like array_push in PHP
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
@@ -373,8 +373,27 @@ vector_push <- function(., add) {
   assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
 }
 
+#' Remove elements from a vector like array_push in PHP
+#'
+#' Shorthand to add elements to a vector and save as the same name
+#'
+#' @param . first list
+#' @param add vector to add
+#' @return vector combining fist and second vector, but have name set to the first
+#' @examples
+#' num1 <- sample(330:400,10)
+#' num2 <-"rpkg.net"
+#' vector_push(num1, add= num2)
+#' @export
+#'
+vector_pop <- function(., add) {
+  .. <- substitute(.)
+  if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+  assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
+}
 
-#' Add elements to a list like array_push in php
+
+#' Add elements to a list like array_push in PHP
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
@@ -415,7 +434,7 @@ inc <- function(., add = 1) {
 
 
 
-#' Calculate data to another data like array_push in php
+#' Calculate data to another data like array_push in PHP
 #'
 #' Shorthand to add data to a dataset and save as the same name
 #'
@@ -451,7 +470,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 
 
 
-#' Shuffle a vector just like shuffle in php
+#' Shuffle a vector just like shuffle in PHP
 #'
 #' Shorthand to shuffle a vector and save
 #'
@@ -503,7 +522,7 @@ vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
 
 
 
-#' Shuffle a data frame just like shuffle in php
+#' Shuffle a data frame just like shuffle in PHP
 #'
 #' Shorthand to shuffle a data frame and save
 #'
