@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{vector_shuffle}
 \alias{vector_shuffle}
-\title{Shuffle a vector just like shuffle in php}
+\title{Shuffle a vector just like shuffle in PHP}
 \usage{
 vector_shuffle(., replace = FALSE, prob = NULL, seed = NULL)
 }

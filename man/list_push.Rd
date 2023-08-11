@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{list_push}
 \alias{list_push}
-\title{Add elements to a list like array_push in php}
+\title{Add elements to a list like array_push in PHP}
 \usage{
 list_push(., add)
 }

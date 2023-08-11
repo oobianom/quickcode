@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{data_shuffle}
 \alias{data_shuffle}
-\title{Shuffle a data frame just like shuffle in php}
+\title{Shuffle a data frame just like shuffle in PHP}
 \usage{
 data_shuffle(., which = c("rows", "cols"), seed = NULL)
 }

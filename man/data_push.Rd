@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{data_push}
 \alias{data_push}
-\title{Calculate data to another data like array_push in php}
+\title{Calculate data to another data like array_push in PHP}
 \usage{
 data_push(., add, which = c("rows", "cols"))
 }

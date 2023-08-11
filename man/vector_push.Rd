@@ -2,12 +2,12 @@
 % Please edit documentation in R/functions.R
 \name{vector_push}
 \alias{vector_push}
-\title{Add elements to a vector like array_push in php}
+\title{Add elements to a vector like array_push in PHP}
 \usage{
 vector_push(., add)
 }
 \arguments{
-\item{.}{first list}
+\item{.}{first vector}
 
 \item{add}{vector to add}
 }

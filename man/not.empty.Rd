@@ -18,6 +18,6 @@ Check if entry is not empty
 \examples{
 not.empty("empty") # TRUE
 not.empty('') # FALSE
-not.empty(NULL) # logical(0)
+not.empty(y<-NULL) # FALSE
 if(not.empty('')) message("yes") # NULL
 }
