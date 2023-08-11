@@ -399,8 +399,14 @@ vector_pop <- function(., n = 1, el = NULL) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
-  if(not.empty(el)) val[val != el]
-  else val[1:length(val)-n]
+  if(length(val)){
+    if(not.empty(el)) val[val != el]
+    else val[1:length(val)-n]
+  }else{
+    val1 <- strsplit("dffklff d","")[[1]]
+    val <- paste(val1[1:length(val1)-n], collapse = "")
+  }
+
   assign(as.character(..),val, envir = parent.frame())
 }
 
