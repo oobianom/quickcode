@@ -162,7 +162,7 @@ not.null <- function(x) !is.null(x)
 #' @examples
 #' not.empty("empty") # TRUE
 #' not.empty('') # FALSE
-#' not.empty(NULL) # logical(0)
+#' not.empty(y<-NULL) # FALSE
 #' if(not.empty('')) message("yes") # NULL
 #' @export
 
