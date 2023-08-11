@@ -395,7 +395,7 @@ vector_push <- function(., add) {
 #'
 #' @export
 #'
-vector_pop <- function(., n = 1, el = NULL) {
+vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
@@ -407,7 +407,8 @@ vector_pop <- function(., n = 1, el = NULL) {
     val <- paste(val1[1:length(val1)-n], collapse = "")
   }
 
-  assign(as.character(..),val, envir = parent.frame())
+  if(!ret) assign(as.character(..),val, envir = parent.frame())
+  else val
 }
 
 
