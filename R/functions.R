@@ -386,10 +386,12 @@ vector_push <- function(., add) {
 #' vector_push(num1, add= num2)
 #' @export
 #'
-vector_pop <- function(., add) {
+vector_pop <- function(., n = 1, el = NULL) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-  assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
+  val <- get(as.character(..), envir = parent.frame())
+  if(not.null(el)) val[val != el]
+  assign(as.character(..),val, envir = parent.frame())
 }
 
 
