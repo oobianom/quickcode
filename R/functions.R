@@ -381,16 +381,23 @@ vector_push <- function(., add) {
 #'
 #' Shorthand to remove elements from a vector and save as the same name
 #'
-#' @param . first list
+#' @param . parent vector
+#' @param n number of elements to remove
 #' @param el vector to remove
-#' @return vector combining fist and second vector, but have name set to the first
+#' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent vector
+#' @return vector with elements removed
 #' @examples
 #' num1 <- sample(330:400,10)
-#' num2 <-"rpkg.net"
+#' name <- "ObinnaObianom"
 #'
-#'
+#' #task: remove 1 element from the end of the vector and set it to the vector name
 #' num1 #num1 vector before pop
 #' vector_pop(num1)
+#' num1 #num1 vector after pop
+#'
+#' #task: remove 5 elements from the end, but do not set it to the vector name
+#' num1 #num1 vector before pop
+#' vector_pop(num1,5)
 #' num1 #num1 vector after pop
 #'
 #' @export
@@ -399,6 +406,7 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
+  if (n > length(val)) stop(paste0("Value of n must not be greater than length of vector content"))
   if(length(val)){
     if(not.empty(el)) val <- val[val != el]
     else val <- val[1:length(val)-n]
