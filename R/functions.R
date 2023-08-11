@@ -362,7 +362,7 @@ cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
 #'
 #' Shorthand to add elements to a vector and save as the same name
 #'
-#' @param . first list
+#' @param . first vector
 #' @param add vector to add
 #' @return vector combining fist and second vector, but have name set to the first
 #' @examples
@@ -377,12 +377,12 @@ vector_push <- function(., add) {
   assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
 }
 
-#' Remove elements from a vector like array_push in PHP
+#' Remove last n elements or specified elements from a vector like array_push in PHP
 #'
-#' Shorthand to add elements to a vector and save as the same name
+#' Shorthand to remove elements from a vector and save as the same name
 #'
 #' @param . first list
-#' @param add vector to add
+#' @param el vector to remove
 #' @return vector combining fist and second vector, but have name set to the first
 #' @examples
 #' num1 <- sample(330:400,10)
@@ -394,7 +394,7 @@ vector_pop <- function(., n = 1, el = NULL) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
-  if(not.null(el)) val[val != el]
+  if(not.empty(el)) val[val != el]
   assign(as.character(..),val, envir = parent.frame())
 }
 
