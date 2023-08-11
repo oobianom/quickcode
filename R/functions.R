@@ -166,7 +166,11 @@ not.null <- function(x) !is.null(x)
 #' if(not.empty('')) message("yes") # NULL
 #' @export
 
-not.empty <- function(x) not.null(x) & (x != '')
+not.empty <- function(x){
+  eval <- not.null(x) & (x != '')
+  if(!length(eval)) eval <- FALSE
+  eval
+}
 
 
 #' Not a vector
