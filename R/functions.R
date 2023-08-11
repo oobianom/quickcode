@@ -387,7 +387,12 @@ vector_push <- function(., add) {
 #' @examples
 #' num1 <- sample(330:400,10)
 #' num2 <-"rpkg.net"
+#'
+#'
+#' num1 #num1 vector before pop
 #' vector_pop(num1)
+#' num1 #num1 vector after pop
+#'
 #' @export
 #'
 vector_pop <- function(., n = 1, el = NULL) {
