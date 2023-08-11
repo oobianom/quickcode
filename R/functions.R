@@ -388,7 +388,7 @@ vector_push <- function(., add) {
 #' @return vector with elements removed
 #' @examples
 #' num1 <- sample(330:400,10)
-#' name <- "ObinnaObianom"
+#' name1 <- "ObinnaObianomObiObianom"
 #'
 #' #task: remove 1 element from the end of the vector and set it to the vector name
 #' num1 #num1 vector before pop
@@ -402,11 +402,14 @@ vector_push <- function(., add) {
 #'
 #'
 #' #task: remove 6 elements from a word, set it back to vector name
-#' name #name before pop
-#' vector_pop(name) #does not return anything
+#' name1 #name1 before pop
+#' vector_pop(name1,6) #does not return anything
 #' name #name updated after pop
 #'
 #' #task: remove 3 elements from a word, Do not set it back to vector name
+#' name1 #name1 before pop
+#' vector_pop(name1,3) #returns modified name1
+#' name1 #name1 updated after pop
 #'
 #'
 #' @export
