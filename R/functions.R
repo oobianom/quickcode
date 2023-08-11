@@ -387,7 +387,7 @@ vector_push <- function(., add) {
 #' @examples
 #' num1 <- sample(330:400,10)
 #' num2 <-"rpkg.net"
-#' vector_push(num1, add= num2)
+#' vector_pop(num1)
 #' @export
 #'
 vector_pop <- function(., n = 1, el = NULL) {
@@ -395,6 +395,7 @@ vector_pop <- function(., n = 1, el = NULL) {
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
   if(not.empty(el)) val[val != el]
+  else val[1:length(val)-n]
   assign(as.character(..),val, envir = parent.frame())
 }
 
