@@ -19,6 +19,7 @@ install.packages("quickcode")
 
 ## Some Quick R Examples
 
+=======================================================================
 
 ```
 #initialize one or more variables
