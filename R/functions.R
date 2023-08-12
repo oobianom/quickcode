@@ -418,10 +418,10 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
-
+  if (n > length(val) & length(val) > 1)
+    stop(paste0("Value of n must not be greater than length of vector content"))
   if(length(val)){
-    if (n > length(val))
-      stop(paste0("Value of n must not be greater than length of vector content"))
+
     if(not.empty(el)) val <- val[val != el]
     else val <- val[1:(length(val)-n)]
   }else{
