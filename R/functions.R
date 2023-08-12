@@ -547,26 +547,36 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #'
 #' @export
 #'
-data_pop <- function(., n = 1, el = NULL, ret = FALSE) {
+data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
   .. <- substitute(.)
+  which <- match.arg(which)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-  # val <- get(as.character(..), envir = parent.frame())
-  #
-  # if(length(val) > 1){
-  #   if (n > length(val))
-  #     stop(paste0("Value of n must not be greater than length of vector content"))
-  #   if(not.empty(el)) val <- val[val != el]
-  #   else val <- val[1:(length(val)-n)]
-  # }else{
-  #   val1 <- strsplit(val,"")[[1]]
-  #   if(not.empty(el)) val <- val1[val1 != el]
-  #   else val <- paste(val1[1:(length(val1)-n)], collapse = "")
-  # }
-  #
-  # if(!ret) assign(as.character(..),val, envir = parent.frame())
-  # else val
+  data <- as.data.frame(get(as.character(..), envir = parent.frame()))
+  if(nrow(data) & ncol(data)){
+    add <- as.data.frame(add)
+    switch(which,
+           "rows" = {
+             data <- data[1:(nrow(data)-n),]
+           },
+           "cols" = {
+             data <- data[,1:(ncol(data)-n)]
+           }
+    )
+  }
+  if(!ret) assign(as.character(..), data, envir = parent.frame())
+  else data
 }
 
+
+
+# to do
+
+data_pop_filter <- function(.,...){
+  .. <- substitute(.)
+  .... <- substitute(...)
+  which <- match.arg(which)
+  if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+}
 
 #' Shuffle a vector just like shuffle in PHP
 #'
