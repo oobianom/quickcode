@@ -404,7 +404,7 @@ vector_push <- function(., add) {
 #' #task: remove 6 elements from a word, set it back to vector name
 #' name1 #name1 before pop
 #' vector_pop(name1,6) #does not return anything
-#' name #name updated after pop
+#' name1 #name updated after pop
 #'
 #' #task: remove 3 elements from a word, Do not set it back to vector name
 #' name1 #name1 before pop
