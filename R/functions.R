@@ -528,9 +528,9 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' data.01 #data.01 data updated after pop
 #'
 #' #task: remove 5 elements from the end, but do not set it to the vector name
-#' num1 #num1 vector before pop
-#' vector_pop(num1,5, ret = T) #return modified vector
-#' num1 #num1 vector remains the same after pop
+#' data.01 #data.01 vector before pop
+#' data_pop(data.01,5, ret = T) #return modified vector
+#' data.01 #data.01 vector remains the same after pop
 #'
 #' @export
 #'
@@ -540,7 +540,6 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
   if(nrow(data) & ncol(data)){
-    add <- as.data.frame(add)
     switch(which,
            "rows" = {
              data <- data[1:(nrow(data)-n),]
