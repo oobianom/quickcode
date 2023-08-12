@@ -409,7 +409,7 @@ vector_push <- function(., add) {
 #' #task: remove 3 elements from a word, Do not set it back to vector name
 #' name1 #name1 before pop
 #' vector_pop(name1,3, ret = T) #returns modified name1
-#' name1 #name1 updated after pop
+#' name1 #name1 not updated after pop
 #'
 #'
 #' @export
@@ -421,11 +421,11 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
   if (n > length(val)) stop(paste0("Value of n must not be greater than length of vector content"))
   if(length(val)){
     if(not.empty(el)) val <- val[val != el]
-    else val <- val[1:length(val)-n]
+    else val <- val[1:(length(val)-n)]
   }else{
     val1 <- strsplit(val,"")[[1]]
     if(not.empty(el)) val <- val1[val1 != el]
-    else val <- paste(val1[1:length(val1)-n], collapse = "")
+    else val <- paste(val1[1:(length(val1)-n)], collapse = "")
   }
 
   if(!ret) assign(as.character(..),val, envir = parent.frame())
