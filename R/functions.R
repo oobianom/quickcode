@@ -520,30 +520,17 @@ data_push <- function(., add, which = c("rows", "cols")) {
 #' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent vector
 #' @return vector with elements removed
 #' @examples
-#' num1 <- sample(330:400,10)
-#' name1 <- "ObinnaObianomObiObianom"
+#' data.01 <- mtcars
 #'
 #' #task: remove 1 element from the end of the vector and set it to the vector name
-#' num1 #num1 vector before pop
-#' vector_pop(num1) #does not return anything
-#' num1 #num1 vector updated after pop
+#' data.01 #data.01 data before pop
+#' data_pop(data.01) #does not return anything
+#' data.01 #data.01 data updated after pop
 #'
 #' #task: remove 5 elements from the end, but do not set it to the vector name
 #' num1 #num1 vector before pop
 #' vector_pop(num1,5, ret = T) #return modified vector
 #' num1 #num1 vector remains the same after pop
-#'
-#'
-#' #task: remove 6 elements from a word, set it back to vector name
-#' name1 #name1 before pop
-#' data_pop(name1,6) #does not return anything
-#' name1 #name updated after pop
-#'
-#' #task: remove 3 elements from a word, Do not set it back to vector name
-#' name1 #name1 before pop
-#' data_pop(name1,3, ret = T) #returns modified name1
-#' name1 #name1 not updated after pop
-#'
 #'
 #' @export
 #'
