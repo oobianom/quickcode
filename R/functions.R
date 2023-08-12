@@ -563,11 +563,11 @@ data_pop_filter <- function(.,...,ret=TRUE){
   print(....)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
-  filt <- as.character(....)
+  filt <- as.character(....)[-1]
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
-  print(paste0("data[!(",filt,"),]"))
-  eval(parse(paste0("data[!(",filt,"),]")))
+  for(i in paste0("data[!(",filt,"),]"))
+  (eval(parse(i)))
   if(!ret) assign(as.character(..), data, envir = parent.frame())
   else data
 }
