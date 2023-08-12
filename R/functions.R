@@ -557,11 +557,19 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 
 # to do
 
-data_pop_filter <- function(.,...){
+data_pop_filter <- function(.,...,ret=TRUE){
   .. <- substitute(.)
   .... <- substitute(...)
-  which <- match.arg(which)
+  print(....)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
+  data <- as.data.frame(get(as.character(..), envir = parent.frame()))
+  filt <- as.character(....)
+  for(x in names(data))
+    filt <- gsub(x,paste0("data$",x),filt)
+  print(paste0("data[!(",filt,"),]"))
+  eval(parse(paste0("data[!(",filt,"),]")))
+  if(!ret) assign(as.character(..), data, envir = parent.frame())
+  else data
 }
 
 #' Shuffle a vector just like shuffle in PHP
