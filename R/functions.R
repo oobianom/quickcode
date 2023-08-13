@@ -560,7 +560,7 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 #' Shorthand to remove elements from a data frame based on filter and save as the same name
 #'
 #' @param . data object
-#' @param ... expression for filter
+#' @param remove expression for filter
 #' @return data filtered out based on the expression
 #' @examples
 #'
@@ -579,9 +579,9 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 #' @export
 #'
 
-data_pop_filter <- function(.,...){
+data_pop_filter <- function(.,remove){
   .. <- substitute(.)
-  .... <- substitute(...)
+  .... <- substitute(remove)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
   filt <- as.character(list(....))
