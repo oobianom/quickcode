@@ -397,7 +397,7 @@ vector_push <- function(., add) {
 #'
 #' #task: remove 5 elements from the end, but do not set it to the vector name
 #' num1 #num1 vector before pop
-#' vector_pop(num1,5, ret = T) #return modified vector
+#' vector_pop(num1,5, ret = TRUE) #return modified vector
 #' num1 #num1 vector remains the same after pop
 #'
 #'

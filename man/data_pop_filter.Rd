@@ -4,12 +4,12 @@
 \alias{data_pop_filter}
 \title{Remove elements from a data based on filter}
 \usage{
-data_pop_filter(., ...)
+data_pop_filter(., remove)
 }
 \arguments{
 \item{.}{data object}
 
-\item{...}{expression for filter}
+\item{remove}{expression for filter}
 }
 \value{
 data filtered out based on the expression

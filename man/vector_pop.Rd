@@ -32,7 +32,7 @@ num1 #num1 vector updated after pop
 
 #task: remove 5 elements from the end, but do not set it to the vector name
 num1 #num1 vector before pop
-vector_pop(num1,5, ret = T) #return modified vector
+vector_pop(num1,5, ret = TRUE) #return modified vector
 num1 #num1 vector remains the same after pop
 
 
@@ -43,7 +43,7 @@ name1 #name updated after pop
 
 #task: remove 3 elements from a word, Do not set it back to vector name
 name1 #name1 before pop
-vector_pop(name1,3, ret = T) #returns modified name1
+vector_pop(name1,3, ret = TRUE) #returns modified name1
 name1 #name1 not updated after pop
 
 
