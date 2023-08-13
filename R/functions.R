@@ -560,10 +560,9 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 data_pop_filter <- function(.,...,ret=TRUE){
   .. <- substitute(.)
   .... <- substitute(...)
-  print(....)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
-  filt <- as.character(....)[-1]
+  filt <- as.character(list(....))
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
   for(i in paste0("data[!(",filt,"),]"))
