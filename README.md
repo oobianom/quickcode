@@ -145,7 +145,38 @@ print(p1)
 
 ```
 
+#remove from a vector in one code
 
+p1 <- c(6,7,8,1,2,3)
+
+vector_pop(p1)
+
+print(p1)
+
+
+```
+
+***
+
+```
+
+#remove from a data frame in one code
+
+p1 <- data.frame(ID=1:10,ID2=1:10,CD=11:20,BD=21:30)
+
+data_pop(p1) #remove last row
+
+print(p1)
+
+data_pop(p1,5) #remove last 5 rows
+
+print(p1)
+
+```
+
+***
+
+```
 #load libraries
 
 quickcode::libraryAll(
