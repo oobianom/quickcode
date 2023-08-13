@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{data_pop}
 \alias{data_pop}
-\title{Remove last n rows or column or specified elements from a data frame like array_push in PHP}
+\title{Remove last n rows or column or specified elements from a data frame like array_pop in PHP}
 \usage{
 data_pop(., n = 1, which = c("rows", "cols"), ret = FALSE)
 }

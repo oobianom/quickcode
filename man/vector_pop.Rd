@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{vector_pop}
 \alias{vector_pop}
-\title{Remove last n elements or specified elements from a vector like array_push in PHP}
+\title{Remove last n elements or specified elements from a vector like array_pop in PHP}
 \usage{
 vector_pop(., n = 1, el = NULL, ret = FALSE)
 }
