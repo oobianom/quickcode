@@ -555,32 +555,31 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 
 
 
-#' Remove elements from a data
+#' Remove elements from a data based on filter
 #'
 #' Shorthand to remove elements from a data frame and save as the same name
 #'
-#' @param . parent vector
-#' @param n number of elements to remove
-#' @param el vector to remove
-#' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent vector
-#' @return vector with elements removed
+#' @param . data object
+#' @param ... expression for filter
+#' @return data filtered out based on the expression
 #' @examples
+#'
 #' data.01 <- mtcars
 #'
-#' #task: remove 1 element from the end of the vector and set it to the vector name
+#' #task: remove all mpg > 20
 #' data.01 #data.01 data before pop
-#' data_pop(data.01) #does not return anything
-#' data.01 #data.01 data updated after pop
+#' data_pop_filter(data.01,mpg > 30 ) #computes and resaves to variable
+#' data.01 #modified data after pop based on filter
 #'
-#' #task: remove 5 elements from the end, but do not set it to the vector name
-#' data.01 #data.01 vector before pop
-#' data_pop(data.01,5, ret = T) #return modified vector
-#' data.01 #data.01 vector remains the same after pop
+#' #task: remove all multiple. remove all elements where carb  == 4 or hp > 200
+#' data.01 #data.01 data before pop
+#' data_pop_filter(data.01,carb  == 4 | hp > 200 ) #computes and resaves to variable
+#' data.01 #modified data after pop based on filter
 #'
 #' @export
 #'
 
-data_pop_filter <- function(.,...,ret=TRUE){
+data_pop_filter <- function(.,...){
   .. <- substitute(.)
   .... <- substitute(...)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
@@ -588,10 +587,8 @@ data_pop_filter <- function(.,...,ret=TRUE){
   filt <- as.character(list(....))
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
- print(filt)
  eval(parse(text = paste0("data = data[!(",filt,"),]")))
-  if(!ret) assign(as.character(..), data, envir = parent.frame())
-  else data
+ data
 }
 
 #' Shuffle a vector just like shuffle in PHP
