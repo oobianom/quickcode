@@ -568,7 +568,7 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 #'
 #' #task: remove all mpg > 20
 #' data.01 #data.01 data before pop
-#' data_pop_filter(data.01,mpg > 30 ) #computes and resaves to variable
+#' data_pop_filter(data.01,mpg > 15) #computes and resaves to variable
 #' data.01 #modified data after pop based on filter
 #'
 #' #task: remove all multiple. remove all elements where carb  == 4 or hp > 200
@@ -588,7 +588,7 @@ data_pop_filter <- function(.,remove){
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
  eval(parse(text = paste0("data = data[!(",filt,"),]")))
- data
+ assign(as.character(..), data, envir = parent.frame())
 }
 
 #' Shuffle a vector just like shuffle in PHP
