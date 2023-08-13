@@ -31,7 +31,7 @@ data.01 #data.01 data updated after pop
 
 #task: remove 5 elements from the end, but do not set it to the vector name
 data.01 #data.01 vector before pop
-data_pop(data.01,5, ret = T) #return modified vector
+data_pop(data.01,5, ret = TRUE) #return modified vector
 data.01 #data.01 vector remains the same after pop
 
 }
