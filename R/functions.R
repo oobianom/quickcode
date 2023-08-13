@@ -1071,15 +1071,7 @@ ai.duplicate <- function(file = NULL, new.name = NULL , open = TRUE) {
 
 ##Next version to-do list 0.3
 
-##
-##sample_by_column <- function(.dt, col, n, replace = FALSE) {
-##  .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
-##}
-##sample_by_row <- function(.dt, col, n, replace = FALSE) {
-## .dt[.dt[, as.character(substitute(col))] %in% sample(unique(.dt[, as.character(substitute(col))]), n, replace = replace), ]
-##}
-##
-##
+
 ## Next version
 ##
 ## has <- function(., var, col, row) {
