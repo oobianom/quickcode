@@ -377,7 +377,7 @@ vector_push <- function(., add) {
   assign(as.character(..), c(get(as.character(..), envir = parent.frame()), add), envir = parent.frame())
 }
 
-#' Remove last n elements or specified elements from a vector like array_push in PHP
+#' Remove last n elements or specified elements from a vector like array_pop in PHP
 #'
 #' Shorthand to remove elements from a vector and save as the same name
 #'
@@ -510,7 +510,7 @@ data_push <- function(., add, which = c("rows", "cols")) {
 }
 
 
-#' Remove last n rows or column or specified elements from a data frame like array_push in PHP
+#' Remove last n rows or column or specified elements from a data frame like array_pop in PHP
 #'
 #' Shorthand to remove elements from a data frame and save as the same name
 #'
@@ -555,7 +555,30 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 
 
 
-# to do
+#' Remove elements from a data
+#'
+#' Shorthand to remove elements from a data frame and save as the same name
+#'
+#' @param . parent vector
+#' @param n number of elements to remove
+#' @param el vector to remove
+#' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent vector
+#' @return vector with elements removed
+#' @examples
+#' data.01 <- mtcars
+#'
+#' #task: remove 1 element from the end of the vector and set it to the vector name
+#' data.01 #data.01 data before pop
+#' data_pop(data.01) #does not return anything
+#' data.01 #data.01 data updated after pop
+#'
+#' #task: remove 5 elements from the end, but do not set it to the vector name
+#' data.01 #data.01 vector before pop
+#' data_pop(data.01,5, ret = T) #return modified vector
+#' data.01 #data.01 vector remains the same after pop
+#'
+#' @export
+#'
 
 data_pop_filter <- function(.,...,ret=TRUE){
   .. <- substitute(.)
@@ -566,7 +589,7 @@ data_pop_filter <- function(.,...,ret=TRUE){
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
  print(filt)
- eval(parse(text = i))
+ eval(parse(text = paste0("data = data[!(",filt,"),]")))
   if(!ret) assign(as.character(..), data, envir = parent.frame())
   else data
 }
