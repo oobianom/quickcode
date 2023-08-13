@@ -565,8 +565,8 @@ data_pop_filter <- function(.,...,ret=TRUE){
   filt <- as.character(list(....))
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
-  for(i in paste0("data[!(",filt,"),]"))
-  (eval(parse(i)))
+ print(filt)
+ eval(parse(text = i))
   if(!ret) assign(as.character(..), data, envir = parent.frame())
   else data
 }
