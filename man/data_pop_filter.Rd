@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{data_pop_filter}
 \alias{data_pop_filter}
-\title{Remove elements from a data based on filter}
+\title{Remove elements from a data matching filter}
 \usage{
 data_pop_filter(., remove)
 }
@@ -18,17 +18,18 @@ data filtered out based on the expression
 Shorthand to remove elements from a data frame based on filter and save as the same name
 }
 \examples{
-
+# this function removes rows matching the filter expression
 data.01 <- mtcars
+data.02 <- airquality
 
 #task: remove all mpg > 20
 data.01 #data.01 data before pop
-data_pop_filter(data.01,mpg > 30 ) #computes and resaves to variable
+data_pop_filter(data.01,mpg > 15) #computes and resaves to variable
 data.01 #modified data after pop based on filter
 
-#task: remove all multiple. remove all elements where carb  == 4 or hp > 200
-data.01 #data.01 data before pop
-data_pop_filter(data.01,carb  == 4 | hp > 200 ) #computes and resaves to variable
-data.01 #modified data after pop based on filter
+#task: remove all multiple. remove all elements where Month   == 5 or Solar.R > 50
+data.02 #data.02 data before pop
+data_pop_filter(data.02,Month   == 5 | Solar.R > 50) #computes and resaves to variable
+data.02 #modified data after pop based on filter
 
 }
