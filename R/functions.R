@@ -555,7 +555,7 @@ data_pop <- function(., n = 1, which = c("rows", "cols"), ret = FALSE) {
 
 
 
-#' Remove elements from a data based on filter
+#' Remove elements from a data matching filter
 #'
 #' Shorthand to remove elements from a data frame based on filter and save as the same name
 #'
