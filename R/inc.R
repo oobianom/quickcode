@@ -14,17 +14,30 @@
 #'
 #' @examples
 #' num1 <- sample(330:400,10)
-#' num1
+#' num1#before increment
 #'
 #' # increment num1 by 1
-#' num1 #before increment
 #' inc(num1)
 #' num1 #after increment
 #'
 #' # increment num1 by 5
-#' inc #before increment
-#' inc(num1, add= 5)
-#' inc #after increment
+#' num1 #before increment
+#' inc(num1, add= 10)
+#' num1 #after increment
+#'
+#' #when used in loops
+#'
+#' #add and compare directly
+#' rnum = 10
+#' inc(rnum) == 11 #returns TRUE
+#' rnum #the variable was also updated
+#'
+#' #use in a repeat loop
+#' xnum = 1
+#' repeat{ #repeat until xnum is 15
+#' message(xnum)
+#' if(inc(xnum) == 15) break
+#' }
 #' @export
 #'
 inc <- function(., add = 1) {
@@ -61,13 +74,29 @@ plus <- inc
 #' num1 #after decrement
 #'
 #' # decrease num1 by 5
-#' minus #before decrement
+#' num1 #before decrement
 #' minus(num1, minus = 5)
 #' num1 #after decrement
+#'
+#'
+#'
+#' #when used in loops
+#'
+#' #add and compare directly
+#' rnum = 23
+#' minus(rnum) == 220 #returns FALSE
+#' rnum #the variable was also updated
+#'
+#' #use in a repeat loop
+#' xnum = 100
+#' repeat{ #repeat until xnum is 85
+#' message(xnum)
+#' if(minus(xnum) == 85) break
+#' }
 #' @export
 #'
 minus <- function(., minus = 1) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-  assign(as.character(..), (get(as.character(..), envir = parent.frame()) - n), envir = parent.frame())
+  assign(as.character(..), (get(as.character(..), envir = parent.frame()) - minus), envir = parent.frame())
 }

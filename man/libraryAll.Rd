@@ -35,7 +35,7 @@ libraryAll(
 libraryAll("r2ymbols") #with quotes
 
 libraryAll(
-  PKNCA,
+  xml2,
   mrgsolve,
   quietly = TRUE
 ) #load quietly

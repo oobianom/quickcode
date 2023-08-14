@@ -34,7 +34,23 @@ minus(num1)
 num1 #after decrement
 
 # decrease num1 by 5
-minus #before decrement
+num1 #before decrement
 minus(num1, minus = 5)
 num1 #after decrement
+
+
+
+#when used in loops
+
+#add and compare directly
+rnum = 23
+minus(rnum) == 220 #returns FALSE
+rnum #the variable was also updated
+
+#use in a repeat loop
+xnum = 100
+repeat{ #repeat until xnum is 85
+message(xnum)
+if(minus(xnum) == 85) break
+}
 }

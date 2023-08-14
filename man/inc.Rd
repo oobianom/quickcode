@@ -26,15 +26,28 @@ to increase the value of a variable by a number and then re-save the new value t
 }
 \examples{
 num1 <- sample(330:400,10)
-num1
+num1#before increment
 
 # increment num1 by 1
-num1 #before increment
 inc(num1)
 num1 #after increment
 
 # increment num1 by 5
-inc #before increment
-inc(num1, add= 5)
-inc #after increment
+num1 #before increment
+inc(num1, add= 10)
+num1 #after increment
+
+#when used in loops
+
+#add and compare directly
+rnum = 10
+inc(rnum) == 11 #returns TRUE
+rnum #the variable was also updated
+
+#use in a repeat loop
+xnum = 1
+repeat{ #repeat until xnum is 15
+message(xnum)
+if(inc(xnum) == 15) break
+}
 }
