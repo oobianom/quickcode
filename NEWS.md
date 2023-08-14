@@ -3,8 +3,8 @@
 __Planned__
 
 - [ ] Add tests using testthat
-- [ ] New compilation of functions
-- [ ] Improvement to clean and refresh functions
+- [x] New compilation of functions
+- [x] Improvement to clean and refresh functions
 
 
 # quickcode 0.2
