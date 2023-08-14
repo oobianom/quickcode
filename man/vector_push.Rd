@@ -19,6 +19,14 @@ Shorthand to add elements to a vector and save as the same name
 }
 \examples{
 num1 <- sample(330:400,10)
+num1 #preview
 num2 <-"rpkg.net"
-vector_push(num1, add= num2)
+
+
+#seamlessly add num2 to num1 and re-save as num1
+
+vector_push(num1,num2)
+num1 #updated with num2
+num2 #not updated
+
 }
