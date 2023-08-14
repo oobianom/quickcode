@@ -12,10 +12,17 @@ inc(., add = 1)
 \item{add}{number to add}
 }
 \value{
-vector combining fist and second vector, but have name set to the first
+a vector incremented by a number
 }
 \description{
-Increment the content of a vector and resave as the vector
+Increment the content of a vector and re-save as the vector
+}
+\details{
+This function is very useful when writing complex codes involving loops.
+Apart from the for loop, this can be useful to quickly increment a variable located outside the loop
+by simply incrementing the variable by 1 or other numbers. Check in the example section for a specific use.
+Nonetheless, one may also choose to use this function in any other instance, as it's simple purpose is
+to increase the value of a variable by a number and then re-save the new value to that variable.
 }
 \examples{
 num1 <- sample(330:400,10)

@@ -23,8 +23,26 @@ Only include libraries, don't install if library doesn't exist
 }
 \examples{
 \donttest{
-libraryAll() # show installed libraries
-libraryAll(r2symbols,dplyr,ggplot2,shinyStorePlus)
-libraryAll("r2ymbols")
+libraryAll(r2resize) #one package
+
+libraryAll(
+  r2symbols,
+  dplyr,
+  ggplot2,
+  shinyStorePlus
+) #multiple packages
+
+libraryAll("r2ymbols") #with quotes
+
+libraryAll(
+  PKNCA,
+  mrgsolve,
+  quietly = TRUE
+) #load quietly
+
+libraryAll(
+  nextGenShinyApps,
+clear = FALSE) #do not clear console after load
+
 }
 }

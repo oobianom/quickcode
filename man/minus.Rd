@@ -4,30 +4,37 @@
 \alias{minus}
 \title{Decrease vector by value}
 \usage{
-minus(., n = 1)
+minus(., minus = 1)
 }
 \arguments{
 \item{.}{vector of number(s)}
 
-\item{add}{number to add}
+\item{minus}{number to minus}
 }
 \value{
-vector combining fist and second vector, but have name set to the first
+a vector decreased by a number
 }
 \description{
-decrement the content of a vector and resave as the vector
+decrement the content of a vector and re-save as the vector
+}
+\details{
+Similar to the inc and plus functions, the minus function is very useful when writing complex codes involving loops.
+Apart from the for loop, minus can be useful to quickly decrease the value of a variable located outside the loop
+by simply decreement the variable by 1 or other numbers. Check in the example section for a specific use.
+Given the scope, one may also choose to use this function in any other instances, as it's simple purpose is
+to decrease the value of a variable by a number and then re-save the new value to that variable.
 }
 \examples{
-num1 <- sample(330:400,10)
+num1 <- sample(5:150,10)
 num1
 
-# increment num1 by 1
-num1 #before increment
+# decrement num1 by 1
+num1 #before decrement
 minus(num1)
-num1 #after increment
+num1 #after decrement
 
 # decrease num1 by 5
-minus #before increment
-minus(num1, add= 5)
-num1 #after increment
+minus #before decrement
+minus(num1, minus = 5)
+num1 #after decrement
 }
