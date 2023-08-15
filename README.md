@@ -160,6 +160,8 @@ print(p1)
 
 ```
 
+
+
 #remove from a data frame in one code
 
 p1 <- data.frame(ID=1:10,ID2=1:10,CD=11:20,BD=21:30)
@@ -169,6 +171,29 @@ data_pop(p1) #remove last row
 print(p1)
 
 data_pop(p1,5) #remove last 5 rows
+
+print(p1)
+
+```
+
+***
+
+```
+
+
+#remove columns from a data frame in one code
+
+p1 <- data.frame(ID=1:10,ID2=1:10,ID4=1:10,CD=11:20,BD=21:30)
+
+data_pop(p1,which = "cols") #remove last column
+
+print(p1)
+
+data_pop(p1,2,which = "cols") #remove last 2 columns
+
+print(p1)
+
+data_pop(p1,1,which = "cols") #remove last 1 column and vectorise
 
 print(p1)
 
