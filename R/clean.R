@@ -114,11 +114,37 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' @return cleared environment and set directory
 #' @examples
 #' \donttest{
-#' refresh()
-#' refresh(setwd = "home")
-#' refresh(setwd = "home",source = c("home/file1.R","file2"))
-#' refresh(setwd = "home/",source = c("file1","file2))
-#' refresh(setwd = "home/",source="file1.R",load="obi.RData")
+#' #exactly like the clean function
+#' #simply clear environment, clear console and devices
+#' quickcode::refresh()
+#'
+#' #clear combined with additional arguments
+#' quickcode::refresh(
+#'   clearPkgs = TRUE
+#' ) #also clear all previously loaded packages
+#'
+#' quickcode::refresh(
+#'   setwd = "/home/"
+#' ) #clear env and also set working directory
+#'
+#'
+#' quickcode::refresh(
+#'   source = c("/home/file1.R","file2")
+#' ) #clear environment and source two files into current document
+#'
+#'
+#' quickcode::refresh(
+#'   setwd = "/home/",
+#'   source = c("file1","file2)
+#' ) #clear environment, set working directory and source 2 files into environment
+#'
+#'
+#' quickcode::refresh(
+#'   setwd = "/home/",
+#'   source="file1.R",
+#'   load="obi.RData"
+#' ) #clear environment, set working directory, source files and load RData
+#'
 #' }
 #'
 #' @export
