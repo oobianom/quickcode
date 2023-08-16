@@ -28,3 +28,37 @@ load RData files into the current environment. The first process in the sequence
 environment. Then the working directory is set, prior to inclusion of various files and RData. With the directory
 being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 }
+\examples{
+\dontrun{
+#simply clear environment, clear console and devices
+quickcode::clean()
+
+#clear combined with additional arguments
+quickcode::clean(
+  clearPkgs = FALSE
+) #also clear all previously loaded packages if set to true
+
+quickcode::clean(
+  setwd = "/home/"
+) #clear env and also set working directory
+
+
+quickcode::clean(
+  source = c("/home/file1.R","file2")
+) #clear environment and source two files into current document
+
+
+quickcode::clean(
+  setwd = "/home/",
+  source = c("file1","file2")
+) #clear environment, set working directory and source 2 files into environment
+
+
+quickcode::clean(
+  setwd = "/home/",
+  source="file1.R",
+  load="obi.RData"
+) #clear environment, set working directory, source files and load RData
+}
+
+}

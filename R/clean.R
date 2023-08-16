@@ -15,14 +15,14 @@
 #' being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' #simply clear environment, clear console and devices
 #' quickcode::clean()
 #'
 #' #clear combined with additional arguments
 #' quickcode::clean(
-#'   clearPkgs = TRUE
-#' ) #also clear all previously loaded packages
+#'   clearPkgs = FALSE
+#' ) #also clear all previously loaded packages if set to true
 #'
 #' quickcode::clean(
 #'   setwd = "/home/"
@@ -36,7 +36,7 @@
 #'
 #' quickcode::clean(
 #'   setwd = "/home/",
-#'   source = c("file1","file2)
+#'   source = c("file1","file2")
 #' ) #clear environment, set working directory and source 2 files into environment
 #'
 #'
@@ -125,15 +125,15 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' environment. Then the working directory is set, prior to inclusion of various files and RData. With the directory
 #' being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' #exactly like the clean function
 #' #simply clear environment, clear console and devices
 #' quickcode::refresh()
 #'
 #' #clear combined with additional arguments
 #' quickcode::refresh(
-#'   clearPkgs = TRUE
-#' ) #also clear all previously loaded packages
+#'   clearPkgs = FALSE
+#' ) #also clear all previously loaded packages if set to TRUE
 #'
 #' quickcode::refresh(
 #'   setwd = "/home/"
@@ -147,7 +147,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #'
 #' quickcode::refresh(
 #'   setwd = "/home/",
-#'   source = c("file1","file2)
+#'   source = c("file1","file2")
 #' ) #clear environment, set working directory and source 2 files into environment
 #'
 #'
