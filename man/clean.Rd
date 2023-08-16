@@ -21,3 +21,10 @@ cleared environment and set directory
 \description{
 Shorthand to quickly clear console, clear environment, set working directory, load files
 }
+\details{
+The purpose of this function is provide a one-line code to clear the console, clear the environment,
+set working directory to a specified path, source in various files into the current file, and
+load RData files into the current environment. The first process in the sequence of events is to clear the
+environment. Then the working directory is set, prior to inclusion of various files and RData. With the directory
+being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
+}
