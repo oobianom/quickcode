@@ -7,31 +7,36 @@
 data_pop(., n = 1, which = c("rows", "cols"), ret = FALSE)
 }
 \arguments{
-\item{.}{parent vector}
+\item{.}{parent data}
 
 \item{n}{number of elements to remove}
 
-\item{ret}{TRUE or FALSE. whether to return value instead of setting it to the parent vector}
+\item{ret}{TRUE or FALSE. whether to return value instead of setting it to the parent data}
 
-\item{el}{vector to remove}
+\item{el}{data to remove}
 }
 \value{
-vector with elements removed
+data with elements removed
 }
 \description{
 Shorthand to remove elements from a data frame and save as the same name
 }
 \examples{
-data.01 <- mtcars
+data.01 <- mtcars[1:7,]
 
-#task: remove 1 element from the end of the vector and set it to the vector name
+#task: remove 1 element from the end of the data and set it to the data name
 data.01 #data.01 data before pop
 data_pop(data.01) #does not return anything
 data.01 #data.01 data updated after pop
 
-#task: remove 5 elements from the end, but do not set it to the vector name
-data.01 #data.01 vector before pop
-data_pop(data.01,5, ret = TRUE) #return modified vector
-data.01 #data.01 vector remains the same after pop
+#task: remove 3 columns from the end of the data and set it to the data name
+data.01 #data.01 data before pop
+data_pop(data.01, n = 3, which = "cols") #does not return anything, but updates data
+data.01 #data.01 data updated after pop
+
+#task: remove 5 elements from the end, but do not set it to the data name
+data.01 #data.01 data before pop
+data_pop(data.01,5, ret = TRUE) #return modified data
+data.01 #data.01 data remains the same after pop
 
 }
