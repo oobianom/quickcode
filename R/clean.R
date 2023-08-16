@@ -10,12 +10,35 @@
 #'
 #' @examples
 #' \donttest{
+#' #simply clear environment, clear console and devices
 #' quickcode::clean()
-#' quickcode::clean(clearPkgs = TRUE) #clear all previously loaded packages
-#' quickcode::clean(setwd = "/home/") #clear env and set working directory
-#' quickcode::clean(source = c("/home/file1.R","file2"))
-#' quickcode::clean(setwd = "/home/",source = c("file1","file2))
-#' quickcode::clean(setwd = "/home/",source="file1.R",load="obi.RData")
+#'
+#' #clear combined with additional arguments
+#' quickcode::clean(
+#'   clearPkgs = TRUE
+#' ) #also clear all previously loaded packages
+#'
+#' quickcode::clean(
+#'   setwd = "/home/"
+#' ) #clear env and also set working directory
+#'
+#'
+#' quickcode::clean(
+#'   source = c("/home/file1.R","file2")
+#' ) #clear environment and source two files into current document
+#'
+#'
+#' quickcode::clean(
+#'   setwd = "/home/",
+#'   source = c("file1","file2)
+#' ) #clear environment, set working directory and source 2 files into environment
+#'
+#'
+#' quickcode::clean(
+#'   setwd = "/home/",
+#'   source="file1.R",
+#'   load="obi.RData"
+#' ) #clear environment, set working directory, source files and load RData
 #' }
 #'
 #' @export
