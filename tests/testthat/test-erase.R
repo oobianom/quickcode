@@ -1,3 +1,3 @@
-test_that("multiplication works", {
+test_that("Erase function", {
   expect_equal(erase(),NULL)
 })
