@@ -32,5 +32,6 @@ data_pop_filter <- function(.,remove){
   for(x in names(data))
     filt <- gsub(x,paste0("data$",x),filt)
   eval(parse(text = paste0("data = data[!(",filt,"),]")))
+  #alternatively: eval(parse(text = paste0("data = subset(data,!(",filt,"))")))
   assign(as.character(..), data, envir = parent.frame())
 }
