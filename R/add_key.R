@@ -1,8 +1,8 @@
-#' Add index  keys to a vector
+#' Add index  keys to a vector or data frame or list or matrix
 #'
-#' Index a vector and convert to a list of objects
+#' Index a vector or lists and convert to a list of objects
 #'
-#' @param vector vector to transform
+#' @param vector vector or data frame to transform
 #' @return a transformed list containing keys along with vector values
 #' @examples
 #' #ex1 simple conversion of a vector
