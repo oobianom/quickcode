@@ -13,6 +13,7 @@
 #' #task: remove all mpg > 20
 #' data.01 #data.01 data before pop
 #' data_pop_filter(data.01,mpg > 15) #computes and resaves to variable
+#' note: this is different from subset(data.01,data.01$mpg > 15)
 #' data.01 #modified data after pop based on filter
 #'
 #' #task: remove all multiple. remove all elements where Month   == 5 or Solar.R > 50
