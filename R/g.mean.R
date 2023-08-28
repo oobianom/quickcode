@@ -9,7 +9,13 @@
 #' @return the geometric mean of a set of numbers
 #' @examples
 #' num1 <- sample(300:3000,10)
+#'
+#' #get the geometric mean, excluding all negatives and round to 2
 #' g.mean(num1)
+#'
+#' #or
+#' geo.mean(num1)
+#'
 #'
 #' @export
 
