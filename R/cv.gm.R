@@ -10,7 +10,12 @@
 #' @return the geometric cv of a set of numbers
 #' @examples
 #' num1 <- sample(330:400,15)
+#'
+#' #get geometric CV, represent as percent and round to 3 decimal places
 #' cv.gm(num1,round = 3)
+#'
+#' #or
+#' geo.cv(num1,round = 3)
 #'
 #' @export
 
@@ -20,3 +25,9 @@ cv.gm <- function(num, na.rm = TRUE, pct = TRUE, round = 2) {
   if (pct) res <- res * 100
   round(res,round)
 }
+
+
+#' @inherit cv.gm
+#' @export
+
+cv.gm -> geo.cv
