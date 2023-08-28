@@ -21,6 +21,7 @@
 #' @export
 #'
 add_key <- function(vector){
+  message("Function being further developed to accomodate data frames and other lists")
   . = list()
   iky = 1
   for(i in vector){
