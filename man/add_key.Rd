@@ -2,18 +2,18 @@
 % Please edit documentation in R/add_key.R
 \name{add_key}
 \alias{add_key}
-\title{Add index  keys to a vector}
+\title{Add index  keys to a vector or data frame or list or matrix}
 \usage{
 add_key(vector)
 }
 \arguments{
-\item{vector}{vector to transform}
+\item{vector}{vector or data frame to transform}
 }
 \value{
 a transformed list containing keys along with vector values
 }
 \description{
-Index a vector and convert to a list of objects
+Index a vector or lists and convert to a list of objects
 }
 \examples{
 #ex1 simple conversion of a vector
