@@ -17,11 +17,14 @@
 #' geo.mean(num1)
 #'
 #'
+#' #get geometric mean, but round the final value to 5 decimal places
+#' geo.mean(num1, round = 5)
+#'
 #' @export
 
 g.mean <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
-  if(neg.rm) vector_push(num[num > 0])
+  if(neg.rm) num <- num[num > 0]
   return(round(exp(base::sum(log(num), na.rm = na.rm) / length(num)),round))
 }
 
