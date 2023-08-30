@@ -2,6 +2,7 @@
 #'
 #' Check if entry is in vector
 #'
+#' @rdname nin
 #' @param x vector entry
 #' @param table table of items to check
 #' @return a boolean value to indicate if entry is present

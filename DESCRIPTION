@@ -15,6 +15,7 @@ Imports:
     utils,
     grDevices,
     stats,
+    rlang,
     rstudioapi
 Suggests: 
     rmarkdown,
