@@ -8,6 +8,6 @@ countries <- function() {
 
 #' @export
 COUNTRIES <- function() {
-  c <- toupper(countries)
+  c <- toupper(countries())
   c
 }
