@@ -2,9 +2,9 @@
 % Please edit documentation in R/duplicate.R
 \name{duplicate}
 \alias{duplicate}
-\title{Duplicate a file and global replace}
+\title{Duplicate a file with global text replace}
 \usage{
-duplicate(file, new.name, pattern, replacement, open = TRUE)
+duplicate(file, new.name, pattern = NULL, replacement = NULL, open = TRUE)
 }
 \arguments{
 \item{file}{data frame to re-sample}
@@ -25,6 +25,29 @@ Shorthand to return a re-sample number of rows in a data frame by unique column
 }
 \examples{
 \donttest{
-duplicate('./file.R','file2.R','text1','replacement1')
+# example to duplicate a file, and replace text1 within it
+# not that by default, this function will also open the file with RStudio
+duplicate(
+  file = './file.R',
+  new.name = 'file2.R',
+  pattern = 'text1',
+  replacement = 'replacement1'
+ )
+
+# duplicate the file, with multiple replacements
+# replace 'book' with 'egg' and 'coke' with 'fanta'
+duplicate(
+  './obifile1.R',
+  'obifile2.R',
+  pattern = c('book','coke'),
+  replacement = c('egg','fanta')
+)
+
+# duplicate the file with no replacement
+duplicate('./obianom.R','obianom.R') # this simply performs file.copy, and opens the new file
+
+# duplicate the file but do not open for editing
+duplicate('./obianom.R','obianom.R', open = FALSE) # this does not open file after duplication
+
 }
 }

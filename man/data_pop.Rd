@@ -11,6 +11,8 @@ data_pop(., n = 1, which = c("rows", "cols"), ret = FALSE)
 
 \item{n}{number of elements to remove}
 
+\item{which}{whether to remove from row or from column}
+
 \item{ret}{TRUE or FALSE. whether to return value instead of setting it to the parent data}
 }
 \value{

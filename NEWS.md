@@ -1,8 +1,6 @@
 # quickcode 0.3
 
-__Planned__
-
-- [ ] Add tests using testthat
+- [x] Add initial tests using testthat
 - [x] New compilation of functions
 - [x] Improvement to clean and refresh functions
 

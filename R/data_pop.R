@@ -4,6 +4,7 @@
 #'
 #' @param . parent data
 #' @param n number of elements to remove
+#' @param which whether to remove from row or from column
 #' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent data
 #' @return data with elements removed
 #' @examples
