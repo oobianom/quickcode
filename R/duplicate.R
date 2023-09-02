@@ -20,6 +20,8 @@
 #'   replacement = 'replacement1'
 #'  )
 #'
+#'
+#'
 #' # duplicate the file, with multiple replacements
 #' # replace 'book' with 'egg' and 'coke' with 'fanta'
 #' duplicate(
@@ -29,8 +31,12 @@
 #'   replacement = c('egg','fanta')
 #' )
 #'
+#'
+#'
 #' # duplicate the file with no replacement
 #' duplicate('./obianom.R','obianom.R') # this simply performs file.copy, and opens the new file
+#'
+#'
 #'
 #' # duplicate the file but do not open for editing
 #' duplicate('./obianom.R','obianom.R', open = FALSE) # this does not open file after duplication
