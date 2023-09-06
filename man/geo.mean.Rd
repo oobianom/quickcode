@@ -25,7 +25,7 @@ Calculate the geometric mean
 num1 <- sample(300:3000,10)
 
 #get the geometric mean, excluding all negatives and round to 2
-g.mean(num1)
+geo.mean(num1)
 
 #or
 geo.mean(num1)

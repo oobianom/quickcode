@@ -22,7 +22,15 @@ the geometric standard deviation of a set of numbers
 Calculate the geometric standard deviation
 }
 \examples{
-num1 <- sample(330:400,10)
-sd.gm(num1,na.rm=FALSE)
+num1 <- sample(330:400,20)
+
+#get geometric SD remove negative values and round to 2 decimal places
+geo.sd(num1)
+
+#get geometric SD, DON'T remove negative values and round to 2 decimal places
+geo.sd(num1,na.rm=FALSE)
+
+#get geometric SD, remove negative values and round to 3 decimal places
+geo.sd(num1,round = 3)
 
 }

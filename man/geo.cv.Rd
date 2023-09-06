@@ -26,10 +26,14 @@ Calculate the coefficient of variation and round
 \examples{
 num1 <- sample(330:400,15)
 
-#get geometric CV, represent as percent and round to 3 decimal places
-cv.gm(num1,round = 3)
+#get geometric CV, represent as percent and round to 2 decimal places
+geo.cv(num1,round = 2)
 
-#or
+#or round to 3 decimal places
 geo.cv(num1,round = 3)
+
+#by default, the above examples return a CV\%
+#if you do not want the result as percentage, specify "pct"
+geo.cv(num1,pct = FALSE)
 
 }
