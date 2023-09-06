@@ -8,19 +8,22 @@
 #' @param round round result to decimal place
 #' @return the geometric standard deviation of a set of numbers
 #' @examples
-#' num1 <- sample(330:400,10)
-#' sd.gm(num1,na.rm=FALSE)
+#' num1 <- sample(330:400,20)
+#'
+#' #get geometric SD remove negative values and round to 2 decimal places
+#' geo.sd(num1)
+#'
+#' #get geometric SD, DON'T remove negative values and round to 2 decimal places
+#' geo.sd(num1,na.rm=FALSE)
+#'
+#' #get geometric SD, remove negative values and round to 3 decimal places
+#' geo.sd(num1,round = 3)
 #'
 #' @export
 
-sd.gm <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
+geo.sd <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   if(neg.rm) num <- num[num > 0]
   return(round(exp(stats::sd(log(num), na.rm = na.rm)),round))
 }
 
-
-#' @inherit sd.gm
-#' @export
-
-sd.gm -> geo.sd

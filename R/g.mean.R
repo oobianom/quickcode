@@ -11,7 +11,7 @@
 #' num1 <- sample(300:3000,10)
 #'
 #' #get the geometric mean, excluding all negatives and round to 2
-#' g.mean(num1)
+#' geo.mean(num1)
 #'
 #' #or
 #' geo.mean(num1)
@@ -22,14 +22,8 @@
 #'
 #' @export
 
-g.mean <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
+geo.mean <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   if(neg.rm) num <- num[num > 0]
   return(round(exp(base::sum(log(num), na.rm = na.rm) / length(num)),round))
 }
-
-
-#' @inherit g.mean
-#' @export
-
-g.mean -> geo.mean

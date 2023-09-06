@@ -13,14 +13,14 @@
 #' num1 <- sample(330:400,15)
 #'
 #' #get geometric CV, represent as percent and round to 3 decimal places
-#' cv.gm(num1,round = 3)
+#' geo.cv(num1,round = 3)
 #'
 #' #or
 #' geo.cv(num1,round = 3)
 #'
 #' @export
 
-cv.gm <- function(num, na.rm = TRUE, neg.rm = TRUE, pct = TRUE, round = 2) {
+geo.cv <- function(num, na.rm = TRUE, neg.rm = TRUE, pct = TRUE, round = 2) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   if(neg.rm) num <- num[num > 0]
   res <- sqrt(exp(sd(log(num), na.rm = na.rm)^2) - 1)
@@ -28,8 +28,3 @@ cv.gm <- function(num, na.rm = TRUE, neg.rm = TRUE, pct = TRUE, round = 2) {
   round(res,round)
 }
 
-
-#' @inherit cv.gm
-#' @export
-
-cv.gm -> geo.cv
