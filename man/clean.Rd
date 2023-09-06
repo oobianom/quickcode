@@ -29,7 +29,7 @@ environment. Then the working directory is set, prior to inclusion of various fi
 being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 }
 \examples{
-\donttest{
+if(FALSE){
 #simply clear environment, clear console and devices
 quickcode::clean()
 
