@@ -10,17 +10,18 @@
 #' @param round round result to decimal place
 #' @return the geometric cv of a set of numbers
 #' @examples
-#' num1 <- sample(330:400,15)
+#' #simulate numbers using a fixed seed
+#' num1 <- number(n = 1115,max.digits = 4, seed = 10)
 #'
 #' #get geometric CV, represent as percent and round to 2 decimal places
-#' geo.cv(num1,round = 2)
+#' geo.cv(num1,round = 2) # result: 60.61%
 #'
 #' #or round to 3 decimal places
-#' geo.cv(num1,round = 3)
+#' geo.cv(num1,round = 3) # result: 60.609%
 #'
 #' #by default, the above examples return a CV%
 #' #if you do not want the result as percentage, specify "pct"
-#' geo.cv(num1,pct = FALSE)
+#' geo.cv(num1,pct = FALSE) # result: 0.61
 #'
 #' @export
 
