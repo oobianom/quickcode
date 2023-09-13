@@ -1,3 +1,10 @@
+# quickcode 0.4
+
+- [ ] Add 'Use case' section to major functions
+- [ ] Incorporation of features and functions by Brice
+- [ ] Bug fixes and update to existing functions
+
+
 # quickcode 0.3
 
 - [x] Add initial tests using testthat
