@@ -12,6 +12,11 @@
 #'
 #' x = "a"
 #' if(x %nin% letters) x
+#'
+#' # let's say we are trying to exclude numbers from a vector
+#' vector_num1 <- number(9, max.digits = 5, seed = 1) #simulate 9 numbers
+#' vector_num1 #values
+#' vector_num1[vector_num1 %nin% c(83615,85229)]#return values not 83615 or 85229
 #' @export
 
 `%nin%` <- function(x, table) {
