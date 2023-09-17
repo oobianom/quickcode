@@ -35,12 +35,12 @@
 #'
 #' @export
 #'
-vector_pop <- function(., n = 1, el = NULL, ret = c(FALSE,TRUE,"removed")) {
+vector_pop <- function(., n = 1, el = NULL, ret = c(FALSE,TRUE,"removed")){
   ret <- match.arg(ret)
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
-  val <- get(as.character(..), envir = parent.frame())
-  init(val,value = vali)
+
+  init(val,vali,value = get(as.character(..), envir = parent.frame()))
 
   if(length(val) > 1){
     if (n > length(val))
@@ -64,7 +64,7 @@ vector_pop <- function(., n = 1, el = NULL, ret = c(FALSE,TRUE,"removed")) {
 
     # if return is set to "removed", return removed elements
     if(ret == "removed"){
-      setdiff(val,
+      setdiff(val,vali)
     }
   }
 }
