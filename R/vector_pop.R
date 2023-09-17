@@ -56,7 +56,7 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
   if(length(val) > 1){
     if (n > length(val))
       stop(paste0("Value of n must not be greater than length of vector content"))
-    if(not.empty(el)) val <- val[val %nin% el]
+    if(all(not.empty(el))) val <- val[val %nin% el]
     else val <- val[1:(length(val)-n)]
   }else{
     val1 <- strsplit(val,"")[[1]]
