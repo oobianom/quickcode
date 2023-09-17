@@ -33,7 +33,8 @@
 #' name1 #name1 not updated after pop
 #'
 #' #task: remove 4 elements from the end of a vector and return both the removed content and remaining
-#' vector_of_numbers <- paste0(number(20, seed = 323),c("TI"))
+#' vector_of_numbers <- paste0(number(20, seed = 323),c("TI")) #simulate 20 numbers and add TI suffix
+#' vector_of_numbers #show simulated numbers
 #' vector_pop(vector_of_numbers, n = 4, ret = TRUE) #get the modified vector
 #' vector_pop(vector_of_numbers, n = 4, ret = "removed") #get the content removed
 #'
@@ -64,7 +65,6 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
     if(ret == TRUE){
       return(val)
     }
-
     # if return is set to "removed", return removed elements
     if(ret == "removed"){
       return(setdiff(vali,val))
