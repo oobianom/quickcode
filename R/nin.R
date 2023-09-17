@@ -25,4 +25,4 @@
   !(x %in% table)
 }
 
-assign("%!in%",`%nin%`, envir = asNamespace("quickcode"))
+`%nin%` -> `%!in%`
