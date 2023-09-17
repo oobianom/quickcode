@@ -44,7 +44,6 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   init(val,vali,value = get(as.character(..), envir = parent.frame()))
-  print(vali)
 
   if(length(val) > 1){
     if (n > length(val))
@@ -68,7 +67,7 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
 
     # if return is set to "removed", return removed elements
     if(ret == "removed"){
-      return(setdiff(val,vali))
+      return(setdiff(vali,val))
     }
   }
 }
