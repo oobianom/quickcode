@@ -39,7 +39,7 @@
 #'
 #' @export
 #'
-vector_pop <- function(., n = 1, el = NULL){
+vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
