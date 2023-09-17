@@ -39,8 +39,7 @@
 #'
 #' @export
 #'
-vector_pop <- function(., n = 1, el = NULL, ret = c(FALSE,TRUE,"removed")){
-  ret <- match.arg(ret)
+vector_pop <- function(., n = 1, el = NULL){
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 

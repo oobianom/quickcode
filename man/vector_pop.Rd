@@ -4,7 +4,7 @@
 \alias{vector_pop}
 \title{Remove last n elements or specified elements from a vector like array_pop in PHP}
 \usage{
-vector_pop(., n = 1, el = NULL, ret = FALSE)
+vector_pop(., n = 1, el = NULL, ret = c(FALSE, TRUE, "removed"))
 }
 \arguments{
 \item{.}{parent vector}
@@ -46,5 +46,9 @@ name1 #name1 before pop
 vector_pop(name1,3, ret = TRUE) #returns modified name1
 name1 #name1 not updated after pop
 
+#task: remove 4 elements from the end of a vector and return both the removed content and remaining
+vector_of_numbers <- paste0(number(20, seed = 323),c("TI"))
+vector_pop(vector_of_numbers, n = 4, ret = TRUE) #get the modified vector
+vector_pop(vector_of_numbers, n = 4, ret = "removed") #get the content removed
 
 }
