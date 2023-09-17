@@ -23,8 +23,6 @@ Check if entry is in vector
 
 x = "a"
 if(x \%nin\% letters) x
-#or
-if(x \%!in\% letters) x
 
 # let's say we are trying to exclude numbers from a vector
 vector_num1 <- number(9, max.digits = 5, seed = 1) #simulate 9 numbers
