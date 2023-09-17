@@ -54,6 +54,11 @@ vector_pop(vector_of_numbers, n = 4, ret = "removed") #get the content removed
 
 #task: remove specific items from vector
 #note that this aspect of the functionality ignores the 'n' argument
-vector_of_numbers_2 <- paste0(number(5, seed = 33),c("AB")) #simulate 20 numbers using seed and add AB suffix
+vector_of_numbers_2 <- paste0(number(6, seed = 33),c("AB")) #simulate 6 numbers using seed and add AB suffix
+vector_of_numbers_2 #show numbers
+vector_pop(vector_of_numbers_2, el = c("403211378AB")) #remove 1 specific entries
+vector_of_numbers_2 #show results
+vector_pop(vector_of_numbers_2, el = c("803690460AB","66592309AB")) #remove 2 specific entries
+vector_of_numbers_2 #show results
 
 }
