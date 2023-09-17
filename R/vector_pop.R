@@ -35,10 +35,12 @@
 #'
 #' @export
 #'
-vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
+vector_pop <- function(., n = 1, el = NULL, ret = c(FALSE,TRUE,"removed")) {
+  ret <- match.arg(ret)
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   val <- get(as.character(..), envir = parent.frame())
+  init(val,value = vali)
 
   if(length(val) > 1){
     if (n > length(val))
@@ -51,6 +53,18 @@ vector_pop <- function(., n = 1, el = NULL, ret = FALSE) {
     else val <- paste(val1[1:(length(val1)-n)], collapse = "")
   }
 
-  if(!ret) assign(as.character(..),val, envir = parent.frame())
-  else val
+  if(ret == FALSE){
+    # if return is false, then set the changed vector to the first
+    assign(as.character(..),val, envir = parent.frame())
+  }else{
+    # if return is set to TRUE, return changed vector
+    if(ret == TRUE){
+      val
+    }
+
+    # if return is set to "removed", return removed elements
+    if(ret == "removed"){
+      setdiff(val,
+    }
+  }
 }
