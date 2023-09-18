@@ -1,4 +1,6 @@
-#' Yes/No to 1/0 or to TRUE/FALSE or vice versa
+#' Convert boolean values between formats
+#'
+#' Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 #'
 #' @param . item to convert
 #' @param conv.to format to convert to, choices 1, 2 or 3
