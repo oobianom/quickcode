@@ -33,19 +33,19 @@
 #' name1 #name1 not updated after pop
 #'
 #' #task: remove 4 elements from the end of a vector and return both the removed content and remaining
-#' vector_of_numbers <- paste0(number(20),c("TI")) #simulate 20 numbers and add TI suffix
-#' vector_of_numbers #show simulated numbers
-#' vector_pop(vector_of_numbers, n = 4, ret = TRUE) #get the modified vector
-#' vector_pop(vector_of_numbers, n = 4, ret = "removed") #get the content removed
+#' v_f_num <- paste0(number(20),c("TI")) #simulate 20 numbers and add TI suffix
+#' v_f_num #show simulated numbers
+#' vector_pop(v_f_num, n = 4, ret = TRUE) #get the modified vector
+#' vector_pop(v_f_num, n = 4, ret = "removed") #get the content removed
 #'
 #' #task: remove specific items from vector
 #' #note that this aspect of the functionality ignores the 'n' argument
-#' vector_of_numbers_2 <- paste0(number(6, seed = 33),c("AB")) #simulate 6 numbers using seed and add AB suffix
-#' vector_of_numbers_2 #show numbers
-#' vector_pop(vector_of_numbers_2, el = c("403211378AB")) #remove 1 specific entries
-#' vector_of_numbers_2 #show results
-#' vector_pop(vector_of_numbers_2, el = c("803690460AB","66592309AB")) #remove 2 specific entries
-#' vector_of_numbers_2 #show results
+#' v_f_num_2 <- paste0(number(6, seed = 33),c("AB")) #simulate 6 numbers using seed and add AB suffix
+#' v_f_num_2 #show numbers
+#' vector_pop(v_f_num_2, el = c("403211378AB")) #remove 1 specific entries
+#' v_f_num_2 #show results
+#' vector_pop(v_f_num_2, el = c("803690460AB","66592309AB")) #remove 2 specific entries
+#' v_f_num_2 #show results
 #'
 #' @export
 #'
