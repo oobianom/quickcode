@@ -2,7 +2,7 @@
 #'
 #' Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 #'
-#' @param . item to convert
+#' @param ds item to convert
 #' @param conv.to format to convert to, choices 1, 2 or 3
 #' @details
 #' conv.to: options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
@@ -46,8 +46,8 @@
 #'
 #' @export
 #'
-as.boolean <- function(., conv.to) {
+as.boolean <- function(ds, conv.to) {
   # return based on conv.to
-  ifelse(switch(tolower(.),"true" = 1,"t" = 1,"yes" = 1,"y" = 1,"no" = 0, "n" = 0, "false" = 0, "f" = 0,"1" = 1,"0" = 0),
+  ifelse(switch(tolower(ds),"true" = 1,"t" = 1,"yes" = 1,"y" = 1,"no" = 0, "n" = 0, "false" = 0, "f" = 0,"1" = 1,"0" = 0),
          switch(conv.to,"1" = "Yes","2" = TRUE,"3" = 1),switch(conv.to,"1" = "No","2" = FALSE,"3" = 0))
 }
