@@ -11,11 +11,15 @@ as.boolean(ds, type)
 
 \item{type}{format to convert to, choices 1, 2 or 3}
 }
+\value{
+output adhering to the format of the type provided
+}
 \description{
 Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 }
 \details{
-type: options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
+Output various format of booleans into a specified format. Please not about the options for the
+'type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
 }
 \examples{
 # convert 1 to format of Yes or No
