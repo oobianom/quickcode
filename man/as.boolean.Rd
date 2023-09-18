@@ -29,6 +29,12 @@ as.boolean("no",2)
 as.boolean("YES",2)
 as.boolean("NO",2)
 
+# convert "yes" or "no" to format of 1 or 0
+as.boolean("yes",3)
+as.boolean("no",3)
+as.boolean("YES",3)
+as.boolean("NO",3)
+
 
 # convert 1 to format of Yes or No
 as.boolean(1,1)
