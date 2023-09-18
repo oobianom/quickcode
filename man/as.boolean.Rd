@@ -22,6 +22,14 @@ Output various format of booleans into a specified format. Please not about the 
 'type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
 }
 \examples{
+
+# convert "yes" or "no" to format of TRUE or FALSE
+as.boolean("yes",2)
+as.boolean("no",2)
+as.boolean("YES",2)
+as.boolean("NO",2)
+
+
 # convert 1 to format of Yes or No
 as.boolean(1,1)
 
