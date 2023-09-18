@@ -4,10 +4,10 @@
 \alias{as.boolean}
 \title{Convert boolean values between formats}
 \usage{
-as.boolean(., conv.to)
+as.boolean(ds, conv.to)
 }
 \arguments{
-\item{.}{item to convert}
+\item{ds}{item to convert}
 
 \item{conv.to}{format to convert to, choices 1, 2 or 3}
 }
