@@ -4,18 +4,18 @@
 \alias{as.boolean}
 \title{Convert boolean values between formats}
 \usage{
-as.boolean(ds, conv.to)
+as.boolean(ds, type)
 }
 \arguments{
 \item{ds}{item to convert}
 
-\item{conv.to}{format to convert to, choices 1, 2 or 3}
+\item{type}{format to convert to, choices 1, 2 or 3}
 }
 \description{
 Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 }
 \details{
-conv.to: options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
+type: options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
 }
 \examples{
 # convert 1 to format of Yes or No
