@@ -61,23 +61,23 @@
 #'
 #' # vector of mixed boolean to TRUE/FALSE or 1/0
 #' multv <- c(T,TRUE,"y","n","YES","yes",FALSE,F,"f","F","T","t")
-#' as.boolean(multv,2)
-#' as.boolean(multv,3)
+#' as.boolean(multv,1) # return vector as Yes/No
+#' as.boolean(multv,2) # return vector as TRUE/FALSE
+#' as.boolean(multv,3) # return vector as 1/0
 #'
 #' @export
 #'
-as.boolean <- function(ds, type) {
+as.boolean <- function(ds, type = 3) {
   # boolean combos
-  .t <- c("t","true","yes","y")
-  .f <- c("f","false","no","n")
   # lowercase of entry
   .d <- tolower(ds)
   # convert to 1/0
-  .d[.d %in% .t] = 1L
-  .d[.d %in% .f] = 0L
+  .d[.d %in% c("t","true","yes","y")] = 1L
+  .d[.d %in% c("f","false","no","n")] = 0L
   # if type is different
-  if(type1 == 1) gsub("^1$","No",gsub("^1$","Yes",.d)) -> .d
-  if(type1 == 2) as.logical(.d) -> .d
+  if(type == 1) gsub("^0$","No",gsub("^1$","Yes",.d)) -> .d
+  else as.numeric(.d) -> .d
+  if(type == 2) as.logical(.d) -> .d
   # return transformed
   .d
 }
