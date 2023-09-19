@@ -4,12 +4,14 @@
 #'
 #' @param ds item to convert
 #' @param type format to convert to, choices 1, 2 or 3
+
 #' @details
 #' Output various format of booleans into a specified format. Please not about the options for the
 #'
 #' type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
 #'
 #' @return output adhering to the format of the type provided
+
 #' @examples
 #'
 #' # convert "yes" or "no" to format of TRUE or FALSE
