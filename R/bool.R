@@ -80,9 +80,4 @@ as.boolean <- function(ds, type) {
   if(type1 == 2) as.logical(.d) -> .d
   # return transformed
   .d
-
-  # return based on type
-  #switch(tolower(ds),"true" = 1,"t" = 1,"yes" = 1,"y" = 1,"no" = 0, "n" = 0, "false" = 0, "f" = 0,"1" = 1,"0" = 0)
-  # ifelse(as.numeric(gsub("[^0-9]","",gsub("(false)|(f)|(n)|(no)",1,gsub("(true)|(t)|(y)|(yes)",1,tolower(ds))))),
-  #        switch(type,"1" = "Yes","2" = TRUE,"3" = 1),switch(type,"1" = "No","2" = FALSE,"3" = 0))
 }
