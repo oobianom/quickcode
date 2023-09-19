@@ -4,7 +4,7 @@
 \alias{as.boolean}
 \title{Convert boolean values between formats}
 \usage{
-as.boolean(ds, type)
+as.boolean(ds, type = 3)
 }
 \arguments{
 \item{ds}{item to convert}
@@ -19,7 +19,8 @@ Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 }
 \details{
 Output various format of booleans into a specified format. Please not about the options for the
-'type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
+
+type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
 }
 \examples{
 
@@ -71,5 +72,10 @@ as.boolean(FALSE,1)
 as.boolean("tr",3) #logical(0)
 as.boolean("ye",3) #logical(0)
 
+# vector of mixed boolean to TRUE/FALSE or 1/0
+multv <- c(T,TRUE,"y","n","YES","yes",FALSE,F,"f","F","T","t")
+as.boolean(multv,1) # return vector as Yes/No
+as.boolean(multv,2) # return vector as TRUE/FALSE
+as.boolean(multv,3) # return vector as 1/0
 
 }
