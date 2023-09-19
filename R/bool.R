@@ -59,11 +59,30 @@
 #' as.boolean("tr",3) #logical(0)
 #' as.boolean("ye",3) #logical(0)
 #'
+#' # vector of mixed boolean to TRUE/FALSE or 1/0
+#' multv <- c(T,TRUE,"y","n","YES","yes",FALSE,F,"f","F","T","t")
+#' as.boolean(multv,2)
+#' as.boolean(multv,3)
 #'
 #' @export
 #'
 as.boolean <- function(ds, type) {
+  # boolean combos
+  .t <- c("t","true","yes","y")
+  .f <- c("f","false","no","n")
+  # lowercase of entry
+  .d <- tolower(ds)
+  # convert to 1/0
+  .d[.d %in% .t] = 1L
+  .d[.d %in% .f] = 0L
+  # if type is different
+  if(type1 == 1) gsub("^1$","No",gsub("^1$","Yes",.d)) -> .d
+  if(type1 == 2) as.logical(.d) -> .d
+  # return transformed
+  .d
+
   # return based on type
-  ifelse(switch(tolower(ds),"true" = 1,"t" = 1,"yes" = 1,"y" = 1,"no" = 0, "n" = 0, "false" = 0, "f" = 0,"1" = 1,"0" = 0),
-         switch(type,"1" = "Yes","2" = TRUE,"3" = 1),switch(type,"1" = "No","2" = FALSE,"3" = 0))
+  #switch(tolower(ds),"true" = 1,"t" = 1,"yes" = 1,"y" = 1,"no" = 0, "n" = 0, "false" = 0, "f" = 0,"1" = 1,"0" = 0)
+  # ifelse(as.numeric(gsub("[^0-9]","",gsub("(false)|(f)|(n)|(no)",1,gsub("(true)|(t)|(y)|(yes)",1,tolower(ds))))),
+  #        switch(type,"1" = "Yes","2" = TRUE,"3" = 1),switch(type,"1" = "No","2" = FALSE,"3" = 0))
 }
