@@ -6,10 +6,10 @@
 #' @param type format to convert to, choices 1, 2 or 3
 
 #' @details
-#' Output various format of booleans into a specified format. Please not about the options for the
+#' Output various format of booleans into a specified format. Below are the options for the type argument.
 #'
 #' \strong{type}: options are as follows - \cr\cr
-#'      1 - yes/no \cr
+#'      1 - Yes/No \cr
 #'      2 - TRUE/FALSE\cr
 #'      3 - 1/0\cr
 #'
