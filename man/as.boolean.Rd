@@ -20,7 +20,10 @@ Convert Yes/No to 1/0 or to TRUE/FALSE or vice versa
 \details{
 Output various format of booleans into a specified format. Please not about the options for the
 
-type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
+\strong{type}: options are as follows - \cr\cr
+     1 - yes/no \cr
+     2 - TRUE/FALSE\cr
+     3 - 1/0\cr
 }
 \examples{
 

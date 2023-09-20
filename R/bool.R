@@ -8,10 +8,10 @@
 #' @details
 #' Output various format of booleans into a specified format. Please not about the options for the
 #'
-#' \strong{type}: options are as follows -
-#'      1 - yes/no
-#'      2 - TRUE/FALSE
-#'      3 - 1/0
+#' \strong{type}: options are as follows - \cr\cr
+#'      1 - yes/no \cr
+#'      2 - TRUE/FALSE\cr
+#'      3 - 1/0\cr
 #'
 #' @return output adhering to the format of the type provided
 
