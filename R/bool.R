@@ -8,7 +8,10 @@
 #' @details
 #' Output various format of booleans into a specified format. Please not about the options for the
 #'
-#' type': options are 1 - yes/no, 2 - TRUE/FALSE, 3 - 1/0
+#' \strong{type}: options are as follows -
+#'      1 - yes/no
+#'      2 - TRUE/FALSE
+#'      3 - 1/0
 #'
 #' @return output adhering to the format of the type provided
 
