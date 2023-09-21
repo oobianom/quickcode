@@ -66,7 +66,7 @@
 #' # as.boolean("ye",3) #NA
 #'
 #' # vector of mixed boolean to TRUE/FALSE or 1/0
-#' multv <- c(T,TRUE,"y","n","YES","yes",FALSE,F,"f","F","T","t")
+#' multv <- c(TRUE,"y","n","YES","yes",FALSE,"f","F","T","t")
 #' as.boolean(multv,1) # return vector as Yes/No
 #' as.boolean(multv,2) # return vector as TRUE/FALSE
 #' as.boolean(multv,3) # return vector as 1/0
