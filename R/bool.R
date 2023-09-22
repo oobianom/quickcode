@@ -114,6 +114,7 @@ yesNoBool <- function(ds,fldname, out = c("change","append","vector"), type = c(
   switch (match.arg(out),
     "change" = {
       .dt[fldname] <- .dt$new__col
+      .dt$new__col <- NULL
     },
     "vector" = {
       .dt <- .dt$new__col
