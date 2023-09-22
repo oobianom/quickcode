@@ -30,7 +30,16 @@ type - bin for binary, and log for logical
 usedata <- mtcars
 usedata
 usedata$yess = "yes"
+usedata
+
+
+yesNoBool(usedata,yess)
+#or
 yesNoBool(usedata,"yess")
 
+
+yesNoBool(usedata,yess,"append")
+#or
+yesNoBool(usedata,"yess","append")
 
 }
