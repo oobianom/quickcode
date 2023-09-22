@@ -108,7 +108,9 @@ as.boolean <- function(ds, type = 3) {
 #' @examples
 #' usedata <- mtcars
 #' usedata
-#' usedata$yess = "yes"
+#' usedata$yess = rep(
+#'   c("yes","n","no","YES","No","NO","yES","Y"),
+#' 4)
 #' usedata
 #'
 #'
@@ -120,6 +122,10 @@ as.boolean <- function(ds, type = 3) {
 #' yesNoBool(usedata,yess,"append")
 #' #or
 #' yesNoBool(usedata,"yess","append")
+#'
+#' yesNoBool(usedata,yess,"vector")
+#' #or
+#' yesNoBool(usedata,"yess","vector")
 #'
 #' @export
 #'
