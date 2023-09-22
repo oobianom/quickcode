@@ -110,7 +110,15 @@ as.boolean <- function(ds, type = 3) {
 #' usedata
 #' usedata$yess = "yes"
 #' usedata
+#'
+#'
+#' yesNoBool(usedata,yess)
+#' #or
 #' yesNoBool(usedata,"yess")
+#'
+#'
+#' yesNoBool(usedata,yess,"append")
+#' #or
 #' yesNoBool(usedata,"yess","append")
 #'
 #' @export
@@ -118,8 +126,10 @@ as.boolean <- function(ds, type = 3) {
 yesNoBool <- function(table,fldname, out = c("change","append","vector"), type = c("bin","log")){
   if(typeof(table) != "list") stop("A data frame must be used.")
   .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
+  .wt <- table[,as.character(substitute(fldname))]
   .dt <- within(table,{
-    new__col = as.boolean(get(fldname),.tt)
+    #new__col = as.boolean(get(fldname),.tt)
+    new__col = as.boolean(.wt,.tt)
   })
   switch (match.arg(out),
     "change" = {
