@@ -118,8 +118,8 @@ as.boolean <- function(ds, type = 3) {
 yesNoBool <- function(table,fldname, out = c("change","append","vector"), type = c("bin","log")){
   if(typeof(table) != "list") stop("A data frame must be used.")
   .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
-  .dt <- within(mtcars,{
-    new__col = as.boolean(get(substitute(fldname)),.tt)
+  .dt <- within(table,{
+    new__col = as.boolean(get(fldname),.tt)
   })
   switch (match.arg(out),
     "change" = {
