@@ -5,18 +5,32 @@
 \title{Convert Yes/No to Binary or Logical}
 \usage{
 yesNoBool(
-  ds,
+  table,
   fldname,
   out = c("change", "append", "vector"),
   type = c("bin", "log")
 )
 }
 \arguments{
-\item{ds}{data frame}
+\item{table}{data frame}
+
+\item{fldname}{field name in the data frame}
+
+\item{out}{output form, choices - change, append, vector}
+
+\item{type}{output type, choices - bin, log}
 }
 \description{
 Seemlessly convert a yes or no to either a binary or logical output
 }
 \details{
 type - bin for binary, and log for logical
+}
+\examples{
+usedata <- mtcars
+usedata
+usedata$yess = "yes"
+yesNoBool(usedata,"yess")
+
+
 }
