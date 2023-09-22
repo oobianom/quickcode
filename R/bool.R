@@ -111,7 +111,7 @@ as.boolean <- function(ds, type = 3) {
 #' usedata$yess = "yes"
 #' usedata
 #' yesNoBool(usedata,"yess")
-#'
+#' yesNoBool(usedata,"yess","append")
 #'
 #' @export
 #'
