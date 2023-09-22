@@ -87,3 +87,37 @@ as.boolean <- function(ds, type = 3) {
   # return transformed
   .d
 }
+
+
+
+
+
+
+#' Convert Yes/No to Binary or Logical
+#'
+#' Seemlessly convert a yes or no to either a binary or logical output
+#'
+#' @param ds data frame
+#'
+#' @details
+#' type - bin for binary, and log for logical
+#'
+#'
+#' @export
+#'
+yesNoBool <- function(ds,fldname, out = c("change","append","vector"), type = c("bin","log")){
+  if(typeof(ds) != "list") stop("A data frame must be used.")
+  .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
+  .dt <- within(mtcars,{
+    new__col = as.boolean(get(substitute(fldname)),.tt)
+  })
+  switch (match.arg(out),
+    "change" = {
+      .dt[fldname] <- .dt$new__col
+    },
+    "vector" = {
+      .dt <- .dt$new__col
+    }
+  )
+  .dt
+}
