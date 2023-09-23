@@ -20,32 +20,52 @@ yesNoBool(
 
 \item{type}{output type, choices - bin, log}
 }
+\value{
+converted Yes/No entries into 1/0 or TRUE/FALSE
+}
 \description{
-Seemlessly convert a yes or no to either a binary or logical output
+Seamlessly convert a yes or no to either a binary or logical output
 }
 \details{
-type - bin for binary, and log for logical
+type - "bin" for binary, and "log" for logical
 }
 \examples{
+# Declare data for example
 usedata <- mtcars
-usedata
+usedata #view the variable
+
 usedata$yess = rep(
   c("yes","n","no","YES","No","NO","yES","Y"),
-4)
-usedata
+4) #create a new column
+usedata #view the modified dataset
 
+
+# Task: convert the "yess" column content to 1/0 (default)
+# Notice that you have add the column name with or without quotes
 
 yesNoBool(usedata,yess)
 #or
 yesNoBool(usedata,"yess")
 
 
+# Task: By default, the 'out' argument is set to "change"
+# means that the original data field will be
+# replaced with the results as above
+
+# In this example, set the out variable to
+# append data frame with a new column name containing the result
+
 yesNoBool(usedata,yess,"append")
 #or
 yesNoBool(usedata,"yess","append")
 
+# In this example, return as vector
+
 yesNoBool(usedata,yess,"vector")
 #or
 yesNoBool(usedata,"yess","vector")
+
+# Task: Return result as logical
+yesNoBool(usedata,"yess",type = "log")
 
 }

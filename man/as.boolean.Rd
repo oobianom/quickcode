@@ -27,51 +27,51 @@ Output various format of booleans into a specified format. Below are the options
 }
 \examples{
 
-# convert "yes" or "no" to format of TRUE or FALSE
+# Task: convert "yes" or "no" to format of TRUE or FALSE
 as.boolean("yes",2)
 as.boolean("no",2)
 as.boolean("YES",2)
 as.boolean("NO",2)
 
-# convert "yes" or "no" to format of 1 or 0
+# Task: convert "yes" or "no" to format of 1 or 0
 as.boolean("yes",3)
 as.boolean("no",3)
 as.boolean("YES",3)
 as.boolean("NO",3)
 
 
-# convert 1 to format of Yes or No
+# Task: convert 1 to format of Yes or No
 as.boolean(1,1)
 
-# convert "T" to format of Yes or No
+# Task: convert "T" to format of Yes or No
 as.boolean("T",1)
 
 
-# convert "f" to format of TRUE or FALSE
+# Task: convert "f" to format of TRUE or FALSE
 as.boolean("f",2)
 
 
-# convert 1 to format of TRUE or FALSE
+# Task: convert 1 to format of TRUE or FALSE
 as.boolean(1,2)
 
 
-# convert "Y" or "y" to format of Yes or No
+# Task: convert "Y" or "y" to format of Yes or No
 as.boolean("Y",1) #uppercase Y
 as.boolean("y",1) #lowercase y
 
 
-# convert TRUE/FALSE to format of 1 or 0
+# Task: convert TRUE/FALSE to format of 1 or 0
 as.boolean(TRUE,3)
 as.boolean(FALSE,3)
 
 
-# convert TRUE/FALSE to format of Yes or No
+# Task: convert TRUE/FALSE to format of Yes or No
 as.boolean(TRUE,1)
 as.boolean(FALSE,1)
 
 
 
-# in case of error in argument
+# In case of error in argument
 # as.boolean("tr",3) #NA
 # as.boolean("ye",3) #NA
 
