@@ -18,8 +18,6 @@ genImage(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg")
 \item{h.px}{height in pixels}
 
 \item{ext}{file extension eg jpg, png}
-
-\item{size}{size of images to download}
 }
 \value{
 downloaded image from a select image category
@@ -39,8 +37,8 @@ web applications.
 }
 
 \examples{
-# download 10 image from the nature category
-genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 100)
+# download 2 image from the nature category
+genImage(fp="~/",cat = "nature", n = 2)
 
 
 
