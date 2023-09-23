@@ -34,7 +34,7 @@ genImage <- function(fp,cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
 
   # download files to temp directory
   while (n > 0) {
-    file.store <- file.path(fp,paste0(i,".",ext))
+    file.store <- file.path(fp,paste0(n,".",ext))
     download.file(
       url = paste0("https://source.unsplash.com/random/", w.px, "x", h.px, "/?", cat, "&", n),
       destfile = file.store, mode = "wb"
