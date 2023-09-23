@@ -8,6 +8,16 @@
 #' @param rm.na remove NA values
 #' @param rm.null remove NULL values
 #' @return vector combining fist and second vector, but have name set to the first
+#'
+#' @section USE CASE:
+#' This function allows the combination of two vectors in one short line of code. It allows specification of further downstream
+#' filtering of the resulting vector such as selecting only unique items, removing NA or NULL values. It simplifies a code chunk
+#' with many lines of code to concatenate and filter various vectors.
+#'
+#' @details
+#' Note that two vectors are required in order to use this function. Also, note that the final result replaces the content of the
+#' first vector. This means that the original content of the 'first vector' will no longer exist after this function executes.
+#'
 #' @examples
 #' num1 <- number(10)
 #' num2 <-"rpkg.net"
@@ -53,6 +63,20 @@
 #' vector1 #return modified vector
 #'
 #' # without NA
+#' vector_push(vector3,vector2, rm.na = TRUE)
+#' vector3 #return modified vector
+#'
+#'
+#' #Task: concatenate two vector and remove NULL values
+#' vector1 = number(5)
+#' vector2 = c(4,NULL,5,NULL)
+#' vector3 = number(5)
+#'
+#' # with NULL
+#' vector_push(vector1,vector2, rm.na = FALSE)
+#' vector1 #return modified vector
+#'
+#' # without NULL
 #' vector_push(vector3,vector2, rm.na = TRUE)
 #' vector3 #return modified vector
 #'
