@@ -22,13 +22,13 @@
 #'
 #' @examples
 #' # download 10 image from the nature category
-#' genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 30)
+#' genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 100)
 #'
 #'
 #'
 #' @export
 #'
-genImage <- function(fp = "~/images", cat = "nature", n = 1, w.px = 500, h.px = 500, ext = "jpg") {
+genImage <- function(fp,cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   checksum.files <- c()
   temp.files <- c()
 
@@ -41,7 +41,7 @@ genImage <- function(fp = "~/images", cat = "nature", n = 1, w.px = 500, h.px = 
     )
 
     # make sure there is no duplication
-    checksum <- tools::md5sum(temp.store)
+    checksum <- as.vector(tools::md5sum(temp.store))
     if (checksum %in% checksum.files) {
       unlink(temp.store)
       plus(n)
