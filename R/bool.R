@@ -131,19 +131,11 @@ as.boolean <- function(ds, type = 3) {
 yesNoBool <- function(table,fldname, out = c("change","append","vector"), type = c("bin","log")){
   if(typeof(table) != "list") stop("A data frame must be used.")
   .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
-  .wt <- table[,as.character(substitute(fldname))]
-  .dt <- within(table,{
-    #new__col = as.boolean(get(fldname),.tt)
-    new__col = as.boolean(.wt,.tt)
-  })
+  .cook <- as.character(substitute(fldname))
   switch (match.arg(out),
-    "change" = {
-      .dt[fldname] <- .dt$new__col
-      .dt$new__col <- NULL
-    },
-    "vector" = {
-      .dt <- .dt$new__col
-    }
+    "change" = {table[,.cook] <- as.boolean(table[,.cook],.tt)},
+    "append" = {table$new__col <- as.boolean(table[,.cook],.tt)},
+    "vector" = {table <- as.boolean(table[,.cook],.tt)}
   )
-  .dt
+  table
 }
