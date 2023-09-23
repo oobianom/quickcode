@@ -5,7 +5,6 @@
 #' @param fp Storage directory
 #' @param cat category of image to download
 #' @param n number of images to download
-#' @param size size of images to download
 #' @param w.px width in pixels
 #' @param h.px height in pixels
 #' @param ext file extension eg jpg, png
