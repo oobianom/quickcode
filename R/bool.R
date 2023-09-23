@@ -74,16 +74,15 @@
 #' @export
 #'
 as.boolean <- function(ds, type = 3) {
-  # boolean combos
   # lowercase of entry
   .d <- tolower(ds)
   # convert to 1/0
   .d[.d %in% c("t","true","yes","y")] = 1L
   .d[.d %in% c("f","false","no","n")] = 0L
   # if type is different
-  if(type == 1) gsub("^0$","No",gsub("^1$","Yes",.d)) -> .d
-  else as.numeric(.d) -> .d
-  if(type == 2) as.logical(.d) -> .d
+  if(type == 1) .d <- as.factor(gsub("^0$","No",gsub("^1$","Yes",.d)))
+  else .d <- as.factor(.d)
+  if(type == 2) .d <- as.logical(.d)
   # return transformed
   .d
 }
