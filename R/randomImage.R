@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' # download 10 image from the nature category
-#' genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 20)
+#' genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 30)
 #'
 #'
 #'
@@ -36,7 +36,7 @@ genImage <- function(fp = "~/images", cat = "nature", n = 1, w.px = 500, h.px = 
   while (n > 0) {
     temp.store <- tempfile(fileext = paste0(".",ext))
     download.file(
-      url = paste0("https://source.unsplash.com/random/", w.px, "x", h.px, "/?", cat, "&", i),
+      url = paste0("https://source.unsplash.com/random/", w.px, "x", h.px, "/?", cat, "&", n),
       destfile = temp.store, mode = "wb"
     )
 
