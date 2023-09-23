@@ -45,7 +45,6 @@ genImage <- function(fp,cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
     if (checksum %in% checksum.files) {
       unlink(temp.store)
       plus(n)
-      print(checksum)
     } else {
       vector_push(checksum.files, checksum)
       vector_push(temp.files, temp.store)
