@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' # download 10 image from the nature category
-#' genImage(fp="D:/GithubRepo/samples/randomimages",cat = "nature", n = 100)
+#' genImage(fp="~/",cat = "nature", n = 100)
 #'
 #'
 #'
