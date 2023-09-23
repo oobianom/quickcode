@@ -79,12 +79,12 @@ as.boolean <- function(ds, type = 3) {
   # convert to 1/0
   .d[.d %in% c("t","true","yes","y")] = 1L
   .d[.d %in% c("f","false","no","n")] = 0L
-  # if type is different
-  if(type == 1) .d <- as.factor(gsub("^0$","No",gsub("^1$","Yes",.d)))
-  else .d <- as.factor(.d)
-  if(type == 2) .d <- as.logical(.d)
-  # return transformed
-  .d
+  NULL # if type is not 1:3
+  switch (type,
+    "1" = as.factor(gsub("^0$","No",gsub("^1$","Yes",.d))),
+    "2" = as.logical(as.numeric(.d)),
+    "3" = as.factor(as.numeric(.d))
+    )
 }
 
 
