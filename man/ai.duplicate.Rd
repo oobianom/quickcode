@@ -21,6 +21,7 @@ AI like duplication and editing of files
 }
 \examples{
 \donttest{
+if(interactive())
 ai.duplicate('./file.R','file2.R')
 }
 
