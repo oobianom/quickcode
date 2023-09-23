@@ -21,8 +21,8 @@
 #'
 #'
 #' @examples
-#' # download 10 image from the nature category
-#' genImage(fp="~/",cat = "nature", n = 100)
+#' # download 2 image from the nature category
+#' genImage(fp="~/",cat = "nature", n = 2)
 #'
 #'
 #'
@@ -34,30 +34,22 @@ genImage <- function(fp,cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
 
   # download files to temp directory
   while (n > 0) {
-    temp.store <- tempfile(fileext = paste0(".",ext))
+    file.store <- file.path(fp,paste0(i,".",ext))
     download.file(
       url = paste0("https://source.unsplash.com/random/", w.px, "x", h.px, "/?", cat, "&", n),
-      destfile = temp.store, mode = "wb"
+      destfile = file.store, mode = "wb"
     )
 
     # make sure there is no duplication
-    checksum <- as.vector(tools::md5sum(temp.store))
+    checksum <- as.vector(tools::md5sum(file.store))
     if (checksum %in% checksum.files) {
-      unlink(temp.store)
+      unlink(file.store)
       plus(n)
     } else {
       vector_push(checksum.files, checksum)
-      vector_push(temp.files, temp.store)
+      vector_push(temp.files, file.store)
       minus(n)
     }
-  }
-  # move files
-  message("Moving downloaded files to specified folder...")
-  names(temp.files) <- temp.files
-  if (length(temp.files)) {
-    lapply(temp.files, function(i) {
-      file.rename(i, file.path(fp, basename(i)))
-    })
   }
   message(paste0("Downloaded ",length(temp.files)," files to ",fp))
 }
