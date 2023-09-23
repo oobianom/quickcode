@@ -79,6 +79,7 @@ duplicate <- function(file, new.name,pattern = NULL, replacement = NULL,open = T
 #'
 #' @examples
 #' \donttest{
+#' if(interactive())
 #' ai.duplicate('./file.R','file2.R')
 #' }
 #'
