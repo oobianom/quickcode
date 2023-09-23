@@ -16,12 +16,13 @@ Imports:
     grDevices,
     stats,
     rlang,
-    rstudioapi
+    rstudioapi,
+    tools
 Suggests: 
     rmarkdown,
     knitr,
     qpdf,
-    testthat (>= 3.0.0)
+    testthat
 Encoding: UTF-8
 VignetteBuilder: knitr
 Language: en-US
