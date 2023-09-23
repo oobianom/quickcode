@@ -4,7 +4,7 @@
 \alias{vector_push}
 \title{Add elements to a vector like array_push in PHP}
 \usage{
-vector_push(., add, unique = FALSE, rm.na = FALSE, rm.null = FALSE)
+vector_push(., add, unique = FALSE, rm.na = FALSE, rm.empty = FALSE)
 }
 \arguments{
 \item{.}{first vector}
@@ -15,7 +15,7 @@ vector_push(., add, unique = FALSE, rm.na = FALSE, rm.null = FALSE)
 
 \item{rm.na}{remove NA values}
 
-\item{rm.null}{remove NULL values}
+\item{rm.empty}{remove empty values}
 }
 \value{
 vector combining fist and second vector, but have name set to the first
@@ -30,7 +30,7 @@ first vector. This means that the original content of the 'first vector' will no
 \section{USE CASE}{
 
 This function allows the combination of two vectors in one short line of code. It allows specification of further downstream
-filtering of the resulting vector such as selecting only unique items, removing NA or NULL values. It simplifies a code chunk
+filtering of the resulting vector such as selecting only unique items, removing NA or empty values. It simplifies a code chunk
 with many lines of code to concatenate and filter various vectors.
 }
 
@@ -83,17 +83,17 @@ vector_push(vector3,vector2, rm.na = TRUE)
 vector3 #return modified vector
 
 
-#Task: concatenate two vector and remove NULL values
+#Task: concatenate two vector and remove empty values
 vector1 = number(5)
-vector2 = c(4,NULL,5,NULL)
+vector2 = c(4,'',5,'',NULL,' ')
 vector3 = number(5)
 
-# with NULL
-vector_push(vector1,vector2, rm.na = FALSE)
+# with empty
+vector_push(vector1,vector2, rm.empty = FALSE)
 vector1 #return modified vector
 
-# without NULL
-vector_push(vector3,vector2, rm.na = TRUE)
+# without empty
+vector_push(vector3,vector2, rm.empty = TRUE)
 vector3 #return modified vector
 
 }
