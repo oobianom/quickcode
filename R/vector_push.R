@@ -6,12 +6,12 @@
 #' @param add vector to add
 #' @param unique remove duplicated entries
 #' @param rm.na remove NA values
-#' @param rm.null remove NULL values
+#' @param rm.empty remove empty values
 #' @return vector combining fist and second vector, but have name set to the first
 #'
 #' @section USE CASE:
 #' This function allows the combination of two vectors in one short line of code. It allows specification of further downstream
-#' filtering of the resulting vector such as selecting only unique items, removing NA or NULL values. It simplifies a code chunk
+#' filtering of the resulting vector such as selecting only unique items, removing NA or empty values. It simplifies a code chunk
 #' with many lines of code to concatenate and filter various vectors.
 #'
 #' @details
@@ -67,28 +67,28 @@
 #' vector3 #return modified vector
 #'
 #'
-#' #Task: concatenate two vector and remove NULL values
+#' #Task: concatenate two vector and remove empty values
 #' vector1 = number(5)
-#' vector2 = c(4,NULL,5,NULL)
+#' vector2 = c(4,'',5,'',NULL,' ')
 #' vector3 = number(5)
 #'
-#' # with NULL
-#' vector_push(vector1,vector2, rm.na = FALSE)
+#' # with empty
+#' vector_push(vector1,vector2, rm.empty = FALSE)
 #' vector1 #return modified vector
 #'
-#' # without NULL
-#' vector_push(vector3,vector2, rm.na = TRUE)
+#' # without empty
+#' vector_push(vector3,vector2, rm.empty = TRUE)
 #' vector3 #return modified vector
 #'
 #' @export
 #'
-vector_push <- function(., add, unique = FALSE, rm.na = FALSE, rm.null = FALSE) {
+vector_push <- function(., add, unique = FALSE, rm.na = FALSE, rm.empty = FALSE) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   .res <- c(get(as.character(..), envir = parent.frame()), add)
   if(unique) .res <- unique(.res)
   if(rm.na) .res <- .res[not.na(.res)]
-  if(rm.null) .res <- .res[not.null(.res)]
+  if(rm.empty) .res <- .res[not.empty(.res)]
   assign(as.character(..), .res , envir = parent.frame())
 }
 
