@@ -77,14 +77,14 @@ as.boolean <- function(ds, type = 3) {
   # lowercase of entry
   .d <- tolower(ds)
   # convert to 1/0
-  .d[.d %in% c("t","true","yes","y")] = 1L
-  .d[.d %in% c("f","false","no","n")] = 0L
+  .d[.d %in% c("t", "true", "yes", "y")] <- 1L
+  .d[.d %in% c("f", "false", "no", "n")] <- 0L
   NULL # if type is not 1:3
-  switch (type,
-    "1" = as.factor(gsub("^0$","No",gsub("^1$","Yes",.d))),
+  switch(type,
+    "1" = as.factor(gsub("^0$", "No", gsub("^1$", "Yes", .d))),
     "2" = as.logical(as.numeric(.d)),
     "3" = as.factor(as.numeric(.d))
-    )
+  )
 }
 
 
