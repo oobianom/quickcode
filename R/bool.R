@@ -17,51 +17,51 @@
 
 #' @examples
 #'
-#' # convert "yes" or "no" to format of TRUE or FALSE
+#' # Task: convert "yes" or "no" to format of TRUE or FALSE
 #' as.boolean("yes",2)
 #' as.boolean("no",2)
 #' as.boolean("YES",2)
 #' as.boolean("NO",2)
 #'
-#' # convert "yes" or "no" to format of 1 or 0
+#' # Task: convert "yes" or "no" to format of 1 or 0
 #' as.boolean("yes",3)
 #' as.boolean("no",3)
 #' as.boolean("YES",3)
 #' as.boolean("NO",3)
 #'
 #'
-#' # convert 1 to format of Yes or No
+#' # Task: convert 1 to format of Yes or No
 #' as.boolean(1,1)
 #'
-#' # convert "T" to format of Yes or No
+#' # Task: convert "T" to format of Yes or No
 #' as.boolean("T",1)
 #'
 #'
-#' # convert "f" to format of TRUE or FALSE
+#' # Task: convert "f" to format of TRUE or FALSE
 #' as.boolean("f",2)
 #'
 #'
-#' # convert 1 to format of TRUE or FALSE
+#' # Task: convert 1 to format of TRUE or FALSE
 #' as.boolean(1,2)
 #'
 #'
-#' # convert "Y" or "y" to format of Yes or No
+#' # Task: convert "Y" or "y" to format of Yes or No
 #' as.boolean("Y",1) #uppercase Y
 #' as.boolean("y",1) #lowercase y
 #'
 #'
-#' # convert TRUE/FALSE to format of 1 or 0
+#' # Task: convert TRUE/FALSE to format of 1 or 0
 #' as.boolean(TRUE,3)
 #' as.boolean(FALSE,3)
 #'
 #'
-#' # convert TRUE/FALSE to format of Yes or No
+#' # Task: convert TRUE/FALSE to format of Yes or No
 #' as.boolean(TRUE,1)
 #' as.boolean(FALSE,1)
 #'
 #'
 #'
-#' # in case of error in argument
+#' # In case of error in argument
 #' # as.boolean("tr",3) #NA
 #' # as.boolean("ye",3) #NA
 #'
@@ -94,37 +94,54 @@ as.boolean <- function(ds, type = 3) {
 
 #' Convert Yes/No to Binary or Logical
 #'
-#' Seemlessly convert a yes or no to either a binary or logical output
+#' Seamlessly convert a yes or no to either a binary or logical output
 #'
 #' @param table data frame
 #' @param fldname field name in the data frame
 #' @param out output form, choices - change, append, vector
 #' @param type output type, choices - bin, log
-#'
+#' @return converted Yes/No entries into 1/0 or TRUE/FALSE
 #' @details
-#' type - bin for binary, and log for logical
+#' type - "bin" for binary, and "log" for logical
 #'
 #' @examples
+#' # Declare data for example
 #' usedata <- mtcars
-#' usedata
+#' usedata #view the variable
+#'
 #' usedata$yess = rep(
 #'   c("yes","n","no","YES","No","NO","yES","Y"),
-#' 4)
-#' usedata
+#' 4) #create a new column
+#' usedata #view the modified dataset
 #'
+#'
+#' # Task: convert the "yess" column content to 1/0 (default)
+#' # Notice that you have add the column name with or without quotes
 #'
 #' yesNoBool(usedata,yess)
 #' #or
 #' yesNoBool(usedata,"yess")
 #'
 #'
+#' # Task: By default, the 'out' argument is set to "change"
+#' # means that the original data field will be
+#' # replaced with the results as above
+#'
+#' # In this example, set the out variable to
+#' # append data frame with a new column name containing the result
+#'
 #' yesNoBool(usedata,yess,"append")
 #' #or
 #' yesNoBool(usedata,"yess","append")
 #'
+#' # In this example, return as vector
+#'
 #' yesNoBool(usedata,yess,"vector")
 #' #or
 #' yesNoBool(usedata,"yess","vector")
+#'
+#' # Task: Return result as logical
+#' yesNoBool(usedata,"yess",type = "log")
 #'
 #' @export
 #'
