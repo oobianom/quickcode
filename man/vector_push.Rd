@@ -4,12 +4,14 @@
 \alias{vector_push}
 \title{Add elements to a vector like array_push in PHP}
 \usage{
-vector_push(., add)
+vector_push(., add, unique = FALSE)
 }
 \arguments{
 \item{.}{first vector}
 
 \item{add}{vector to add}
+
+\item{unique}{remove duplicated entries}
 }
 \value{
 vector combining fist and second vector, but have name set to the first
@@ -23,10 +25,23 @@ num1 #preview
 num2 <-"rpkg.net"
 
 
-#seamlessly add num2 to num1 and re-save as num1
+#Task: add num2 to num1 and re-save as num1
 
 vector_push(num1,num2)
 num1 #updated with num2
 num2 #not updated
 
+
+#Task: concatenate two vectors and remove duplicates
+vector1 = 1:10
+vector2 = 5:20
+vector3 = 15:25
+
+# with duplicated
+vector_push(vector1,vector2, unique = FALSE)
+vector1 #return modified vector
+
+# without duplicated
+vector_push(vector2,vector3, unique = TRUE)
+vector2 #return modified vector
 }
