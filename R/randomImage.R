@@ -1,8 +1,8 @@
 #' Download random images from the web
 #'
-#' Retrieve n number of high-definition images by category from the web
+#' Generate n number of high-definition images by category from the web
 #'
-#' @param fp Storage directory
+#' @param fp storage directory
 #' @param cat category of image to download
 #' @param n number of images to download, maximum n is 99
 #' @param w.px width in pixels
@@ -31,7 +31,7 @@ genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   # check that n does not exceed 99
   if(n > 99){
     warning("The value of n exceeds 99, so n was set to 99")
-    n <- 99
+    n <- 99L
   }
   # check sum and file names
   checksum.files <- c()

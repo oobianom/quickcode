@@ -40,7 +40,7 @@
 #' }
 #' @export
 #'
-inc <- function(., add = 1) {
+inc <- function(., add = 1L) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   assign(as.character(..), (get(as.character(..), envir = parent.frame()) + add), envir = parent.frame())
@@ -53,7 +53,7 @@ plus <- inc
 
 #' Decrease vector by value
 #'
-#' decrement the content of a vector and re-save as the vector
+#' decrease the content of a vector and re-save as the vector
 #'
 #' @param . vector of number(s)
 #' @param minus number to minus
@@ -68,15 +68,15 @@ plus <- inc
 #' num1 <- sample(5:150,10)
 #' num1
 #'
-#' # decrement num1 by 1
-#' num1 #before decrement
+#' # decrease num1 by 1
+#' num1 #before decrease
 #' minus(num1)
-#' num1 #after decrement
+#' num1 #after decrease
 #'
 #' # decrease num1 by 5
-#' num1 #before decrement
+#' num1 #before decrease
 #' minus(num1, minus = 5)
-#' num1 #after decrement
+#' num1 #after decrease
 #'
 #'
 #'
@@ -95,7 +95,7 @@ plus <- inc
 #' }
 #' @export
 #'
-minus <- function(., minus = 1) {
+minus <- function(., minus = 1L) {
   .. <- substitute(.)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   assign(as.character(..), (get(as.character(..), envir = parent.frame()) - minus), envir = parent.frame())
