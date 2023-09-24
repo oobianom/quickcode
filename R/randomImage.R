@@ -21,16 +21,16 @@
 #'
 #' @examples
 #' # download 2 image from the nature category
-#' genImage(fp=tempdir(),cat = "nature", n = 2)
+#' genRandImg(fp = tempdir(),cat = "nature", n = 2)
 #'
 #'
 #'
 #' @export
 #'
-genImage <- function(n = 1, cat, fp = tempdir(), w.px = 500, h.px = 500, ext = "jpg") {
+genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   # check that n does not exceed 99
   if(n > 99){
-    warning("The value of n exceeds 99, so n has been automatically set to 99")
+    warning("The value of n exceeds 99, so n was set to 99")
     n <- 99
   }
   # check sum and file names
