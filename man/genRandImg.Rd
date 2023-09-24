@@ -7,7 +7,7 @@
 genRandImg(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg")
 }
 \arguments{
-\item{fp}{Storage directory}
+\item{fp}{storage directory}
 
 \item{cat}{category of image to download}
 
@@ -23,7 +23,7 @@ genRandImg(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg")
 downloaded image from a select image category
 }
 \description{
-Retrieve n number of high-definition images by category from the web
+Generate n number of high-definition images by category from the web
 }
 \section{SOURCE}{
 

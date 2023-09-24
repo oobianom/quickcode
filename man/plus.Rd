@@ -4,7 +4,7 @@
 \alias{plus}
 \title{Increment vector by value}
 \usage{
-plus(., add = 1)
+plus(., add = 1L)
 }
 \arguments{
 \item{.}{vector of number(s)}

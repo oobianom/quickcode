@@ -4,7 +4,7 @@
 \alias{inc}
 \title{Increment vector by value}
 \usage{
-inc(., add = 1)
+inc(., add = 1L)
 }
 \arguments{
 \item{.}{vector of number(s)}

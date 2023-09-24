@@ -4,7 +4,7 @@
 \alias{minus}
 \title{Decrease vector by value}
 \usage{
-minus(., minus = 1)
+minus(., minus = 1L)
 }
 \arguments{
 \item{.}{vector of number(s)}
@@ -15,7 +15,7 @@ minus(., minus = 1)
 a vector decreased by a number
 }
 \description{
-decrement the content of a vector and re-save as the vector
+decrease the content of a vector and re-save as the vector
 }
 \details{
 Similar to the inc and plus functions, the minus function is very useful when writing complex codes involving loops.
@@ -28,15 +28,15 @@ to decrease the value of a variable by a number and then re-save the new value t
 num1 <- sample(5:150,10)
 num1
 
-# decrement num1 by 1
-num1 #before decrement
+# decrease num1 by 1
+num1 #before decrease
 minus(num1)
-num1 #after decrement
+num1 #after decrease
 
 # decrease num1 by 5
-num1 #before decrement
+num1 #before decrease
 minus(num1, minus = 5)
-num1 #after decrement
+num1 #after decrease
 
 
 

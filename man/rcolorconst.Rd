@@ -4,8 +4,16 @@
 \alias{rcolorconst}
 \title{R Color Constant}
 \usage{
-rcolorconst()
+rcolorconst(title = "R Color Constants")
+}
+\arguments{
+\item{title}{title of the output}
 }
 \description{
-R Color Constant
+R color constants
+}
+\examples{
+rcolorconst()
+
+
 }
