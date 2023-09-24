@@ -1,6 +1,13 @@
 #' R Color Constant
 #'
+#' R color constants
+#'
 #' @param title title of the output
+#'
+#'
+#' @examples
+#' rcolorconst()
+#'
 #'
 #' @export
 
@@ -14,10 +21,8 @@ rcolorconst <- function(title = "R Color Constants"){
     "magenta" = "#FF00FF",
     "orange" = "#FFA500",
     "gray" = "#BEBEBE")
-  luvmat <<- as(colorspace::hex2RGB(rcolorconst), "LUV")
-  print(luvmat)
-  x <- luvmat@coords
-  labelcols <- c("white", "black")[1 + 1 * (x[,1] > 50)]
+
+  labelcols <- c("white", "black")[c(1,2,2,1,2,2,2,2)]
   L <- length(rcolorconst)
   pts <- barplot(rep(1, L), col = rcolorconst, main = title, yaxt = "n")
   text(pts, 0.5, names(rcolorconst), srt = 90, col = labelcols)
