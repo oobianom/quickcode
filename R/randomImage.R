@@ -39,7 +39,7 @@ genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
 
   # download files to temp directory
   while (n > 0) {
-    file.store <- file.path(fp,paste0(tolower(cat),"_",n,".",ext))
+    file.store <- file.path(fp,paste0(tolower(cat),"_",randString(1,5),"_",n,".",ext))
     download.file(
       url = paste0("https://source.unsplash.com/random/", w.px, "x", h.px, "/?", cat, "&", n),
       destfile = file.store, mode = "wb"
@@ -57,3 +57,5 @@ genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   }
   message(paste0("Downloaded ",length(downloaded.files)," files to ",fp))
 }
+
+
