@@ -3,7 +3,9 @@ Type: Package
 Title: A Compilation of Some Frequently Used R Functions
 Version: 0.4
 Authors@R: c(
-    person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")))
+    person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")),
+    person("Brice", "Richard", email = "wem3mew@msn.com", role = "aut")
+    )
 Maintainer: Obinna Obianom <idonshayo@gmail.com>
 Description: The NOT functions and a simple compilation of various functions for easy usage. Shorthand code to save memory usage.
 License: MIT + file LICENSE
