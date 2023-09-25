@@ -37,7 +37,7 @@ res.dt2[1:10,]
 
 # Task 3: return the results from Task 2 as a vector
 res.dt3 <- archivedPkg(startsWith = "a", inc.date = FALSE, as = "vector")
-res.dt2[1:10]
+res.dt3[1:10,]
 
 # Task 4: return the archived packages beginning with Y
 # Note that startsWith should be lowercase

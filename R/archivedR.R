@@ -3,6 +3,7 @@
 #' Retrieve a list of all currently archived R packages and their archive date
 #'
 #' @param startsWith one letter that the package name starts with eg. a, e, f
+#' @param after packages archived after specific data eg. 05-2011
 #' @param inc.date should archive date be included in the result
 #' @param as return result as data frame or as vector
 #'
@@ -22,7 +23,7 @@
 #'
 #' # Task 3: return the results from Task 2 as a vector
 #' res.dt3 <- archivedPkg(startsWith = "a", inc.date = FALSE, as = "vector")
-#' res.dt2[1:10]
+#' res.dt3[1:10,]
 #'
 #' # Task 4: return the archived packages beginning with Y
 #' # Note that startsWith should be lowercase
@@ -32,16 +33,18 @@
 #' @export
 #'
 
-archivedPkg <- function(startsWith = letters, inc.date =TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after="05-2011", inc.date =TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
   as <- match.arg(as)
-  res <- read.csv(
+  res <- data.frame()
+  for(i in startsWith)
+    data_push(res,read.csv(
     file = paste0(
       "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(startsWith),".txt?count=0&auth=1"),
     header = TRUE, quote = "'",
-    skip = 1)
+    skip = 1),which = "rows")
 
-  if(!inc.date) res <- as.data.frame(res[,1])
+  if(!inc.date) res$latest.archive = NULL
   if(as == "vector") res <- as.vector(res)
   res
 }
