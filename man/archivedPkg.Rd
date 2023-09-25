@@ -14,7 +14,7 @@ archivedPkg(
 \arguments{
 \item{startsWith}{one letter that the package name starts with eg. a, e, f}
 
-\item{after}{packages archived after specific data eg. 05-2011}
+\item{after}{packages archived after a specific date eg. 05-2011}
 
 \item{inc.date}{should archive date be included in the result}
 
@@ -35,11 +35,11 @@ head(archivedPkg(startsWith = "a"))
 
 
 # Task 2: return the packages from Task 1 without including latest archive date
-res.dt2 <- archivedPkg(startsWith = "a", inc.date = FALSE)
+res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
 res.dt2[1:10,]
 
 # Task 3: return the results from Task 2 as a vector
-res.dt3 <- archivedPkg(startsWith = "a", inc.date = FALSE, as = "vector")
+res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
 res.dt3[1:10,]
 
 # Task 4: return the archived packages beginning with Y
