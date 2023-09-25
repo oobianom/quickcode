@@ -11,6 +11,14 @@
 #' @note
 #' The startsWith argument should be one letter and should be in lowercase
 #'
+#' @examples
+#' # Task: get archived R packages with names beginning with A
+#' archivedPkg(startsWith = "a")
+#'
+#' # Task: return the above packages as a vector
+#' archivedPkg(startsWith = "a", as = "vector")
+#'
+#'
 #'
 #' @export
 #'
