@@ -7,7 +7,7 @@
 #' @param inc.date should archive date be included in the result
 #' @param as return result as data frame or as vector
 #'
-#' @return a data frame container listing of all archived R packages
+#' @return a data frame or vector containing listing of all archived R packages
 #'
 #' @note
 #' The startsWith argument should be one letter and should be in lowercase
