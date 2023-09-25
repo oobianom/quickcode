@@ -21,19 +21,27 @@ archivedPkg(
 a data frame container listing of all archived R packages
 }
 \description{
-Retrieve a list of all currently archived R packages
+Retrieve a list of all currently archived R packages and their archive date
 }
 \note{
 The startsWith argument should be one letter and should be in lowercase
 }
 \examples{
 # Task 1: get archived R packages with names beginning with A
-archivedPkg(startsWith = "a")
+head(archivedPkg(startsWith = "a"))
 
-# Task 2: return the above packages as a vector
-archivedPkg(startsWith = "a", as = "vector")
 
-# Task 3: return the packages from Task A without including latest archive date
-archivedPkg(startsWith = "a", inc.date = FALSE)
+# Task 2: return the packages from Task 1 without including latest archive date
+res.dt2 <- archivedPkg(startsWith = "a", inc.date = FALSE)
+res.dt2[1:10,]
+
+# Task 3: return the results from Task 2 as a vector
+res.dt3 <- archivedPkg(startsWith = "a", inc.date = FALSE, as = "vector")
+res.dt2[1:10]
+
+# Task 4: return the archived packages beginning with Y
+# Note that startsWith should be lowercase
+head(archivedPkg(startsWith = "y"))
+
 
 }
