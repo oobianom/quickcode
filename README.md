@@ -1,4 +1,7 @@
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
+
+![](https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp)
+
 ### Official website: https://quickcode.obi.obianom.com
 
 ## Install
