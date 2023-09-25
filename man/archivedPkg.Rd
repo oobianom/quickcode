@@ -21,7 +21,7 @@ archivedPkg(
 \item{as}{return result as data frame or as vector}
 }
 \value{
-a data frame container listing of all archived R packages
+a data frame or vector containing listing of all archived R packages
 }
 \description{
 Retrieve a list of all currently archived R packages and their archive date
