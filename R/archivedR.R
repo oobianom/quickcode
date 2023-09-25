@@ -35,10 +35,13 @@
 
 archivedPkg <- function(startsWith = c("all",letters), after="05-2011", inc.date =TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
+  if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
   res <- data.frame()
+
+  #fetch data and update res
   for(i in startsWith)
-    data_push(res,read.csv(
+    data_push(res,utils::read.csv(
     file = paste0(
       "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(startsWith),".txt?count=0&auth=1"),
     header = TRUE, quote = "'",

@@ -24,8 +24,8 @@ rcolorconst <- function(title = "R Color Constants"){
 
   labelcols <- c("white", "black")[c(1,2,2,1,2,2,2,2)]
   L <- length(rcolorconst)
-  pts <- barplot(rep(1, L), col = rcolorconst, main = title, yaxt = "n")
-  text(pts, 0.5, names(rcolorconst), srt = 90, col = labelcols)
+  pts <- graphics::barplot(rep(1, L), col = rcolorconst, main = title, yaxt = "n")
+  graphics::text(pts, 0.5, names(rcolorconst), srt = 90, col = labelcols)
   invisible(pts)
 }
 
