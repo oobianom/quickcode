@@ -43,7 +43,7 @@ archivedPkg <- function(startsWith = c("all",letters), after="05-2011", inc.date
   for(i in startsWith)
     data_push(res,utils::read.csv(
     file = paste0(
-      "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(startsWith),".txt?count=0&auth=1"),
+      "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(i),".txt?count=0&auth=1"),
     header = TRUE, quote = "'",
     skip = 1),which = "rows")
 
