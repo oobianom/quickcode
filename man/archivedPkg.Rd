@@ -5,13 +5,16 @@
 \title{Listing of all CRAN archived R packages}
 \usage{
 archivedPkg(
-  startsWith = letters,
+  startsWith = c("all", letters),
+  after = "05-2011",
   inc.date = TRUE,
   as = c("data.frame", "vector")
 )
 }
 \arguments{
 \item{startsWith}{one letter that the package name starts with eg. a, e, f}
+
+\item{after}{packages archived after specific data eg. 05-2011}
 
 \item{inc.date}{should archive date be included in the result}
 
