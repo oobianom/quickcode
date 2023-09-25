@@ -4,10 +4,18 @@
 \alias{archivedPkg}
 \title{Listing of all CRAN archived R packages}
 \usage{
-archivedPkg(startsWith = letters)
+archivedPkg(
+  startsWith = letters,
+  inc.date = TRUE,
+  as = c("data.frame", "vector")
+)
 }
 \arguments{
-\item{n}{number of packages to retrieve}
+\item{startsWith}{one letter that the package name starts with eg. a, e, f}
+
+\item{inc.date}{should archive date be included in the result}
+
+\item{as}{return result as data frame or as vector}
 }
 \value{
 a data frame container listing of all archived R packages
@@ -16,6 +24,15 @@ a data frame container listing of all archived R packages
 Retrieve a list of all currently archived R packages
 }
 \note{
-If the n argument is set to 0, all packages will be retrieved. Keep in mind that the larger the count or if all packages
-are requested, this function becomes slower.
+The startsWith argument should be one letter and should be in lowercase
+}
+\examples{
+# Task: get archived R packages with names beginning with A
+archivedPkg(startsWith = "a")
+
+# Task: return the above packages as a vector
+archivedPkg(startsWith = "a", as = "vector")
+
+
+
 }
