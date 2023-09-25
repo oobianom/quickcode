@@ -3,7 +3,7 @@
 #' Retrieve a list of all currently archived R packages and their archive date
 #'
 #' @param startsWith one letter that the package name starts with eg. a, e, f
-#' @param after packages archived after specific data eg. 05-2011
+#' @param after packages archived after a specific date eg. 05-2011
 #' @param inc.date should archive date be included in the result
 #' @param as return result as data frame or as vector
 #'
@@ -18,11 +18,11 @@
 #'
 #'
 #' # Task 2: return the packages from Task 1 without including latest archive date
-#' res.dt2 <- archivedPkg(startsWith = "a", inc.date = FALSE)
+#' res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
 #' res.dt2[1:10,]
 #'
 #' # Task 3: return the results from Task 2 as a vector
-#' res.dt3 <- archivedPkg(startsWith = "a", inc.date = FALSE, as = "vector")
+#' res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
 #' res.dt3[1:10,]
 #'
 #' # Task 4: return the archived packages beginning with Y
