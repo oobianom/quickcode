@@ -27,12 +27,13 @@ Retrieve a list of all currently archived R packages
 The startsWith argument should be one letter and should be in lowercase
 }
 \examples{
-# Task: get archived R packages with names beginning with A
+# Task 1: get archived R packages with names beginning with A
 archivedPkg(startsWith = "a")
 
-# Task: return the above packages as a vector
+# Task 2: return the above packages as a vector
 archivedPkg(startsWith = "a", as = "vector")
 
-
+# Task 3: return the packages from Task A without including latest archive date
+archivedPkg(startsWith = "a", inc.date = FALSE)
 
 }
