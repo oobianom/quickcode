@@ -33,7 +33,7 @@ archivedPkg <- function(startsWith = letters, inc.date =TRUE, as =c("data.frame"
     header = TRUE, quote = "'",
     skip = 1)
 
-  if(!inc.date) res <- res[,1]
+  if(!inc.date) res <- as.data.frame(res[,1])
   if(as == "vector") res <- as.vector(res)
   res
 }
