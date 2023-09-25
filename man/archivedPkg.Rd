@@ -4,7 +4,7 @@
 \alias{archivedPkg}
 \title{Listing of all CRAN archived R packages}
 \usage{
-archivedPkg(n = 0)
+archivedPkg(startsWith = letters)
 }
 \arguments{
 \item{n}{number of packages to retrieve}

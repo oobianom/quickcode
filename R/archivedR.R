@@ -2,7 +2,7 @@
 #'
 #' Retrieve a list of all currently archived R packages
 #'
-#' @param n number of packages to retrieve
+#' @param startsWith letter that the package name starts with
 #'
 #' @return a data frame container listing of all archived R packages
 #'
@@ -14,11 +14,13 @@
 #' @export
 #'
 
-archivedPkg <- function(n = 0) {
+archivedPkg <- function(startsWith = letters) {
+  startsWith <- match.arg(startsWith)
   read.csv(
     file = paste0(
-      "https://quickcode.obi.obianom.com/CRAN/searchArchivedCRANPkg.php?count=",
-      as.integer(n)),
+      "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(startsWith),".txt?count="),
     header = TRUE,
     skip = 1)
 }
+
+#"https://quickcode.obi.obianom.com/CRAN/searchArchivedCRANPkg.php?count="
