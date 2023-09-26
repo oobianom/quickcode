@@ -17,4 +17,5 @@ check_date_format <- function(date){
   if(nchar(splitdate[3]) != 2) stop("Day format must be DD e.g 25")
   if(as.numeric(splitdate[2]) > 12 | as.numeric(splitdate[2]) < 1) stop("Month format must be between 01 and 12")
   if(as.numeric(splitdate[3]) > 31 | as.numeric(splitdate[3]) < 1) stop("Day format must be between 01 and 12")
+  invisible(date)
 }
