@@ -1,6 +1,6 @@
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
 
-![](https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp)
+<img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="400">
 
 ### Official website: https://quickcode.obi.obianom.com
 
