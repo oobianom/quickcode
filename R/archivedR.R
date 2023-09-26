@@ -3,7 +3,7 @@
 #' Retrieve a list of all currently archived R packages and their archive date
 #'
 #' @param startsWith one letter that the package name starts with eg. a, e, f
-#' @param after packages archived after a specific date eg. 05-2011
+#' @param after packages archived after a specific date eg. 2011-05-10
 #' @param inc.date should archive date be included in the result
 #' @param as return result as data frame or as vector
 #'
@@ -33,7 +33,7 @@
 #' @export
 #'
 
-archivedPkg <- function(startsWith = c("all",letters), after="2011-05", inc.date =TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after="2011-05-10", inc.date =TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
   if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
@@ -49,7 +49,7 @@ archivedPkg <- function(startsWith = c("all",letters), after="2011-05", inc.date
 
   if(not.null(after)){
     # filter by time
-    res$difftime <- res$latest.archive - as.POSIXct(after)
+    res$difftime <- as.numeric(as.POSIXct(res$latest.archive) - as.POSIXct(after))
     res <- res[res$difftime >= 0,]
     res$difftime <- NULL
   }
