@@ -27,8 +27,18 @@ a data frame or vector containing listing of all archived R packages
 Retrieve a list of all currently archived R packages and their archive date
 }
 \note{
-The startsWith argument should be one letter and should be in lowercase
+* The "startsWith" argument should be one letter and should be in lowercase \cr\cr
+* The format of the "after" argument must be YYYY-MM-DD e.g. 2022-04-11
 }
+\section{Use case}{
+
+This function allows the retrieval of various R packages archived by CRAN along with
+the respective latest archive date. The packages retrieved include both active and
+inactive R projects submitted to CRAN. When a new version of an active R package is published,
+the older versions of the package gets archived. In the same way, when a package is
+decommissioned from CRAN active projects for one reason or another, it gets archived.
+}
+
 \examples{
 # Task 1: get archived R packages with names beginning with A
 head(archivedPkg(startsWith = "a"))
@@ -48,11 +58,11 @@ res.dt3[1:10,]
 #without archive date
 yRPkg <- archivedPkg(startsWith = "y", after= NULL)
 nrow(yRPkg) #number of rows returned
-head(yRPkg) #show first few rows
+head(yRPkg, n = 15) #show first 15 rows
 
 #with archive date
 yRPkg2 <- archivedPkg(startsWith = "y", after= "2022-08-12")
 nrow(yRPkg2) #number of rows returned
-head(yRPkg2) #show first few rows
+head(yRPkg2, n = 15) #show first 15 rows, notice no archive date before 2022-08-12
 
 }
