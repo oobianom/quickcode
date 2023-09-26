@@ -33,7 +33,7 @@
 #' @export
 #'
 
-archivedPkg <- function(startsWith = c("all",letters), after="05-2011", inc.date =TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after="2011-05", inc.date =TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
   if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
@@ -46,6 +46,14 @@ archivedPkg <- function(startsWith = c("all",letters), after="05-2011", inc.date
       "https://quickcode.obi.obianom.com/CRAN/archiveddata_",tolower(i),".txt?count=0&auth=1"),
     header = TRUE, quote = "'",
     skip = 1),which = "rows")
+
+  if(not.null(after)){
+    # filter by time
+    res$difftime <- res$latest.archive - as.POSIXct(after)
+    res <- res[res$difftime >= 0,]
+    res$difftime <- NULL
+  }
+
 
   if(!inc.date) res$latest.archive = NULL
   if(as == "vector") res <- as.vector(res)
