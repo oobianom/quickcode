@@ -50,7 +50,7 @@
 #' @export
 #'
 
-archivedPkg <- function(startsWith = c("all",letters), after=NULL, inc.date =TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after = NULL, inc.date = TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
   if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
