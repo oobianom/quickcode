@@ -31,12 +31,12 @@
 #' #without archive date
 #' yRPkg <- archivedPkg(startsWith = "y", after= NULL)
 #' nrow(yRPkg) #number of rows returned
-#' head(yRPkg) #show first few rows
+#' head(yRPkg, n = 15) #show first 15 rows
 #'
 #' #with archive date
 #' yRPkg2 <- archivedPkg(startsWith = "y", after= "2022-08-12")
 #' nrow(yRPkg2) #number of rows returned
-#' head(yRPkg2) #show first few rows
+#' head(yRPkg2, n = 15) #show first 15 rows, notice no archive date before 2022-08-12
 #'
 #' @export
 #'
@@ -56,6 +56,7 @@ archivedPkg <- function(startsWith = c("all",letters), after=NULL, inc.date =TRU
     skip = 1),which = "rows")
 
   if(not.null(after)){
+    check_date_format(after)
     # filter by time
     res$difftime <- as.numeric(as.POSIXct(res$latest.archive) - as.POSIXct(after))
     res <- res[res$difftime >= 0,]
