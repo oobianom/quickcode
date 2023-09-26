@@ -5,3 +5,10 @@ randString <- function(n, length) {
   .all <- matrix(sample(.combo, n * length, replace = TRUE), ncol = n)
   unlist(lapply(1:ncol(.all), function(i)paste(.all[, i], collapse = "")))
 }
+
+
+# check date format
+# expected format  YYYY-MM-DD
+check_date_format <- function(date){
+
+}

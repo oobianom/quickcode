@@ -9,8 +9,17 @@
 #'
 #' @return a data frame or vector containing listing of all archived R packages
 #'
+#' @section Use case:
+#' This function allows the retrieval of various R packages archived by CRAN along with
+#' the respective latest archive date. The packages retrieved include both active and
+#' inactive R projects submitted to CRAN. When a new version of an active R package is published,
+#' the older versions of the package gets archived. In the same way, when a package is
+#' decommissioned from CRAN active projects for one reason or another, it gets archived.
+#'
 #' @note
-#' The startsWith argument should be one letter and should be in lowercase
+#' * The "startsWith" argument should be one letter and should be in lowercase \cr\cr
+#' * The format of the "after" argument must be YYYY-MM-DD e.g. 2022-04-11
+#'
 #'
 #' @examples
 #' # Task 1: get archived R packages with names beginning with A
