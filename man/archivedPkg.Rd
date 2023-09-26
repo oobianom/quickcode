@@ -6,7 +6,7 @@
 \usage{
 archivedPkg(
   startsWith = c("all", letters),
-  after = "05-2011",
+  after = NULL,
   inc.date = TRUE,
   as = c("data.frame", "vector")
 )
@@ -14,7 +14,7 @@ archivedPkg(
 \arguments{
 \item{startsWith}{one letter that the package name starts with eg. a, e, f}
 
-\item{after}{packages archived after a specific date eg. 05-2011}
+\item{after}{packages archived after a specific date eg. 2011-05-10}
 
 \item{inc.date}{should archive date be included in the result}
 
@@ -42,9 +42,17 @@ res.dt2[1:10,]
 res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
 res.dt3[1:10,]
 
-# Task 4: return the archived packages beginning with Y
+# Task 4: return the archived packages beginning with Y archived after 2022-08-12
 # Note that startsWith should be lowercase
-head(archivedPkg(startsWith = "y"))
 
+#without archive date
+yRPkg <- archivedPkg(startsWith = "y", after= NULL)
+nrow(yRPkg) #number of rows returned
+head(yRPkg) #show first few rows
+
+#with archive date
+yRPkg2 <- archivedPkg(startsWith = "y", after= "2022-08-12")
+nrow(yRPkg2) #number of rows returned
+head(yRPkg2) #show first few rows
 
 }
