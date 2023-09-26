@@ -25,15 +25,23 @@
 #' res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
 #' res.dt3[1:10,]
 #'
-#' # Task 4: return the archived packages beginning with Y
+#' # Task 4: return the archived packages beginning with Y archived after 2022-08-12
 #' # Note that startsWith should be lowercase
-#' head(archivedPkg(startsWith = "y"))
 #'
+#' #without archive date
+#' yRPkg <- archivedPkg(startsWith = "y", after= NULL)
+#' nrow(yRPkg) #number of rows returned
+#' head(yRPkg) #show first few rows
+#'
+#' #with archive date
+#' yRPkg2 <- archivedPkg(startsWith = "y", after= "2022-08-12")
+#' nrow(yRPkg2) #number of rows returned
+#' head(yRPkg2) #show first few rows
 #'
 #' @export
 #'
 
-archivedPkg <- function(startsWith = c("all",letters), after="2011-05-10", inc.date =TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after=NULL, inc.date =TRUE, as =c("data.frame","vector")) {
   startsWith <- match.arg(startsWith)
   if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
