@@ -65,7 +65,8 @@ archivedPkg <- function(startsWith = c("all",letters), after = NULL, inc.date = 
     skip = 1),which = "rows")
 
   if(not.null(after)){
-    check_date_format(after)
+    if(is.na(as.Date(after, "%Y-%m-%d")))
+      stop("Date format must be YYYY-MM-DD e.g 2022-05-15")
     # filter by time
     res$difftime <- as.numeric(as.POSIXct(res$latest.archive) - as.POSIXct(after))
     res <- res[res$difftime >= 0,]
