@@ -51,7 +51,10 @@ res.dt2[1:10,]
 
 # Task 3: return the results from Task 2 as a list
 res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "list")
-res.dt3[1:10,]
+res.dt3$name[1:10]
+
+res.dt3 <- archivedPkg(startsWith = "e", as = "list")
+res.dt3$name[1:10]
 
 # Task 4: return the archived packages beginning with Y archived after 2022-08-12
 # Note that startsWith should be lowercase
