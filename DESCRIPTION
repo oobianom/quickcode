@@ -19,7 +19,8 @@ Imports:
     stats,
     rlang,
     rstudioapi,
-    tools
+    tools,
+    Polychrome
 Suggests: 
     rmarkdown,
     knitr,

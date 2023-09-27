@@ -41,9 +41,9 @@ decommissioned from CRAN active projects for one reason or another, it gets arch
 }
 
 \examples{
-# Task 1: get archived R packages with names beginning with A or All
+# Task 1: get archived R packages with names beginning with C or All
 head(archivedPkg(startsWith = "all"), n= 10) #retrieves all packages
-head(archivedPkg(startsWith = "a"), n= 10) #retrieves only packages beginning with a
+head(archivedPkg(startsWith = "c"), n= 10) #retrieves only packages beginning with a
 
 # Task 2: return the packages from Task 1 without including latest archive date
 res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
