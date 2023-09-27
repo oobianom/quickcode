@@ -27,7 +27,8 @@ a data frame or vector containing listing of all archived R packages
 Retrieve a list of all currently archived R packages and their archive date
 }
 \note{
-* The "startsWith" argument should be one letter and should be in lowercase \cr\cr
+* The "startsWith" argument should be one letter and should be in lowercase \cr
+* If no argument is provided for "startsWith", all the packages will be retrieved\cr
 * The format of the "after" argument must be YYYY-MM-DD e.g. 2022-04-11
 }
 \section{Use case}{
@@ -40,9 +41,9 @@ decommissioned from CRAN active projects for one reason or another, it gets arch
 }
 
 \examples{
-# Task 1: get archived R packages with names beginning with A
-head(archivedPkg(startsWith = "a"))
-
+# Task 1: get archived R packages with names beginning with A or All
+head(archivedPkg(startsWith = "all"), n= 10) #retrieves all packages
+head(archivedPkg(startsWith = "a"), n= 10) #retrieves only packages beginning with a
 
 # Task 2: return the packages from Task 1 without including latest archive date
 res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
