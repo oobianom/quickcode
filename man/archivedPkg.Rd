@@ -8,7 +8,7 @@ archivedPkg(
   startsWith = c("all", letters),
   after = NULL,
   inc.date = TRUE,
-  as = c("data.frame", "vector")
+  as = c("data.frame", "list")
 )
 }
 \arguments{
@@ -18,10 +18,10 @@ archivedPkg(
 
 \item{inc.date}{should archive date be included in the result}
 
-\item{as}{return result as data frame or as vector}
+\item{as}{return result as data frame or as list}
 }
 \value{
-a data frame or vector containing listing of all archived R packages
+a data frame or list containing listing of all archived R packages
 }
 \description{
 Retrieve a list of all currently archived R packages and their archive date
@@ -49,8 +49,8 @@ head(archivedPkg(startsWith = "c"), n= 10) #retrieves only packages beginning wi
 res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
 res.dt2[1:10,]
 
-# Task 3: return the results from Task 2 as a vector
-res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
+# Task 3: return the results from Task 2 as a list
+res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "list")
 res.dt3[1:10,]
 
 # Task 4: return the archived packages beginning with Y archived after 2022-08-12
