@@ -5,9 +5,9 @@
 #' @param startsWith one letter that the package name starts with eg. a, e, f
 #' @param after packages archived after a specific date eg. 2011-05-10
 #' @param inc.date should archive date be included in the result
-#' @param as return result as data frame or as vector
+#' @param as return result as data frame or as list
 #'
-#' @return a data frame or vector containing listing of all archived R packages
+#' @return a data frame or list containing listing of all archived R packages
 #'
 #' @section Use case:
 #' This function allows the retrieval of various R packages archived by CRAN along with
@@ -31,8 +31,8 @@
 #' res.dt2 <- archivedPkg(startsWith = "b", inc.date = FALSE)
 #' res.dt2[1:10,]
 #'
-#' # Task 3: return the results from Task 2 as a vector
-#' res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "vector")
+#' # Task 3: return the results from Task 2 as a list
+#' res.dt3 <- archivedPkg(startsWith = "c", inc.date = FALSE, as = "list")
 #' res.dt3[1:10,]
 #'
 #' # Task 4: return the archived packages beginning with Y archived after 2022-08-12
@@ -51,7 +51,7 @@
 #' @export
 #'
 
-archivedPkg <- function(startsWith = c("all",letters), after = NULL, inc.date = TRUE, as =c("data.frame","vector")) {
+archivedPkg <- function(startsWith = c("all",letters), after = NULL, inc.date = TRUE, as =c("data.frame","list")) {
   startsWith <- match.arg(startsWith)
   if(startsWith == "all") startsWith <- letters
   as <- match.arg(as)
@@ -75,8 +75,9 @@ archivedPkg <- function(startsWith = c("all",letters), after = NULL, inc.date = 
   }
 
 
-  if(!inc.date) res$latest.archive = NULL
-  if(as == "vector") res <- as.vector(res)
+  if(!inc.date) res$latest.archive <- NULL
+  else res$latest.archive <- as.Date(res$latest.archive)
+  if(as == "list") res <- as.list(res)
   res
 }
 
