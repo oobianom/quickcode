@@ -12,7 +12,14 @@
 #' @export
 
 rcolorconst <- function(title = "R Color Constants"){
-  rcolorconst = c("black" = 1, "red" = 2, "green" = 3, "blue" = 4, "cyan" = 5, "magenta" = 6, "orange" = 7, "gray" = 8)
+  rcolorconst = c(1 ="black",
+                  2 ="red",
+                  3 = "green",
+                  4 = "blue",
+                  5 = "cyan",
+                  6 = "magenta",
+                  7 = "orange",
+                  8 = "gray")
   Polychrome::swatch(rcolorconst, main = title)
 }
 
