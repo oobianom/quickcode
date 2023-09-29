@@ -1,6 +1,6 @@
 #' R Color Constant
 #'
-#' R color constants
+#' R color constants description
 #'
 #' @param title title of the output
 #'
