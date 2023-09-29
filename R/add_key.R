@@ -21,7 +21,8 @@
 #' @export
 #'
 add_key <- function(vector){
-  message("Function being further developed to accomodate data frames and other lists")
+  if('klist' %in% class(vector)) stop("Key already added to object.")
+
   . = list()
   iky = 1
   for(i in vector){
@@ -30,5 +31,8 @@ add_key <- function(vector){
   }
   #resave to vector name
   .. <- substitute(vector)
+  class(.) <- c('klist','list')
   assign(as.character(..), ., envir = parent.frame())
 }
+
+#message("Function being further developed to accomodate data frames and other lists")
