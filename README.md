@@ -29,6 +29,35 @@ install.packages("quickcode")
 ***
 
 ```
+#simple conversion between boolean types
+#input type is "vector"
+baba <- c(TRUE,"y","n","YES","yes",FALSE,"f","F","T","t")
+as.boolean(baba,1) # return vector as Yes/No
+as.boolean(baba,2) # return vector as TRUE/FALSE
+as.boolean(baba,3) # return vector as 1/0
+
+```
+***
+
+```
+#apply the yesNoBool to convert between boolean
+#input type is "data.frame"
+usedata <- data.frame(ID = number(32))
+usedata #view the dataset
+
+usedata$yess = rep(c("yes","n","no","YES","No","NO","yES","Y"),4) #create a new column
+usedata #view the modified dataset
+
+#set all yess field as standardize boolean
+yesNoBool(usedata,yess, type="bin") #set all as binary 1/0
+yesNoBool(usedata,yess, type="log") #set all as logical TRUE/FALSE
+
+```
+
+
+***
+
+```
 #initialize one or more variables
 
 print(g) # Error: object 'g' not found

@@ -32,7 +32,7 @@ type - "bin" for binary, and "log" for logical
 \examples{
 # Declare data for example
 usedata <- mtcars
-usedata #view the variable
+usedata #view the dataset
 
 usedata$yess = rep(
   c("yes","n","no","YES","No","NO","yES","Y"),

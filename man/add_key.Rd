@@ -16,10 +16,18 @@ a transformed list containing keys along with vector values
 Index a vector or lists and convert to a list of objects
 }
 \details{
-Additional details...
+The function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
+This allows the output to be used in loops such as for loops or lapply or other functions to track
+the index of the list content e.g. 1,2,3...\cr\cr
+
+This function also contains a validator to ensure that a vector had not been previously 'keyed',
+which prevents the user from inadvertently calling the function twice on a vector. Helps especially
+because the function keys the vector, and sets the new list to the variable name of the original
+vector.
 }
 \section{Use case}{
 
+Efficient for loops and for tracking various steps through a vector contents
 }
 
 \examples{

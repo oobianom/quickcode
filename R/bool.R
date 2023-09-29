@@ -107,7 +107,7 @@ as.boolean <- function(ds, type = 3) {
 #' @examples
 #' # Declare data for example
 #' usedata <- mtcars
-#' usedata #view the variable
+#' usedata #view the dataset
 #'
 #' usedata$yess = rep(
 #'   c("yes","n","no","YES","No","NO","yES","Y"),
