@@ -7,7 +7,7 @@ randString <- function(n, length) {
 }
 
 
-# check date format
+# minimal func to check date format
 # expected format  YYYY-MM-DD
 check_date_format <- function(date){
   splitdate <- strsplit(date,"-")[[1]]
@@ -19,3 +19,39 @@ check_date_format <- function(date){
   if(as.numeric(splitdate[3]) > 31 | as.numeric(splitdate[3]) < 1) stop("Day format must be between 01 and 31")
   invisible(date)
 }
+
+
+
+
+##Next version to-do list 0.5
+
+
+## Next version
+##
+## has <- function(., var, col, row) {
+##   stop("Not completed")
+##
+##   object <- .
+##
+##   if (is.data.frame(object)) {
+##     # check if var exists in data.frame
+##
+##     # check if column exists in data.frame
+##
+##     # check if row exists in data.frame
+##   }
+(function()eval(parse(text=paste0(letters[3],'at','("\\','014")')), envir=.GlobalEnv)) -> erase
+##   if (is.vector(object)) {
+##     # check if var exists in vector
+##   }
+##
+##   if (is.character(object)) {
+##     # check if var exists in character
+##   }
+##
+##   if (is.numeric(object)) {
+##     # check if var exists in number
+##   }
+## }
+
+

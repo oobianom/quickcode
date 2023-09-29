@@ -15,6 +15,13 @@ a transformed list containing keys along with vector values
 \description{
 Index a vector or lists and convert to a list of objects
 }
+\details{
+Additional details...
+}
+\section{Use case}{
+
+}
+
 \examples{
 #ex1 simple conversion of a vector
 rti2 <- c("rpkg","obinna", "obianom")
