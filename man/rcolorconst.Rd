@@ -9,11 +9,24 @@ rcolorconst(title = "R Color Constants")
 \arguments{
 \item{title}{title of the output}
 }
-\description{
-R color constants
+\value{
+returns color constant
 }
+\description{
+R color constants description
+}
+\details{
+Additional details...
+}
+\section{Use case}{
+
+}
+
 \examples{
+# Without title
 rcolorconst()
 
+# With title
+rcolorconst("My new color constant")
 
 }
