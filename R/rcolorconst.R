@@ -4,10 +4,19 @@
 #'
 #' @param title title of the output
 #'
+#' @return returns color constant
+#'
+#' @details
+#' Additional details...
+#'
+#' @section Use case:
 #'
 #' @examples
+#' # Without title
 #' rcolorconst()
 #'
+#' # With title
+#' rcolorconst("My new color constant")
 #'
 #' @export
 
