@@ -42,7 +42,7 @@
 #' @export
 #'
 add_key <- function(vector){
-  if('klist' %in% class(vector)) stop("Key already added to object.")
+  if(inherits(vector,"klist")) stop("Key already added to object.")
 
   . = list()
   iky = 1
