@@ -2,11 +2,13 @@
 
 - [ ] Add 'Use case' section to major functions
 - [x] Incorporation of features and functions by Brice
+
       - [x] rcolorconst()
       - [x] genRandImg()
       - [x] archivedPkg()
       - [x] as.boolean()
       - [x] yesNoBool()
+      
 - [x] Bug fixes and update to existing functions
       - [x] add_key()
       - [x] vector_push()
