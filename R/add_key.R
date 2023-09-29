@@ -44,6 +44,7 @@
 add_key <- function(vector){
   if(inherits(vector,"klist")) stop("Key already added to object.")
 
+  #create list and add keys
   . = list()
   iky = 1
   for(i in vector){
