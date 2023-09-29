@@ -4,6 +4,11 @@
 #'
 #' @param vector vector or data frame to transform
 #' @return a transformed list containing keys along with vector values
+#' @details
+#' Additional details...
+#'
+#' @section Use case:
+#'
 #' @examples
 #' #ex1 simple conversion of a vector
 #' rti2 <- c("rpkg","obinna", "obianom")
