@@ -15,7 +15,7 @@
 #' being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 #'
 #' @examples
-#' \donttest{
+#' if(FALSE){
 #' #simply clear environment, clear console and devices
 #' quickcode::clean()
 #'
@@ -125,7 +125,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' environment. Then the working directory is set, prior to inclusion of various files and RData. With the directory
 #' being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 #' @examples
-#' \donttest{
+#' if(FALSE){
 #' #exactly like the clean function
 #' #simply clear environment, clear console and devices
 #' quickcode::refresh()
