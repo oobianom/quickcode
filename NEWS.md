@@ -2,7 +2,6 @@
 
 - [ ] Add 'Use case' section to major functions
 - [x] Incorporation of features and functions by Brice
-
   - [x] rcolorconst()
   - [x] genRandImg()
   - [x] archivedPkg()
