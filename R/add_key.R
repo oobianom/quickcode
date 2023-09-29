@@ -28,9 +28,16 @@
 #' ver1 <- c("Test 1","Test 2","Test 3")
 #' add_key(ver1)
 #'
+#' #ex3 use keyed ver1 in for loop
 #' for(i in ver1){
 #'   message(sprintf("%s is the key for this %s", i$key, i$value))
 #' }
+#'
+#' #ex4 use keyed ver1 in lapply loop
+#' xl1 <- lapply(ver1,function(i){
+#'   message(sprintf("lapply - %s is the key for this %s", i$key, i$value))
+#' })
+#'
 #'
 #' @export
 #'
