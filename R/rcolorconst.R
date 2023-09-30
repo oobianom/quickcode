@@ -38,6 +38,6 @@ rcolorconst <- function(title = "R Color Constants"){
                   "7" = "orange",
                   "8" = "gray")
   Polychrome::swatch(rcolorconst, main = title)
-  setNames(as.numeric(names(rcolorconst)), rcolorconst)
+  stats::setNames(as.numeric(names(rcolorconst)), rcolorconst)
 }
 

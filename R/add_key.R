@@ -5,7 +5,7 @@
 #' @param vector vector or data frame to transform
 #' @return a transformed list containing keys along with vector values
 #' @details
-#' The function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
+#' This function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
 #' This allows the output to be used in loops such as for loops or lapply or other functions to track
 #' the index of the list content e.g. 1,2,3...\cr\cr
 #'

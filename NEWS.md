@@ -1,6 +1,6 @@
 # quickcode 0.4
 
-- [ ] Add 'Use case' section to major functions
+- [x] Add 'Use case' section to major functions
 - [x] Incorporation of features and functions by Brice
   - [x] rcolorconst()
   - [x] genRandImg()
