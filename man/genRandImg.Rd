@@ -30,7 +30,7 @@ Generate n number of high-definition images by category from the web
 The random images are downloaded from www.unsplash.com
 }
 
-\section{USE CASE}{
+\section{Use case}{
 
 This functionality is great for R developers trying to obtain one or more images for using in analysis or simply for building robust
 web applications.
@@ -40,6 +40,19 @@ web applications.
 # download 2 image from the nature category
 genRandImg(fp = tempdir(),cat = "nature", n = 2)
 
+# download 4 random images with width = 600px and hight 100px
+genRandImg(
+  fp = tempdir(),
+  cat = "art",
+  w.px = 600,
+  h.px = 100)
 
+# download 10 random images with extension png
+genRandImg(fp = tempdir(),cat = "food", n = 10, ext = "png")
+
+
+# download 200 random images from category of school
+# Note that maximum download is 99, so the function will only download 99
+genRandImg(fp = tempdir(),cat = "school", n = 200)
 
 }
