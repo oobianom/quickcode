@@ -23,10 +23,10 @@ not.image <- function(x) !is.image(x)
 
 #' Is item an image
 #'
-#' Check if entry is  an image
+#' Check if entry is an image
 #'
 #' @param x vector entry
-#' @return a boolean value to indicate if entry is not an image
+#' @return a boolean value to indicate if entry is an image
 #' @examples
 #' img.1 = "fjk.jpg"
 #' is.image(img.1)

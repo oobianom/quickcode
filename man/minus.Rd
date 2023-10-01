@@ -47,6 +47,20 @@ rnum = 23
 minus(rnum) == 220 #returns FALSE
 rnum #the variable was also updated
 
+
+# use in a for loop
+ynum = 100
+
+for( i in c("teacher","student","lawyer","pharmacist")){
+message("This is the item number ")
+message(ynum)
+message(". For this item, I am a ")
+message(i)
+
+#decrement easily at each turn
+minus(ynum,3)
+}
+
 #use in a repeat loop
 xnum = 100
 repeat{ #repeat until xnum is 85
