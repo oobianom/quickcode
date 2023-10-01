@@ -20,6 +20,7 @@
 #'
 #'
 #' @examples
+#' \donttest{
 #' # download 2 image from the nature category
 #' genRandImg(fp = tempdir(),cat = "nature", n = 2)
 #'
@@ -37,7 +38,7 @@
 #' # download 200 random images from category of school
 #' # Note that maximum download is 99, so the function will only download 99
 #' genRandImg(fp = tempdir(),cat = "school", n = 200)
-#'
+#' }
 #' @export
 #'
 genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {

@@ -27,7 +27,7 @@ Shorthand to add elements to a vector and save as the same name
 Note that two vectors are required in order to use this function. Also, note that the final result replaces the content of the
 first vector. This means that the original content of the 'first vector' will no longer exist after this function executes.
 }
-\section{USE CASE}{
+\section{Use case}{
 
 This function allows the combination of two vectors in one short line of code. It allows specification of further downstream
 filtering of the resulting vector such as selecting only unique items, removing NA or empty values. It simplifies a code chunk
@@ -35,7 +35,7 @@ with many lines of code to concatenate and filter various vectors.
 }
 
 \examples{
-num1 <- number(10)
+num1 <- number(10, seed = 45)
 num2 <-"rpkg.net"
 
 num1

@@ -25,7 +25,7 @@ downloaded image from a select image category
 \description{
 Generate n number of high-definition images by category from the web
 }
-\section{SOURCE}{
+\section{Sources & References}{
 
 The random images are downloaded from www.unsplash.com
 }
@@ -37,6 +37,7 @@ web applications.
 }
 
 \examples{
+\donttest{
 # download 2 image from the nature category
 genRandImg(fp = tempdir(),cat = "nature", n = 2)
 
@@ -54,5 +55,5 @@ genRandImg(fp = tempdir(),cat = "food", n = 10, ext = "png")
 # download 200 random images from category of school
 # Note that maximum download is 99, so the function will only download 99
 genRandImg(fp = tempdir(),cat = "school", n = 200)
-
+}
 }

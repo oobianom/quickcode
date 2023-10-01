@@ -23,6 +23,7 @@
 #'
 #'
 #' @examples
+#' \donttest{
 #' # Task 1: get archived R packages with names beginning with C or All
 #' head(archivedPkg(startsWith = "all"), n= 10) #retrieves all packages
 #' head(archivedPkg(startsWith = "c"), n= 10) #retrieves only packages beginning with a
@@ -50,7 +51,7 @@
 #' yRPkg2 <- archivedPkg(startsWith = "y", after= "2022-08-12")
 #' nrow(yRPkg2) #number of rows returned
 #' head(yRPkg2, n = 15) #show first 15 rows, notice no archive date before 2022-08-12
-#'
+#' }
 #' @export
 #'
 
