@@ -31,6 +31,9 @@ not.image <- function(x) !is.image(x)
 #' img.1 = "fjk.jpg"
 #' is.image(img.1)
 #'
+#' img.0 = "fjk.bbVG"
+#' is.image(img.0)
+#'
 #' img.2 = "fjk.bmp"
 #' is.image(img.2)
 #'
