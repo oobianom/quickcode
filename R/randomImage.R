@@ -9,7 +9,7 @@
 #' @param h.px height in pixels
 #' @param ext file extension eg jpg, png
 #'
-#' @section SOURCE:
+#' @section Sources & References:
 #' The random images are downloaded from www.unsplash.com
 #'
 #' @section Use case:
