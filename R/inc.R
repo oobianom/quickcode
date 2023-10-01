@@ -32,6 +32,19 @@
 #' inc(rnum) == 11 #returns TRUE
 #' rnum #the variable was also updated
 #'
+#' # use in a for loop
+#' ynum = 1
+#' for( i in c("scientist","dancer","handyman","pharmacist")){
+#' message("This is the item number ")
+#' message(ynum)
+#' message(". For this item, I am a ")
+#' message(i)
+#'
+#' #decrement easily at each turn
+#' plus(ynum)
+#' }
+#'
+#'
 #' #use in a repeat loop
 #' xnum = 1
 #' repeat{ #repeat until xnum is 15
@@ -86,6 +99,20 @@ plus <- inc
 #' rnum = 23
 #' minus(rnum) == 220 #returns FALSE
 #' rnum #the variable was also updated
+#'
+#'
+#' # use in a for loop
+#' ynum = 100
+#'
+#' for( i in c("teacher","student","lawyer","pharmacist")){
+#' message("This is the item number ")
+#' message(ynum)
+#' message(". For this item, I am a ")
+#' message(i)
+#'
+#' #decrement easily at each turn
+#' minus(ynum,3)
+#' }
 #'
 #' #use in a repeat loop
 #' xnum = 100
