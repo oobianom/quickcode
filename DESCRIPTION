@@ -17,7 +17,6 @@ Imports:
     utils,
     grDevices,
     stats,
-    rlang,
     rstudioapi,
     tools,
     Polychrome

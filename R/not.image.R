@@ -43,5 +43,5 @@ not.image <- function(x) !is.image(x)
 #' @export
 
 is.image <- function(x){
-  if(tools::file_ext(tolower(x)) %in% c('jpeg','jpg','png','gif','tiff','tif','bmp','svg','ico','psd','ai','eps','webp','heic','heif','nef','cr2','orf','dng','crw','sr2')) TRUE else FALSE
+  if(tools::file_ext(tolower(x)) %in% c('jpeg','jpg','jfif','png','gif','tiff','tif','bmp','svg','ico','psd','ai','eps','webp','heic','heif','nef','cr2','orf','dng','crw','sr2')) TRUE else FALSE
 }

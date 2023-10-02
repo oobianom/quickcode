@@ -1,3 +1,12 @@
+# quickcode 0.5
+
+- [ ] More 'Use case' section to major functions
+- [ ] Addins for accessibility
+- [ ] New functions
+  - [x] is.image
+  - [x] as.image
+  - [ ] ...
+
 # quickcode 0.4
 
 - [x] Add 'Use case' section to major functions
