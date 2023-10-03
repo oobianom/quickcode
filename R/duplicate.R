@@ -12,15 +12,13 @@
 #' @examples
 #' \donttest{
 #' # example to duplicate a file, and replace text1 within it
-#' # not that by default, this function will also open the file with RStudio
+#' # NOTE that, by default, this function will also open the file within RStudio
 #' duplicate(
 #'   file = './file.R',
 #'   new.name = 'file2.R',
 #'   pattern = 'text1',
 #'   replacement = 'replacement1'
 #'  )
-#'
-#'
 #'
 #' # duplicate the file, with multiple replacements
 #' # replace 'book' with 'egg' and 'coke' with 'fanta'
