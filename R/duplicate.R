@@ -86,8 +86,13 @@ duplicate <- function(file, new.name,pattern = NULL, replacement = NULL,open = T
 #'
 #' @examples
 #' \donttest{
-#' if(interactive())
-#' ai.duplicate('./file.R','file2.R')
+#' if(interactive()){
+#' file1s <- paste0(tempfile(),".R")
+#' writeLines("message(
+#' 'Sample items: farm, shinyappstore, rpkg'
+#' )", file1s)
+#' ai.duplicate(file1s,'file2.R')
+#' }
 #' }
 #'
 #'
