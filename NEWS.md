@@ -1,11 +1,18 @@
-# quickcode 0.5
+# quickcode 0.6
 
+Planned
 - [ ] More 'Use case' section to major functions
 - [ ] Addins for accessibility
 - [ ] New functions
+  - [ ] ...
+
+# quickcode 0.5
+
+- [x] Fix system errors with package imports
+- [x] Fix typos in manuals
+- [x] New functions
   - [x] is.image
   - [x] as.image
-  - [ ] ...
 
 # quickcode 0.4
 
