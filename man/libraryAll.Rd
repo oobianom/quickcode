@@ -23,26 +23,24 @@ Only include libraries, don't install if library doesn't exist
 }
 \examples{
 \donttest{
-libraryAll(r2resize) #one package
+libraryAll(base) #one package
 
 libraryAll(
-  r2symbols,
-  dplyr,
-  ggplot2,
-  shinyStorePlus
+  base,
+  tools,
+  stats
 ) #multiple packages
 
-libraryAll("r2ymbols") #with quotes
+libraryAll("grDevices") #with quotes
 
 libraryAll(
-  xml2,
-  mrgsolve,
+  stats,
+  utils,
   quietly = TRUE
 ) #load quietly
 
 libraryAll(
-  nextGenShinyApps,
+  base,
 clear = FALSE) #do not clear console after load
-
 }
 }

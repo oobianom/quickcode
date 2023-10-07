@@ -11,6 +11,7 @@
 #'
 #' @examples
 #' \donttest{
+#' if(interactive()){
 #' # example to duplicate a file, and replace text1 within it
 #' # NOTE that, by default, this function will also open the file within RStudio
 #'
@@ -47,7 +48,7 @@
 #'
 #' # duplicate the file but do not open for editing
 #' duplicate(file1s,file3s, open = FALSE) # this does not open file after duplication
-#'
+#' }
 #' }
 #' @export
 #'

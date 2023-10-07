@@ -25,11 +25,22 @@ Shorthand to return a re-sample number of rows in a data frame by unique column
 }
 \examples{
 \donttest{
+if(interactive()){
 # example to duplicate a file, and replace text1 within it
 # NOTE that, by default, this function will also open the file within RStudio
+
+#create sample file
+file1s <- paste0(tempfile(),".R")
+writeLines("message(
+'Sample items: eggs, coke, fanta, book'
+)", file1s)
+
+file2s <- paste0(tempfile(),".R")
+file3s <- paste0(tempfile(),".R")
+
 duplicate(
-  file = './file.R',
-  new.name = 'file2.R',
+  file = file1s,
+  new.name = file2s,
   pattern = 'text1',
   replacement = 'replacement1'
  )
@@ -37,8 +48,7 @@ duplicate(
 # duplicate the file, with multiple replacements
 # replace 'book' with 'egg' and 'coke' with 'fanta'
 duplicate(
-  './obifile1.R',
-  'obifile2.R',
+  file1s, file2s,
   pattern = c('book','coke'),
   replacement = c('egg','fanta')
 )
@@ -46,12 +56,12 @@ duplicate(
 
 
 # duplicate the file with no replacement
-duplicate('./obianom.R','obianom.R') # this simply performs file.copy, and opens the new file
+duplicate(file1s,file3s) # this simply performs file.copy, and opens the new file
 
 
 
 # duplicate the file but do not open for editing
-duplicate('./obianom.R','obianom.R', open = FALSE) # this does not open file after duplication
-
+duplicate(file1s,file3s, open = FALSE) # this does not open file after duplication
+}
 }
 }
