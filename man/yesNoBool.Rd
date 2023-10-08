@@ -31,21 +31,17 @@ type - "bin" for binary, and "log" for logical
 }
 \examples{
 # Declare data for example
-usedata <- mtcars
-usedata #view the dataset
+# usedata <- data.frame(ID = number(32))
+# usedata #view the dataset
 
-usedata$yess = rep(
-  c("yes","n","no","YES","No","NO","yES","Y"),
-4) #create a new column
-usedata #view the modified dataset
+# usedata$yess = rep(c("yes","n","no","YES","No","NO","yES","Y"),4) #create a new column
+# usedata #view the modified dataset
 
-
-# Task: convert the "yess" column content to 1/0 (default)
+# Set all yess field as standardize boolean
+# Task: convert the "yess" column content to 1/0 or TRUE/FALSE
 # Notice that you have add the column name with or without quotes
-
-yesNoBool(usedata,yess)
-#or
-yesNoBool(usedata,"yess")
+# yesNoBool(usedata,yess, type="bin") #set all as binary 1/0
+# yesNoBool(usedata,"yess", type="log") #set all as logical TRUE/FALSE
 
 
 # Task: By default, the 'out' argument is set to "change"
@@ -55,17 +51,14 @@ yesNoBool(usedata,"yess")
 # In this example, set the out variable to
 # append data frame with a new column name containing the result
 
-yesNoBool(usedata,yess,"append")
-#or
-yesNoBool(usedata,"yess","append")
+# yesNoBool(usedata,yess,"append")
+#or yesNoBool(usedata,"yess","append")
 
 # In this example, return as vector
-
-yesNoBool(usedata,yess,"vector")
-#or
-yesNoBool(usedata,"yess","vector")
+# yesNoBool(usedata,yess,"vector")
+#or yesNoBool(usedata,"yess","vector")
 
 # Task: Return result as logical
-yesNoBool(usedata,"yess",type = "log")
+# yesNoBool(usedata,"yess",type = "log")
 
 }

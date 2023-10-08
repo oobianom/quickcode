@@ -106,21 +106,17 @@ as.boolean <- function(ds, type = 3) {
 #'
 #' @examples
 #' # Declare data for example
-#' usedata <- mtcars
+#' usedata <- data.frame(ID = number(32))
 #' usedata #view the dataset
 #'
-#' usedata$yess = rep(
-#'   c("yes","n","no","YES","No","NO","yES","Y"),
-#' 4) #create a new column
+#' usedata$yess = rep(c("yes","n","no","YES","No","NO","yES","Y"),4) #create a new column
 #' usedata #view the modified dataset
 #'
-#'
-#' # Task: convert the "yess" column content to 1/0 (default)
+#' # Set all yess field as standardize boolean
+#' # Task: convert the "yess" column content to 1/0 or TRUE/FALSE
 #' # Notice that you have add the column name with or without quotes
-#'
-#' yesNoBool(usedata,yess)
-#' #or
-#' yesNoBool(usedata,"yess")
+#' yesNoBool(usedata,yess, type="bin") #set all as binary 1/0
+#' yesNoBool(usedata,"yess", type="log") #set all as logical TRUE/FALSE
 #'
 #'
 #' # Task: By default, the 'out' argument is set to "change"
@@ -130,13 +126,11 @@ as.boolean <- function(ds, type = 3) {
 #' # In this example, set the out variable to
 #' # append data frame with a new column name containing the result
 #'
-#' yesNoBool(usedata,yess,"append")
-#' #or
-#' yesNoBool(usedata,"yess","append")
+#' # yesNoBool(usedata,yess,"append")
+#' #or yesNoBool(usedata,"yess","append")
 #'
 #' # In this example, return as vector
-#'
-#' yesNoBool(usedata,yess,"vector")
+#' # yesNoBool(usedata,yess,"vector")
 #' #or
 #' yesNoBool(usedata,"yess","vector")
 #'
@@ -148,11 +142,11 @@ as.boolean <- function(ds, type = 3) {
 yesNoBool <- function(table,fldname, out = c("change","append","vector"), type = c("bin","log")){
   if(typeof(table) != "list") stop("A data frame must be used.")
   .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
-  .cook <- as.character(substitute(fldname))
+  .jc <- as.character(substitute(fldname))
   switch (match.arg(out),
-    "change" = {table[,.cook] <- as.boolean(table[,.cook],.tt)},
-    "append" = {table$new__col <- as.boolean(table[,.cook],.tt)},
-    "vector" = {table <- as.boolean(table[,.cook],.tt)}
+    "change" = {table[,.jc] <- as.boolean(table[,.jc],.tt)},
+    "append" = {table$new__col <- as.boolean(table[,.jc],.tt)},
+    "vector" = {table <- as.boolean(table[,.jc],.tt)}
   )
   table
 }
