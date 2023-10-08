@@ -105,8 +105,9 @@ as.boolean <- function(ds, type = 3) {
 #' type - "bin" for binary, and "log" for logical
 #'
 #' @examples
+#' \donttest{
 #' # Declare data for example
-#' usedata <- data.frame(ID = number(32))
+#' usedata <- data.frame(ID = 1:32)
 #' usedata #view the dataset
 #'
 #' usedata$yess = rep(c("yes","n","no","YES","No","NO","yES","Y"),4) #create a new column
@@ -126,27 +127,26 @@ as.boolean <- function(ds, type = 3) {
 #' # In this example, set the out variable to
 #' # append data frame with a new column name containing the result
 #'
-#' # yesNoBool(usedata,yess,"append")
+#' yesNoBool(usedata,yess,"append")
 #' #or yesNoBool(usedata,"yess","append")
 #'
 #' # In this example, return as vector
-#' # yesNoBool(usedata,yess,"vector")
-#' #or
-#' yesNoBool(usedata,"yess","vector")
+#' yesNoBool(usedata,yess,"vector")
+#' #or yesNoBool(usedata,"yess","vector")
 #'
 #' # Task: Return result as logical
 #' yesNoBool(usedata,"yess",type = "log")
-#'
+#' }
 #' @export
 #'
 yesNoBool <- function(table,fldname, out = c("change","append","vector"), type = c("bin","log")){
   if(typeof(table) != "list") stop("A data frame must be used.")
   .tt <- switch (match.arg(type), "bin" = 3, "log" = 2  )
-  .jc <- as.character(substitute(fldname))
+  .cook <- as.character(substitute(fldname))
   switch (match.arg(out),
-    "change" = {table[,.jc] <- as.boolean(table[,.jc],.tt)},
-    "append" = {table$new__col <- as.boolean(table[,.jc],.tt)},
-    "vector" = {table <- as.boolean(table[,.jc],.tt)}
+    "change" = {table[,.cook] <- as.boolean(table[,.cook],.tt)},
+    "append" = {table$new__col <- as.boolean(table[,.cook],.tt)},
+    "vector" = {table <- as.boolean(table[,.cook],.tt)}
   )
   table
 }
