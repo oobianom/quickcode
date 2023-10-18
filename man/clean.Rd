@@ -30,6 +30,7 @@ being set first, the path to the sourced in or RData files will not need to be a
 }
 \examples{
 \donttest{
+if(interactive()){
 #simply clear environment, clear console and devices
 quickcode::clean()
 
@@ -60,5 +61,5 @@ quickcode::clean(
   load="obi.RData"
 ) #clear environment, set working directory, source files and load RData
 }
-
+}
 }

@@ -19,6 +19,7 @@ libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = TRUE)
 loaded libraries and clear environment
 }
 \description{
+Load specific packages, print a list of the loaded packages along with versions.
 Only include libraries, don't install if library doesn't exist
 }
 \examples{

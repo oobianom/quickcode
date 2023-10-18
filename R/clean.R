@@ -16,6 +16,7 @@
 #'
 #' @examples
 #' \donttest{
+#' if(interactive()){
 #' #simply clear environment, clear console and devices
 #' quickcode::clean()
 #'
@@ -46,7 +47,7 @@
 #'   load="obi.RData"
 #' ) #clear environment, set working directory, source files and load RData
 #' }
-#'
+#' }
 #' @export
 #'
 
@@ -126,6 +127,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' being set first, the path to the sourced in or RData files will not need to be appended to the file name. See examples.
 #' @examples
 #' \donttest{
+#' if(interactive()){
 #' #exactly like the clean function
 #' #simply clear environment, clear console and devices
 #' quickcode::refresh()
@@ -158,7 +160,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #' ) #clear environment, set working directory, source files and load RData
 #'
 #' }
-#'
+#' }
 #' @export
 #'
 refresh <- clean

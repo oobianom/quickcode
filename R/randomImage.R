@@ -12,9 +12,16 @@
 #' @section Sources & References:
 #' The random images are downloaded from www.unsplash.com
 #'
+#' @section Category Choices:
+#' Categories for 'cat' argument include
+#' "3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
+#' "fashion", "film", "food", "interior", "nature", "people", "renders",
+#' "school", "sports", "travel", "unsplash", "wallpapers"
+#'
+#'
 #' @section Use case:
-#' This functionality is great for R developers trying to obtain one or more images for using in analysis or simply for building robust
-#' web applications.
+#' This functionality is great for developers trying to obtain one or more images for use in displays/analysis
+#' or simply to build robust web applications.
 #'
 #' @return downloaded image from a select image category
 #'
@@ -27,7 +34,7 @@
 #' # download 4 random images with width = 600px and hight 100px
 #' genRandImg(
 #'   fp = tempdir(),
-#'   cat = "art",
+#'   cat = "fashion",
 #'   w.px = 600,
 #'   h.px = 100)
 #'
@@ -41,7 +48,13 @@
 #' }
 #' @export
 #'
-genRandImg <- function(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
+genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
+  # check existence of directory
+  if(!dir.exists(fp)) stop(paste0("The directory path declared in the 'fp' argument must exist."))
+
+  # match category
+  cat <- match.arg(cat)
+
   # check that n does not exceed 99
   if(n > 99){
     warning("The value of n exceeds 99, so n was set to 99")

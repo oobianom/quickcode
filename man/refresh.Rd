@@ -30,6 +30,7 @@ being set first, the path to the sourced in or RData files will not need to be a
 }
 \examples{
 \donttest{
+if(interactive()){
 #exactly like the clean function
 #simply clear environment, clear console and devices
 quickcode::refresh()
@@ -62,5 +63,5 @@ quickcode::refresh(
 ) #clear environment, set working directory, source files and load RData
 
 }
-
+}
 }

@@ -22,9 +22,13 @@ check_date_format <- function(date){
 }
 
 
+# Random image downloader categories
+imageCategories <- c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
+          "fashion", "film", "food", "interior", "nature", "people", "renders",
+          "school", "sports", "travel", "unsplash", "wallpapers")
 
 
-##Next version to-do list 0.5
+##Next version to-do list 0.6
 
 
 ## Next version

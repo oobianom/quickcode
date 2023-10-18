@@ -4,7 +4,14 @@
 \alias{genRandImg}
 \title{Download random images from the web}
 \usage{
-genRandImg(fp, cat, n = 1, w.px = 500, h.px = 500, ext = "jpg")
+genRandImg(
+  fp,
+  cat = imageCategories,
+  n = 1,
+  w.px = 500,
+  h.px = 500,
+  ext = "jpg"
+)
 }
 \arguments{
 \item{fp}{storage directory}
@@ -30,10 +37,18 @@ Generate n number of high-definition images by category from the web
 The random images are downloaded from www.unsplash.com
 }
 
+\section{Category Choices}{
+
+Categories for 'cat' argument include
+"3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
+"fashion", "film", "food", "interior", "nature", "people", "renders",
+"school", "sports", "travel", "unsplash", "wallpapers"
+}
+
 \section{Use case}{
 
-This functionality is great for R developers trying to obtain one or more images for using in analysis or simply for building robust
-web applications.
+This functionality is great for developers trying to obtain one or more images for use in displays/analysis
+or simply to build robust web applications.
 }
 
 \examples{
@@ -44,7 +59,7 @@ genRandImg(fp = tempdir(),cat = "nature", n = 2)
 # download 4 random images with width = 600px and hight 100px
 genRandImg(
   fp = tempdir(),
-  cat = "art",
+  cat = "fashion",
   w.px = 600,
   h.px = 100)
 
