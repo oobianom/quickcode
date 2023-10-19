@@ -10,7 +10,7 @@
 
 ## Install
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=courier&weight=800&size=18&pause=1000&color=F71111&multiline=true&random=false&width=500&height=250&lines=Install+directly+from+CRAN+using+;install.packages(%22quickcode%22)+;OR+install+from+github+using+%7Bremotes%7D;remotes%3A%3Ainstall_github(%22oobianom%2Fquickcode%22);All+set!+Load+the+package+and+start+using...;library(quickcode)+or+quickcode%3A%3Aclean())](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=courier&weight=800&size=18&pause=1000&color=F71111&multiline=true&random=false&width=500&height=230&lines=Install+directly+from+CRAN+using+;install.packages(%22quickcode%22)+;OR+install+from+github+using+%7Bremotes%7D;remotes%3A%3Ainstall_github(%22oobianom%2Fquickcode%22);All+set!+Load+the+package+and+start+using...;library(quickcode)+or+quickcode%3A%3Aclean())](https://git.io/typing-svg)
 # 30+ great R functions to add to your scripts!
 
 ## Featured function
