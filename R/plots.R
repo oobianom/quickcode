@@ -13,5 +13,5 @@
 #' @export
 
 compHist <- function(x1, x2, main = "Histogram of rnorm Distributions With Means 0 & 2"){
-
+message("Function is still underdevelopment. Please do not use.")
 }
