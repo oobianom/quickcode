@@ -1,6 +1,6 @@
-#' Not an image
+#' File name is Not an image
 #'
-#' Check if entry is not an image
+#' Check if a file name entry is not an image
 #'
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is not an image
@@ -21,9 +21,9 @@ not.image <- function(x) !is.image(x)
 
 
 
-#' Is item an image
+#' Is file extension an image
 #'
-#' Check if entry is an image
+#' Check if a file name entry is an image
 #'
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is an image
@@ -45,3 +45,6 @@ not.image <- function(x) !is.image(x)
 is.image <- function(x){
   if(tools::file_ext(tolower(x)) %in% c('jpeg','jpg','jfif','png','gif','tiff','tif','bmp','svg','ico','psd','ai','eps','webp','heic','heif','nef','cr2','orf','dng','crw','sr2')) TRUE else FALSE
 }
+
+
+# Future goal of the is.image is to be able to read into files and determine if they are image files !! More development to be done
