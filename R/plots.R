@@ -12,12 +12,10 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, main = "Histogram of rnorm Distributions With Means 0 & 2"){
+compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), main = "Histogram of rnorm Distributions With Means 0 & 2"){
 message("Function is still underdevelopment. Please do not use.")
 
   set.seed(249)
-  x1 = rnorm(1000, mean = 0)
-  x2 = rnorm(1000, mean = 2)
 
   hist(x1,
        main = main,
