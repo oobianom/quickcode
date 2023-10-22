@@ -2,10 +2,8 @@
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
 
+<h1>quickcode: NOT functions and a compilation of some simple quick plus often used R functions</h1>
 </p>
-
-
-# quickcode: NOT functions and a compilation of some simple quick plus often used R functions {style="float:right"}
 
 ## Official website: https://quickcode.obi.obianom.com
 
