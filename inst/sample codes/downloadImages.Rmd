@@ -11,11 +11,11 @@ output: html_document
 
 # load quickcode library
 library(quickcode)
-clean() #clear the environment
+#clean() #clear the environment
 
 # let's load the r2resize to provide toolbars for the image resizing
 library(r2resize)
-add.resizer(line.color = "red", thumb.height = "3px", line.height = "10px", default.image.width = "30%")
+add.resizer(line.color = "brown", line.height = "3", default.image.width = "30%")
 
 ```
 
@@ -57,7 +57,7 @@ Display the images:
 `r paste0("![](",getdownloadedfiles[3],")")`
 `r paste0("![](",getdownloadedfiles[4],")")`
 `r paste0("![](",getdownloadedfiles[5],")")`
-`r paste0("![](",getdownloadedfiles[6],")")
+`r paste0("![](",getdownloadedfiles[6],")")`
 
 ## Quick links
 
