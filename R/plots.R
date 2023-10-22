@@ -12,12 +12,13 @@
 #' compHist(
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
-#'   title = "Histogram of rnorm Distributions With Means 0 & 2"
+#'   title = "Histogram of rnorm Distributions With Means 0 & 2",
+#'   color = c("lightslateblue", "salmon", "mediumvioletred")
 #' )
 #'
 #' @export
 
-compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), title = "Histogram of rnorm Distributions With Means 0 & 2") {
+compHist <- function(x1, x2, title, color = c("lightslateblue", "salmon", "mediumvioletred")) {
 
   message("Function is still underdevelopment. Please do not use.")
 
@@ -44,6 +45,6 @@ compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), tit
 
   legend("topright",
     legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-    fill = c("lightslateblue", "salmon", "mediumvioletred")
+    fill = color
   )
 }
