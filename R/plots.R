@@ -19,7 +19,7 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "salmon", "yellow")) {
+compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "salmon", "yellow"), xlab = "", ylab = "") {
 
   message("Function is still under development. Please do not use.")
 
@@ -31,16 +31,16 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "salmon
 
   hist(x1,
        main = title,
-       xlab = "",
-       ylab = "",
+       xlab = xlab,
+       ylab = ylab,
        col = rgb(0, 0, 1, alpha = 0.6),
        xlim = c(minx, maxx)
   )
 
   hist(x2,
        main = title,
-       xlab = "",
-       ylab = "",
+       xlab = xlab,
+       ylab = ylab,
        col = rgb(1, 0, 0, alpha = 0.6),
        add = TRUE
   )
