@@ -5,7 +5,9 @@
 </p>
 
 <p align="center">
+
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
+
 </>
 ## Official website: https://quickcode.obi.obianom.com
 
