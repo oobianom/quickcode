@@ -19,7 +19,7 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "salmon", "yellow"), xlab = "", ylab = "") {
+compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black", "yellow"), xlab = "", ylab = "") {
 
   message("Function is still under development. Please do not use.")
 
