@@ -29,10 +29,10 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
-  if(separate) par(mfrow=c(1,1))
+  if(separate) par(mfrow=c(1,2))
 
   hist(x1,
-       main = title,
+       main = ifelse(separate,title[1],title),
        xlab = xlab,
        ylab = ylab,
        col = rgb(0, 0, 1, alpha = 0.6),
@@ -40,7 +40,7 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
   )
 
   hist(x2,
-       main = title,
+       main = ifelse(separate,title[2],title),
        xlab = xlab,
        ylab = ylab,
        col = rgb(1, 0, 0, alpha = 0.6)
