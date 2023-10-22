@@ -10,37 +10,39 @@
 #' @examples
 #' # compare two normal distributions
 #' compHist(
-#' x1 = rnorm(1000, mean = 0),
-#' x2 = rnorm(1000, mean = 2),
-#' title = "Histogram of rnorm Distributions With Means 0 & 2")
+#'   x1 = rnorm(1000, mean = 0),
+#'   x2 = rnorm(1000, mean = 2),
+#'   title = "Histogram of rnorm Distributions With Means 0 & 2"
+#' )
 #'
 #' @export
 
-compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), title = "Histogram of rnorm Distributions With Means 0 & 2"){
-message("Function is still underdevelopment. Please do not use.")
-
-  set.seed(249)
+compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), title = "Histogram of rnorm Distributions With Means 0 & 2") {
+  message("Function is still underdevelopment. Please do not use.")
 
   meanx1 <- mean(x1)
   meanx2 <- mean(x2)
-  x1x2 <- c(x1,x2)
+  x1x2 <- c(x1, x2)
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   hist(x1,
-       main = title,
-       xlab = "",
-       ylab = "",
-       col = rgb(0, 0, 1, alpha = 0.6),
-       xlim = c(minx, maxx))
+    main = title,
+    xlab = "",
+    ylab = "",
+    col = rgb(0, 0, 1, alpha = 0.6),
+    xlim = c(minx, maxx)
+  )
 
-  hist(x2, xlab = "",
-       ylab = "",
-       col = rgb(1, 0, 0, alpha = 0.6),
-       add = TRUE)
+  hist(x2,
+    xlab = "",
+    ylab = "",
+    col = rgb(1, 0, 0, alpha = 0.6),
+    add = TRUE
+  )
 
   legend("topright",
-         legend = c(paste0("Mean: ",meanx1), paste0("Mean: ",meanx2), "Overlap"),
-         fill = c("lightslateblue", "salmon","mediumvioletred"))
-
+    legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
+    fill = c("lightslateblue", "salmon", "mediumvioletred")
+  )
 }
