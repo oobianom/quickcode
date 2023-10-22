@@ -1,10 +1,10 @@
 ---
-title: "NOT functions, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package"
+title: "NOT functions, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package"
 author: "Obinna (OBI) Obianom"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{NOT functions, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package}
+  %\VignetteIndexEntry{NOT functions, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -31,43 +31,53 @@ install.packages("quickcode") # when published
 ## List of many cool functions to use
 
 ```
-%nin%
-add.header
-add.snippet.clear
-add_key
-clean
-refresh
-cv.gm
-data_pop
-data_pop_filter
-data_push
-data_shuffle
-duplicate
-ai.duplicate
-g.mean
-header.rmd
-inc
-plus
-minus
-init
-insertInText
-libraryAll
-list_push
-not.data
-not.duplicated
-not.empty
-not.environment
-not.integer
-not.logical
-not.null
-not.numeric
-not.vector
-number
-sample_by_column
-sd.gm
-vector_pop
-vector_push
-vector_shuffle
+
+%nin%	Not in vector or array
+add.header	Snippet function to add header to a current opened file
+add.snippet.clear	Snippet R function to clear console and set directory
+add_key	Add index keys to a vector or data frame or list or matrix
+ai.duplicate	Prompt guided duplication if files
+archivedPkg	Listing of all CRAN archived R packages
+as.boolean	Convert boolean values between formats
+clean	Clear environment, clear console, set work directory and load files
+compHist	Compare histograms of two distributions
+data_pop	Remove last n rows or column or specified elements from a data frame like array_pop in PHP
+data_pop_filter	Remove elements from a data matching filter
+data_push	Add data to another data like array_push in PHP
+data_shuffle	Shuffle a data frame just like shuffle in PHP
+duplicate	Duplicate a file with global text replace
+genRandImg	Download random images from the web
+geo.cv	Calculate geometric coefficient of variation and round
+geo.mean	Calculate geometric mean and round
+geo.sd	Calculate geometric standard deviation and round
+header.rmd	Snippet function to add header to a current Rmd opened file
+inc	Increment vector by value
+init	Initialize new variables and objects
+insertInText	Shiny app function to insert string to current file in RStudio
+is.image	Is file extension an image
+libraryAll	Load specific R libraries and clear environment
+list_push	Add elements to a list like array_push in PHP
+minus	Decrease vector by value
+not.data	Not a data
+not.duplicated	Not duplicated elements
+not.empty	Not empty
+not.environment	Not an environment
+not.image	File name is Not an image
+not.integer	Not an integer
+not.logical	Not logical
+not.na	Not NA
+not.null	Not NULL
+not.numeric	Not numeric
+not.vector	Not a vector
+number	Generate a random number
+plus	Increment vector by value
+rcolorconst	R Color Constant
+refresh	Clear environment, clear console, set work directory and load files
+sample_by_column	Re-sample a dataset by column and return number of entry needed
+vector_pop	Remove last n elements or specified elements from a vector like array_pop in PHP
+vector_push	Add elements to a vector like array_push in PHP
+vector_shuffle	Shuffle a vector just like shuffle in PHP
+yesNoBool	Convert Yes/No to Binary or Logical
 
 ```
 
