@@ -23,6 +23,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
 
   message("Function is still under development. Please do not use.")
 
+  # compute means, min and max
   meanx1 <- round(mean(x1),1)
   meanx2 <- round(mean(x2),1)
   x1x2 <- c(x1, x2)
