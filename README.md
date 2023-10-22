@@ -8,7 +8,7 @@
 
 ## Install
 
-![](https://quickcode.obi.obianom.com/quickcode_load_type.svg)
+[![](https://quickcode.obi.obianom.com/quickcode_load_type.svg)](https://rpkg.net/package/quickcode)
 
 # 30+ great R functions to add to your scripts!
 
