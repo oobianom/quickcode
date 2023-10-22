@@ -29,13 +29,16 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
+  # close devices if open
   dev.off()
 
+  # check if plots should be separated
   if(separate) par(mfrow=c(1,2))
   if(separate & length(title) != 2)
     stop("Title must contain two titles if the plots are to be separated")
 
 
+  # make plots
   hist(x1,
        main = ifelse(separate,title[1],title),
        xlab = xlab,
@@ -52,6 +55,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
         add = ifelse(separate,FALSE,TRUE)
   )
 
+  # add legend if the plot is combined
   if(!separate) legend("topright",
          legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
          fill = color
