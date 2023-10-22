@@ -28,7 +28,7 @@ message("Function is still underdevelopment. Please do not use.")
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   hist(x1,
-       main = main,
+       main = title,
        xlab = "",
        ylab = "",
        col = rgb(0, 0, 1, alpha = 0.6),
