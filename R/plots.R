@@ -29,6 +29,8 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
+  if(separate) par(mfrow=c(1,1))
+
   hist(x1,
        main = title,
        xlab = xlab,
@@ -41,8 +43,7 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
        main = title,
        xlab = xlab,
        ylab = ylab,
-       col = rgb(1, 0, 0, alpha = 0.6),
-       add = TRUE
+       col = rgb(1, 0, 0, alpha = 0.6)
   )
 
   legend("topright",
@@ -50,5 +51,5 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
          fill = color
   )
 
-  if(separate) par(mfrow=c(1,1))
+
 }
