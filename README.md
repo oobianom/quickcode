@@ -4,11 +4,9 @@
 
 </p>
 
-<p align="center">
 
-# quickcode: NOT functions and a compilation of some simple quick plus often used R functions
+# quickcode: NOT functions and a compilation of some simple quick plus often used R functions {style="float:right"}
 
-</>
 ## Official website: https://quickcode.obi.obianom.com
 
 
