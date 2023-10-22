@@ -19,7 +19,7 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, color = c("green", "salmon", "yellow")) {
+compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "salmon", "yellow")) {
 
   message("Function is still under development. Please do not use.")
 
@@ -38,6 +38,7 @@ compHist <- function(x1, x2, title, color = c("green", "salmon", "yellow")) {
   )
 
   hist(x2,
+       main = title,
        xlab = "",
        ylab = "",
        col = rgb(1, 0, 0, alpha = 0.6),
@@ -48,4 +49,6 @@ compHist <- function(x1, x2, title, color = c("green", "salmon", "yellow")) {
          legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
          fill = color
   )
+
+  if(separate) par(mfrow=c(1,1))
 }
