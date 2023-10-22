@@ -1,6 +1,6 @@
 
 
-<img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350" >
+<img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350" align="center">
 
 
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
