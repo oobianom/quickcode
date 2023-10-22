@@ -4,7 +4,15 @@
 \alias{compHist}
 \title{Compare histograms of two distributions}
 \usage{
-compHist(x1, x2, title, color = c("green", "salmon", "yellow"))
+compHist(
+  x1,
+  x2,
+  title,
+  color = c("green", "black", "yellow"),
+  xlab = "",
+  ylab = "",
+  separate = FALSE
+)
 }
 \arguments{
 \item{x1}{numeric distribution 1}
@@ -23,11 +31,23 @@ Given two distributions, compare values from two histograms
 }
 \examples{
 # compare two normal distributions
+
+set.seed(123)
 compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = "Histogram of rnorm Distributions With Means 0 & 2",
   color = c("lightslateblue", "salmon", "mediumvioletred")
+)
+
+set.seed(123)
+# separate the plots for preview
+compHist(
+  x1 = rnorm(1000, mean = 0),
+  x2 = rnorm(1000, mean = 2),
+  title = c("Plot Means 0","Plot Means 2"),
+  color = c("lightslateblue", "salmon", "mediumvioletred"),
+  separate = TRUE
 )
 
 }
