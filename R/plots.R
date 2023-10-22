@@ -19,7 +19,7 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black", "yellow"), xlab = "", ylab = "") {
+compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab = "", ylab = "", separate = FALSE) {
 
   message("Function is still under development. Please do not use.")
 
@@ -29,7 +29,7 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
-  if(separate) par(mfrow=c(1,2))
+  if(separate) par(mfrow=c(1,2)) else par(mfrow=c(1,1))
 
   hist(x1,
        main = ifelse(separate,title[1],title),
@@ -46,7 +46,7 @@ compHist <- function(x1, x2, title, separate = FALSE, color = c("green", "black"
        col = rgb(1, 0, 0, alpha = 0.6)
   )
 
-  legend("topright",
+  if(!separate) legend("topright",
          legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
          fill = color
   )
