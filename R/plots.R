@@ -29,7 +29,12 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
-  if(separate) par(mfrow=c(1,2)) else par(mfrow=c(1,1))
+  dev.off()
+
+  if(separate) par(mfrow=c(1,2))
+  if(separate & length(title) != 2)
+    stop("Title must contain two titles if the plots are to be separated")
+
 
   hist(x1,
        main = ifelse(separate,title[1],title),
@@ -43,7 +48,8 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
        main = ifelse(separate,title[2],title),
        xlab = xlab,
        ylab = ylab,
-       col = rgb(1, 0, 0, alpha = 0.6)
+       col = rgb(1, 0, 0, alpha = 0.6),
+        add = ifelse(separate,FALSE,TRUE)
   )
 
   if(!separate) legend("topright",
