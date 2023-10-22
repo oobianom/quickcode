@@ -5,6 +5,7 @@
 #' @param x1 numeric distribution 1
 #' @param x2 numeric distribution 2
 #' @param title title of the hostogram plot
+#' @param color color vector for output
 #' @return return histogram comparison using basic histogram plot
 #'
 #' @examples
@@ -18,9 +19,9 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, color = c("lightslateblue", "salmon", "mediumvioletred")) {
+compHist <- function(x1, x2, title, color = c("green", "salmon", "yellow")) {
 
-  message("Function is still underdevelopment. Please do not use.")
+  message("Function is still under development. Please do not use.")
 
   meanx1 <- round(mean(x1),1)
   meanx2 <- round(mean(x2),1)
@@ -29,22 +30,22 @@ compHist <- function(x1, x2, title, color = c("lightslateblue", "salmon", "mediu
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   hist(x1,
-    main = title,
-    xlab = "",
-    ylab = "",
-    col = rgb(0, 0, 1, alpha = 0.6),
-    xlim = c(minx, maxx)
+       main = title,
+       xlab = "",
+       ylab = "",
+       col = rgb(0, 0, 1, alpha = 0.6),
+       xlim = c(minx, maxx)
   )
 
   hist(x2,
-    xlab = "",
-    ylab = "",
-    col = rgb(1, 0, 0, alpha = 0.6),
-    add = TRUE
+       xlab = "",
+       ylab = "",
+       col = rgb(1, 0, 0, alpha = 0.6),
+       add = TRUE
   )
 
   legend("topright",
-    legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-    fill = color
+         legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
+         fill = color
   )
 }
