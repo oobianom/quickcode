@@ -1,12 +1,12 @@
 
-<center>
-<img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350" align="center">
+<p align="center">
+<img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
 
 
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
 ## Official website: https://quickcode.obi.obianom.com
 
-</center>
+</p>
 
 
 ## Install
