@@ -2,7 +2,7 @@
 % Please edit documentation in R/not.image.R
 \name{not.image}
 \alias{not.image}
-\title{Not an image}
+\title{File name is Not an image}
 \usage{
 not.image(x)
 }
@@ -13,7 +13,7 @@ not.image(x)
 a boolean value to indicate if entry is not an image
 }
 \description{
-Check if entry is not an image
+Check if a file name entry is not an image
 }
 \examples{
 img.1 = "fjk.jpg"
