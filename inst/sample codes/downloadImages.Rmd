@@ -1,5 +1,5 @@
 ---
-title: "Download random HD images using the Quickcode R package"
+title: "Download random HD images from various unsplash.com categories in R using the Quickcode package"
 author: "Obi Obianom and Brice Richard"
 date: "2023-10-22"
 output: html_document
@@ -14,7 +14,7 @@ library(quickcode)
 
 # let's load the r2resize to provide toolbars for the image resizing
 library(r2resize)
-add.resizer(line.color = "yellow",line.height = "5px")
+add.resizer(line.color = "red", thumb.height = "3px", line.height = "10px", default.image.width = "30%")
 
 ```
 
@@ -26,9 +26,9 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r download school images}
 storlocation <- tempdir()
-genRandImg(fp = storlocation, cat = "school", )
+genRandImg(fp = storlocation, n = 3, cat = "school", ext = "png")
 
-getdownloadedfiles = list.files(path = storlocation, pattern = ".png")
+getdownloadedfiles = list.files(path = storlocation, pattern = ".png", full.names = TRUE)
 ```
 
 Display the images:
@@ -40,7 +40,7 @@ Display the images:
 
 ## Quick links
 
- - quickcode github:
- - quickcode CRAN: 
+ - quickcode github: https://github.com/oobianom/quickcode
+ - quickcode CRAN: https://cran.r-project.org/web/packages/quickcode/index.html
  - raw Rmd file for this HTML: 
 
