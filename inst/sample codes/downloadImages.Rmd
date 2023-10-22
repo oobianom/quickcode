@@ -11,6 +11,7 @@ output: html_document
 
 # load quickcode library
 library(quickcode)
+clean() #clear the environment
 
 # let's load the r2resize to provide toolbars for the image resizing
 library(r2resize)
@@ -20,9 +21,7 @@ add.resizer(line.color = "red", thumb.height = "3px", line.height = "10px", defa
 
 ## Download 3 random images from the school category and display
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+For this example, we will download 3 random png images from the web in the category of 'school' to a temp directory and then display it. The r2resize package provides the image resizer that lets us view the images nicely below.
 
 ```{r download school images}
 storlocation <- tempdir()
@@ -38,9 +37,31 @@ Display the images:
 `r paste0("![](",getdownloadedfiles[3],")")`
 
 
+
+## Download 6 random images from the animals category and display
+
+For this example, we will download 6 random jpg images from the web in the category of 'school' to a temp directory and then display it. 
+
+```{r download animals images}
+storlocation2 <- tempdir()
+genRandImg(fp = storlocation2, n = 6, cat = "animals", ext = "jpg")
+
+getdownloadedfiles = list.files(path = storlocation2, pattern = ".jpg", full.names = TRUE)
+
+```
+
+Display the images:
+
+`r paste0("![](",getdownloadedfiles[1],")")`
+`r paste0("![](",getdownloadedfiles[2],")")`
+`r paste0("![](",getdownloadedfiles[3],")")`
+`r paste0("![](",getdownloadedfiles[4],")")`
+`r paste0("![](",getdownloadedfiles[5],")")`
+`r paste0("![](",getdownloadedfiles[6],")")
+
 ## Quick links
 
  - quickcode github: https://github.com/oobianom/quickcode
  - quickcode CRAN: https://cran.r-project.org/web/packages/quickcode/index.html
- - raw Rmd file for this HTML: 
+ - raw Rmd file for this HTML: https://github.com/oobianom/quickcode/blob/main/inst/sample%20codes/downloadImages.Rmd
 
