@@ -1,8 +1,11 @@
 
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
-<h1 style="color:red">quickcode: NOT functions and a compilation of some simple quick plus often used R functions</h1>
+
 </p>
+<p style="text-align: center;color:blue">A piece of centered text</p>
+
+# quickcode: NOT functions and a compilation of some simple quick plus often used R functions
 
 ## Official website: https://quickcode.obi.obianom.com
 
