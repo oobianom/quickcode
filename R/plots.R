@@ -1,21 +1,31 @@
-#' Compare two histograms
+#' Compare two histograms of two distributions
 #'
-#' Compare values from two histograms
+#' Given two distributions, compare values from two histograms
 #'
 #' @param x1 histogram 1
 #' @param x2 histograme 2
-#' @return return histogram comparison
+#' @param title title of the hostogram plot
+#' @return return histogram comparison using basic histogram plot
 #'
 #' @examples
-#' # example code
-#'
+#' # compare two normal distributions
+#' compHist(
+#' x1 = rnorm(1000, mean = 0),
+#' x2 = rnorm(1000, mean = 2),
+#' title = "Histogram of rnorm Distributions With Means 0 & 2")
 #'
 #' @export
 
-compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), main = "Histogram of rnorm Distributions With Means 0 & 2"){
+compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), title = "Histogram of rnorm Distributions With Means 0 & 2"){
 message("Function is still underdevelopment. Please do not use.")
 
   set.seed(249)
+
+  meanx1 <- mean(x1)
+  meanx2 <- mean(x2)
+  x1x2 <- c(x1,x2)
+  minx <- min(x1x2) - 0.1 * min(x1x2)
+  maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   hist(x1,
        main = main,
@@ -30,7 +40,7 @@ message("Function is still underdevelopment. Please do not use.")
        add = TRUE)
 
   legend("topright",
-         legend = c("Mean: 0", "Mean: 2", "Overlap"),
+         legend = c(paste0("Mean: ",meanx1), paste0("Mean: ",meanx2), "Overlap"),
          fill = c("lightslateblue", "salmon","mediumvioletred"))
 
 }
