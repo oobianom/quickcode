@@ -2,20 +2,18 @@
 % Please edit documentation in R/plots.R
 \name{compHist}
 \alias{compHist}
-\title{Compare two histograms of two distributions}
+\title{Compare histograms of two distributions}
 \usage{
-compHist(
-  x1 = rnorm(1000, mean = 0),
-  x2 = rnorm(1000, mean = 2),
-  title = "Histogram of rnorm Distributions With Means 0 & 2"
-)
+compHist(x1, x2, title, color = c("green", "salmon", "yellow"))
 }
 \arguments{
-\item{x1}{histogram 1}
+\item{x1}{numeric distribution 1}
 
-\item{x2}{histograme 2}
+\item{x2}{numeric distribution 2}
 
 \item{title}{title of the hostogram plot}
+
+\item{color}{color vector for output}
 }
 \value{
 return histogram comparison using basic histogram plot
@@ -26,8 +24,10 @@ Given two distributions, compare values from two histograms
 \examples{
 # compare two normal distributions
 compHist(
-x1 = rnorm(1000, mean = 0),
-x2 = rnorm(1000, mean = 2),
-title = "Histogram of rnorm Distributions With Means 0 & 2")
+  x1 = rnorm(1000, mean = 0),
+  x2 = rnorm(1000, mean = 2),
+  title = "Histogram of rnorm Distributions With Means 0 & 2",
+  color = c("lightslateblue", "salmon", "mediumvioletred")
+)
 
 }
