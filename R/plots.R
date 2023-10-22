@@ -1,9 +1,9 @@
-#' Compare two histograms of two distributions
+#' Compare histograms of two distributions
 #'
 #' Given two distributions, compare values from two histograms
 #'
-#' @param x1 histogram 1
-#' @param x2 histograme 2
+#' @param x1 numeric distribution 1
+#' @param x2 numeric distribution 2
 #' @param title title of the hostogram plot
 #' @return return histogram comparison using basic histogram plot
 #'
@@ -18,10 +18,11 @@
 #' @export
 
 compHist <- function(x1 = rnorm(1000, mean = 0), x2 = rnorm(1000, mean = 2), title = "Histogram of rnorm Distributions With Means 0 & 2") {
+
   message("Function is still underdevelopment. Please do not use.")
 
-  meanx1 <- mean(x1)
-  meanx2 <- mean(x2)
+  meanx1 <- round(mean(x1),1)
+  meanx2 <- round(mean(x2),1)
   x1x2 <- c(x1, x2)
   minx <- min(x1x2) - 0.1 * min(x1x2)
   maxx <- max(x1x2) + 0.1 * max(x1x2)
