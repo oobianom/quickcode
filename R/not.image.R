@@ -1,6 +1,6 @@
-#' File name is Not an image
+#' File name extension(s) is Not an image
 #'
-#' Check if a file name entry is not an image
+#' Check if one or multiple file name entry is not an image
 #'
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is not an image
@@ -26,9 +26,9 @@ not.image <- function(x) !is.image(x)
 
 
 
-#' Is file extension an image
+#' Is file name extension(s) an image
 #'
-#' Check if a file name entry is an image
+#' Check if one or multiple file name entry is an image
 #'
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is an image
