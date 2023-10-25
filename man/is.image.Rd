@@ -2,7 +2,7 @@
 % Please edit documentation in R/not.image.R
 \name{is.image}
 \alias{is.image}
-\title{Is file extension an image}
+\title{Is file name extension(s) an image}
 \usage{
 is.image(x)
 }
@@ -13,7 +13,7 @@ is.image(x)
 a boolean value to indicate if entry is an image
 }
 \description{
-Check if a file name entry is an image
+Check if one or multiple file name entry is an image
 }
 \examples{
 img.1 = "fjk.jpg"
