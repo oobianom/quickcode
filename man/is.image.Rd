@@ -28,4 +28,10 @@ is.image(img.2)
 img.3 = "fjk.SVG"
 is.image(img.3)
 
+# a vector of image file names
+v = c("logo.png", "business process.pdf",
+"front_cover.jpg", "intro.docx",
+"financial_future.doc", "2022 buybacks.xlsx")
+is.image(v)
+
 }
