@@ -25,4 +25,9 @@ not.image(img.2)
 img.3 = "fjk.SVG"
 not.image(img.3)
 
+# a vector of image file names
+v = c("logo.png", "business process.pdf",
+"front_cover.jpg", "intro.docx",
+"financial_future.doc", "2022 buybacks.xlsx")
+not.image(v)
 }
