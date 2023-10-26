@@ -8,6 +8,6 @@
 #'
 #' @export
 #'
-seq2 <- function(start,increment,count = 10){
+seq3 <- function(start,increment,count = 10){
 seq(start,start*count,increment)
 }
