@@ -46,7 +46,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = c("Plot Means 0", "Plot Means 2"),
-  color = c("lightslateblue", "salmon", "mediumvioletred"),
+  color = c("lightslateblue", "blue", "green"),
   separate = TRUE
 )
 
