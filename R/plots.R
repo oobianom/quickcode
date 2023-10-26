@@ -42,7 +42,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   # close devices if open
-  if(not.null(.Device))dev.off()
+  if(.Device !="null device")dev.off()
 
   # check if plots should be separated
   if (separate) par(mfrow = c(1, 2))
