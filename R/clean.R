@@ -58,7 +58,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   erase() #clear console
   rm(list = setdiff(ls(envir = parent.frame(),all.names = TRUE),
                     c("setwd", "source", "load", "clearPkgs")), envir = parent.frame())
-  graphics.off() #graphics off
+  if(.Device !="null device") graphics.off() #graphics off
   closeAllConnections() #close any open connections
   gc() #garbage cleanup to free memory
 
