@@ -1,6 +1,7 @@
 # quickcode 0.6
 
 Planned
+
 - [ ] More 'Use case' section to major functions
 - [ ] Addins for accessibility
 - [ ] New functions
