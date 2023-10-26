@@ -10,7 +10,4 @@
 #'
 seq3 <- function(start,increment,count = 10) seq(start,start*count,increment)
 
-#' @inherit seq3
-#' @export
 
-seq3 -> multiple
