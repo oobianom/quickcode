@@ -1,7 +1,7 @@
 Package: quickcode
 Type: Package
 Title: A Compilation of Some Frequently Used R Functions
-Version: 0.5
+Version: 0.6
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")),
     person("Brice", "Richard", email = "wem3mew@msn.com", role = "aut")
