@@ -11,7 +11,7 @@
 #' @export
 
 rdecomPkg <- function(package){
-  unlist(lapply(package, function(.p) .p %in% allCRANpkg()))
+  unlist(lapply(package, function(.p) .p %nin% allCRANpkg()))
 }
 
 
