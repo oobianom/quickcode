@@ -17,8 +17,8 @@
 #' "3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
 #' "fashion", "film", "food", "interior", "nature", "people", "renders",
 #' "school", "sports", "travel", "unsplash", "wallpapers".\cr\cr
-#' Image categories can be captured in a separate vector as a cross-reference made available to the cat argument. For example: \cr
-#' imgcat= c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental", "fashion", "film", "food", "interior", "nature", "people", "renders", "school", "sports", "travel", "unsplash", "wallpapers")\cr
+#' Image categories can be captured in a separate vector as a cross-reference made available to the cat argument. \cr For example: \cr
+#' imgcat= c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental", "fashion", "film", "food", "interior", "nature", "people", "renders", "school", "sports", "travel", "unsplash", "wallpapers")\cr\cr
 #' genRandImg(fp, cat = imgcat[9], n = 5)
 #'
 #'
