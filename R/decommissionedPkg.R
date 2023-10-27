@@ -1,5 +1,3 @@
-
-
 #' Check whether an R package has been decommissioned in CRAN
 #'
 #' Check if an R package has been decommisioned in CRAN
