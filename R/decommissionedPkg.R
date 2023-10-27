@@ -1,10 +1,14 @@
 allCRANpkg <- data.frame(utils::available.packages())$Package
 
-#' Check whether an R package has been decomissioned in CRAN
+#' Check whether an R package has been decommissioned in CRAN
 #'
 #' Check if an R package has been decommisioned in CRAN
 #'
 #' @param package package name to query
+#'
+#' @examples
+#' # check if package is decomissioned
+#' rdecomPkg("cattonum")
 #'
 #' @export
 
