@@ -1,4 +1,4 @@
-allCRANpkg <- data.frame(utils::available.packages())$Package
+
 
 #' Check whether an R package has been decommissioned in CRAN
 #'
@@ -13,5 +13,12 @@ allCRANpkg <- data.frame(utils::available.packages())$Package
 #' @export
 
 rdecomPkg <- function(package){
-  unlist(lapply(package, function(.p) .p %in% allCRANpkg))
+  unlist(lapply(package, function(.p) .p %in% allCRANpkg()))
+}
+
+
+
+allCRANpkg <- function(){
+  utils::chooseCRANmirror(ind = 1)
+  data.frame(utils::available.packages())$Package
 }
