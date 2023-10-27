@@ -43,8 +43,9 @@ Categories for 'cat' argument include
 "3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
 "fashion", "film", "food", "interior", "nature", "people", "renders",
 "school", "sports", "travel", "unsplash", "wallpapers".\cr\cr
-You may store all categories into a single vector 'imageCategories' for a
-cross-reference made available to the cat argument
+Image categories can be captured in a separate vector as a cross-reference made available to the cat argument. For example: \cr
+imgcat= c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental", "fashion", "film", "food", "interior", "nature", "people", "renders", "school", "sports", "travel", "unsplash", "wallpapers")\cr
+genRandImg(fp, cat = imgcat[9], n = 5)
 }
 
 \section{Use case}{
