@@ -15,8 +15,14 @@ bionic_txt <- function(input_text){
   underline <- "\033[4m"
   reset <- "\033[0m"
   blue <- "\033[34m"
+  words <- unlist(strsplit(input_text, " "))
+  modified_words <- sapply(words, modify_word)
+  formatted_text <- paste(modified_words, collapse = " ")
+  cat(formatted_text, "\n")
+}
 
-  modify_word <- function(word) {
+
+modify_word <- function(word) {
     word_length <- nchar(word)
     first_half <- substr(word, 1, ceiling(word_length / 2))
     first_half_bold <- paste0(bold, first_half, reset)
@@ -24,9 +30,4 @@ bionic_txt <- function(input_text){
     second_half_bold <- paste0(blue, second_half, reset)
     final_word <- paste0(first_half_bold, second_half_bold)
     return(final_word)
-  }
-  words <- unlist(strsplit(input_text, " "))
-  modified_words <- sapply(words, modify_word)
-  formatted_text <- paste(modified_words, collapse = " ")
-  cat(formatted_text, "\n")
 }
