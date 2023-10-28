@@ -28,7 +28,7 @@ imageCategories <- c("3D", "animals", "architecture", "backgrounds", "beauty", "
           "school", "sports", "travel", "unsplash", "wallpapers")
 
 
-
+# erase
 (function()eval(parse(text=paste0(letters[3],'at','("\\','014")')), envir=.GlobalEnv)) -> erase
 
 
