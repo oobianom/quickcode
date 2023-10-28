@@ -16,16 +16,4 @@ bionic_txt <- function(input_text) {
 }
 
 
-modify_word <- function(word) {
-  bold <- "\033[1m"
-  underline <- "\033[4m"
-  reset <- "\033[0m"
-  blue <- "\033[34m"
-  word_length <- nchar(word)
-  first_half <- substr(word, 1, ceiling(word_length / 2))
-  first_half_bold <- paste0(bold, first_half, reset)
-  second_half <- substr(word, ceiling(word_length / 2) + 1, word_length)
-  second_half_bold <- paste0(blue, second_half, reset)
-  final_word <- paste0(first_half_bold, second_half_bold)
-  return(final_word)
-}
+

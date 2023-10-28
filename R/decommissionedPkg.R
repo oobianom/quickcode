@@ -16,7 +16,4 @@ rdecomPkg <- function(package){
 
 
 
-allCRANpkg <- function(){
-  utils::chooseCRANmirror(ind = 1)
-  data.frame(utils::available.packages())$Package
-}
+
