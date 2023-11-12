@@ -38,11 +38,11 @@ vector_z1
 vector_x1 # check value of unchanged
 vector_x1 * 0.56 # check value when x 0.56
 
-setOnce(vector_x1, val = 400) # set vector_x1
+setOnce(vector_x1, val = 4500) # set vector_x1
 vector_x1 # check value
 vector_x1 * 0.56 # check value when x 0.56
 
-setOnce(vector_x1, val = 400) # set vector_x1 AGAIN, should not change
+setOnce(vector_x1, val = 13) # set vector_x1 AGAIN, should not change
 vector_x1 # check value
 vector_x1 * 0.56 # check value when x 0.56
 
@@ -53,17 +53,17 @@ for(i in 1:20){
 setOnce(vector_y1,as.numeric(Sys.time()))
 # now let's see the difference between vector_y1
 # and the current time as it changes
-message(as.numeric(Sys.time()) - vector_y1)
+message("current vector_y1: ",vector_y1,"; subtraction res: ",as.numeric(Sys.time()) - vector_y1)
 }
 
-# task 3: In for lapply, change vector_y1 and use later
-vector_y1 # check value of unchanged
+# task 3: In for lapply, change vector_z1 and use later
+vector_z1 # check value of unchanged
 
 lapply(1:20, function(i){
-setOnce(vector_y1,as.numeric(Sys.time()))
-# now let's see the difference between vector_y1
+setOnce(vector_z1,as.numeric(Sys.time()))
+# now let's see the difference between vector_z1
 # and the current time as it changes
-message(as.numeric(Sys.time()) - vector_y1)
+message("current vector_z1: ",vector_z1,"; subtraction res: ",as.numeric(Sys.time()) - vector_z1)
 })
 
 
