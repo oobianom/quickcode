@@ -244,8 +244,7 @@ quickcode::libraryAll(
 
 ***
 
-```
-```
+![](https://quickcode.obi.obianom.com/bionic_txt.png)
 
 
 ### And many more useful functions...
