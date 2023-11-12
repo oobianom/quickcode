@@ -24,11 +24,11 @@
 #' @examples
 #' # check if cattonum package is decomissioned
 #' # the current package is expected to be decommissioned
-#' rdecomPkg("cattonum")
+#' rDecomPkg("cattonum")
 #'
 #' # check if dplyr is decommissioned
 #' # the current package is expected NOT to be decommissioned
-#' rdecomPkg("dplyr")
+#' rDecomPkg("dplyr")
 #'
 #'
 #' @export
