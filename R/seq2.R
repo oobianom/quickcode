@@ -32,6 +32,6 @@
 #'
 #' @export
 #'
-seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count)))
+seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-1)))
 
 
