@@ -2,15 +2,37 @@
 % Please edit documentation in R/seq2.R
 \name{seq3}
 \alias{seq3}
-\title{Variation of seq}
+\title{Increment a number till a length is reached}
 \usage{
 seq3(start, increment, count = 10)
 }
+\arguments{
+\item{start}{starting count}
+
+\item{increment}{number to increment by}
+
+\item{count}{length of output}
+}
+\value{
+numbers dictated by increment number
+}
 \description{
-increment a number till you get count
+Designed to increment a number by a specified value
+until a predefined count is reached.
+}
+\details{
+Users can easily leverage this function to automate the incrementation process,
+making it a convenient solution for repetitive tasks. It is just a surrogate to the
+seq() function, more useful depending on the goal of the user.
 }
 \examples{
-#ex1
-seq3(2,10,n=5)
+# task 1: starting with 2, increment by 10 until 5 numbers are obtained
+seq3(2,10,count=5)
+
+# task 2: starting with 4, increment by 4 until 4 numbers are archieved
+# this is similar (but simpler) to obtaining 4 multiples of 4
+# this may also be achieved with seq function like
+# seq(4,16,4) or seq(4,16,length.out=4)
+seq3(4,4,4)
 
 }
