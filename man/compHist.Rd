@@ -22,6 +22,12 @@ compHist(
 \item{title}{title of the hostogram plot}
 
 \item{color}{color vector for output}
+
+\item{xlab}{label of the x-axis}
+
+\item{ylab}{label of the y-axis}
+
+\item{separate}{LOGICAL. whether to separate the plots}
 }
 \value{
 return histogram comparison using basic histogram plot

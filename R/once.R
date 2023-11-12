@@ -72,6 +72,6 @@ setOnce <- function(., val = 1L) {
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   res <- val
   class(res) <- c('once',class(res))
-  assign(as.character(..), res, envir = .GlobalEnv)
+  assign(as.character(..), res, envir = parent.frame())
   }
 }

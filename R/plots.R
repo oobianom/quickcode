@@ -8,6 +8,9 @@
 #' @param x2 numeric distribution 2
 #' @param title title of the hostogram plot
 #' @param color color vector for output
+#' @param xlab label of the x-axis
+#' @param ylab label of the y-axis
+#' @param separate LOGICAL. whether to separate the plots
 #' @return return histogram comparison using basic histogram plot
 #'
 #' @details
