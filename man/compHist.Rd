@@ -27,7 +27,16 @@ compHist(
 return histogram comparison using basic histogram plot
 }
 \description{
-Given two distributions, compare values from two histograms
+For comparing values between two distributions.
+Simply input the two distributions, and it generates a clear and
+informative histogram that illustrates the differences between the data.
+}
+\details{
+Users have the option to view individual histograms for each distribution
+before initiating the comparison, allowing for a detailed examination of
+each dataset's characteristics. This feature ensures a comprehensive
+understanding of the data and enhances the user's ability to interpret
+the results of the distribution comparison provided by this function.
 }
 \examples{
 # compare two normal distributions
