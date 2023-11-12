@@ -56,7 +56,7 @@ monotone hazard\nratio
 from a right censored survival dataset."
 
 # transform text
-genbt <- bionic_txt(text)
+genbt <- bionic_txt(text1)
 
 # print bionic text as message or cat
 message(genbt)
