@@ -11,6 +11,6 @@ increment a number till you get count
 }
 \examples{
 #ex1
-seq2(2,10,n=5)
+seq3(2,10,n=5)
 
 }
