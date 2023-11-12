@@ -6,8 +6,7 @@
 #'
 #' @param package package name to query
 #'
-#' @return the decommissioned status of a particular package
-#' based on the available packages using the utils package
+#' @return the decommissioned status of a particular package based on the available packages using the utils package
 #'
 #' @details
 #' CRAN is a network of servers around the world that store R packages
