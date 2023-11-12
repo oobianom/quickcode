@@ -1,12 +1,21 @@
 #' Compare histograms of two distributions
 #'
-#' Given two distributions, compare values from two histograms
+#' For comparing values between two distributions.
+#' Simply input the two distributions, and it generates a clear and
+#' informative histogram that illustrates the differences between the data.
 #'
 #' @param x1 numeric distribution 1
 #' @param x2 numeric distribution 2
 #' @param title title of the hostogram plot
 #' @param color color vector for output
 #' @return return histogram comparison using basic histogram plot
+#'
+#' @details
+#' Users have the option to view individual histograms for each distribution
+#' before initiating the comparison, allowing for a detailed examination of
+#' each dataset's characteristics. This feature ensures a comprehensive
+#' understanding of the data and enhances the user's ability to interpret
+#' the results of the distribution comparison provided by this function.
 #'
 #' @examples
 #' # compare two normal distributions
@@ -32,7 +41,6 @@
 #' @export
 
 compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab = "", ylab = "", separate = FALSE) {
-  message("Function is still under development. Please do not use.")
 
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
