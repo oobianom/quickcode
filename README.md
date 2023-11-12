@@ -21,7 +21,7 @@
 
 ***
 
-![](https://quickcode.obi.obianom.com/bionic_txt.png)
+![](https://quickcode.obi.obianom.com/bionic_txt2.png)
 
 
 ***
