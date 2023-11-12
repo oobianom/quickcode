@@ -24,8 +24,14 @@
 #' # seq(4,16,4) or seq(4,16,length.out=4)
 #' seq3(4,4,4)
 #'
+#' # other examples
+#' seq3(1,6)
+#' seq3(1,6,7)
+#' seq3(133,7,6)
+#' seq3(1111,40,100)
+#'
 #' @export
 #'
-seq3 <- function(start,increment,count = 10) seq(start,start*count,increment)
+seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count)))
 
 

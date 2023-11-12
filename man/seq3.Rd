@@ -35,4 +35,10 @@ seq3(2,10,count=5)
 # seq(4,16,4) or seq(4,16,length.out=4)
 seq3(4,4,4)
 
+# other examples
+seq3(1,6)
+seq3(1,6,7)
+seq3(133,7,6)
+seq3(1111,40,100)
+
 }
