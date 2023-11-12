@@ -16,7 +16,7 @@ a boolean value to indicate if entry is not an image
 Check if one or multiple file name entry is not an image
 }
 \details{
-This current function tests if the extension of file name provided belongs to any of the image extensions listed below \cr
+This current function tests if the extension of the file name provided does NOT belongs to any of the image extensions listed below \cr
 AI - Adobe Illustrator \cr
 BMP - Bitmap Image \cr
 CDR - Corel Draw Picture \cr
@@ -64,5 +64,6 @@ not.image(img.3)
 v = c("logo.png", "business process.pdf",
 "front_cover.jpg", "intro.docx",
 "financial_future.doc", "2022 buybacks.xlsx")
-(output = not.image(v))
+
+not.image(v)
 }
