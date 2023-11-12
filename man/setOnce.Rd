@@ -59,12 +59,19 @@ message("current vector_y1: ",vector_y1,"; subtraction res: ",as.numeric(Sys.tim
 # task 3: In for lapply, change vector_z1 and use later
 vector_z1 # check value of unchanged
 
+invisible(
 lapply(1:20, function(i){
 setOnce(vector_z1,as.numeric(Sys.time()))
 # now let's see the difference between vector_z1
 # and the current time as it changes
 message("current vector_z1: ",vector_z1,"; subtraction res: ",as.numeric(Sys.time()) - vector_z1)
 })
+)
+
+# result of all the tasks
+vector_x1
+vector_y1
+vector_z1
 
 
 }
