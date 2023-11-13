@@ -59,7 +59,7 @@
 #'
 #' # when the file name has no extension
 #' # the function returns NA
-#' v2 <- c("img2.jpg","northbound.xlsx","landimg")
+#' v2 <- c("img2.jpg",NA,"northbound.xlsx","landimg")
 #' not.image(v2)
 #' @export
 
@@ -134,7 +134,7 @@ not.image <- function(x) !is.image(x)
 #'
 #' # when the file name has no extension
 #' # the function returns NA
-#' v2 <- c("img2.jpg","northbound.xlsx","landimg")
+#' v2 <- c("img2.jpg","northbound.xlsx","landimg",NA)
 #' is.image(v2)
 #'
 #' @export
