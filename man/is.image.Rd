@@ -51,23 +51,29 @@ WMF - Windows Metafile \cr
 WPG - WordPerfect Graphics
 }
 \examples{
-img.1 = "fjk.jpg"
+img.1 <- "fjk.jpg"
 is.image(img.1)
 
-img.0 = "fjk.bbVG"
+img.0 <- "fjk.bbVG"
 is.image(img.0)
 
-img.2 = "fjk.bmp"
+img.2 <- "fjk.bmp"
 is.image(img.2)
 
-img.3 = "fjk.SVG"
+img.3 <- "fjk.SVG"
 is.image(img.3)
 
 # a vector of file names
-v = c("logo.png", "business process.pdf",
+v <- c("logo.png", "business process.pdf",
 "front_cover.jpg", "intro.docx",
 "financial_future.doc", "2022 buybacks.xlsx")
 
 is.image(v)
+
+
+# when the file name has no extension
+# the function returns NA
+v2 <- c("img2.jpg","northbound.xlsx","landimg")
+is.image(v2)
 
 }
