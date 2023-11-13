@@ -37,7 +37,7 @@ add.header <- function() {
 
 #' Snippet function to custom section comment
 #'
-#' Shorthand to section comment
+#' Shorthand to add section comment to current file
 #'
 #' @return Inserts section comment content for file
 #'
