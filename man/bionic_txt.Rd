@@ -4,10 +4,12 @@
 \alias{bionic_txt}
 \title{Generate a bionic text}
 \usage{
-bionic_txt(text)
+bionic_txt(text, verbose = TRUE)
 }
 \arguments{
 \item{text}{input text}
+
+\item{verbose}{a logical indicating if to display result in console}
 }
 \value{
 bionic text
@@ -55,10 +57,13 @@ of a non-decreasing
 monotone hazard\nratio
 from a right censored survival dataset."
 
-# transform text
+# transform text, save to variable and print later
+# as a message
 genbt <- bionic_txt(text1)
-
-# print bionic text as message or cat
 message(genbt)
+
+# transform text and print directly in console
+bionic_txt(text1)
+
 
 }
