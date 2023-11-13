@@ -2,6 +2,7 @@
 
 export("%nin%")
 export(add.header)
+export(add.sect.comment)
 export(add.snippet.clear)
 export(add_key)
 export(ai.duplicate)

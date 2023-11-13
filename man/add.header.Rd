@@ -2,7 +2,7 @@
 % Please edit documentation in R/add.header.R
 \name{add.header}
 \alias{add.header}
-\title{Snippet function to add header to a current opened file}
+\title{Snippet function to add header comment to a current opened file}
 \usage{
 add.header()
 }
@@ -10,7 +10,7 @@ add.header()
 Inserts header content for file
 }
 \description{
-Shorthand to add header
+Shorthand to add header comment
 }
 \examples{
 if(interactive())
