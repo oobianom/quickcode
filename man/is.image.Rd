@@ -73,7 +73,7 @@ is.image(v)
 
 # when the file name has no extension
 # the function returns NA
-v2 <- c("img2.jpg","northbound.xlsx","landimg")
+v2 <- c("img2.jpg","northbound.xlsx","landimg",NA)
 is.image(v2)
 
 }
