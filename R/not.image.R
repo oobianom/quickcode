@@ -42,21 +42,25 @@
 #'
 #'
 #' @examples
-#' img.1 = "fjk.jpg"
+#' img.1 <- "fjk.jpg"
 #' not.image(img.1)
 #'
-#' img.2 = "fjk.bmp"
+#' img.2 <- "fjk.bmp"
 #' not.image(img.2)
 #'
-#' img.3 = "fjk.SVG"
+#' img.3 <- "fjk.SVG"
 #' not.image(img.3)
 #'
 #' # a vector of file names
-#' v = c("logo.png", "business process.pdf",
+#' v <- c("logo.png", "business process.pdf",
 #' "front_cover.jpg", "intro.docx",
 #' "financial_future.doc", "2022 buybacks.xlsx")
-#'
 #' not.image(v)
+#'
+#' # when the file name has no extension
+#' # the function returns NA
+#' v2 <- c("img2.jpg","northbound.xlsx","landimg")
+#' not.image(v2)
 #' @export
 
 not.image <- function(x) !is.image(x)
@@ -108,30 +112,38 @@ not.image <- function(x) !is.image(x)
 #'
 #'
 #' @examples
-#' img.1 = "fjk.jpg"
+#' img.1 <- "fjk.jpg"
 #' is.image(img.1)
 #'
-#' img.0 = "fjk.bbVG"
+#' img.0 <- "fjk.bbVG"
 #' is.image(img.0)
 #'
-#' img.2 = "fjk.bmp"
+#' img.2 <- "fjk.bmp"
 #' is.image(img.2)
 #'
-#' img.3 = "fjk.SVG"
+#' img.3 <- "fjk.SVG"
 #' is.image(img.3)
 #'
 #' # a vector of file names
-#' v = c("logo.png", "business process.pdf",
+#' v <- c("logo.png", "business process.pdf",
 #' "front_cover.jpg", "intro.docx",
 #' "financial_future.doc", "2022 buybacks.xlsx")
 #'
 #' is.image(v)
 #'
+#'
+#' # when the file name has no extension
+#' # the function returns NA
+#' v2 <- c("img2.jpg","northbound.xlsx","landimg")
+#' is.image(v2)
+#'
 #' @export
 
 is.image <- function(x){
   exts <- tools::file_ext(tolower(x))
-  unlist(lapply(exts, function(ext) ext %in% c("ai","bmp","cdr","cgm","cr2","crw","cur","dng","eps","fpx","gif","heic","heif","ico","img","jfif","jpeg","jpg","mac","nef","orf","pcd","pcx","png","psd","sr2","svg","tif","tiff","webp","wmf","wpg")  ))
+  res <- unlist(lapply(exts, function(ext) ext %in% imageext  ))
+  res[which(!nchar(exts))] = NA
+  res
 }
 
 
