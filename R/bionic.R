@@ -8,7 +8,6 @@
 #' bionic format.
 #'
 #' @param text input text
-#' @param verbose	a logical indicating if to display result in console
 #'
 #' @details
 #' A bionic text refers to a transformed version
@@ -48,23 +47,20 @@
 #' monotone hazard\nratio
 #' from a right censored survival dataset."
 #'
-#' # transform text, save to variable and print later
-#' # as a message
+#' # transform text
 #' genbt <- bionic_txt(text1)
+#'
+#' # print bionic text as message or cat
 #' message(genbt)
-#'
-#' # transform text and print directly in console
-#' bionic_txt(text1)
-#'
+#' cat(genbt)
 #'
 #' @export
 
-bionic_txt <- function(text, verbose = TRUE) {
+bionic_txt <- function(text) {
   words <- unlist(strsplit(text, " "))
   modified_words <- sapply(words, modify_word)
   formatted_text <- paste(modified_words, collapse = " ")
-  if(verbose) cat(formatted_text, "\n")
-  else paste0(formatted_text, "\n")
+  paste0(formatted_text, "\n")
 }
 
 
