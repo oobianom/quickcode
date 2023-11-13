@@ -33,7 +33,8 @@
 #' thereby offering a more enriched and personalized reading
 #' experience.
 #'
-#' @references This idea stems from a blog article published at https://www.r-bloggers.com/2023/10/little-useless-useful-r-functions-function-for-faster-reading-with-bionic-reading/
+#' @references This idea stems from a blog article published at
+#' https://www.r-bloggers.com/2023/10/little-useless-useful-r-functions-function-for-faster-reading-with-bionic-reading/
 #' and the original source may be found at https://bionic-reading.com/
 #'
 #'
