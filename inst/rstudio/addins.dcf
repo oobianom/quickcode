@@ -1,11 +1,16 @@
-Name: Add File Header 🌟(R)
+Name: Add Header Comment 🌟(R)
 Description: Add a header description to opened R file
 Binding: add.header
 Interactive: true
 
-Name: Add File Header 🌟(Rmd)
+Name: Add Header Comment 🌟(Rmd)
 Description: Add a header description to opened Rmd file
 Binding: header.rmd
+Interactive: true
+
+Name: Add section Comment ≛
+Description: Add a section comment
+Binding: add.sect.comment
 Interactive: true
 
 Name: Add Refresh Code ♻
