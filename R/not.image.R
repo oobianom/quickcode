@@ -143,6 +143,7 @@ is.image <- function(x){
   exts <- tools::file_ext(tolower(x))
   res <- unlist(lapply(exts, function(ext) ext %in% imageext  ))
   res[which(!nchar(exts))] = NA
+  res[which(is.na(exts))] = NA
   res
 }
 
