@@ -4,12 +4,10 @@
 \alias{bionic_txt}
 \title{Generate a bionic text}
 \usage{
-bionic_txt(text, verbose = TRUE)
+bionic_txt(text)
 }
 \arguments{
 \item{text}{input text}
-
-\item{verbose}{a logical indicating if to display result in console}
 }
 \value{
 bionic text
@@ -57,13 +55,15 @@ of a non-decreasing
 monotone hazard\nratio
 from a right censored survival dataset."
 
-# transform text, save to variable and print later
-# as a message
+# transform text
 genbt <- bionic_txt(text1)
+
+# print bionic text as message or cat
 message(genbt)
+cat(genbt)
 
-# transform text and print directly in console
-bionic_txt(text1)
-
-
+}
+\references{
+This idea stems from a blog article published at https://www.r-bloggers.com/2023/10/little-useless-useful-r-functions-function-for-faster-reading-with-bionic-reading/
+and the original source may be found at https://bionic-reading.com/
 }
