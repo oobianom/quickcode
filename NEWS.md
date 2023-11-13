@@ -3,9 +3,8 @@
 Planned
 
 - [ ] More 'Use case' section to major functions
-- [ ] Addins for accessibility
-- [ ] New functions
-  - [ ] ...
+- [x] More addins for functions to add header and section comments
+- [x] New functions and revisions to old functions
 
 # quickcode 0.5
 
