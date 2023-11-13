@@ -1,6 +1,6 @@
-#' Snippet function to add header to a current opened file
+#' Snippet function to add header comment to a current opened file
 #'
-#' Shorthand to add header
+#' Shorthand to add header comment
 #'
 #' @return Inserts header content for file
 #'
@@ -29,6 +29,28 @@ add.header <- function() {
 #
 #  R Version: ", version$version.string, "
 #
+#############################################################################
+
+  "))
+}
+
+
+#' Snippet function to custom section comment
+#'
+#' Shorthand to section comment
+#'
+#' @return Inserts section comment content for file
+#'
+#' @examples
+#' if(interactive())
+#' add.sect.comment()
+#' @export
+#'
+
+add.sect.comment <- function() {
+  insertInText(paste0("
+#############################################################################
+###  SECTION:
 #############################################################################
 
   "))
