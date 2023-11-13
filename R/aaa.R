@@ -55,3 +55,10 @@ modify_word <- function(word) {
   final_word <- paste0(first_half_bold, second_half_bold)
   return(final_word)
 }
+
+
+#image file type names
+imageext <- c("ai","bmp","cdr","cgm","cr2","crw","cur","dng","eps","fpx",
+              "gif","heic","heif","ico","img","jfif","jpeg","jpg","mac",
+              "nef","orf","pcd","pcx","png","psd","sr2","svg","tif","tiff",
+              "webp","wmf","wpg")
