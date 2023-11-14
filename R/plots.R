@@ -67,7 +67,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
     main = ifelse(separate, title[1], title),
     xlab = xlab,
     ylab = ylab,
-    col = color,#grDevices::rgb(0, 0, 1, alpha = 0.6),
+    col = color[1],#grDevices::rgb(0, 0, 1, alpha = 0.6),
     xlim = c(minx, maxx)
   )
 
@@ -75,7 +75,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
     main = ifelse(separate, title[2], title),
     xlab = xlab,
     ylab = ylab,
-    col = color,#grDevices::rgb(1, 0, 0, alpha = 0.6),
+    col = color[2],#grDevices::rgb(1, 0, 0, alpha = 0.6),
     xlim = c(minx, maxx),
     add = ifelse(separate, FALSE, TRUE)
   )
