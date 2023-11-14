@@ -63,26 +63,26 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 
 
   # make plots
-  color1 <- as.vector(grDevices::col2rgb(color[1])/255)
+  cl1 <- grDevices::col2rgb(color[1])/255
   graphics::hist(x1,
     main = ifelse(separate, title[1], title),
     xlab = xlab,
     ylab = ylab,
-    col = grDevices::rgb(color1[1],color1[2],color1[3],alpha = 0.6),
+    col = grDevices::rgb(cl1[1,1],cl1[2,1],cl1[3,1],alpha = 0.6),
     xlim = c(minx, maxx)
   )
 
-  color2 <- as.vector(grDevices::col2rgb(color[2])/255)
+  cl2 <- grDevices::col2rgb(color[2])/255
   graphics::hist(x2,
     main = ifelse(separate, title[2], title),
     xlab = xlab,
     ylab = ylab,
-    col = grDevices::rgb(color2[1],color2[2],color2[3],alpha = 0.6),
+    col = grDevices::rgb(cl2[1,1],cl2[2,1],cl2[3,1],alpha = 0.6),
     xlim = c(minx, maxx),
     add = ifelse(separate, FALSE, TRUE)
   )
 
-  d1 <-(colorspace::mixcolor(0.6,colorspace::sRGB(color1[1],color1[2],color1[3]),colorspace::sRGB(color2[1],color2[2],color2[3])))
+  d1 <-(colorspace::mixcolor(0.6,colorspace::sRGB(cl1[1],cl1[2],cl1[3]),colorspace::sRGB(cl2[1],cl2[2],cl2[3])))
   d1 <- as.numeric(d1@coords)
 
   # add legend if the plot is combined
