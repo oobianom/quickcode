@@ -8,7 +8,7 @@ compHist(
   x1,
   x2,
   title,
-  color = c("green", "black", "yellow"),
+  color = c("green", "black"),
   xlab = "",
   ylab = "",
   separate = FALSE
@@ -21,7 +21,7 @@ compHist(
 
 \item{title}{title of the hostogram plot}
 
-\item{color}{color vector for output}
+\item{color}{color vector of 2 for output}
 
 \item{xlab}{label of the x-axis}
 
@@ -52,7 +52,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = "Histogram of rnorm Distributions With Means 0 & 2",
-  color = c("lightslateblue", "salmon", "mediumvioletred")
+  color = c("lightslateblue", "salmon")
 )
 
 set.seed(123)
@@ -61,7 +61,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = c("Plot Means 0", "Plot Means 2"),
-  color = c("lightslateblue", "blue", "green"),
+  color = c("lightslateblue", "blue"),
   separate = TRUE
 )
 
