@@ -82,11 +82,14 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
     add = ifelse(separate, FALSE, TRUE)
   )
 
+  d1 <-(colorspace::mixcolor(0.6,colorspace::sRGB(color1[1],color1[2],color1[3]),colorspace::sRGB(color2[1],color2[2],color2[3])))
+  d1 <- as.numeric(d1@coords)
+
   # add legend if the plot is combined
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = color
+      fill = c(color,grDevices::rgb(d1[1],d1[2],d1[3],alpha = 1))
     )
   }
 }
