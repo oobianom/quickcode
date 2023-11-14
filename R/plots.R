@@ -7,7 +7,7 @@
 #' @param x1 numeric distribution 1
 #' @param x2 numeric distribution 2
 #' @param title title of the hostogram plot
-#' @param color color vector for output
+#' @param color color vector of 2 for output
 #' @param xlab label of the x-axis
 #' @param ylab label of the y-axis
 #' @param separate LOGICAL. whether to separate the plots
@@ -28,7 +28,7 @@
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
 #'   title = "Histogram of rnorm Distributions With Means 0 & 2",
-#'   color = c("lightslateblue", "salmon", "mediumvioletred")
+#'   color = c("lightslateblue", "salmon")
 #' )
 #'
 #' set.seed(123)
@@ -37,13 +37,13 @@
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
 #'   title = c("Plot Means 0", "Plot Means 2"),
-#'   color = c("lightslateblue", "blue", "green"),
+#'   color = c("lightslateblue", "blue"),
 #'   separate = TRUE
 #' )
 #'
 #' @export
 
-compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab = "", ylab = "", separate = FALSE) {
+compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab = "", separate = FALSE) {
 
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
@@ -63,7 +63,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
 
 
   # make plots
-  color1 <- as.vector(grDevices::col2rgb(color[1],alpha = 0.6)/255)
+  color1 <- as.vector(grDevices::col2rgb(color[1])/255)
   graphics::hist(x1,
     main = ifelse(separate, title[1], title),
     xlab = xlab,
@@ -72,7 +72,7 @@ compHist <- function(x1, x2, title, color = c("green", "black", "yellow"), xlab 
     xlim = c(minx, maxx)
   )
 
-  color2 <- as.vector(grDevices::col2rgb(color[2],alpha = 0.6)/255)
+  color2 <- as.vector(grDevices::col2rgb(color[2])/255)
   graphics::hist(x2,
     main = ifelse(separate, title[2], title),
     xlab = xlab,
