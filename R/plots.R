@@ -1,15 +1,16 @@
 #' Compare histograms of two distributions
 #'
-#' For comparing values between two distributions.
+#' For comparing histograms of two data distributions.
 #' Simply input the two distributions, and it generates a clear and
 #' informative histogram that illustrates the differences between the data.
 #'
-#' @param x1 numeric distribution 1
-#' @param x2 numeric distribution 2
-#' @param title title of the hostogram plot
-#' @param color color vector of 2 for output
-#' @param xlab label of the x-axis
-#' @param ylab label of the y-axis
+#' @param x1 NUMERIC. the first distribution
+#' @param x2 NUMERIC. the second distribution
+#' @param title CHARACTER. title of the histogram plot
+#' @param col1 CHARACTER. color fill for first distribution
+#' @param col2 CHARACTER. color fill for second distribution
+#' @param xlab CHARACTER. label of the x-axis
+#' @param ylab CHARACTER. label of the y-axis
 #' @param separate LOGICAL. whether to separate the plots
 #' @return return histogram comparison using basic histogram plot
 #'
@@ -28,7 +29,7 @@
 #'   x1 = rnorm(1000, mean = 3),
 #'   x2 = rnorm(1000, mean = 10),
 #'   title = "Histogram of Distributions With Means 3 & 10",
-#'   color = c("yellow", "violet")
+#'   col1 = "yellow", col2 = "violet"
 #' )
 #'
 #'
@@ -39,7 +40,7 @@
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
 #'   title = "Histogram of rnorm Distributions With Means 0 & 2",
-#'   color = c("lightslateblue", "salmon")
+#'   col1 = "lightslateblue", col2 = "salmon"
 #' )
 #'
 #' set.seed(123)
@@ -48,13 +49,13 @@
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
 #'   title = c("Plot Means 0", "Plot Means 2"),
-#'   color = c("lightslateblue", "blue"),
+#'   col1 = "green", col2 = "black",
 #'   separate = TRUE
 #' )
 #'
 #' @export
 
-compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab = "", separate = FALSE) {
+compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", ylab = "", separate = FALSE) {
 
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
@@ -74,7 +75,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 
 
   # make plots
-  cl1 <- grDevices::col2rgb(color[1])/255
+  cl1 <- grDevices::col2rgb(col1)/255
   cl1b <- grDevices::rgb(cl1[1,1],cl1[2,1],cl1[3,1],alpha = 0.6)
   graphics::hist(x1,
     main = ifelse(separate, title[1], title),
@@ -84,7 +85,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
     xlim = c(minx, maxx)
   )
 
-  cl2 <- grDevices::col2rgb(color[2])/255
+  cl2 <- grDevices::col2rgb(col2)/255
   cl2b <- grDevices::rgb(cl2[1,1],cl2[2,1],cl2[3,1],alpha = 0.6)
   graphics::hist(x2,
     main = ifelse(separate, title[2], title),
@@ -99,7 +100,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(cl1b,cl2b,mix.color(color,2,1))
+      fill = c(cl1b,cl2b,mix.color(c(col2,col2),2,1))
     )
   }
 }
@@ -164,6 +165,7 @@ mix.color <- function(color, type = 2, alpha = 1) {
   )
 }
 
+#' @export
 mix.cols.btw <- function(color, max = 20, alpha = 1, preview.color = F) {
   repeat{
     color <- unlist(lapply(split(color, ceiling(seq_along(color) / 2)), function(ol) {

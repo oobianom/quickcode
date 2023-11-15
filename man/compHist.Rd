@@ -8,24 +8,27 @@ compHist(
   x1,
   x2,
   title,
-  color = c("green", "black"),
+  col1 = "green",
+  col2 = "black",
   xlab = "",
   ylab = "",
   separate = FALSE
 )
 }
 \arguments{
-\item{x1}{numeric distribution 1}
+\item{x1}{NUMERIC. the first distribution}
 
-\item{x2}{numeric distribution 2}
+\item{x2}{NUMERIC. the second distribution}
 
-\item{title}{title of the hostogram plot}
+\item{title}{CHARACTER. title of the histogram plot}
 
-\item{color}{color vector of 2 for output}
+\item{col1}{CHARACTER. color fill for first distribution}
 
-\item{xlab}{label of the x-axis}
+\item{col2}{CHARACTER. color fill for second distribution}
 
-\item{ylab}{label of the y-axis}
+\item{xlab}{CHARACTER. label of the x-axis}
+
+\item{ylab}{CHARACTER. label of the y-axis}
 
 \item{separate}{LOGICAL. whether to separate the plots}
 }
@@ -33,7 +36,7 @@ compHist(
 return histogram comparison using basic histogram plot
 }
 \description{
-For comparing values between two distributions.
+For comparing histograms of two data distributions.
 Simply input the two distributions, and it generates a clear and
 informative histogram that illustrates the differences between the data.
 }
@@ -51,8 +54,8 @@ set.seed(123)
 compHist(
   x1 = rnorm(1000, mean = 3),
   x2 = rnorm(1000, mean = 10),
-  title = "Histogram of rnorm Distributions With Means 0 & 2",
-  color = c("yellow", "violet")
+  title = "Histogram of Distributions With Means 3 & 10",
+  col1 = "yellow", col2 = "violet"
 )
 
 
@@ -63,7 +66,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = "Histogram of rnorm Distributions With Means 0 & 2",
-  color = c("lightslateblue", "salmon")
+  col1 = "lightslateblue", col2 = "salmon"
 )
 
 set.seed(123)
@@ -72,7 +75,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = c("Plot Means 0", "Plot Means 2"),
-  color = c("lightslateblue", "blue"),
+  col1 = "green", col2 = "black",
   separate = TRUE
 )
 
