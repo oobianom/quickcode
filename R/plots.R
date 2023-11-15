@@ -177,7 +177,9 @@ mix.color <- function(color, type = 2, alpha = 1) {
 #' mix.cols.btw(c("red","brown"))
 #'
 #' # also preview after mixing
-#' mix.cols.btw(c("red","brown"),alpha = 0.2, preview = T)
+#' mix.cols.btw(c("red","green"),alpha = 0.2, preview = T)
+#'
+#' mix.cols.btw(c("red","purple","yellow","gray"),alpha = 0.2, preview = T)
 #'
 #'
 #'
