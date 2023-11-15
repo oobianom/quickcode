@@ -64,20 +64,22 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 
   # make plots
   cl1 <- grDevices::col2rgb(color[1])/255
+  cl1b <- grDevices::rgb(cl1[1,1],cl1[2,1],cl1[3,1],alpha = 0.6)
   graphics::hist(x1,
     main = ifelse(separate, title[1], title),
     xlab = xlab,
     ylab = ylab,
-    col = grDevices::rgb(cl1[1,1],cl1[2,1],cl1[3,1],alpha = 0.6),
+    col = cl1b,
     xlim = c(minx, maxx)
   )
 
   cl2 <- grDevices::col2rgb(color[2])/255
+  cl2b <- grDevices::rgb(cl2[1,1],cl2[2,1],cl2[3,1],alpha = 0.6)
   graphics::hist(x2,
     main = ifelse(separate, title[2], title),
     xlab = xlab,
     ylab = ylab,
-    col = grDevices::rgb(cl2[1,1],cl2[2,1],cl2[3,1],alpha = 0.6),
+    col = cl2b,
     xlim = c(minx, maxx),
     add = ifelse(separate, FALSE, TRUE)
   )
@@ -89,7 +91,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(color,grDevices::rgb(d1[1],d1[2],d1[3],alpha = 1))
+      fill = c(cl1b,cl2b,grDevices::rgb(d1[1],d1[2],d1[3],alpha = 0.6))
     )
   }
 }
