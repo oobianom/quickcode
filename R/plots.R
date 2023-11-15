@@ -174,7 +174,7 @@ mix.color <- function(color, type = 2, alpha = 1) {
 #' @param preview LOGICAL. preview all color generated
 #'
 #' @export
-mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
+mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = T) {
   repeat{
     colors <- unlist(lapply(split(colors, ceiling(seq_along(colors) / 2)), function(ol) {
       if (length(ol) > 1) {
@@ -186,8 +186,13 @@ mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
     }))
     if (length(colors) >= max) break
   }
-  if(preview) Polychrome::swatch(as.character(colors), main = "Preview of color mix")
-  as.character(colors)
+
+  colors <- as.character(colors)
+
+  if(preview) Polychrome::swatch(stats::setNames(as.numeric(names(colors)), colors), main = "Preview of color mix")
+
+  #return colors
+  colors
 }
 
 
