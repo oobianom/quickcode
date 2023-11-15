@@ -95,10 +95,6 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
     add = ifelse(separate, FALSE, TRUE)
   )
 
-  d1 <-(colorspace::mixcolor(0.6,colorspace::sRGB(cl1[1],cl1[2],cl1[3]),colorspace::sRGB(cl2[1],cl2[2],cl2[3])))
-  d1 <- as.numeric(d1@coords)
-
-
   # add legend if the plot is combined
   if (!separate) {
     graphics::legend("topright",
@@ -109,8 +105,54 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 }
 
 
-mix.colors <- function(col,type = 1, alpha = 1) {
-  vals <- apply(grDevices::col2rgb(col, alpha = alpha), 1, mean)
+#' Mix or Blend two or more colors
+#'
+#' Combine colors to generate a new color
+#'
+#' @param color color vector e.g see example
+#' @param type return type of the output
+#' @param alpha alpha or opacity of the resulting color
+#' @return hex for the combined color
+#' @examples
+#' # color vector
+#' colvec <- c("red","blue","violet","green")
+#'
+#' # just one color
+#' mix.colors(colvec[1],type = 1, alpha = 1)
+#'
+#' # add two colors
+#' mix.colors(colvec[1:2],type = 1, alpha = 1)
+#'
+#' # add three colors
+#' mix.colors(colvec[1:3],type = 1, alpha = 1)
+#'
+#'
+#' # return type = 2
+#'
+#' # just one color
+#' mix.colors(colvec[1],type = 2, alpha = 1)
+#'
+#' # add two colors
+#' mix.colors(colvec[1:2],type = 2, alpha = 1)
+#'
+#' # add three colors
+#' mix.colors(colvec[1:3],type = 2, alpha = 1)
+#'
+#'
+#' # opacity or alpha  0.5
+#'
+#' # just one color
+#' mix.colors(colvec[1],type = 1, alpha = 0.5)
+#'
+#' # add two colors
+#' mix.colors(colvec[1:2],type = 1, alpha = 0.5)
+#'
+#' # add three colors
+#' mix.colors(colvec[1:3],type = 1, alpha = 0.5)
+#'
+#' @export
+mix.colors <- function(color,type = 1, alpha = 1) {
+  vals <- apply(grDevices::col2rgb(color, alpha = alpha), 1, mean)
   if(type == 1) grDevices::rgb(vals[1], vals[2], vals[3], vals[4], maxColorValue=255)
   if(type == 2) grDevices::rgb(vals[1]/255, vals[2]/255, vals[3]/255, alpha = alpha)
 }
