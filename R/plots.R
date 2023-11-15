@@ -99,7 +99,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(cl1b,cl2b,mix.colors(color,2,1))
+      fill = c(cl1b,cl2b,mix.color(color,2,1))
     )
   }
 }
@@ -118,48 +118,65 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 #' colvec <- c("red","blue","violet","green","#ff0066")
 #'
 #' # just one color
-#' mix.colors(colvec[1],type = 1, alpha = 1)
+#' mix.color(colvec[1],type = 1, alpha = 1)
 #'
 #' # add two colors
-#' mix.colors(colvec[1:2],type = 1, alpha = 1)
+#' mix.color(colvec[1:2],type = 1, alpha = 1)
 #'
 #' # add three colors
-#' mix.colors(colvec[1:3],type = 1, alpha = 1)
+#' mix.color(colvec[1:3],type = 1, alpha = 1)
 #'
 #'
 #' # return type = 2
 #'
 #' # just one color
-#' mix.colors(colvec[1],type = 2, alpha = 1)
+#' mix.color(colvec[1],type = 2, alpha = 1)
 #'
 #' # add two colors
-#' mix.colors(colvec[1:2],type = 2, alpha = 1)
+#' mix.color(colvec[1:2],type = 2, alpha = 1)
 #'
 #' # add three colors
-#' mix.colors(colvec[1:3],type = 2, alpha = 1)
+#' mix.color(colvec[1:3],type = 2, alpha = 1)
 #'
 #'
 #' # opacity or alpha  0.5
 #'
 #' # just one color
-#' mix.colors(colvec[1],type = 1, alpha = 0.5)
+#' mix.color(colvec[1],type = 1, alpha = 0.5)
 #'
 #' # add two colors
-#' mix.colors(colvec[1:2],type = 1, alpha = 0.5)
+#' mix.color(colvec[1:2],type = 1, alpha = 0.5)
 #'
 #' # add three colors
-#' mix.colors(colvec[1:3],type = 1, alpha = 0.5)
+#' mix.color(colvec[1:3],type = 1, alpha = 0.5)
 #'
 #' # add all colors
-#' mix.colors(colvec,type = 1, alpha = 0.5)
+#' mix.color(colvec,type = 1, alpha = 0.5)
 #'
 #' @export
-mix.colors <- function(color,type = 2, alpha = 1) {
-  stopifnot(alpha<=1,alpha>=0,type<=3,type>=1)
+mix.color <- function(color, type = 2, alpha = 1) {
+  stopifnot(alpha <= 1, alpha >= 0, type <= 3, type >= 1)
   vals <- apply(grDevices::col2rgb(color), 1, mean)
-  switch (type,
-    "1" = grDevices::rgb(vals[1], vals[2], vals[3], alpha*255, maxColorValue=255),
-    "2" = grDevices::rgb(vals[1]/255, vals[2]/255, vals[3]/255, alpha = alpha),
+  switch(type,
+    "1" = grDevices::rgb(vals[1], vals[2], vals[3], alpha * 255, maxColorValue = 255),
+    "2" = grDevices::rgb(vals[1] / 255, vals[2] / 255, vals[3] / 255, alpha = alpha),
     "3" = vals
   )
 }
+
+mix.cols.btw <- function(color, max = 20, alpha = 1, preview.color = F) {
+  repeat{
+    color <- unlist(lapply(split(color, ceiling(seq_along(color) / 2)), function(ol) {
+      if (length(ol) > 1) {
+        nwcol <- mix.color(ol, alpha = alpha)
+        append(ol, nwcol, 1)
+      } else {
+        ol
+      }
+    }))
+    if (length(color) >= max) break
+  }
+  as.character(color)
+}
+
+
