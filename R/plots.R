@@ -165,10 +165,18 @@ mix.color <- function(color, type = 2, alpha = 1) {
   )
 }
 
+#' Mix or Blend colors between two colors
+#'
+#' Mix or blend multiple colors between two colors
+#' @param colors the vector of two colors
+#' @param max maximum number of colors to blend between
+#' @param alpha alpha for the new color blends
+#' @param preview LOGICAL. preview all color generated
+#'
 #' @export
-mix.cols.btw <- function(color, max = 20, alpha = 1, preview.color = F) {
+mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
   repeat{
-    color <- unlist(lapply(split(color, ceiling(seq_along(color) / 2)), function(ol) {
+    colors <- unlist(lapply(split(colors, ceiling(seq_along(colors) / 2)), function(ol) {
       if (length(ol) > 1) {
         nwcol <- mix.color(ol, alpha = alpha)
         append(ol, nwcol, 1)
@@ -176,9 +184,10 @@ mix.cols.btw <- function(color, max = 20, alpha = 1, preview.color = F) {
         ol
       }
     }))
-    if (length(color) >= max) break
+    if (length(colors) >= max) break
   }
-  as.character(color)
+  if(preview) Polychrome::swatch(as.character(colors), main = "Preview of color mix")
+  as.character(colors)
 }
 
 
