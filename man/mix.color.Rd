@@ -21,42 +21,42 @@ Combine colors to generate a new color
 }
 \examples{
 # color vector
-colvec <- c("red","blue","violet","green","#ff0066")
+colvec <- c("red", "blue", "violet", "green", "#ff0066")
 
 # just one color
-mix.color(colvec[1],type = 1, alpha = 1)
+mix.color(colvec[1], type = 1, alpha = 1)
 
 # add two colors
-mix.color(colvec[1:2],type = 1, alpha = 1)
+mix.color(colvec[1:2], type = 1, alpha = 1)
 
 # add three colors
-mix.color(colvec[1:3],type = 1, alpha = 1)
+mix.color(colvec[1:3], type = 1, alpha = 1)
 
 
 # return type = 2
 
 # just one color
-mix.color(colvec[1],type = 2, alpha = 1)
+mix.color(colvec[1], type = 2, alpha = 1)
 
 # add two colors
-mix.color(colvec[1:2],type = 2, alpha = 1)
+mix.color(colvec[1:2], type = 2, alpha = 1)
 
 # add three colors
-mix.color(colvec[1:3],type = 2, alpha = 1)
+mix.color(colvec[1:3], type = 2, alpha = 1)
 
 
 # opacity or alpha  0.5
 
 # just one color
-mix.color(colvec[1],type = 1, alpha = 0.5)
+mix.color(colvec[1], type = 1, alpha = 0.5)
 
 # add two colors
-mix.color(colvec[1:2],type = 1, alpha = 0.5)
+mix.color(colvec[1:2], type = 1, alpha = 0.5)
 
 # add three colors
-mix.color(colvec[1:3],type = 1, alpha = 0.5)
+mix.color(colvec[1:3], type = 1, alpha = 0.5)
 
 # add all colors
-mix.color(colvec,type = 1, alpha = 0.5)
+mix.color(colvec, type = 1, alpha = 0.5)
 
 }

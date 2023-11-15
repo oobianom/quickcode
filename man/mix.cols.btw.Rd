@@ -18,3 +18,13 @@ mix.cols.btw(colors, max = 20, alpha = 1, preview = F)
 \description{
 Mix or blend multiple colors between two colors
 }
+\examples{
+# simple mix
+mix.cols.btw(c("red","brown"))
+
+# also preview after mixing
+mix.cols.btw(c("red","brown"),alpha = 0.2, preview = T)
+
+
+
+}
