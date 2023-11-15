@@ -49,6 +49,14 @@ the results of the distribution comparison provided by this function.
 
 set.seed(123)
 compHist(
+  x1 = rnorm(1000, mean = 3),
+  x2 = rnorm(1000, mean = 10),
+  title = "Histogram of rnorm Distributions With Means 0 & 2",
+  color = c("yellow", "violet")
+)
+
+set.seed(123)
+compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = "Histogram of rnorm Distributions With Means 0 & 2",
