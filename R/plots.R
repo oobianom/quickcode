@@ -27,7 +27,7 @@
 #' compHist(
 #'   x1 = rnorm(1000, mean = 3),
 #'   x2 = rnorm(1000, mean = 10),
-#'   title = "Histogram of rnorm Distributions With Means 0 & 2",
+#'   title = "Histogram of Distributions With Means 3 & 10",
 #'   color = c("yellow", "violet")
 #' )
 #'
@@ -115,7 +115,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 #' @return hex for the combined color
 #' @examples
 #' # color vector
-#' colvec <- c("red","blue","violet","green")
+#' colvec <- c("red","blue","violet","green","#ff0066")
 #'
 #' # just one color
 #' mix.colors(colvec[1],type = 1, alpha = 1)
@@ -150,9 +150,16 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
 #' # add three colors
 #' mix.colors(colvec[1:3],type = 1, alpha = 0.5)
 #'
+#' # add all colors
+#' mix.colors(colvec,type = 1, alpha = 0.5)
+#'
 #' @export
-mix.colors <- function(color,type = 1, alpha = 1) {
-  vals <- apply(grDevices::col2rgb(color, alpha = alpha), 1, mean)
-  if(type == 1) grDevices::rgb(vals[1], vals[2], vals[3], vals[4], maxColorValue=255)
-  if(type == 2) grDevices::rgb(vals[1]/255, vals[2]/255, vals[3]/255, alpha = alpha)
+mix.colors <- function(color,type = 2, alpha = 1) {
+  stopifnot(alpha<=1,alpha>=0,type<=3,type>=1)
+  vals <- apply(grDevices::col2rgb(color), 1, mean)
+  switch (type,
+    "1" = grDevices::rgb(vals[1], vals[2], vals[3], alpha*255, maxColorValue=255),
+    "2" = grDevices::rgb(vals[1]/255, vals[2]/255, vals[3]/255, alpha = alpha),
+    "3" = vals
+  )
 }
