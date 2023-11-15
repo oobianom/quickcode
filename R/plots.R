@@ -91,7 +91,7 @@ compHist <- function(x1, x2, title, color = c("green", "black"), xlab = "", ylab
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(cl1b,cl2b,grDevices::rgb(d1[1],d1[2],d1[3],alpha = 0.6))
+      fill = c(cl1b,cl2b,grDevices::rgb(d1[1],d1[2],d1[3],alpha = 1))
     )
   }
 }
