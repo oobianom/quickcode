@@ -172,6 +172,15 @@ mix.color <- function(color, type = 2, alpha = 1) {
 #' @param alpha alpha for the new color blends
 #' @param preview LOGICAL. preview all color generated
 #'
+#' @examples
+#' # simple mix
+#' mix.cols.btw(c("red","brown"))
+#'
+#' # also preview after mixing
+#' mix.cols.btw(c("red","brown"),alpha = 0.2, preview = T)
+#'
+#'
+#'
 #' @export
 mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
   repeat{
