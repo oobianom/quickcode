@@ -21,8 +21,8 @@
 #' the results of the distribution comparison provided by this function.
 #'
 #' @examples
-#' # compare two normal distributions
-#'
+#' # compare two normal distributions with means that differ a lot
+#' # in this case, the overlap will not be observed
 #' set.seed(123)
 #' compHist(
 #'   x1 = rnorm(1000, mean = 3),
@@ -31,6 +31,9 @@
 #'   color = c("yellow", "violet")
 #' )
 #'
+#'
+#' # compare two normal distributions with means that are close
+#' # in this case, the overlap between the histograms will be observed
 #' set.seed(123)
 #' compHist(
 #'   x1 = rnorm(1000, mean = 0),
