@@ -56,7 +56,6 @@
 #' @export
 
 compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", ylab = "", separate = FALSE) {
-
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
   meanx2 <- round(mean(x2), 1)
@@ -65,7 +64,7 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   # close devices if open
-  if(.Device !="null device") grDevices::dev.off()
+  if (.Device != "null device") grDevices::dev.off()
 
   # check if plots should be separated
   if (separate) graphics::par(mfrow = c(1, 2))
@@ -75,8 +74,8 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
 
 
   # make plots
-  cl1 <- grDevices::col2rgb(col1)/255
-  cl1b <- grDevices::rgb(cl1[1,1],cl1[2,1],cl1[3,1],alpha = 0.6)
+  cl1 <- grDevices::col2rgb(col1) / 255
+  cl1b <- grDevices::rgb(cl1[1, 1], cl1[2, 1], cl1[3, 1], alpha = 0.6)
   graphics::hist(x1,
     main = ifelse(separate, title[1], title),
     xlab = xlab,
@@ -85,8 +84,8 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
     xlim = c(minx, maxx)
   )
 
-  cl2 <- grDevices::col2rgb(col2)/255
-  cl2b <- grDevices::rgb(cl2[1,1],cl2[2,1],cl2[3,1],alpha = 0.6)
+  cl2 <- grDevices::col2rgb(col2) / 255
+  cl2b <- grDevices::rgb(cl2[1, 1], cl2[2, 1], cl2[3, 1], alpha = 0.6)
   graphics::hist(x2,
     main = ifelse(separate, title[2], title),
     xlab = xlab,
@@ -100,7 +99,7 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(cl1b,cl2b,mix.color(c(col2,col2),2,1))
+      fill = c(cl1b, cl2b, mix.color(c(col2, col2), 2, 1))
     )
   }
 }
@@ -116,43 +115,43 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
 #' @return hex for the combined color
 #' @examples
 #' # color vector
-#' colvec <- c("red","blue","violet","green","#ff0066")
+#' colvec <- c("red", "blue", "violet", "green", "#ff0066")
 #'
 #' # just one color
-#' mix.color(colvec[1],type = 1, alpha = 1)
+#' mix.color(colvec[1], type = 1, alpha = 1)
 #'
 #' # add two colors
-#' mix.color(colvec[1:2],type = 1, alpha = 1)
+#' mix.color(colvec[1:2], type = 1, alpha = 1)
 #'
 #' # add three colors
-#' mix.color(colvec[1:3],type = 1, alpha = 1)
+#' mix.color(colvec[1:3], type = 1, alpha = 1)
 #'
 #'
 #' # return type = 2
 #'
 #' # just one color
-#' mix.color(colvec[1],type = 2, alpha = 1)
+#' mix.color(colvec[1], type = 2, alpha = 1)
 #'
 #' # add two colors
-#' mix.color(colvec[1:2],type = 2, alpha = 1)
+#' mix.color(colvec[1:2], type = 2, alpha = 1)
 #'
 #' # add three colors
-#' mix.color(colvec[1:3],type = 2, alpha = 1)
+#' mix.color(colvec[1:3], type = 2, alpha = 1)
 #'
 #'
 #' # opacity or alpha  0.5
 #'
 #' # just one color
-#' mix.color(colvec[1],type = 1, alpha = 0.5)
+#' mix.color(colvec[1], type = 1, alpha = 0.5)
 #'
 #' # add two colors
-#' mix.color(colvec[1:2],type = 1, alpha = 0.5)
+#' mix.color(colvec[1:2], type = 1, alpha = 0.5)
 #'
 #' # add three colors
-#' mix.color(colvec[1:3],type = 1, alpha = 0.5)
+#' mix.color(colvec[1:3], type = 1, alpha = 0.5)
 #'
 #' # add all colors
-#' mix.color(colvec,type = 1, alpha = 0.5)
+#' mix.color(colvec, type = 1, alpha = 0.5)
 #'
 #' @export
 mix.color <- function(color, type = 2, alpha = 1) {
@@ -174,7 +173,7 @@ mix.color <- function(color, type = 2, alpha = 1) {
 #' @param preview LOGICAL. preview all color generated
 #'
 #' @export
-mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = T) {
+mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
   repeat{
     colors <- unlist(lapply(split(colors, ceiling(seq_along(colors) / 2)), function(ol) {
       if (length(ol) > 1) {
@@ -187,12 +186,14 @@ mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = T) {
     if (length(colors) >= max) break
   }
 
-  colors <- as.character(colors)
 
-  if(preview) Polychrome::swatch(stats::setNames(as.numeric(names(colors)), colors), main = "Preview of color mix")
+  # preview the colors generated sing swatch
+  if (preview) {
+    cls <- as.character(colors)
+    names(cls) <- cls
+    Polychrome::swatch(cls, main = "Preview of color mix")
+  }
 
-  #return colors
-  colors
+  # return color
+  as.character(colors)
 }
-
-
