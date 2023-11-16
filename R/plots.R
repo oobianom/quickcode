@@ -55,7 +55,7 @@
 #'
 #' @export
 
-compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", ylab = "", separate = FALSE) {
+compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", ylab = "Frequency", separate = FALSE) {
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
   meanx2 <- round(mean(x2), 1)
