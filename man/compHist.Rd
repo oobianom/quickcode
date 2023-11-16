@@ -11,7 +11,7 @@ compHist(
   col1 = "green",
   col2 = "black",
   xlab = "",
-  ylab = "",
+  ylab = "Frequency",
   separate = FALSE
 )
 }
