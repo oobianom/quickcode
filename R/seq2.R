@@ -35,3 +35,8 @@
 seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-1)))
 
 
+
+
+#' @export
+
+in.range <- function(value, range.min, range.max) return(all(range.min <= value, range.max >= value))
