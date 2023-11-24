@@ -185,6 +185,7 @@ mix.color <- function(color, type = 2, alpha = 1) {
 #'
 #' @export
 mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
+  message("This function is currently under development.")
   repeat{
     colors <- unlist(lapply(split(colors, ceiling(seq_along(colors) / 2)), function(ol) {
       if (length(ol) > 1) {
