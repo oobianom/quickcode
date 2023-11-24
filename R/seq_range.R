@@ -89,5 +89,5 @@ in.range <- function(value, range.min, range.max, range.vec = NULL){
     range.min <- computRange[1]
     range.max <- computRange[2]
   }
-  all(range.min <= value, range.max >= value)
+  with(data.frame(less = range.min <= value, more = range.max >= value),less | more )
 }
