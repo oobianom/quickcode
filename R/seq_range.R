@@ -25,10 +25,10 @@
 #' seq3(4,4,4)
 #'
 #' # other examples
-#' seq3(1,6)
-#' seq3(1,6,7)
-#' seq3(133,7,6)
-#' seq3(1111,40,100)
+#' seq3(1,6) #add 6 until 10 numbers are generated
+#' seq3(1,2,7) # add 2 until 7 numbers are generated
+#' seq3(133,7,6)# add 7 until 6 numbers are generated
+#' seq3(1111,40,100)# add 40 until 100 numbers are generated
 #'
 #' @export
 #'
