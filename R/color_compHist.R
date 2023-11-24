@@ -108,7 +108,7 @@ compHist <- function(x1, x2, title, col1 = "green", col2 = "black", xlab = "", y
   if (!separate) {
     graphics::legend("topright",
       legend = c(paste0("Mean: ", meanx1), paste0("Mean: ", meanx2), "Overlap"),
-      fill = c(cl1b, cl2b, mix.color(c(col1, col2), 2, 0.6))
+      fill = c(cl1b, cl2b, mix.color(c(col1, col2), 2, 1))
     )
   }
 }
