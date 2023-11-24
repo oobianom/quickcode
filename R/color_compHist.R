@@ -21,6 +21,15 @@
 #' understanding of the data and enhances the user's ability to interpret
 #' the results of the distribution comparison provided by this function.
 #'
+#' @section Recommended color pairs:
+#' col1 = blue (and) col2 = peach
+#' col1 = brown (and) col2 = beige
+#' col1 = pink (and) col2 = blue
+#' col1 = red (and) col2 = yellow
+#' col1 = limegreen (and) col2 = blue
+#' col1 = lavender (and) col2 = teal
+#'
+#'
 #' @examples
 #' # compare two normal distributions with means that differ a lot
 #' # in this case, the overlap will not be observed
