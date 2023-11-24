@@ -49,12 +49,12 @@ the results of the distribution comparison provided by this function.
 }
 \section{Recommended color pairs}{
 
-col1 = #00539C (and) col2 = #EEA47F
-col1 = brown (and) col2 = beige
-col1 = pink (and) col2 = #2F3C7E
-col1 = red (and) col2 = yellow
-col1 = limegreen (and) col2 = blue
-col1 = #990011 (and) col2 = #317773
+col1 = #00539C (and) col2 = #EEA47F \cr
+col1 = brown (and) col2 = beige \cr
+col1 = pink (and) col2 = #2F3C7E \cr
+col1 = red (and) col2 = yellow \cr
+col1 = limegreen (and) col2 = blue \cr
+col1 = #990011 (and) col2 = #317773 \cr
 }
 
 \examples{
