@@ -8,8 +8,8 @@ compHist(
   x1,
   x2,
   title,
-  col1 = "green",
-  col2 = "black",
+  col1 = "#F96167",
+  col2 = "#CCF381",
   xlab = "",
   ylab = "Frequency",
   separate = FALSE
@@ -85,7 +85,7 @@ compHist(
   x1 = rnorm(1000, mean = 0),
   x2 = rnorm(1000, mean = 2),
   title = c("Plot Means 0", "Plot Means 2"),
-  col1 = "green", col2 = "black",
+  col1 = "green", col2 = "#CCF381",
   separate = TRUE
 )
 
