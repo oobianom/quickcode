@@ -21,13 +21,13 @@
 #' understanding of the data and enhances the user's ability to interpret
 #' the results of the distribution comparison provided by this function.
 #'
-#' @section Recommended color pairs:
-#' col1 = #00539C (and) col2 = #EEA47F \cr
-#' col1 = brown (and) col2 = beige \cr
-#' col1 = pink (and) col2 = #2F3C7E \cr
-#' col1 = red (and) col2 = yellow \cr
-#' col1 = limegreen (and) col2 = blue \cr
-#' col1 = #990011 (and) col2 = #317773 \cr
+#' @section Some recommended color pairs:
+#' col1 = 'dodgerblue4' (and) col2 = 'darksalmon' \cr
+#' col1 = 'brown' (and) col2 = 'beige' \cr
+#' col1 = 'pink' (and) col2 = 'royalblue4' \cr
+#' col1 = 'red' (and) col2 = 'yellow' \cr
+#' col1 = 'limegreen' (and) col2 = 'blue' \cr
+#' col1 = 'darkred' (and) col2 = 'aquamarine4' \cr
 #'
 #'
 #' @examples
@@ -58,13 +58,13 @@
 #'   x1 = rnorm(1000, mean = 0),
 #'   x2 = rnorm(1000, mean = 2),
 #'   title = c("Plot Means 0", "Plot Means 2"),
-#'   col1 = "green", col2 = "#CCF381",
+#'   col1 = "#F96167", col2 = "#CCF381",
 #'   separate = TRUE
 #' )
 #'
 #' @export
 
-compHist <- function(x1, x2, title, col1 = "#F96167", col2 = "#CCF381", xlab = "", ylab = "Frequency", separate = FALSE) {
+compHist <- function(x1, x2, title, col1 = "red", col2 = "yellow", xlab = "", ylab = "Frequency", separate = FALSE) {
   # compute means, min and max
   meanx1 <- round(mean(x1), 1)
   meanx2 <- round(mean(x2), 1)
@@ -73,7 +73,7 @@ compHist <- function(x1, x2, title, col1 = "#F96167", col2 = "#CCF381", xlab = "
   maxx <- max(x1x2) + 0.1 * max(x1x2)
 
   # close devices if open
-  if (.Device != "null device") grDevices::dev.off()
+  # if (.Device != "null device") grDevices::dev.off()
 
   # check if plots should be separated
   if (separate) graphics::par(mfrow = c(1, 2))
