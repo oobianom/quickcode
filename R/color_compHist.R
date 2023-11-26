@@ -28,6 +28,14 @@
 #' col1 = 'red' (and) col2 = 'yellow' \cr
 #' col1 = 'limegreen' (and) col2 = 'blue' \cr
 #' col1 = 'darkred' (and) col2 = 'aquamarine4' \cr
+#' col1 = 'purple' (and) col2 = 'yellow' \cr
+#'
+#' @note
+#' - Hexadecimal values can also be passed \cr
+#'   in for col1 and col2, see the example section
+#' - For best visual results, \cr
+#'   col1 should be a dark color and col2 should be passed as a light color. \cr
+#'   For example, col1 = "black", col2 = "yellow"
 #'
 #'
 #' @examples

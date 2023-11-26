@@ -47,6 +47,12 @@ each dataset's characteristics. This feature ensures a comprehensive
 understanding of the data and enhances the user's ability to interpret
 the results of the distribution comparison provided by this function.
 }
+\note{
+- Hexadecimal values can also be passed \cr
+- For best visual results, \cr
+col1 should be a dark color and col2 should be passed as a light color. \cr
+For example, col1 = "black", col2 = "yellow"
+}
 \section{Some recommended color pairs}{
 
 col1 = 'dodgerblue4' (and) col2 = 'darksalmon' \cr
@@ -55,6 +61,7 @@ col1 = 'pink' (and) col2 = 'royalblue4' \cr
 col1 = 'red' (and) col2 = 'yellow' \cr
 col1 = 'limegreen' (and) col2 = 'blue' \cr
 col1 = 'darkred' (and) col2 = 'aquamarine4' \cr
+col1 = 'purple' (and) col2 = 'yellow' \cr
 }
 
 \examples{
