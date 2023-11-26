@@ -2,12 +2,12 @@
 #'
 #' Generate n number of high-definition images by category from the web
 #'
-#' @param fp storage directory
-#' @param cat category of image to download
-#' @param n number of images to download, maximum n is 99
-#' @param w.px width in pixels
-#' @param h.px height in pixels
-#' @param ext file extension eg jpg, png
+#' @param fp CHARACTER. storage directory
+#' @param cat CHARACTER. category of image to download
+#' @param n NUMERIC. number of images to download, maximum n is 99
+#' @param w.px NUMERIC. width in pixels
+#' @param h.px NUMERIC. height in pixels
+#' @param ext CHARACTER. file extension eg jpg, png
 #'
 #' @section Sources & References:
 #' The random images are downloaded from www.unsplash.com
@@ -51,6 +51,7 @@
 #' }
 #' @export
 #'
+
 genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   # check existence of directory
   if(!dir.exists(fp)) stop(paste0("The directory path declared in the 'fp' argument must exist."))

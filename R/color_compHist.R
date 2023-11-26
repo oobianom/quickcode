@@ -126,9 +126,9 @@ compHist <- function(x1, x2, title, col1 = "red", col2 = "yellow", xlab = "", yl
 #'
 #' Combine colors to generate a new color
 #'
-#' @param color color vector e.g see example
-#' @param type return type of the output
-#' @param alpha alpha or opacity of the resulting color
+#' @param color CHARACTER. color vector e.g see example
+#' @param type NUMERIC. return type of the output
+#' @param alpha NUMERIC. alpha or opacity of the resulting color
 #' @return hex for the combined color
 #' @examples
 #' # color vector

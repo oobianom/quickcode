@@ -7,11 +7,11 @@
 mix.color(color, type = 2, alpha = 1)
 }
 \arguments{
-\item{color}{color vector e.g see example}
+\item{color}{CHARACTER. color vector e.g see example}
 
-\item{type}{return type of the output}
+\item{type}{NUMERIC. return type of the output}
 
-\item{alpha}{alpha or opacity of the resulting color}
+\item{alpha}{NUMERIC. alpha or opacity of the resulting color}
 }
 \value{
 hex for the combined color

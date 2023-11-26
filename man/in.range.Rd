@@ -7,13 +7,13 @@
 in.range(value, range.min, range.max, range.vec = NULL)
 }
 \arguments{
-\item{value}{the vector of numbers to check}
+\item{value}{NUMERIC. the vector of numbers to check}
 
-\item{range.min}{the minimum value of the range}
+\item{range.min}{NUMERIC. OPTIONAL. the minimum value of the range}
 
-\item{range.max}{the maximum value of the range}
+\item{range.max}{NUMERIC. OPTIONAL. the maximum value of the range}
 
-\item{range.vec}{a vector of numbers to use for the range}
+\item{range.vec}{NUMERIC. OPTIONAL. a vector of numbers to use for the range}
 }
 \value{
 boolean to indicate if the value or set of values are within the range

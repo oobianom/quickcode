@@ -3,9 +3,9 @@
 #' Designed to increment a number by a specified value
 #' until a predefined count is reached.
 #'
-#' @param start starting count
-#' @param increment number to increment by
-#' @param count length of output
+#' @param start NUMERIC. starting count
+#' @param increment NUMERIC. number to increment by
+#' @param count NUMERIC. length of output
 #'
 #' @return numbers dictated by increment number
 #'
@@ -42,10 +42,10 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' @description With a defined range of values, the function systematically examines
 #' each provided number to determine if it falls within the specified range.
 #'
-#' @param value the vector of numbers to check
-#' @param range.min the minimum value of the range
-#' @param range.max the maximum value of the range
-#' @param range.vec a vector of numbers to use for the range
+#' @param value NUMERIC. the vector of numbers to check
+#' @param range.min NUMERIC. OPTIONAL. the minimum value of the range
+#' @param range.max NUMERIC. OPTIONAL. the maximum value of the range
+#' @param range.vec NUMERIC. OPTIONAL. a vector of numbers to use for the range
 #'
 #' @return boolean to indicate if the value or set of values are within the range
 #' @note
@@ -84,10 +84,16 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' @export
 
 in.range <- function(value, range.min, range.max, range.vec = NULL){
+  #exit if value to check is not numeric
+  stopifnot(all(is.numeric(value)))
+
+  #if range.vec is set, use the value to set range.min and range.max
   if(not.null(range.vec) & length(range.vec) > 1){
+  stopifnot(all(is.numeric(range.vec)))
     computRange <- range(range.vec)
     range.min <- computRange[1]
     range.max <- computRange[2]
   }
+  #return range check
   with(data.frame(less = range.min <= value, more = range.max >= value),less & more )
 }

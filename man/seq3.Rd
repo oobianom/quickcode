@@ -7,11 +7,11 @@
 seq3(start, increment, count = 10)
 }
 \arguments{
-\item{start}{starting count}
+\item{start}{NUMERIC. starting count}
 
-\item{increment}{number to increment by}
+\item{increment}{NUMERIC. number to increment by}
 
-\item{count}{length of output}
+\item{count}{NUMERIC. length of output}
 }
 \value{
 numbers dictated by increment number

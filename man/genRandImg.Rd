@@ -14,17 +14,17 @@ genRandImg(
 )
 }
 \arguments{
-\item{fp}{storage directory}
+\item{fp}{CHARACTER. storage directory}
 
-\item{cat}{category of image to download}
+\item{cat}{CHARACTER. category of image to download}
 
-\item{n}{number of images to download, maximum n is 99}
+\item{n}{NUMERIC. number of images to download, maximum n is 99}
 
-\item{w.px}{width in pixels}
+\item{w.px}{NUMERIC. width in pixels}
 
-\item{h.px}{height in pixels}
+\item{h.px}{NUMERIC. height in pixels}
 
-\item{ext}{file extension eg jpg, png}
+\item{ext}{CHARACTER. file extension eg jpg, png}
 }
 \value{
 downloaded image from a select image category
