@@ -49,9 +49,10 @@ the results of the distribution comparison provided by this function.
 }
 \note{
 - Hexadecimal values can also be passed \cr
+  in for col1 and col2, see the example section
 - For best visual results, \cr
-col1 should be a dark color and col2 should be passed as a light color. \cr
-For example, col1 = "black", col2 = "yellow"
+  col1 should be a dark color and col2 should be passed as a light color. \cr
+  For example, col1 = "black", col2 = "yellow"
 }
 \section{Some recommended color pairs}{
 
