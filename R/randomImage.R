@@ -51,7 +51,6 @@
 #' }
 #' @export
 #'
-
 genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
   # check existence of directory
   if(!dir.exists(fp)) stop(paste0("The directory path declared in the 'fp' argument must exist."))

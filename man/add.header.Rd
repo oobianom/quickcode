@@ -2,7 +2,7 @@
 % Please edit documentation in R/add.header.R
 \name{add.header}
 \alias{add.header}
-\title{Snippet function to add header comment to a current opened file}
+\title{Addin snippet function to add header comment to a current opened file}
 \usage{
 add.header()
 }

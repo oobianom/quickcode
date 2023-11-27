@@ -1,4 +1,4 @@
-#' Snippet function to add header comment to a current opened file
+#' Addin snippet function to add header comment to a current opened file
 #'
 #' Shorthand to add header comment
 #'
@@ -35,7 +35,7 @@ add.header <- function() {
 }
 
 
-#' Snippet function to custom section comment
+#' Addin snippet function to custom section comment
 #'
 #' Shorthand to add section comment to current file
 #'
@@ -53,5 +53,8 @@ add.sect.comment <- function() {
 ###  SECTION:
 #############################################################################
 
+Your code here
+
+#############################################################################
   "))
 }

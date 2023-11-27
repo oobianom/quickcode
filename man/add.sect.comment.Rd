@@ -2,7 +2,7 @@
 % Please edit documentation in R/add.header.R
 \name{add.sect.comment}
 \alias{add.sect.comment}
-\title{Snippet function to custom section comment}
+\title{Addin snippet function to custom section comment}
 \usage{
 add.sect.comment()
 }
