@@ -70,4 +70,7 @@ in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = FALSE) # do n
 in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE) # remove NA
 #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 
+# Task 6: return the closest number to the value
+in.range(1:5, range.vec = 4:19, closest = TRUE)
+
 }
