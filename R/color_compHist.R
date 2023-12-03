@@ -181,40 +181,50 @@ mix.color <- function(color, type = 2, alpha = 1) {
   )
 }
 
-#' Mix or Blend colors between two colors
+#' Mix or Blend colors between two or more colors
 #'
 #' Mix or blend multiple colors between two colors
 #' @param colors the vector of two colors
 #' @param max maximum number of colors to blend between
 #' @param alpha alpha for the new color blends
 #' @param preview LOGICAL. preview all color generated
+#' @return color hex for all generated colors
 #'
 #' @examples
-#' # simple mix
+#' # simply mix/blend two colors
 #' mix.cols.btw(c("red","brown"))
 #'
-#' # also preview after mixing
-#' mix.cols.btw(c("red","green"),alpha = 0.2, preview = T)
+#' # simply mix/blend two colors, maximum number of colors at the end
+#' mix.cols.btw(c("red","brown"), max = 8)
 #'
-#' mix.cols.btw(c("red","purple","yellow","gray"),alpha = 0.2, preview = T)
+#' # simply mix/blend two colors with alpha=0.2 (opacity=0.2)
+#' mix.cols.btw(c("yellow","green"),alpha = 0.2)
 #'
+#' # also preview after mixing the two colors
+#' mix.cols.btw(c("red","green"), preview = TRUE)
+#' mix.cols.btw(c("blue","violet"),alpha = 0.2, preview = TRUE)
 #'
+#' mix.cols.btw(c("red","purple","yellow","gray"), preview = TRUE)
+#'
+#' mix.cols.btw(c("red","purple","yellow","gray"),alpha = 0.2, preview = TRUE)
 #'
 #' @export
-mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = F) {
-  message("This function is currently under development.")
+mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = FALSE) {
+  bbcount <- new.env()
+  bbcount$cnt <- length(colors)
   repeat{
     colors <- unlist(lapply(split(colors, ceiling(seq_along(colors) / 2)), function(ol) {
-      if (length(ol) > 1) {
-        nwcol <- mix.color(ol, alpha = alpha)
-        append(ol, nwcol, 1)
-      } else {
-        ol
-      }
+        if (length(ol[not.na(ol)]) > 1) {
+          nwcol <- mix.color(ol, alpha = alpha)
+          bbcount$cnt <- 1 + bbcount$cnt
+          if(bbcount$cnt>max) ol else append(ol, nwcol, 1)
+        } else {
+          ol
+        }
     }))
     if (length(colors) >= max) break
   }
-
+  colors <- colors[not.na(colors)]
 
   # preview the colors generated sing swatch
   if (preview) {

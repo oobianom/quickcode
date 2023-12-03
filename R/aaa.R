@@ -1,5 +1,10 @@
 #INTERNAL FUNCTIONS and VARIABLES
 
+# fetch my environment
+getEnvir <- function(nme,e = parent.frame()){
+  if(exists(nme,where = e, inherits = FALSE)) e else getEnvir(nme, e = parent.env(e))
+}
+
 # minimal func to check date format
 # expected format  YYYY-MM-DD
 # or simple format is.na(as.Date(after, "%Y-%m-%d"))

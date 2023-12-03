@@ -2,9 +2,9 @@
 % Please edit documentation in R/color_compHist.R
 \name{mix.cols.btw}
 \alias{mix.cols.btw}
-\title{Mix or Blend colors between two colors}
+\title{Mix or Blend colors between two or more colors}
 \usage{
-mix.cols.btw(colors, max = 20, alpha = 1, preview = F)
+mix.cols.btw(colors, max = 20, alpha = 1, preview = FALSE)
 }
 \arguments{
 \item{colors}{the vector of two colors}
@@ -15,18 +15,28 @@ mix.cols.btw(colors, max = 20, alpha = 1, preview = F)
 
 \item{preview}{LOGICAL. preview all color generated}
 }
+\value{
+color hex for all generated colors
+}
 \description{
 Mix or blend multiple colors between two colors
 }
 \examples{
-# simple mix
+# simply mix/blend two colors
 mix.cols.btw(c("red","brown"))
 
-# also preview after mixing
-mix.cols.btw(c("red","green"),alpha = 0.2, preview = T)
+# simply mix/blend two colors, maximum number of colors at the end
+mix.cols.btw(c("red","brown"), max = 8)
 
-mix.cols.btw(c("red","purple","yellow","gray"),alpha = 0.2, preview = T)
+# simply mix/blend two colors with alpha=0.2 (opacity=0.2)
+mix.cols.btw(c("yellow","green"),alpha = 0.2)
 
+# also preview after mixing the two colors
+mix.cols.btw(c("red","green"), preview = TRUE)
+mix.cols.btw(c("blue","violet"),alpha = 0.2, preview = TRUE)
 
+mix.cols.btw(c("red","purple","yellow","gray"), preview = TRUE)
+
+mix.cols.btw(c("red","purple","yellow","gray"),alpha = 0.2, preview = TRUE)
 
 }
