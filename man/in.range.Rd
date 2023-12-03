@@ -2,7 +2,7 @@
 % Please edit documentation in R/seq_range.R
 \name{in.range}
 \alias{in.range}
-\title{Check whether a number falls within a specified range of values and provide closes values}
+\title{If number falls within a range of values and get closest values}
 \usage{
 in.range(
   value,

@@ -36,7 +36,7 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 
 
 
-#' Check whether a number falls within a specified range of values and provide closes values
+#' If number falls within a range of values and get closest values
 #'
 #'
 #' @description With a defined range of values, the function systematically examines
@@ -63,6 +63,8 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' determine if it lies within the defined range. This function proves particularly
 #' useful for scenarios where there is a need to assess numeric values
 #' against predefined boundaries, ensuring they meet specific criteria or constraints.
+#' In the same manner, this function allows the user to also retrieve values within
+#' the range that are closest to each provided number.
 #'
 #' @examples
 #' # Task 1: Check if a number is within specified range
@@ -103,7 +105,7 @@ in.range <- function(value, range.min, range.max, range.vec = NULL, closest = FA
   #if closest is true, then range.vec must not be null
   if(closest){
     if(is.null(range.vec)) stop("If 'closest' is TRUE, then 'range.vec' must not be NULL, see examples.")
-    if(length(range.vec)<2) stop("If 'closest' is TRUE, then 'range.vec' must not have at least 2 values, see examples.")
+    if(length(range.vec)<2) stop("If 'closest' is TRUE, then 'range.vec' must have at least 2 values, see examples.")
   }
 
   #exit if value to check is not numeric
