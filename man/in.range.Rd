@@ -4,7 +4,14 @@
 \alias{in.range}
 \title{Verify whether a number falls within a specified range of values.}
 \usage{
-in.range(value, range.min, range.max, range.vec = NULL)
+in.range(
+  value,
+  range.min,
+  range.max,
+  range.vec = NULL,
+  closest = FALSE,
+  rm.na = FALSE
+)
 }
 \arguments{
 \item{value}{NUMERIC. the vector of numbers to check}
@@ -14,6 +21,10 @@ in.range(value, range.min, range.max, range.vec = NULL)
 \item{range.max}{NUMERIC. OPTIONAL. the maximum value of the range}
 
 \item{range.vec}{NUMERIC. OPTIONAL. a vector of numbers to use for the range}
+
+\item{closest}{BOOLEAN. OPTIONAL. return closest value}
+
+\item{rm.na}{BOOLEAN. OPTIONAL. remove NA values from input}
 }
 \value{
 boolean to indicate if the value or set of values are within the range
@@ -53,6 +64,9 @@ in.range(345, range.vec = c(1001,1002,1003,1004,1005,
 # Task 4: Check if a set of values are within the range of a set of numbers
 in.range(1:5, range.vec = 4:19) #
 in.range(50:60, range.vec = c(55,33,22,56,75,213,120)) #
+
+# Task 5: remove NAs prior to processing
+in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE)
 
 
 }
