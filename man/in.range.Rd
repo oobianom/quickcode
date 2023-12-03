@@ -72,7 +72,8 @@ in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE) # remov
 #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 
 # Task 6: return the closest number to the value
-in.range(1:5, range.vec = 12:19, closest = TRUE)
+in.range(5:23, range.vec = 7:19, closest = TRUE)
+in.range(-5:10, range.vec = -2:19, closest = TRUE)
 in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE)
 in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE, rm.na = TRUE)
 
