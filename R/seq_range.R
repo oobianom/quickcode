@@ -36,11 +36,12 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 
 
 
-#' Verify whether a number falls within a specified range of values.
+#' Check whether a number falls within a specified range of values and provide closes values
 #'
 #'
 #' @description With a defined range of values, the function systematically examines
-#' each provided number to determine if it falls within the specified range.
+#' each provided number to determine if it falls within the specified range. It may
+#' also provide the values with the range that are closest to a desired number.
 #'
 #' @param value NUMERIC. the vector of numbers to check
 #' @param range.min NUMERIC. OPTIONAL. the minimum value of the range
@@ -89,6 +90,8 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #'
 #' # Task 6: return the closest number to the value
 #' in.range(1:5, range.vec = 12:19, closest = TRUE)
+#' in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE)
+#' in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE, rm.na = TRUE)
 #'
 #' @export
 

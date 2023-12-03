@@ -2,7 +2,7 @@
 % Please edit documentation in R/seq_range.R
 \name{in.range}
 \alias{in.range}
-\title{Verify whether a number falls within a specified range of values.}
+\title{Check whether a number falls within a specified range of values and provide closes values}
 \usage{
 in.range(
   value,
@@ -31,7 +31,8 @@ boolean to indicate if the value or set of values are within the range
 }
 \description{
 With a defined range of values, the function systematically examines
-each provided number to determine if it falls within the specified range.
+each provided number to determine if it falls within the specified range. It may
+also provide the values with the range that are closest to a desired number.
 }
 \details{
 The described function serves the purpose of checking whether a given number
@@ -71,6 +72,8 @@ in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE) # remov
 #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 
 # Task 6: return the closest number to the value
-in.range(1:5, range.vec = 4:19, closest = TRUE)
+in.range(1:5, range.vec = 12:19, closest = TRUE)
+in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE)
+in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE, rm.na = TRUE)
 
 }
