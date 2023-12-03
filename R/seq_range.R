@@ -46,6 +46,8 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' @param range.min NUMERIC. OPTIONAL. the minimum value of the range
 #' @param range.max NUMERIC. OPTIONAL. the maximum value of the range
 #' @param range.vec NUMERIC. OPTIONAL. a vector of numbers to use for the range
+#' @param closest BOOLEAN. OPTIONAL. return closest value
+#' @param rm.na BOOLEAN. OPTIONAL. remove NA values from input
 #'
 #' @return boolean to indicate if the value or set of values are within the range
 #' @note
@@ -80,10 +82,16 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' in.range(1:5, range.vec = 4:19) #
 #' in.range(50:60, range.vec = c(55,33,22,56,75,213,120)) #
 #'
+#' # Task 5: remove NAs prior to processing
+#' in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE)
+#'
 #'
 #' @export
 
-in.range <- function(value, range.min, range.max, range.vec = NULL){
+in.range <- function(value, range.min, range.max, range.vec = NULL, closest = FALSE, rm.na = FALSE){
+  #remove NA if set to TRUE
+  if(rm.na) value <- value[not.na(value)]
+
   #exit if value to check is not numeric
   stopifnot(all(is.numeric(value)))
 
