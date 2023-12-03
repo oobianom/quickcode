@@ -89,7 +89,8 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 #'
 #' # Task 6: return the closest number to the value
-#' in.range(1:5, range.vec = 12:19, closest = TRUE)
+#' in.range(5:23, range.vec = 7:19, closest = TRUE)
+#' in.range(-5:10, range.vec = -2:19, closest = TRUE)
 #' in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE)
 #' in.range(c(1:5,NA,6:9), range.vec = 4:19, closest = TRUE, rm.na = TRUE)
 #'
@@ -115,7 +116,7 @@ in.range <- function(value, range.min, range.max, range.vec = NULL, closest = FA
     range.min <- computRange[1]
     range.max <- computRange[2]
   }
-  #return range check
+  #return range check or closest
   if(closest){
     stats::setNames(as.numeric(apply(data.frame(value),1,function(x){
       names(sort(stats::setNames(abs(x - range.vec),range.vec))[1])
