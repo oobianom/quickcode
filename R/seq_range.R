@@ -87,11 +87,20 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE) # remove NA
 #' #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 #'
+#' # Task 6: return the closest number to the value
+#' in.range(1:5, range.vec = 4:19, closest = TRUE)
+#'
 #' @export
 
 in.range <- function(value, range.min, range.max, range.vec = NULL, closest = FALSE, rm.na = FALSE){
   #remove NA if set to TRUE
   if(rm.na) value <- value[not.na(value)]
+
+  #if closest is true, then range.vec must not be null
+  if(closest){
+    if(is.null(range.vec)) stop("If 'closest' is TRUE, then 'range.vec' must not be NULL, see examples.")
+    if(length(range.vec)<2) stop("If 'closest' is TRUE, then 'range.vec' must not have at least 2 values, see examples.")
+  }
 
   #exit if value to check is not numeric
   stopifnot(all(is.numeric(value)))
@@ -104,5 +113,16 @@ in.range <- function(value, range.min, range.max, range.vec = NULL, closest = FA
     range.max <- computRange[2]
   }
   #return range check
-  with(data.frame(less = range.min <= value, more = range.max >= value),less & more )
+  if(closest){
+    stats::setNames(as.numeric(apply(data.frame(value),1,function(x){
+      names(sort(stats::setNames(abs(x - range.vec),range.vec))[1])
+    })),value)
+  }else{
+    with(data.frame(less = range.min <= value, more = range.max >= value),less & more)
+  }
+}
+
+
+whichRangeSmaller <- function(v,r){
+
 }
