@@ -41,6 +41,8 @@ of values as input and then systematically evaluates each provided number to
 determine if it lies within the defined range. This function proves particularly
 useful for scenarios where there is a need to assess numeric values
 against predefined boundaries, ensuring they meet specific criteria or constraints.
+In the same manner, this function allows the user to also retrieve values within
+the range that are closest to each provided number.
 }
 \note{
 The argument range.vec is utilized when users opt not to employ the range.min or
