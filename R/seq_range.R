@@ -83,8 +83,9 @@ seq3 <- function(start,increment,count = 10) cumsum(c(start,rep(increment,count-
 #' in.range(50:60, range.vec = c(55,33,22,56,75,213,120)) #
 #'
 #' # Task 5: remove NAs prior to processing
-#' in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE)
-#'
+#' in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = FALSE) # do not remove NA
+#' in.range(c(1,3,NA,3,4,NA,8), range.min = 4, range.max = 6, rm.na = TRUE) # remove NA
+#' #in.range(c(NA), range.min = 4, range.max = 6, rm.na = TRUE) #This will return error
 #'
 #' @export
 
