@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
 
@@ -249,4 +248,4 @@ quickcode::libraryAll(
 
 
 
-### And many more useful functions...
+### And many more useful functions including list_shuffle, in.range ...

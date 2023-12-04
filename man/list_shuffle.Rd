@@ -2,12 +2,12 @@
 % Please edit documentation in R/list_shuffle.R
 \name{list_shuffle}
 \alias{list_shuffle}
-\title{Shuffle a list just like shuffle in PHP}
+\title{Shuffle a list object just like shuffle in PHP}
 \usage{
 list_shuffle(., seed = NULL)
 }
 \arguments{
-\item{.}{data to shuffle as list}
+\item{.}{list to shuffle}
 
 \item{seed}{apply seed if indicated for reproducibility}
 }
