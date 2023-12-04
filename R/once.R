@@ -67,14 +67,14 @@
 #'
 #' @export
 
-setOnce <- function(., val = 1L, envir = parent.frame()) {
+setOnce <- function(., val = 1L, envir = NULL) {
   .. <- substitute(.)
+  if(is.null(envir)) envir <- getEnvir(as.character(..))
   if(!inherits(get(as.character(..),envir = envir),"once")){
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
   res <- val
   class(res) <- c('once',class(res))
-  assign(as.character(..), res, envir = envir)# getEnvir(as.character(..)))
+  assign(as.character(..), res, envir = envir)
   }
 }
-
 
