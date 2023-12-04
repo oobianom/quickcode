@@ -4,12 +4,14 @@
 \alias{setOnce}
 \title{Set a variable only once}
 \usage{
-setOnce(., val = 1L)
+setOnce(., val = 1L, envir = parent.frame())
 }
 \arguments{
 \item{.}{variable to set}
 
 \item{val}{the value to set for the variable}
+
+\item{envir}{environment where variables resides}
 }
 \value{
 the variable set to the new variable, along with a class of once added to the output
