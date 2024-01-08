@@ -21,7 +21,7 @@
 #'
 #'
 #' @examples
-#' # check if cattonum package is decomissioned
+#' # check if cattonum package is decommissioned
 #' # the current package is expected to be decommissioned
 #' rDecomPkg("cattonum")
 #'
@@ -29,13 +29,26 @@
 #' # the current package is expected NOT to be decommissioned
 #' rDecomPkg("dplyr")
 #'
+#' # when a package never existed in CRAN
+#' # the result of the function call should be NA
+#' rDecomPkg("package0002312122312")
 #'
 #' @export
 
 rDecomPkg <- function(package){
-  unlist(lapply(package, function(.p) .p %nin% allCRANpkg()))
-}
+  stopifnot(nchar(package) > 1) #stop if the package name length is not greater than 1
 
+  #check if the package ever existed in cran
+  if(pkg.existed.cran(package)){
+    #if it existed, check if it is active
+    unlist(lapply(package, function(.p) .p %nin% allCRANpkg()))
+  }else{
+    #if it did not exist, return a warning and NA
+    warning(paste0("The package '",package,"' never existed in CRAN."))
+    return(NA)
+  }
+
+}
 
 
 
