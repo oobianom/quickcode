@@ -31,6 +31,7 @@
 #'
 #' # when a package never existed in CRAN
 #' # the result of the function call should be NA
+#' rDecomPkg("printy")
 #' rDecomPkg("package0002312122312")
 #'
 #' @export
