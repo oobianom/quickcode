@@ -96,6 +96,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # source in any required files
   if (length(source)) {
     for (sourced in source) {
+      message("Importing ",loaded)
       if (file.exists(sourced)) source(sourced)
       else warning(sourced," does not exist.\n")
     }
@@ -104,6 +105,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # load in any required data
   if (length(load)) {
     for (loaded in load) {
+      message("Loading ",loaded)
       if (file.exists(loaded)) load(loaded, envir = parent.frame())
       else warning(loaded," does not exist.\n")
     }

@@ -40,7 +40,9 @@ allCRANpkg <- function(){
 
 #check if a package ever existed
 pkg.existed.cran <- function(package){
-  check = readLines(paste0("https://quickcode.obi.obianom.com/CRAN/existed.php?package=",package))
+  check = readLines(
+    paste0("https://quickcode.obi.obianom.com/CRAN/existed.php?package=",package)
+    )
   if(check == "200") TRUE else FALSE
 }
 
