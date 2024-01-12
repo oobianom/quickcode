@@ -8,6 +8,7 @@
 #' @param w.px NUMERIC. width in pixels
 #' @param h.px NUMERIC. height in pixels
 #' @param ext CHARACTER. file extension eg jpg, png
+#' @param paths logical. whether to return paths
 #'
 #' @section Sources & References:
 #' The random images are downloaded from www.unsplash.com
@@ -48,10 +49,13 @@
 #' # download 200 random images from category of school
 #' # Note that maximum download is 99, so the function will only download 99
 #' genRandImg(fp = tempdir(),cat = "school", n = 200)
+#'
+#' # download 5 random images with extension jif and return paths
+#' genRandImg(fp = tempdir(),cat = "beauty", n = 5, ext = "jif", paths = TRUE)
 #' }
 #' @export
 #'
-genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500, ext = "jpg") {
+genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500, ext = "jpg", paths = FALSE) {
   # check existence of directory
   if(!dir.exists(fp)) stop(paste0("The directory path declared in the 'fp' argument must exist."))
 
@@ -86,6 +90,7 @@ genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500,
     }
   }
   message(paste0("Downloaded ",length(downloaded.files)," files to ",fp))
+  if(paths) downloaded.files
 }
 
 
