@@ -90,7 +90,7 @@ genRandImg <- function(fp, cat = imageCategories, n = 1, w.px = 500, h.px = 500,
     }
   }
   message(paste0("Downloaded ",length(downloaded.files)," files to ",fp))
-  if(paths) downloaded.files
+  if(paths) gsub("\\\\","/",downloaded.files)
 }
 
 

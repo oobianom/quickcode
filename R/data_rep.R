@@ -19,20 +19,14 @@
 #' p1
 #' p2
 #'
-#' #add p1 to p1 twice by row, and resave as p1
-#' data_push(p1,n=2,"rows")
+#' #add p1  twice by row, and resave as p1
+#' data_rep(p1,n=2,"rows")
 #' p1 #p1 has been updated
 #'
-#' #add p2 to p2 5 times by cols, and resave as p1
-#' data_push(p1,n=5,"cols")
-#' p1 #p1 has been updated
 #'
-#' # declare a new data frame called p3
-#' p3 <- data.frame(Hindex=number(20),Rindex=number(20,seed=20))
-#'
-#' # add p3 to p3 4 times as column, and resave as p3
-#' data_push(p3,n=4,"cols")
-#' p3 # p3 has been updated
+#' #add p2  3 times by col, and resave as p2
+#' data_rep(p2,n=3,"cols")
+#' p2 #p2 has been updated
 #' @export
 #'
 data_rep <- function(., n, which = c("rows", "cols")) {
