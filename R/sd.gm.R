@@ -2,6 +2,7 @@
 #'
 #' Calculate the geometric standard deviation
 #'
+#' @rdname geostats
 #' @param num vector of numbers
 #' @param na.rm remove NAs from the vector
 #' @param neg.rm remove negative values from the vector
@@ -21,7 +22,7 @@
 #'
 #' @export
 
-geo.sd <- function(num, na.rm = TRUE, neg.rm = TRUE, round = 2) {
+geo.sd <- function(num, round = 2, na.rm = TRUE, neg.rm = TRUE) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   if(neg.rm) num <- num[num > 0]
   return(round(exp(stats::sd(log(num), na.rm = na.rm)),round))

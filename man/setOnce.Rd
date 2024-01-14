@@ -4,7 +4,7 @@
 \alias{setOnce}
 \title{Set a variable only once}
 \usage{
-setOnce(., val = 1L, envir = parent.frame())
+setOnce(., val = 1L, envir = NULL)
 }
 \arguments{
 \item{.}{variable to set}

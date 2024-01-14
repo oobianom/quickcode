@@ -2,7 +2,7 @@
 #' Calculate geometric coefficient of variation and round
 #'
 #' Calculate the coefficient of variation and round
-#'
+#' @rdname geostats
 #' @param num vector of numbers
 #' @param na.rm remove NAs from the vector
 #' @param neg.rm remove negative values from the vector
@@ -25,7 +25,7 @@
 #'
 #' @export
 
-geo.cv <- function(num, na.rm = TRUE, neg.rm = TRUE, pct = TRUE, round = 2) {
+geo.cv <- function(num, round = 2, na.rm = TRUE, neg.rm = TRUE, pct = TRUE) {
   if(not.numeric(num)) stop("The vector must have numbers only")
   if(neg.rm) num <- num[num > 0]
   res <- sqrt(exp(sd(log(num), na.rm = na.rm)^2) - 1)

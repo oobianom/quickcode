@@ -10,7 +10,8 @@ genRandImg(
   n = 1,
   w.px = 500,
   h.px = 500,
-  ext = "jpg"
+  ext = "jpg",
+  paths = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ genRandImg(
 \item{h.px}{NUMERIC. height in pixels}
 
 \item{ext}{CHARACTER. file extension eg jpg, png}
+
+\item{paths}{logical. whether to return paths}
 }
 \value{
 downloaded image from a select image category
@@ -73,5 +76,8 @@ genRandImg(fp = tempdir(),cat = "food", n = 10, ext = "png")
 # download 200 random images from category of school
 # Note that maximum download is 99, so the function will only download 99
 genRandImg(fp = tempdir(),cat = "school", n = 200)
+
+# download 5 random images with extension jif and return paths
+genRandImg(fp = tempdir(),cat = "beauty", n = 5, ext = "jif", paths = TRUE)
 }
 }
