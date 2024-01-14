@@ -1,7 +1,8 @@
 
-#' Calculate geometric coefficient of variation and round
+#' Calculate geometric coefficient of variation, mean, or SD and round
 #'
-#' Calculate the coefficient of variation and round
+#' Calculate the coefficient of variation
+#'
 #' @rdname geostats
 #' @param num vector of numbers
 #' @param na.rm remove NAs from the vector
