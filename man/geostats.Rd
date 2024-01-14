@@ -4,7 +4,7 @@
 \alias{geo.cv}
 \alias{geo.mean}
 \alias{geo.sd}
-\title{Calculate geometric coefficient of variation and round}
+\title{Calculate geometric coefficient of variation, mean, or SD and round}
 \usage{
 geo.cv(num, round = 2, na.rm = TRUE, neg.rm = TRUE, pct = TRUE)
 
@@ -31,7 +31,7 @@ the geometric mean of a set of numbers
 the geometric standard deviation of a set of numbers
 }
 \description{
-Calculate the coefficient of variation and round
+Calculate the coefficient of variation
 
 Calculate the geometric mean
 
