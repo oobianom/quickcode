@@ -1,3 +1,15 @@
+# quickcode 0.7
+
+- [ ] Revisions to current functions
+    - [ ] in.range
+    - [ ] archivedPkg 
+    - [ ] rDecomPkg 
+    - [ ] genRandImg
+- [ ] New functions 
+    - [ ] function 1
+    - [ ] function 2
+    - [ ] function 3
+  
 # quickcode 0.6
 
 - [x] More 'Use case' section to major functions
