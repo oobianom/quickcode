@@ -6,9 +6,6 @@
     - [ ] rDecomPkg 
     - [ ] genRandImg
 - [ ] New functions 
-    - [ ] function 1
-    - [ ] function 2
-    - [ ] function 3
   
 # quickcode 0.6
 
