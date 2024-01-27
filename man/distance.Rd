@@ -7,9 +7,11 @@
 pairDist(data, n, v, round = NULL)
 }
 \arguments{
+\item{data}{dataset with atleast 2 columns}
+
 \item{n}{Number of observations (scaler)}
 
-\item{v}{A vector numerically referencing which variables to select;
+\item{v}{A vector numerically referencing which column to select;
 variable references can be contiguous, non-contiguous,
 or a combination as defined; E.g. v = c(3,6:9)}
 
@@ -30,11 +32,18 @@ Used to generate the computations needed to model pair-distance measures in thre
 }
 
 \examples{
-#basic example
+
 v= c(2,4:10)
 n = 6
-data =
-pairdist(data, n, v)
+data = attenu[,1:2]
 
+#basic example
+pairDist(data)
+
+# specify number of observations
+pairDist(data, n, v)
+
+# round results to 2 decimal points
+pairDist(data, n, v,2)
 
 }
