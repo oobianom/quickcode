@@ -4,8 +4,9 @@
 #' calculates the distance of points from the centroid of one or more clusters.
 #'
 #' @rdname distance
+#' @param data dataset with atleast 2 columns
 #' @param n Number of observations (scaler)
-#' @param v A vector numerically referencing which variables to select;
+#' @param v A vector numerically referencing which column to select;
 #' variable references can be contiguous, non-contiguous,
 #' or a combination as defined; E.g. v = c(3,6:9)
 #' @param neg.rm remove negative values from the vector
@@ -16,17 +17,27 @@
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
 #'
 #' @examples
-#' #basic example
+#'
 #' v= c(2,4:10)
 #' n = 6
-#' data = mtcars[,1:2]
-#' pairDist(data, n, v,2)
+#' data = attenu[,1:2]
 #'
+#' #basic example
+#' pairDist(data)
+#'
+#' # specify number of observations
+#' pairDist(data, n, v)
+#'
+#' # round results to 2 decimal points
+#' pairDist(data, n, v,2)
 #'
 #' @export
 
 pairDist <- function(data, n, v, round = NULL) {
   message("This function is still being developed")
+  if(missing(n) | missing(v))
+    res <- sqrt(rowSums((data- matrix(colMeans(data)))^2))
+  else
   res <- sqrt(rowSums((data- matrix(colMeans(data), n, v, byrow = TRUE))^2))
   if(typeof(round) == "double") res <- round(res,round)
   res
