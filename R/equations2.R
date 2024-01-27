@@ -19,8 +19,8 @@
 #' #basic example
 #' v= c(2,4:10)
 #' n = 6
-#' data =
-#' pairdist(data, n, v)
+#' data = mtcars
+#' pairDist(data, n, v)
 #'
 #'
 #' @export
