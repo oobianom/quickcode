@@ -68,3 +68,10 @@ imageext <- c("ai","bmp","cdr","cgm","cr2","crw","cur","dng","eps","fpx",
               "gif","heic","heif","ico","img","jfif","jpeg","jpg","mac",
               "nef","orf","pcd","pcx","png","psd","sr2","svg","tif","tiff",
               "webp","wmf","wpg")
+
+#super env.ironment
+super. <- paste0("package:",.packageName,"_sVar")
+
+
+#is.attached
+is.attached <- function(packageLine) any(grep(packageLine,search()))
