@@ -19,8 +19,8 @@
 #' #basic example
 #' v= c(2,4:10)
 #' n = 6
-#' data = mtcars
-#' pairDist(data, n, v)
+#' data = mtcars[,1:2]
+#' pairDist(data, n, v,2)
 #'
 #'
 #' @export
@@ -28,7 +28,7 @@
 pairDist <- function(data, n, v, round = NULL) {
   message("This function is still being developed")
   res <- sqrt(rowSums((data- matrix(colMeans(data), n, v, byrow = TRUE))^2))
-  if(typeof(round) == "integer") res <- round(res,round)
+  if(typeof(round) == "double") res <- round(res,round)
   res
 }
 
