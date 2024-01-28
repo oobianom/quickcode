@@ -46,3 +46,77 @@ pairDist <- function(data, n, v, round = NULL) {
 
 
 
+
+# Other equations
+
+#' Production Function (Cobb-Douglas)
+#'
+#' Calculate the output
+#'
+#' @rdname economics
+#' @param Q output
+#' @param L labour output
+#' @param K caputal input
+#' @param A total factor
+#' @param alpha output elacticity
+#' @param beta output elasticity
+#'
+#' @export
+#'
+cobbDouglas <- function(Q,A,L,K, alpha, beta){
+  Q = A * (L^alpha) * (K^beta)
+}
+
+
+#' Phillips Curve
+#'
+#' @export
+
+infrate <- function(eInf,a,u,u0, round=2){
+  round(eInf - a (u-u0),round)
+}
+
+
+#' Laffer Curve
+#'
+#' Calculate tax revenue
+#'
+#' @param T tax revenue
+#' @param R tax rate
+#' @param GDP gross domestic product
+#'
+#' @export
+
+lafferCurve <- function(T,R,GDP, round=2){
+  x = NA
+  if(missing(T)) x = (R * GDP)/2
+  else if(missing(Km)) x = T * 2 / GDP
+  round(x,round)
+}
+
+#' Michaelis-Menten Equation
+#'
+#' @export
+
+MMk <- function(V,Vmax,S,Km, round=2){
+  x = NA
+  if(missing(V)) x = Vmax * S / (Km  + S)
+  else if(missing(Km)) x = (Vmax * S / V) - S
+  round(x,round)
+}
+
+#' Henderson-Hasselbalch Equation
+#'
+#' @export
+#'
+
+pHpKa <- function(pH, pKa, A, HA, round=2){
+  x = NA
+  if(missing(pH))x = pKa + log(A/HA)
+  else if(missing(pKa))x = pH - log(A/HA)
+  round(x,round)
+}
+
+
+
+
