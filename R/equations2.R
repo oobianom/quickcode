@@ -46,7 +46,6 @@ pairDist <- function(data, n, v, round = NULL) {
 
 
 
-
 # Other equations
 
 #' Production Function (Cobb-Douglas)
@@ -63,8 +62,8 @@ pairDist <- function(data, n, v, round = NULL) {
 #'
 #' @export
 #'
-cobbDouglas <- function(Q,A,L,K, alpha, beta){
-  Q = A * (L^alpha) * (K^beta)
+cobbDouglas <- function(Q, A, L, K, alpha, beta) {
+  Q <- A * (L^alpha) * (K^beta)
 }
 
 
@@ -72,8 +71,8 @@ cobbDouglas <- function(Q,A,L,K, alpha, beta){
 #'
 #' @export
 
-infrate <- function(eInf,a,u,u0, round=2){
-  round(eInf - a (u-u0),round)
+infrate <- function(eInf, a, u, u0, round = 2) {
+  round(eInf - a(u - u0), round)
 }
 
 
@@ -87,22 +86,24 @@ infrate <- function(eInf,a,u,u0, round=2){
 #'
 #' @export
 
-lafferCurve <- function(T,R,GDP, round=2){
-  x = NA
-  if(missing(T)) x = (R * GDP)/2
-  else if(missing(Km)) x = T * 2 / GDP
-  round(x,round)
+lafferCurve <- function(T, R, GDP, round = 2) {
+  x <- NA
+  if (missing(T)) {
+    x <- (R * GDP) / 2
+  } else if (missing(Km)) x <- T * 2 / GDP
+  round(x, round)
 }
 
 #' Michaelis-Menten Equation
 #'
 #' @export
 
-MMk <- function(V,Vmax,S,Km, round=2){
-  x = NA
-  if(missing(V)) x = Vmax * S / (Km  + S)
-  else if(missing(Km)) x = (Vmax * S / V) - S
-  round(x,round)
+MMk <- function(V, Vmax, S, Km, round = 2) {
+  x <- NA
+  if (missing(V)) {
+    x <- Vmax * S / (Km + S)
+  } else if (missing(Km)) x <- (Vmax * S / V) - S
+  round(x, round)
 }
 
 #' Henderson-Hasselbalch Equation
@@ -110,13 +111,10 @@ MMk <- function(V,Vmax,S,Km, round=2){
 #' @export
 #'
 
-pHpKa <- function(pH, pKa, A, HA, round=2){
-  x = NA
-  if(missing(pH))x = pKa + log(A/HA)
-  else if(missing(pKa))x = pH - log(A/HA)
-  round(x,round)
+pHpKa <- function(pH, pKa, A, HA, round = 2) {
+  x <- NA
+  if (missing(pH)) {
+    x <- pKa + log(A / HA)
+  } else if (missing(pKa)) x <- pH - log(A / HA)
+  round(x, round)
 }
-
-
-
-
