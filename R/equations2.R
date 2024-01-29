@@ -46,7 +46,7 @@ pairDist <- function(data, n, v, round = NULL) {
 
 
 
-# Other equations
+# Other equations - Still need to build a story around each equation
 
 #' Production Function (Cobb-Douglas)
 #'
