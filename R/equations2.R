@@ -118,3 +118,19 @@ pHpKa <- function(pH, pKa, A, HA, round = 2) {
   } else if (missing(pKa)) x <- pH - log(A / HA)
   round(x, round)
 }
+
+
+
+
+#' Lineweaver-Burk Equation (Double reciprocal plot)
+#'
+#' @export
+#'
+
+linweaver <- function(V,Km,Vmax,S, round = 2) {
+  x <- NA
+  if (missing(V)) {
+    x <- Vmax * s / (Km + S)
+  } else if (missing(Km)) x <- (Vmax * S / (V)) - S
+  round(x, round)
+}
