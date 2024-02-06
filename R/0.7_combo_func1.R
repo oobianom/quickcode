@@ -60,21 +60,21 @@ read.csv.print <- function(file, header = TRUE, sep = ",", quote = "\"", dec = "
 
 read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec = ".",
                              numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,
-                             col.names, as.is = !stringsAsFactors, na.strings = "NA",
+                             col.names, as.is = TRUE, na.strings = "NA",
                              colClasses = NA, nrows = -1, skip = 0, check.names = TRUE,
                              fill = NULL, strip.white = FALSE, blank.lines.skip = TRUE,
                              comment.char = "#", allowEscapes = FALSE, flush = FALSE,
                              stringsAsFactors = FALSE, fileEncoding = "",
-                             encoding = "unknown", text, skipNul = FALSE, dim = c(10L,5L)){
+                             encoding = "unknown", skipNul = FALSE, dim = c(10L,5L)){
   x <- read.table(
-    file, header = FALSE, sep = "", quote = "\"'", dec = ".",
-    numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,
-    col.names, as.is = !stringsAsFactors, na.strings = "NA",
-    colClasses = NA, nrows = -1, skip = 0, check.names = TRUE,
-    fill = NULL, strip.white = FALSE, blank.lines.skip = TRUE,
-    comment.char = "#", allowEscapes = FALSE, flush = FALSE,
-    stringsAsFactors = FALSE, fileEncoding = "",
-    encoding = "unknown", text, skipNul = FALSE, dim = c(10L,5L), ...)
+    file = file, header = header, sep = sep, quote = quote, dec = dec,
+    numerals = match.arg(numerals), row.names = row.names,
+    col.names = col.names, as.is = as.is, na.strings = na.strings,
+    colClasses = colClasses, nrows = nrows, skip = skip, check.names = check.names,
+    fill = fill, strip.white = strip.white, blank.lines.skip = blank.lines.skip,
+    comment.char = comment.char, allowEscapes = allowEscapes, flush = flush,
+    stringsAsFactors = stringsAsFactors, fileEncoding = fileEncoding,
+    encoding = encoding, skipNul = skipNul, ...)
   if(multiply(dim) > 0) print(x, dim)
   x
 }
