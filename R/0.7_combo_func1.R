@@ -4,7 +4,7 @@
 #'
 #' Given a sting, split by a separator into numbers
 #'
-#' @inheritParams base  strsplit
+#' @inheritParams strsplit
 #' @return numeric values based on split string
 #' @export
 
@@ -18,7 +18,7 @@ strsplit.num <- function(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE
 #'
 #' Given a sting, split by a separator into boolean
 #'
-#' @inheritParams base strsplit
+#' @inheritParams strsplit
 #' @param type type of return, see the as.boolean function for more info
 #' @return boolean values based on split string
 #' @export
