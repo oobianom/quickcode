@@ -52,13 +52,13 @@ pairDist <- function(data, n, v, round = NULL) {
 #' #'
 #' #' Calculate the output
 #' #'
-#' #' @rdname economics
-#' #' @param Q output
-#' #' @param L labour output
-#' #' @param K caputal input
-#' #' @param A total factor
-#' #' @param alpha output elacticity
-#' #' @param beta output elasticity
+#' #' rdname economics
+#' #' param Q output
+#' #' param L labour output
+#' #' param K caputal input
+#' #' param A total factor
+#' #' param alpha output elacticity
+#' #' param beta output elasticity
 #' #'
 #' #'
 #' #'
@@ -80,9 +80,9 @@ pairDist <- function(data, n, v, round = NULL) {
 #' #'
 #' #' Calculate tax revenue
 #' #'
-#' #' @param T tax revenue
-#' #' @param R tax rate
-#' #' @param GDP gross domestic product
+#' #' param T tax revenue
+#' #' param R tax rate
+#' #' param GDP gross domestic product
 #' #'
 #' #'
 #'
