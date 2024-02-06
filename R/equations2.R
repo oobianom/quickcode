@@ -48,89 +48,89 @@ pairDist <- function(data, n, v, round = NULL) {
 
 # Other equations - Still need to build a story around each equation
 
-#' Production Function (Cobb-Douglas)
+#' #' Production Function (Cobb-Douglas)
+#' #'
+#' #' Calculate the output
+#' #'
+#' #' @rdname economics
+#' #' @param Q output
+#' #' @param L labour output
+#' #' @param K caputal input
+#' #' @param A total factor
+#' #' @param alpha output elacticity
+#' #' @param beta output elasticity
+#' #'
+#' #'
+#' #'
+#' cobbDouglas <- function(Q, A, L, K, alpha, beta) {
+#'   Q <- A * (L^alpha) * (K^beta)
+#' }
 #'
-#' Calculate the output
 #'
-#' @rdname economics
-#' @param Q output
-#' @param L labour output
-#' @param K caputal input
-#' @param A total factor
-#' @param alpha output elacticity
-#' @param beta output elasticity
+#' #' Phillips Curve
+#' #'
+#' #'
 #'
-#' @export
+#' infrate <- function(eInf, a, u, u0, round = 2) {
+#'   round(eInf - a(u - u0), round)
+#' }
 #'
-cobbDouglas <- function(Q, A, L, K, alpha, beta) {
-  Q <- A * (L^alpha) * (K^beta)
-}
-
-
-#' Phillips Curve
 #'
-#' @export
-
-infrate <- function(eInf, a, u, u0, round = 2) {
-  round(eInf - a(u - u0), round)
-}
-
-
-#' Laffer Curve
+#' #' Laffer Curve
+#' #'
+#' #' Calculate tax revenue
+#' #'
+#' #' @param T tax revenue
+#' #' @param R tax rate
+#' #' @param GDP gross domestic product
+#' #'
+#' #'
 #'
-#' Calculate tax revenue
+#' lafferCurve <- function(T, R, GDP, round = 2) {
+#'   x <- NA
+#'   if (missing(T)) {
+#'     x <- (R * GDP) / 2
+#'   } else if (missing(Km)) x <- T * 2 / GDP
+#'   round(x, round)
+#' }
 #'
-#' @param T tax revenue
-#' @param R tax rate
-#' @param GDP gross domestic product
+#' #' Michaelis-Menten Equation
+#' #'
+#' #'
 #'
-#' @export
-
-lafferCurve <- function(T, R, GDP, round = 2) {
-  x <- NA
-  if (missing(T)) {
-    x <- (R * GDP) / 2
-  } else if (missing(Km)) x <- T * 2 / GDP
-  round(x, round)
-}
-
-#' Michaelis-Menten Equation
+#' MMk <- function(V, Vmax, S, Km, round = 2) {
+#'   x <- NA
+#'   if (missing(V)) {
+#'     x <- Vmax * S / (Km + S)
+#'   } else if (missing(Km)) x <- (Vmax * S / V) - S
+#'   round(x, round)
+#' }
 #'
-#' @export
-
-MMk <- function(V, Vmax, S, Km, round = 2) {
-  x <- NA
-  if (missing(V)) {
-    x <- Vmax * S / (Km + S)
-  } else if (missing(Km)) x <- (Vmax * S / V) - S
-  round(x, round)
-}
-
-#' Henderson-Hasselbalch Equation
+#' #' Henderson-Hasselbalch Equation
+#' #'
+#' #'
+#' #'
 #'
-#' @export
+#' pHpKa <- function(pH, pKa, A, HA, round = 2) {
+#'   x <- NA
+#'   if (missing(pH)) {
+#'     x <- pKa + log(A / HA)
+#'   } else if (missing(pKa)) x <- pH - log(A / HA)
+#'   round(x, round)
+#' }
 #'
-
-pHpKa <- function(pH, pKa, A, HA, round = 2) {
-  x <- NA
-  if (missing(pH)) {
-    x <- pKa + log(A / HA)
-  } else if (missing(pKa)) x <- pH - log(A / HA)
-  round(x, round)
-}
-
-
-
-
-#' Lineweaver-Burk Equation (Double reciprocal plot)
 #'
-#' @export
 #'
-
-linweaver <- function(V,Km,Vmax,S, round = 2) {
-  x <- NA
-  if (missing(V)) {
-    x <- Vmax * s / (Km + S)
-  } else if (missing(Km)) x <- (Vmax * S / (V)) - S
-  round(x, round)
-}
+#'
+#' #' Lineweaver-Burk Equation (Double reciprocal plot)
+#' #'
+#' #'
+#' #'
+#'
+#' linweaver <- function(V,Km,Vmax,S, round = 2) {
+#'   x <- NA
+#'   if (missing(V)) {
+#'     x <- Vmax * s / (Km + S)
+#'   } else if (missing(Km)) x <- (Vmax * S / (V)) - S
+#'   round(x, round)
+#' }
