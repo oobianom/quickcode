@@ -4,7 +4,7 @@
 #'
 #' Given a sting, split by a separator into numbers
 #'
-#' @inherit  base strsplit
+#' @inheritParams base  strsplit
 #' @return numeric values based on split string
 #' @export
 
