@@ -98,13 +98,17 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
 #' # returns error
 #' multiply(0)
 #'
+#' # vector of numbers
+#' numvec <- number(10, max.digits=3)
+#' numvec
+#'
 #' # multiply 2 numbers
-#' multiply(4,5)
-#' multiply(c(4,5))
+#' multiply(numvec[1:2])
+#' multiply(numvec[4],numvec[5])
 #' multiply(a=4,b=5)
 #'
 #' # multiply 5 numbers
-#' multiply(10:15)
+#' multiply(numvec[1:5])
 #' multiply(11,15,12,14,13)
 #' multiply(a=4,b=22,c=44,d=9,u=10)
 #'
