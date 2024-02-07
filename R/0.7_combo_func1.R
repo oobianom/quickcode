@@ -65,7 +65,7 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
                              fill = NULL, strip.white = FALSE, blank.lines.skip = TRUE,
                              comment.char = "#", allowEscapes = FALSE, flush = FALSE,
                              stringsAsFactors = FALSE, fileEncoding = "",
-                             encoding = "unknown", skipNul = FALSE, dim = c(10L,5L)){
+                             encoding = "unknown", skipNul = FALSE, dim = c(10L,5L),...){
   x <- read.table(
     file = file, header = header, sep = sep, quote = quote, dec = dec,
     numerals = match.arg(numerals), row.names = row.names,
