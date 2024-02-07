@@ -41,11 +41,11 @@ strsplit.bool <-
 
 
 
-#' Read in a CSV and print first X rows and Columns
+#' Read in a CSV and show first X rows and Columns
 #'
-#' Read a dataset of type csv and print x rows and y columns
+#' Read a dataset of type csv and show x rows and y columns
 #'
-#' @param dim dimension of CSV content to print
+#' @param dim dimension of CSV content to show
 #' @inheritParams read.csv
 #'
 #' @return read csv content
@@ -74,19 +74,19 @@ read.csv.print <-
     )
     if (length(dim) > 1 & dim[1] != 0) {
       if (multiply(dim) > 0) {
-        print(x[1:dim[1],1:dim[2]])
+        prtr(x[1:dim[1],1:dim[2]])
       }
     } else {
-      print(x[1:dim[1],])
+      prtr(x[1:dim[1],])
     }
     x
   }
 
-#' Read in a CSV and print first X rows and Columns
+#' Read in a CSV and show first X rows and Columns
 #'
-#' Read a dataset of type csv and print x rows and y columns
+#' Read a dataset of type csv and show x rows and y columns
 #'
-#' @param dim dimension of table content to print
+#' @param dim dimension of table content to show
 #' @inheritParams read.table
 #'
 #' @return read table content
@@ -148,10 +148,10 @@ read.table.print <-
     )
     if (length(dim) > 1 & dim[1] != 0) {
       if (multiply(dim) > 0) {
-        print(x[1:dim[1],1:dim[2]])
+        prtr(x[1:dim[1],1:dim[2]])
       }
     } else {
-      print(x[1:dim[1],])
+      if(dim[1] != 0) prtr(x[1:dim[1],])
     }
 
     x
