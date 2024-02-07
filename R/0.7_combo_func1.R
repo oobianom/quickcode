@@ -1,4 +1,4 @@
-# Combinatory functions
+# Function that generally go together often
 
 #' Split a string of numbers and return numeric
 #'
@@ -44,7 +44,9 @@ read.csv.print <- function(file, header = TRUE, sep = ",", quote = "\"", dec = "
                            fill = TRUE, comment.char = "", ...,dim = c(10L,5L)){
   x <- read.table.print(file = file, header = header, sep = sep, quote = quote,
                   dec = dec, fill = fill, comment.char = comment.char, dim = 0, ...)
-  if(multiply(dim) > 0) print(x, dim)
+  if(length(dim)>1 & dim != 0){ if(multiply(dim) > 0) head(x, dim) }else{
+    head(x, n = dim)
+  }
   x
 }
 
@@ -75,9 +77,10 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
     comment.char = comment.char, allowEscapes = allowEscapes, flush = flush,
     stringsAsFactors = stringsAsFactors, fileEncoding = fileEncoding,
     encoding = encoding, skipNul = skipNul, ...)
-  if(multiply(dim) > 0){
-    message("hellow")
-  } #print(x, dim)
+  if(length(dim)>1 & dim != 0){ if(multiply(dim) > 0) head(x, dim) }else{
+    head(x, n = dim)
+  }
+
   x
 }
 
