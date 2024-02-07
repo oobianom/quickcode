@@ -74,10 +74,10 @@ read.csv.print <-
     )
     if (length(dim) > 1 & dim[1] != 0) {
       if (multiply(dim) > 0) {
-        head(x, dim)
+        print(x[1:dim[1],1:dim[2]])
       }
     } else {
-      head(x, n = dim)
+      print(x[1:dim[1],])
     }
     x
   }
@@ -148,10 +148,10 @@ read.table.print <-
     )
     if (length(dim) > 1 & dim[1] != 0) {
       if (multiply(dim) > 0) {
-        head(x, dim)
+        print(x[1:dim[1],1:dim[2]])
       }
     } else {
-      head(x, n = dim)
+      print(x[1:dim[1],])
     }
 
     x
