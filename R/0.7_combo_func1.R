@@ -75,7 +75,9 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
     comment.char = comment.char, allowEscapes = allowEscapes, flush = flush,
     stringsAsFactors = stringsAsFactors, fileEncoding = fileEncoding,
     encoding = encoding, skipNul = skipNul, ...)
-  if(multiply(dim) > 0) print(x, dim)
+  if(multiply(dim) > 0){
+    message("hellow")
+  } #print(x, dim)
   x
 }
 
@@ -87,7 +89,28 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
 #'
 #' @param ... the numeric values to multiply
 #' @return multiple of all content
+#'
+#' @examples
+#' # multiply 1 number
+#' # returns error
+#' multiply(0)
+#'
+#' # multiply 2 numbers
+#' multiply(4,5)
+#' multiply(c(4,5))
+#' multiply(a=4,b=5)
+#'
+#' # multiply 5 numbers
+#' multiply(10:15)
+#' multiply(11,15,12,14,13)
+#' multiply(a=4,b=22,c=44,d=9,u=10)
+#'
 #' @export
 
-multiply <- function(...)tail(cumprod(unlist(...)),n=1)
+multiply <- function(...) {
+  args <- unlist(c(as.list(environment()), list(...)))
+  stopifnot(length(args) > 1)
+  tail(cumprod(args), n = 1)
+}
+
 
