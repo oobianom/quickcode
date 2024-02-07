@@ -8,9 +8,14 @@
 #' @return numeric values based on split string
 #' @export
 
-strsplit.num <- function(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE){
-  as.numeric(unlist(strsplit(x, split, fixed, perl, useBytes)))
-}
+strsplit.num <-
+  function(x,
+           split,
+           fixed = FALSE,
+           perl = FALSE,
+           useBytes = FALSE) {
+    as.numeric(unlist(strsplit(x, split, fixed, perl, useBytes)))
+  }
 
 
 
@@ -23,9 +28,15 @@ strsplit.num <- function(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE
 #' @return boolean values based on split string
 #' @export
 
-strsplit.bool <- function(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE,type = 2){
-  as.boolean(unlist(strsplit(x, split, fixed, perl, useBytes)),type = type)
-}
+strsplit.bool <-
+  function(x,
+           split,
+           fixed = FALSE,
+           perl = FALSE,
+           useBytes = FALSE,
+           type = 2) {
+    as.boolean(unlist(strsplit(x, split, fixed, perl, useBytes)), type = type)
+  }
 
 
 
@@ -40,15 +51,36 @@ strsplit.bool <- function(x, split, fixed = FALSE, perl = FALSE, useBytes = FALS
 #' @return read csv content
 #' @export
 
-read.csv.print <- function(file, header = TRUE, sep = ",", quote = "\"", dec = ".",
-                           fill = TRUE, comment.char = "", ...,dim = c(10L,5L)){
-  x <- read.table.print(file = file, header = header, sep = sep, quote = quote,
-                  dec = dec, fill = fill, comment.char = comment.char, dim = 0, ...)
-  if(length(dim)>1 & dim != 0){ if(multiply(dim) > 0) head(x, dim) }else{
-    head(x, n = dim)
+read.csv.print <-
+  function(file,
+           header = TRUE,
+           sep = ",",
+           quote = "\"",
+           dec = ".",
+           fill = TRUE,
+           comment.char = "",
+           ...,
+           dim = c(10L, 5L)) {
+    x <- read.table.print(
+      file = file,
+      header = header,
+      sep = sep,
+      quote = quote,
+      dec = dec,
+      fill = fill,
+      comment.char = comment.char,
+      dim = 0,
+      ...
+    )
+    if (length(dim) > 1 & dim[1] != 0) {
+      if (multiply(dim) > 0) {
+        head(x, dim)
+      }
+    } else {
+      head(x, n = dim)
+    }
+    x
   }
-  x
-}
 
 #' Read in a CSV and print first X rows and Columns
 #'
@@ -60,29 +92,70 @@ read.csv.print <- function(file, header = TRUE, sep = ",", quote = "\"", dec = "
 #' @return read table content
 #' @export
 
-read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec = ".",
-                             numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,
-                             col.names, as.is = TRUE, na.strings = "NA",
-                             colClasses = NA, nrows = -1, skip = 0, check.names = TRUE,
-                             fill = NULL, strip.white = FALSE, blank.lines.skip = TRUE,
-                             comment.char = "#", allowEscapes = FALSE, flush = FALSE,
-                             stringsAsFactors = FALSE, fileEncoding = "",
-                             encoding = "unknown", skipNul = FALSE, dim = c(10L,5L),...){
-  x <- read.table(
-    file = file, header = header, sep = sep, quote = quote, dec = dec,
-    numerals = match.arg(numerals), row.names = row.names,
-    col.names = col.names, as.is = as.is, na.strings = na.strings,
-    colClasses = colClasses, nrows = nrows, skip = skip, check.names = check.names,
-    fill = fill, strip.white = strip.white, blank.lines.skip = blank.lines.skip,
-    comment.char = comment.char, allowEscapes = allowEscapes, flush = flush,
-    stringsAsFactors = stringsAsFactors, fileEncoding = fileEncoding,
-    encoding = encoding, skipNul = skipNul, ...)
-  if(length(dim)>1 & dim != 0){ if(multiply(dim) > 0) head(x, dim) }else{
-    head(x, n = dim)
-  }
+read.table.print <-
+  function(file,
+           header = FALSE,
+           sep = "",
+           quote = "\"'",
+           dec = ".",
+           numerals = c("allow.loss", "warn.loss", "no.loss"),
+           row.names,
+           col.names,
+           as.is = TRUE,
+           na.strings = "NA",
+           colClasses = NA,
+           nrows = -1,
+           skip = 0,
+           check.names = TRUE,
+           fill = NULL,
+           strip.white = FALSE,
+           blank.lines.skip = TRUE,
+           comment.char = "#",
+           allowEscapes = FALSE,
+           flush = FALSE,
+           stringsAsFactors = FALSE,
+           fileEncoding = "",
+           encoding = "unknown",
+           skipNul = FALSE,
+           dim = c(10L, 5L),
+           ...) {
+    x <- read.table(
+      file = file,
+      header = header,
+      sep = sep,
+      quote = quote,
+      dec = dec,
+      numerals = match.arg(numerals),
+      row.names = row.names,
+      col.names = col.names,
+      as.is = as.is,
+      na.strings = na.strings,
+      colClasses = colClasses,
+      nrows = nrows,
+      skip = skip,
+      check.names = check.names,
+      fill = fill,
+      strip.white = strip.white,
+      blank.lines.skip = blank.lines.skip,
+      comment.char = comment.char,
+      allowEscapes = allowEscapes,
+      flush = flush,
+      stringsAsFactors = stringsAsFactors,
+      fileEncoding = fileEncoding,
+      encoding = encoding,
+      skipNul = skipNul,
+      ...
+    )
+    if (length(dim) > 1 & dim[1] != 0) {
+      if (multiply(dim) > 0) {
+        head(x, dim)
+      }
+    } else {
+      head(x, n = dim)
+    }
 
-  x
-}
+    x
+  }
 
 
 
@@ -99,18 +172,18 @@ read.table.print <- function(file, header = FALSE, sep = "", quote = "\"'", dec 
 #' multiply(0)
 #'
 #' # vector of numbers
-#' numvec <- number(10, max.digits=3)
+#' numvec <- number(10, max.digits = 3)
 #' numvec
 #'
 #' # multiply 2 numbers
 #' multiply(numvec[1:2])
-#' multiply(numvec[4],numvec[5])
-#' multiply(a=4,b=5)
+#' multiply(numvec[4], numvec[5])
+#' multiply(a = 4, b = 5)
 #'
 #' # multiply 5 numbers
 #' multiply(numvec[1:5])
-#' multiply(11,15,12,14,13)
-#' multiply(a=4,b=22,c=44,d=9,u=10)
+#' multiply(11, 15, 12, 14, 13)
+#' multiply(a = 4, b = 22, c = 44, d = 9, u = 10)
 #'
 #' @export
 
@@ -119,5 +192,3 @@ multiply <- function(...) {
   stopifnot(length(args) > 1)
   tail(cumprod(args), n = 1)
 }
-
-
