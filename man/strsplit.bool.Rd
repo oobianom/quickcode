@@ -14,6 +14,33 @@ strsplit.bool(
 )
 }
 \arguments{
+\item{x}{
+    character vector, each element of which is to be split.  Other
+    inputs, including a factor, will give an error.
+  }
+
+\item{split}{
+    character vector (or object which can be coerced to such)
+    containing \link[base]{regular expression}(s) (unless \code{fixed = TRUE})
+    to use for splitting.  If empty matches occur, in particular if
+    \code{split} has length 0, \code{x} is split into single characters.
+    If \code{split} has length greater than 1, it is re-cycled along
+    \code{x}.
+  }
+
+\item{fixed}{
+    logical.  If \code{TRUE} match \code{split} exactly, otherwise
+    use regular expressions.  Has priority over \code{perl}.
+  }
+
+\item{perl}{logical.  Should Perl-compatible regexps be used?}
+
+\item{useBytes}{logical.  If \code{TRUE} the matching is done
+    byte-by-byte rather than character-by-character, and inputs with
+    marked encodings are not converted.  This is forced (with a warning)
+    if any input is found which is marked as \code{"bytes"}
+    (see \code{\link[base]{Encoding}}).}
+
 \item{type}{type of return, see the as.boolean function for more info}
 }
 \value{

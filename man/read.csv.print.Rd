@@ -2,7 +2,7 @@
 % Please edit documentation in R/0.7_combo_func1.R
 \name{read.csv.print}
 \alias{read.csv.print}
-\title{Read in a CSV and print first X rows and Columns}
+\title{Read in a CSV and show first X rows and Columns}
 \usage{
 read.csv.print(
   file,
@@ -17,11 +17,60 @@ read.csv.print(
 )
 }
 \arguments{
-\item{dim}{dimension of CSV content to print}
+\item{file}{the name of the file which the data are to be read from.
+    Each row of the table appears as one line of the file.  If it does
+    not contain an \emph{absolute} path, the file name is
+    \emph{relative} to the current working directory,
+    \code{\link{getwd}()}. Tilde-expansion is performed where supported.
+    This can be a compressed file (see \code{\link{file}}).
+
+    Alternatively, \code{file} can be a readable text-mode
+    \link{connection} (which will be opened for reading if
+    necessary, and if so \code{\link{close}}d (and hence destroyed) at
+    the end of the function call).  (If \code{\link{stdin}()} is used,
+    the prompts for lines may be somewhat confusing.  Terminate input
+    with a blank line or an EOF signal, \code{Ctrl-D} on Unix and
+    \code{Ctrl-Z} on Windows.  Any pushback on \code{stdin()} will be
+    cleared before return.)
+
+    \code{file} can also be a complete URL.  (For the supported URL
+    schemes, see the \sQuote{URLs} section of the help for
+    \code{\link{url}}.)
+  }
+
+\item{header}{a logical value indicating whether the file contains the
+    names of the variables as its first line.  If missing, the value is
+    determined from the file format: \code{header} is set to \code{TRUE}
+    if and only if the first row contains one fewer field than the
+    number of columns.}
+
+\item{sep}{the field separator character.  Values on each line of the
+    file are separated by this character.  If \code{sep = ""} (the
+    default for \code{read.table}) the separator is \sQuote{white space},
+    that is one or more spaces, tabs, newlines or carriage returns.}
+
+\item{quote}{the set of quoting characters. To disable quoting
+    altogether, use \code{quote = ""}.  See \code{\link{scan}} for the
+    behaviour on quotes embedded in quotes.  Quoting is only considered
+    for columns read as character, which is all of them unless
+    \code{colClasses} is specified.}
+
+\item{dec}{the character used in the file for decimal points.}
+
+\item{fill}{logical. If \code{TRUE} then in case the rows have unequal
+    length, blank fields are implicitly added.  See \sQuote{Details}.}
+
+\item{comment.char}{character: a character vector of length one
+    containing a single character or an empty string.  Use \code{""} to
+    turn off the interpretation of comments altogether.}
+
+\item{...}{Further arguments to be passed to \code{read.table}.}
+
+\item{dim}{dimension of CSV content to show}
 }
 \value{
 read csv content
 }
 \description{
-Read a dataset of type csv and print x rows and y columns
+Read a dataset of type csv and show x rows and y columns
 }

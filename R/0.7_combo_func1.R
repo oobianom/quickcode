@@ -23,7 +23,7 @@ strsplit.num <-
 #'
 #' Given a sting, split by a separator into boolean
 #'
-#' @inheritParams strsplit
+#' @inheritParams base::strsplit
 #' @param type type of return, see the as.boolean function for more info
 #' @return boolean values based on split string
 #' @export
@@ -46,7 +46,7 @@ strsplit.bool <-
 #' Read a dataset of type csv and show x rows and y columns
 #'
 #' @param dim dimension of CSV content to show
-#' @inheritParams read.csv
+#' @inheritParams utils::read.csv
 #'
 #' @return read csv content
 #' @export
@@ -87,7 +87,7 @@ read.csv.print <-
 #' Read a dataset of type csv and show x rows and y columns
 #'
 #' @param dim dimension of table content to show
-#' @inheritParams read.table
+#' @inheritParams utils::read.table
 #'
 #' @return read table content
 #' @export

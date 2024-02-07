@@ -2,7 +2,7 @@
 % Please edit documentation in R/0.7_combo_func1.R
 \name{read.table.print}
 \alias{read.table.print}
-\title{Read in a CSV and print first X rows and Columns}
+\title{Read in a CSV and show first X rows and Columns}
 \usage{
 read.table.print(
   file,
@@ -13,7 +13,7 @@ read.table.print(
   numerals = c("allow.loss", "warn.loss", "no.loss"),
   row.names,
   col.names,
-  as.is = !stringsAsFactors,
+  as.is = TRUE,
   na.strings = "NA",
   colClasses = NA,
   nrows = -1,
@@ -28,17 +28,178 @@ read.table.print(
   stringsAsFactors = FALSE,
   fileEncoding = "",
   encoding = "unknown",
-  text,
   skipNul = FALSE,
-  dim = c(10L, 5L)
+  dim = c(10L, 5L),
+  ...
 )
 }
 \arguments{
-\item{dim}{dimension of table content to print}
+\item{file}{the name of the file which the data are to be read from.
+    Each row of the table appears as one line of the file.  If it does
+    not contain an \emph{absolute} path, the file name is
+    \emph{relative} to the current working directory,
+    \code{\link{getwd}()}. Tilde-expansion is performed where supported.
+    This can be a compressed file (see \code{\link{file}}).
+
+    Alternatively, \code{file} can be a readable text-mode
+    \link{connection} (which will be opened for reading if
+    necessary, and if so \code{\link{close}}d (and hence destroyed) at
+    the end of the function call).  (If \code{\link{stdin}()} is used,
+    the prompts for lines may be somewhat confusing.  Terminate input
+    with a blank line or an EOF signal, \code{Ctrl-D} on Unix and
+    \code{Ctrl-Z} on Windows.  Any pushback on \code{stdin()} will be
+    cleared before return.)
+
+    \code{file} can also be a complete URL.  (For the supported URL
+    schemes, see the \sQuote{URLs} section of the help for
+    \code{\link{url}}.)
+  }
+
+\item{header}{a logical value indicating whether the file contains the
+    names of the variables as its first line.  If missing, the value is
+    determined from the file format: \code{header} is set to \code{TRUE}
+    if and only if the first row contains one fewer field than the
+    number of columns.}
+
+\item{sep}{the field separator character.  Values on each line of the
+    file are separated by this character.  If \code{sep = ""} (the
+    default for \code{read.table}) the separator is \sQuote{white space},
+    that is one or more spaces, tabs, newlines or carriage returns.}
+
+\item{quote}{the set of quoting characters. To disable quoting
+    altogether, use \code{quote = ""}.  See \code{\link{scan}} for the
+    behaviour on quotes embedded in quotes.  Quoting is only considered
+    for columns read as character, which is all of them unless
+    \code{colClasses} is specified.}
+
+\item{dec}{the character used in the file for decimal points.}
+
+\item{numerals}{string indicating how to convert numbers whose conversion
+    to double precision would lose accuracy, see \code{\link[utils]{type.convert}}.
+    Can be abbreviated.  (Applies also to complex-number inputs.)}
+
+\item{row.names}{a vector of row names.  This can be a vector giving
+    the actual row names, or a single number giving the column of the
+    table which contains the row names, or character string giving the
+    name of the table column containing the row names.
+
+    If there is a header and the first row contains one fewer field than
+    the number of columns, the first column in the input is used for the
+    row names.  Otherwise if \code{row.names} is missing, the rows are
+    numbered.
+
+    Using \code{row.names = NULL} forces row numbering. Missing or
+    \code{NULL} \code{row.names} generate row names that are considered
+    to be \sQuote{automatic} (and not preserved by \code{\link{as.matrix}}).
+  }
+
+\item{col.names}{a vector of optional names for the variables.
+    The default is to use \code{"V"} followed by the column number.}
+
+\item{as.is}{controls conversion of character variables (insofar as
+    they are not converted to logical, numeric or complex) to factors,
+    if not otherwise specified by \code{colClasses}.
+    Its value is either a vector of logicals (values are recycled if
+    necessary), or a vector of numeric or character indices which
+    specify which columns should not be converted to factors.
+
+    Note: to suppress all conversions including those of numeric
+    columns, set \code{colClasses = "character"}.
+
+    Note that \code{as.is} is specified per column (not per
+    variable) and so includes the column of row names (if any) and any
+    columns to be skipped.
+  }
+
+\item{na.strings}{a character vector of strings which are to be
+    interpreted as \code{\link{NA}} values.  Blank fields are also
+    considered to be missing values in logical, integer, numeric and
+    complex fields.  Note that the test happens \emph{after} 
+    white space is stripped from the input, so \code{na.strings} 
+    values may need their own white space stripped in advance.}
+
+\item{colClasses}{character.  A vector of classes to be assumed for
+    the columns.  If unnamed, recycled as necessary.  If named, names
+    are matched with unspecified values being taken to be \code{NA}.
+
+    Possible values are \code{NA} (the default, when
+    \code{\link[utils]{type.convert}} is used), \code{"NULL"} (when the column
+    is skipped), one of the atomic vector classes (logical, integer,
+    numeric, complex, character, raw), or \code{"factor"}, \code{"Date"}
+    or \code{"POSIXct"}.  Otherwise there needs to be an \code{as}
+    method (from package \pkg{methods}) for conversion from
+    \code{"character"} to the specified formal class.
+
+    Note that \code{colClasses} is specified per column (not per
+    variable) and so includes the column of row names (if any).
+  }
+
+\item{nrows}{integer: the maximum number of rows to read in.  Negative
+    and other invalid values are ignored.}
+
+\item{skip}{integer: the number of lines of the data file to skip before
+    beginning to read data.}
+
+\item{check.names}{logical.  If \code{TRUE} then the names of the
+    variables in the data frame are checked to ensure that they are
+    syntactically valid variable names.  If necessary they are adjusted
+    (by \code{\link{make.names}}) so that they are, and also to ensure
+    that there are no duplicates.}
+
+\item{fill}{logical. If \code{TRUE} then in case the rows have unequal
+    length, blank fields are implicitly added.  See \sQuote{Details}.}
+
+\item{strip.white}{logical. Used only when \code{sep} has
+    been specified, and allows the stripping of leading and trailing
+    white space from unquoted \code{character} fields (\code{numeric} fields
+    are always stripped).  See \code{\link{scan}} for further details
+    (including the exact meaning of \sQuote{white space}),
+    remembering that the columns may include the row names.}
+
+\item{blank.lines.skip}{logical: if \code{TRUE} blank lines in the
+    input are ignored.}
+
+\item{comment.char}{character: a character vector of length one
+    containing a single character or an empty string.  Use \code{""} to
+    turn off the interpretation of comments altogether.}
+
+\item{allowEscapes}{logical.  Should C-style escapes such as
+    \samp{\\n} be processed or read verbatim (the default)?   Note that if
+    not within quotes these could be interpreted as a delimiter (but not
+    as a comment character).  For more details see \code{\link{scan}}.}
+
+\item{flush}{logical: if \code{TRUE}, \code{scan} will flush to the
+    end of the line after reading the last of the fields requested.
+    This allows putting comments after the last field.}
+
+\item{stringsAsFactors}{logical: should character vectors be converted
+    to factors?  Note that this is overridden by \code{as.is} and
+    \code{colClasses}, both of which allow finer control.}
+
+\item{fileEncoding}{character string: if non-empty declares the
+    encoding used on a file (not a connection) so the character data can
+    be re-encoded.  See the \sQuote{Encoding} section of the help for
+    \code{\link{file}}, the \sQuote{R Data Import/Export Manual} and
+    \sQuote{Note}.
+  }
+
+\item{encoding}{encoding to be assumed for input strings.  It is
+    used to mark character strings as known to be in
+    Latin-1 or UTF-8 (see \code{\link{Encoding}}): it is not used to
+    re-encode the input, but allows \R to handle encoded strings in
+    their native encoding (if one of those two).  See \sQuote{Value}
+    and \sQuote{Note}.
+  }
+
+\item{skipNul}{logical: should nuls be skipped?}
+
+\item{dim}{dimension of table content to show}
+
+\item{...}{Further arguments to be passed to \code{read.table}.}
 }
 \value{
 read table content
 }
 \description{
-Read a dataset of type csv and print x rows and y columns
+Read a dataset of type csv and show x rows and y columns
 }
