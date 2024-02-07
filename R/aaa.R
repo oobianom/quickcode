@@ -72,6 +72,8 @@ imageext <- c("ai","bmp","cdr","cgm","cr2","crw","cur","dng","eps","fpx",
 #super env.ironment
 super. <- paste0("package:",.packageName,"_sVar")
 
+#customize out
+prtr <- function (x, ...) UseMethod("print")
 
 #is.attached
 is.attached <- function(packageLine) any(grep(packageLine,search()))
