@@ -194,8 +194,7 @@ multiply <- function(...) {
 }
 
 
-
-#' Multiple a vector of numeric values
+#' Temperature conversion and rounding
 #'
 #' Mulitple all the content of a vector
 #'
@@ -209,23 +208,47 @@ multiply <- function(...) {
 #' @export
 #' To convert from Celsius to Kelvin:
 #' To convert from Fahrenheit to Kelvin:
-toKelvin <- function(C,F){
-  if(!missing(F)) (F – 32) * 5/9 + 273.15
-  if(!missing(C)) C + 273.15
+toKelvin <- function(C, F) {
+  a <- missing(F)
+  b <- missing(C)
+  if ({
+    a + b
+  } %in% c(0, 2)) {
+    stop("Must enter only one of C or F, and not both. Check examples.")
+  }
+
+  if (!a) (F - 32) * 5 / 9 + 273.15
+  if (!b) C + 273.15
 }
 
 #' To convert from Celsius to Fahrenheit:
+#' To convert from Kelvin to Fahrenheit:
+toFahrenheit <- function(C, K) {
+  a <- missing(K)
+  b <- missing(C)
+  if ({
+    a + b
+  } %in% c(0, 2)) {
+    stop("Must enter only one of C or K, and not both. Check examples.")
+  }
 
-toFahrenheit <- function(C,K){
-  if(!missing(K)) (K − 273.15) * 9/5 + 32
-  if(!missing(C)) (C * 9/5) + 32
+  if (!a) (K - 273.15) * 9 / 5 + 32
+  if (!b) (C * 9 / 5) + 32
 }
 
 #' To convert from Fahrenheit to Celsius:
- #' To convert from Kelvin to Celsius:
-toCelsius <- function(F,K){
-  if(!missing(F))  (F – 32) * 5/9
-  if(!missing(K))  K – 273.15
+#' To convert from Kelvin to Celsius:
+toCelsius <- function(F, K) {
+  a <- missing(F)
+  b <- missing(K)
+  if ({
+    a + b
+  } %in% c(0, 2)) {
+    stop("Must enter only one of K or F, and not both. Check examples.")
+  }
+
+  if (!a) (F - 32) * 5 / 9
+  if (!b) K - 273.15
 }
 
 
