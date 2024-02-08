@@ -192,3 +192,41 @@ multiply <- function(...) {
   stopifnot(length(args) > 1)
   tail(cumprod(args), n = 1)
 }
+
+
+
+#' Multiple a vector of numeric values
+#'
+#' Mulitple all the content of a vector
+#'
+#' @param ... the numeric values to multiply
+#' @rdname temperature
+#' @return multiple of all content
+#'
+#' @examples
+#' # multiply 1 number
+#'
+#' @export
+#' To convert from Celsius to Kelvin:
+#' To convert from Fahrenheit to Kelvin:
+toKelvin <- function(C,F){
+  if(!missing(F)) (F – 32) * 5/9 + 273.15
+  if(!missing(C)) C + 273.15
+}
+
+#' To convert from Celsius to Fahrenheit:
+
+toFahrenheit <- function(C,K){
+  if(!missing(K)) (K − 273.15) * 9/5 + 32
+  if(!missing(C)) (C * 9/5) + 32
+}
+
+#' To convert from Fahrenheit to Celsius:
+ #' To convert from Kelvin to Celsius:
+toCelsius <- function(F,K){
+  if(!missing(F))  (F – 32) * 5/9
+  if(!missing(K))  K – 273.15
+}
+
+
+
