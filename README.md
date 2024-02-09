@@ -7,6 +7,9 @@
 
 ## Official website: https://quickcode.obi.obianom.com
 
+### R dependency: https://depends.rpkg.net/package/quickcode
+
+### Package stats: https://rpkg.net/package/quickcode
 
 [![](https://quickcode.obi.obianom.com/quickcode_load_type.svg)](https://rpkg.net/package/quickcode)
 
