@@ -25,7 +25,19 @@
 
 ![](https://quickcode.obi.obianom.com/bionic_txt2.png)
 
+***
 
+```
+#load libraries and print names along with versions
+
+quickcode::libraryAll(
+  dplyr,
+  r2resize,
+  ggplot2
+)
+
+
+```
 ***
 
 ```
@@ -235,19 +247,7 @@ print(p1)
 
 ```
 
-***
 
-```
-#load libraries
-
-quickcode::libraryAll(
-  dplyr,
-  r2resize,
-  ggplot2
-)
-
-
-```
 
 
 
