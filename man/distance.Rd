@@ -47,3 +47,6 @@ pairDist(data, n, v)
 pairDist(data, n, v,2)
 
 }
+\references{
+the current function was adapted from one of the examples in the svgViewR package, https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
+}
