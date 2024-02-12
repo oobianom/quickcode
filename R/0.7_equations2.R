@@ -16,6 +16,7 @@
 #' @section Function utility:
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
 #'
+#' @references the current function was adapted from one of the examples in the svgViewR package, https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
 #' @examples
 #'
 #' v= c(2,4:10)
