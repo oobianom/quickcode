@@ -45,14 +45,6 @@ newSuperVar <- function(..., value = 1, class = character, lock = TRUE){
 
   lockEnvironment(super.)
 
-  #.. <- substitute(class)
-  # print(..)
-  # .spkg = new.env()
-  # #.spkg[['mutate']] = dplyr::mutate
-  # if(exists(paste0(as.character(..),".add"),envir = as.environment(paste0("package:",.packageName,""))))
-  #   return(assign(paste0(as.character(..),".add"),898899,envir = as.environment(paste0("package:",.packageName,"_superVar"))))
-  # assign(paste0(..,".add"),function(b) get(as.character(..)) + b, envir = .spkg)
-
 }
 
 #lockBinding("yooo", env = env1)
