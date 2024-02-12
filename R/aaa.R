@@ -77,3 +77,6 @@ prtr <- function (x, ...) UseMethod("print")
 
 #is.attached
 is.attached <- function(packageLine) any(grep(packageLine,search()))
+
+
+
