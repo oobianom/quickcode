@@ -16,8 +16,6 @@ variable references can be contiguous, non-contiguous,
 or a combination as defined; E.g. v = c(3,6:9)}
 
 \item{round}{round result to decimal place}
-
-\item{neg.rm}{remove negative values from the vector}
 }
 \value{
 a named vector consisting of a row number and a pair-distance value

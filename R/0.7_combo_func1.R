@@ -190,7 +190,7 @@ read.table.print <-
 multiply <- function(...) {
   args <- unlist(c(as.list(environment()), list(...)))
   stopifnot(length(args) > 1)
-  tail(cumprod(args), n = 1)
+  utils::tail(cumprod(args), n = 1)
 }
 
 

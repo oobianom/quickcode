@@ -9,7 +9,6 @@
 #' @param v A vector numerically referencing which column to select;
 #' variable references can be contiguous, non-contiguous,
 #' or a combination as defined; E.g. v = c(3,6:9)
-#' @param neg.rm remove negative values from the vector
 #' @param round round result to decimal place
 #' @return a named vector consisting of a row number and a pair-distance value
 #'
