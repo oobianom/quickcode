@@ -20,7 +20,7 @@ or a combination as defined; E.g. v = c(3,6:9)}
 \item{neg.rm}{remove negative values from the vector}
 }
 \value{
-The function returns a named vector consisting of a row number and a pair-distance value
+a named vector consisting of a row number and a pair-distance value
 }
 \description{
 This function operates on multivariate data and
