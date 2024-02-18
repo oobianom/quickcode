@@ -169,7 +169,7 @@ read.table.print <-
 #' @examples
 #' # multiply 1 number
 #' # returns error
-#' multiply(0)
+#' # multiply(0)
 #'
 #' # vector of numbers
 #' numvec <- number(10, max.digits = 3)
