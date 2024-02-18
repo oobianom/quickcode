@@ -1,24 +1,23 @@
-#to-do
-#function to track function usage
-# type3 <-function(x)type1(x)
-# type1 <- function(x){
-#   mean(x)
-#   sd(x)
-#   tracker()
-# }
-#
-# tracker <- function(apiId){
-#   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
-#   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
-#   print(getFuncName)
-#   ls("package:quickcode")
-# }
-# type1(number(10))
-# type3(number(12))
 
+#' Create and Use a super variable
+#'
+#' Create a variable that supercedes other variables and has various functionalities
+#'
+#' @param ... variable name super variable
+#' @param value value of the variable
+#' @param class class of variable
+#' @param lock lock variable to change
+#'
+#' @return no visible return, but variable is created and stored
+#'
+#' @examples
+#' # create a variable to store dataset that should not be altered
+#' newSuperVar(mtcardf, value = mtcars)
+#'
+#'
 #' @export
 
-newSuperVar <- function(..., value = 1, class = character, lock = TRUE){
+newSuperVar <- function(..., value = 1, class = list, lock = TRUE){
   message("This function is still being developed")
   .v <- as.list(substitute(args(...))[-1L])
   .spkg = new.env()
@@ -48,3 +47,24 @@ newSuperVar <- function(..., value = 1, class = character, lock = TRUE){
 }
 
 #lockBinding("yooo", env = env1)
+
+
+#to-do
+#function to track function usage
+# type3 <-function(x)type1(x)
+# type1 <- function(x){
+#   mean(x)
+#   sd(x)
+#   tracker()
+# }
+#
+# tracker <- function(apiId){
+#   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
+#   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
+#   print(getFuncName)
+#   ls("package:quickcode")
+# }
+# type1(number(10))
+# type3(number(12))
+
+

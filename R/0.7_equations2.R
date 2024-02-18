@@ -35,17 +35,18 @@
 
 pairDist <- function(data, n, v, round = NULL) {
 
-  # validate value of n
-  stopifnot(n >= 1, n <= nrow(data))
 
   # compute based on what is provided
-  if(missing(n) | missing(v))
-    res <- sqrt(rowSums((data- matrix(colMeans(data)))^2))
-  else
-  res <- sqrt(rowSums((data- matrix(colMeans(data), n, v, byrow = TRUE))^2))
+  if (missing(n) | missing(v)) {
+    res <- sqrt(rowSums((data - matrix(colMeans(data)))^2))
+  } else {
+    # validate value of n
+    stopifnot(n >= 1, n <= nrow(data))
+    res <- sqrt(rowSums((data - matrix(colMeans(data), n, v, byrow = TRUE))^2))
+  }
 
   # round result if specified
-  if(typeof(round) == "double") res <- round(res,round)
+  if (typeof(round) == "double") res <- round(res, round)
 
   # return
   res
