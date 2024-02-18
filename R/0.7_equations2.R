@@ -11,7 +11,7 @@
 #' or a combination as defined; E.g. v = c(3,6:9)
 #' @param neg.rm remove negative values from the vector
 #' @param round round result to decimal place
-#' @return The function returns a named vector consisting of a row number and a pair-distance value
+#' @return a named vector consisting of a row number and a pair-distance value
 #'
 #' @section Function utility:
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
@@ -35,11 +35,20 @@
 #' @export
 
 pairDist <- function(data, n, v, round = NULL) {
+
+  # validate value of n
+  stopifnot(n >= 1, n <= nrow(data))
+
+  # compute based on what is provided
   if(missing(n) | missing(v))
     res <- sqrt(rowSums((data- matrix(colMeans(data)))^2))
   else
   res <- sqrt(rowSums((data- matrix(colMeans(data), n, v, byrow = TRUE))^2))
+
+  # round result if specified
   if(typeof(round) == "double") res <- round(res,round)
+
+  # return
   res
 }
 
