@@ -35,7 +35,6 @@
 #' @export
 
 pairDist <- function(data, n, v, round = NULL) {
-  message("This function is still being developed")
   if(missing(n) | missing(v))
     res <- sqrt(rowSums((data- matrix(colMeans(data)))^2))
   else
