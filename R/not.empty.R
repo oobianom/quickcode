@@ -16,3 +16,21 @@ not.empty <- function(x){
   if(!length(eval)) eval <- FALSE
   eval
 }
+
+
+#' Not exists
+#'
+#' Check if object does not exists
+#'
+#' @param x object
+#' @return a boolean value to indicate if entry does not exists
+#' @examples
+#' go = 7
+#' not.exists("exis") # TRUE
+#' not.exists("go") # FALSE
+#' if(not.exists('hallo')) message("yes") # NULL
+#' @export
+
+not.exists <- function(x){
+  !exists(x)
+}
