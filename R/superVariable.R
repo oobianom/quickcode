@@ -2,29 +2,32 @@
 #'
 #' Create a variable that supersedes other variables and has various functionalities
 #'
-#' @rdname supervariable
 #' @param variable variable name for super variable
 #' @param value value of the variable
 #' @param lock lock variable to change
+#' @param editn number of times the super variable may be set to a new value using .set(). set
+#' to NULL to deactivate argument
 #'
 #' @note
-#' What you should know about the functionality: \cr\cr
+#' \strong{What you should know about the functionality:} \cr\cr
 #' This function ensures that a variable is created and may not easily be altered.
 #' It helps preserve the original variable by providing only limited access to the variable.\cr\cr
 #' Creation of this super variable automatically attached some key functions to it,
-#' such that the user is able to call the function like var.set(), var.rm().\cr\cr
-#' Super variable value may be set from any scope using the .set() function, which
+#' such that the user is able to call the function like \code{.set()}, \code{.rm()}.\cr\cr
+#' Super variable value may be set from any scope using the \code{.set()} function, which
 #' means that it is granted global variable features without being present within the
 #' global environment of the current section.\cr\cr The variable name of the super variable may
 #' be overwritten in the local environment, but this would not alter the super variable.
-#' It means that once the local variable is removed, the super variable remains the available
+#' It means that once the local variable is removed, the super variable remains available
 #' for use.\cr\cr
 #'
-#' Use cases: \cr\cr
-#'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.\cr
-#'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc\cr
-#'  - Restricted mutability of variable using set function e.g varname.set()\cr
-#'  - Variable with easy function calls by attaching '.'
+#' \strong{Use cases:} \cr\cr
+#'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.\cr\cr
+#'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc\cr\cr
+#'  - Restricted mutability of variable using set function e.g varname\code{.set()}\cr\cr
+#'  - Variable with easy function calls by attaching '.'\cr\cr
+#'  - Variable with un-mutable class when changing its value \cr\cr
+#'  - Variable with restricted number of times it can be changed \cr\cr
 #'
 #'
 #' @return no visible return, but variable is created and stored with various functionalities
@@ -51,7 +54,9 @@
 #' newSuperVar(edtvec, value = number(5))
 #' edtvec # view content of the vector
 #'
-#' edtvec.set(number(20)) # set to new numbers locally
+#' edtvec.set(letters) #ERROR: Cannot set to non-numeric value
+#'
+#' edtvec.set(number(20)) # set to new numbers
 #' edtvec # view output
 #'
 #' for (pu in 1:8) {
@@ -101,9 +106,28 @@
 #'
 #' # remove lon3 as a super variable
 #' lon3.rm()
+#'
+#'
+#' #Task: create a super variable that can only be edited 3 times
+#' newSuperVar(man1, value = number(5), editn = 3)
+#' man1 # view value
+#'
+#' man1.set(number(10)) # change value first time
+#' man1 # view value
+#'
+#' man1.set(number(2)) # change value second time
+#' man1 # view value
+#'
+#' man1.set(number(1)) # change value third time
+#' man1 # view value
+#'
+#' man1.set(number(5)) # change value forth time,
+#' # should not change because max change times exceeded
+#' man1 # view value
+#'
 #' @export
 
-newSuperVar <- function(variable, value = 1, lock = FALSE) {
+newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
   .v <- as.list(substitute(args(variable))[-1L])
   .spkg <- new.env()
   .r231 = paste0("att",frt6,"(.spkg, name = super.)")
@@ -131,15 +155,31 @@ newSuperVar <- function(variable, value = 1, lock = FALSE) {
   }
   # set
   setv <- function(value) {
+    continue = TRUE
+    if(!is.null(editn)){
+      if(editn)
+        editn <<- editn - 1
+      else continue = FALSE
+    }
+    if(continue){
     ioo <- as.character(i)
     if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
     eval(parse(text = as.character(.r232)))
     assign(ioo, value, envir = super.env)
     lockBinding(ioo, env = super.env)
+    }
   }
   setl <- function(value) {
+    continue = TRUE
+    if(!is.null(editn)){
+      if(editn)
+        editn <<- editn - 1
+      else continue = FALSE
+    }
+    if(continue){
     if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
     assign(as.character(i), value, envir = super.env)
+    }
   }
 
   # round
