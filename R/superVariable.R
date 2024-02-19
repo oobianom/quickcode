@@ -38,7 +38,7 @@
 #' newSuperVar(mtdf, value = austres) # create a super variable
 #' head(mtdf) # view it
 #' mtdf.class # view the store class of the variable, it cannot be changed
-#' # it means that when the super variable is edited, the new value MUST have the same class
+#' # it means that when the super variable is edited, the new value MUST have the same class "ts"
 #'
 #' # create and lock super variable by default
 #' # extra security to prevent changing
@@ -131,15 +131,15 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
   .v <- as.list(substitute(args(variable))[-1L])
   .spkg <- new.env()
   .r231 = paste0("att",frt6,"(.spkg, name = super.)")
-  .r232 = paste0("unl",frt5,"ing(ioo, env = super.env)")
+  .r232 = paste0("unl",frt5,"ing(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)")
   classi <- class(value)
   if (!is.attached(super.)) {
     eval(parse(text = .r231))
   }
-  if (not.exists("super.env")) {
-    super.env <- as.environment(super.)
-    assign("super.env", super.env, envir = super.env)
-    lockBinding("super.env", env = super.env)
+  if (not.exists(".pos80cbca8022ece6174797e10bb8aebf18")) {
+    .pos80cbca8022ece6174797e10bb8aebf18 <- as.environment(super.)
+    assign(".pos80cbca8022ece6174797e10bb8aebf18", .pos80cbca8022ece6174797e10bb8aebf18, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    lockBinding(".pos80cbca8022ece6174797e10bb8aebf18", env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
   # sub functions
   .join <- function(ij4) {
@@ -151,7 +151,7 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
 
   # remove
   rmv <- function() {
-    rm(list = paste0(i, els), envir = super.env)
+    rm(list = paste0(i, els), envir = .pos80cbca8022ece6174797e10bb8aebf18)
   }
   # set
   setv <- function(value) {
@@ -165,8 +165,8 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
     ioo <- as.character(i)
     if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
     eval(parse(text = as.character(.r232)))
-    assign(ioo, value, envir = super.env)
-    lockBinding(ioo, env = super.env)
+    assign(ioo, value, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    lockBinding(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)
     }
   }
   setl <- function(value) {
@@ -178,7 +178,7 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
     }
     if(continue){
     if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
-    assign(as.character(i), value, envir = super.env)
+    assign(as.character(i), value, envir = .pos80cbca8022ece6174797e10bb8aebf18)
     }
   }
 
@@ -188,9 +188,9 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
     if (lock){
       eval(parse(text = as.character(.r232)))
     }
-    bv <- round(get(as.character(i), envir = super.env), digits)
-    assign(ioo, bv, envir = super.env)
-    if (lock) lockBinding(ioo, env = super.env)
+    bv <- round(get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18), digits)
+    assign(ioo, bv, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    if (lock) lockBinding(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
 
   # significant figures
@@ -199,23 +199,23 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
     if (lock){
       eval(parse(text = as.character(.r232)))
     }
-    bv <- signif(get(as.character(i), envir = super.env), digits)
-    assign(ioo, bv, envir = super.env)
-    if (lock) lockBinding(ioo, env = super.env)
+    bv <- signif(get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18), digits)
+    assign(ioo, bv, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    if (lock) lockBinding(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
 
   # contains
   cntsa <- function(pattern, ignore.case = FALSE, perl = FALSE,
                     fixed = FALSE, useBytes = FALSE, invert = FALSE, df.col) {
     if (classi[1] %in% c("matrix", "array", "data.frame")) {
-      z <- data.frame(get(as.character(i), envir = super.env))
+      z <- data.frame(get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18))
       res <- z[grep(
         pattern = pattern, x = z[, df.col], ignore.case = ignore.case, perl = perl, value = FALSE,
         fixed = fixed, useBytes = useBytes, invert = invert
       ), ]
     } else {
       res <- grep(
-        pattern = pattern, x = get(as.character(i), envir = super.env), ignore.case = ignore.case, perl = perl, value = FALSE,
+        pattern = pattern, x = get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18), ignore.case = ignore.case, perl = perl, value = FALSE,
         fixed = fixed, useBytes = useBytes, invert = invert
       )
     }
@@ -225,24 +225,20 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
 
   # assign to variable
   for (i in .v) {
-    if (exists(as.character(i), envir = super.env)) {
+    if (exists(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)) {
       stop("The variable '", i, "' already exists as a superVar. In order to redeclare it,
            you need to remove the existing object by using '", i, ".rm()'")
     }
-    assign(as.character(i), value, envir = super.env)
-    if (lock) lockBinding(i, env = super.env)
-    assign(paste0(i, ".class"), classi, envir = super.env)
-    assign(paste0(i, ".rm"), .join(rmv), envir = super.env)
-    assign(paste0(i, ".set"), .join(ifelse(lock, setv, setl)), envir = super.env)
-    assign(paste0(i, ".contains"), .join(cntsa), envir = super.env)
-    assign(paste0(i, ".round"), .join(rldd), envir = super.env)
-    assign(paste0(i, ".signif"), .join(sgif), envir = super.env)
-    lockBinding(paste0(i, ".class"), env = super.env)
-    lockBinding(paste0(i, ".rm"), env = super.env)
-    lockBinding(paste0(i, ".set"), env = super.env)
-    lockBinding(paste0(i, ".contains"), env = super.env)
-    lockBinding(paste0(i, ".round"), env = super.env)
-    lockBinding(paste0(i, ".signif"), env = super.env)
+    assign(as.character(i), value, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    if (lock) lockBinding(i, env = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[7]), classi, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[2]), .join(rmv), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[3]), .join(ifelse(lock, setv, setl)), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[4]), .join(cntsa), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[5]), .join(rldd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[6]), .join(sgif), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    for(k3i in els[-1])
+    lockBinding(paste0(i, k3i), env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
   rm(rmv, setv, setl, rldd, cntsa, sgif, .r231)
 }
@@ -252,25 +248,6 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
 
 
 # to-do v0.9
-# function to track function usage
-# type3 <-function(x)type1(x)
-# type1 <- function(x){
-#   mean(x)
-#   sd(x)
-#   tracker()
-# }
-#
-# tracker <- function(apiId){
-#   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
-#   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
-#   print(getFuncName)
-#   ls("package:quickcode")
-# }
-# type1(number(10))
-# type3(number(12))
-
-
-# to-do
 # function to track function usage
 # type3 <-function(x)type1(x)
 # type1 <- function(x){
