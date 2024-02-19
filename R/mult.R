@@ -1,6 +1,6 @@
 #' Multiple a vector of numeric values
 #'
-#' Mulitple all the content of a vector
+#' Multiple all the content of a vector
 #'
 #' @param ... the numeric values to multiply
 #' @return multiple of all content
