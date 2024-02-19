@@ -39,24 +39,27 @@
 #' newSuperVar(edtvec, value = number(5))
 #' edtvec # view content of the vector
 #'
-#' edtvec.set(number(20)) #set to new numbers locally
+#' edtvec.set(number(20)) # set to new numbers locally
 #' edtvec # view output
 #'
-#' for(pu in 1:8){
-#' edtvec.set(number(pu)) #set to new numbers within for loop
-#' edtvec # view output within loop
+#' for (pu in 1:8) {
+#'   edtvec.set(number(pu)) # set to new numbers within for loop
+#'   edtvec # view output within loop
 #' }
 #'
-#' lapply(1:8, function(pu){
-#' edtvec.set(number(pu)) #set to new numbers within lapply loop
-#' edtvec # view output within loop
+#' lapply(1:8, function(pu) {
+#'   edtvec.set(number(pu)) # set to new numbers within lapply loop
+#'   edtvec # view output within loop
 #' })
 #'
 #' # see that the above changed the super variable easily.
 #' # local variable will not be altered by the loop
 #' # example
-#' bim = 198
-#' lc = lapply(1:8, function(j){ print(bim);bim = j; })
+#' bim <- 198
+#' lc <- lapply(1:8, function(j) {
+#'   print(bim)
+#'   bim <- j
+#' })
 #'
 #'
 #' # Task: create and search data.frame
@@ -65,11 +68,11 @@
 #' newSuperVar(lon2, value = mtcars) # declares lon2
 #' lon2 # view content of lon2
 #' lon2.contains("21.0") # WRONG - since df.col is not specific,
-#' only the first column is search for the character "21.0"
-#' lon2.contains("21.0",df.col = "mpg") # WRONG - searches mpg column
-#' for the character "21.0"
-#' lon2.contains(21.0,df.col = "mpg") # CORRECT - search mpg column for the
-#' numeric value 21.0
+#' # only the first column is search for the character "21.0"
+#' lon2.contains("21.0", df.col = "mpg") # WRONG - searches mpg column
+#' # for the character "21.0"
+#' lon2.contains(21.0, df.col = "mpg") # CORRECT - search mpg column for the
+#' # numeric value 21.0
 #'
 #' # remove lon2 as a super variable
 #' lon2.rm()
@@ -78,7 +81,7 @@
 #' # Task: create and search vector
 #' # create a new super variable with value as 10 random numbers
 #' # search if it contains the numeric value 72
-#' newSuperVar(lon3, value = number(10, seed=12)) # declares lon3
+#' newSuperVar(lon3, value = number(10, seed = 12)) # declares lon3
 #' lon3 # view content of lon3
 #' lon3.contains(72) # should give TRUE or false if the vector contains the value 45
 #' lon3.contains(72, fixed = TRUE) # should give TRUE or false if the vector contains the value 45
@@ -126,30 +129,34 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
 
   # round
   rldd <- function(digits = 0) {
-    if(lock)unlockBinding(ioo, env = super.env)
-    bv <- round(get(as.character(i), envir = super.env),digits)
+    if (lock) unlockBinding(ioo, env = super.env)
+    bv <- round(get(as.character(i), envir = super.env), digits)
     assign(ioo, bv, envir = super.env)
-    if(lock)lockBinding(ioo, env = super.env)
+    if (lock) lockBinding(ioo, env = super.env)
   }
 
   # significant figures
   sgif <- function(digits = 0) {
-    if(lock)unlockBinding(ioo, env = super.env)
-    bv <- signif(get(as.character(i), envir = super.env),digits)
+    if (lock) unlockBinding(ioo, env = super.env)
+    bv <- signif(get(as.character(i), envir = super.env), digits)
     assign(ioo, bv, envir = super.env)
-    if(lock)lockBinding(ioo, env = super.env)
+    if (lock) lockBinding(ioo, env = super.env)
   }
 
   # contains
   cntsa <- function(pattern, ignore.case = FALSE, perl = FALSE,
                     fixed = FALSE, useBytes = FALSE, invert = FALSE, df.col) {
-    if(classi[1] %in% c("matrix", "array","data.frame")){
-        z <- data.frame(get(as.character(i), envir = super.env))
-        res <- z[grep(pattern = pattern, x = z[,df.col], ignore.case = ignore.case, perl = perl, value = FALSE,
-               fixed = fixed, useBytes = useBytes, invert = invert), ]
-    }else{
-    res <- grep(pattern = pattern, x = get(as.character(i), envir = super.env), ignore.case = ignore.case, perl = perl, value = FALSE,
-         fixed = fixed, useBytes = useBytes, invert = invert)
+    if (classi[1] %in% c("matrix", "array", "data.frame")) {
+      z <- data.frame(get(as.character(i), envir = super.env))
+      res <- z[grep(
+        pattern = pattern, x = z[, df.col], ignore.case = ignore.case, perl = perl, value = FALSE,
+        fixed = fixed, useBytes = useBytes, invert = invert
+      ), ]
+    } else {
+      res <- grep(
+        pattern = pattern, x = get(as.character(i), envir = super.env), ignore.case = ignore.case, perl = perl, value = FALSE,
+        fixed = fixed, useBytes = useBytes, invert = invert
+      )
     }
 
     as.logical(length(unlist(res)))
@@ -157,9 +164,10 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
 
   # assign to variable
   for (i in .v) {
-    if(exists(as.character(i), envir = super.env))
-      stop("The variable '",i,"' already exists as a superVar. In order to redeclare it,
-           you need to remove the existing object by using '",i,".rm()'")
+    if (exists(as.character(i), envir = super.env)) {
+      stop("The variable '", i, "' already exists as a superVar. In order to redeclare it,
+           you need to remove the existing object by using '", i, ".rm()'")
+    }
     assign(as.character(i), value, envir = super.env)
     if (lock) lockBinding(i, env = super.env)
     assign(paste0(i, ".class"), classi, envir = super.env)
@@ -175,7 +183,7 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
     lockBinding(paste0(i, ".round"), env = super.env)
     lockBinding(paste0(i, ".signif"), env = super.env)
   }
-  rm(rmv,setv,setl,rldd,cntsa,sgif)
+  rm(rmv, setv, setl, rldd, cntsa, sgif)
 }
 
 
@@ -216,4 +224,3 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
 #   print(getFuncName)
 #   ls("package:quickcode")
 # }
-
