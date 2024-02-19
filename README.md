@@ -15,9 +15,14 @@
 
 # 30+ great R functions to add to your scripts!
 
-## Featured function
+## Featured function 1
 ### Add one-line code in your R script to clear environment, clear console, set working directory and load files
 ![](https://quickcode.obi.obianom.com/quickcode.png)
+
+
+## Featured function 2
+### Create a super variable with unique capability and wide scope
+![](https://quickcode.obi.obianom.com/quickcode2.png)
 
 ## Some Quick R Examples
 
@@ -96,6 +101,56 @@ add_key(ver1)
 for(i in ver1){
 message(sprintf("%s is the key for this %s", i$key, i$value))
 }
+
+```
+
+***
+
+```
+# Introducing the super variable
+# store dataset that should not be altered
+newSuperVar(mtdf, value = austres) # create a super variable
+head(mtdf) # view it
+mtdf.class # view the store class of the variable, it cannot be changed
+# it means that when the super variable is edited, the new value MUST have the same class
+
+# create and lock super variable by default
+# extra security to prevent changing
+newSuperVar(mtdf3, value = beaver1, lock = TRUE)
+head(mtdf3) # view
+mtdf3.round(1) # round to 1 decimal places
+head(mtdf3) # view
+mtdf3.signif(2) # round to 2 significant digits
+head(mtdf3) # view
+
+# Task: create a new super variable to store numbers
+# edit the numbers from various scopes
+newSuperVar(edtvec, value = number(5))
+edtvec # view content of the vector
+
+# edtvec.set(letters) #ERROR: Cannot set to value with different class than initial value
+
+edtvec.set(number(20)) # set to new numbers
+edtvec # view output
+
+for (pu in 1:8) {
+  print(edtvec) # view output within loop
+  edtvec.set(number(pu)) # set to new numbers within for loop
+}
+
+lc <- lapply(1:8, function(pu) {
+  print(edtvec) # view output within loop
+  edtvec.set(number(pu)) # set to new numbers within lapply loop
+})
+
+# see that the above changed the super variable easily.
+# local variable will not be altered by the loop
+# example
+bim <- 198
+lc <- lapply(1:8, function(j) {
+  print(bim)
+  bim <- j # will not alter the value of bim in next round
+})
 
 ```
 
