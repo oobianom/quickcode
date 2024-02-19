@@ -13,8 +13,9 @@ newSuperVar(variable, value = 1, lock = FALSE, editn = NULL)
 
 \item{lock}{lock variable to change}
 
-\item{editn}{number of times the super variable may be set to a new value using .set(). set
-to NULL to deactivate argument}
+\item{editn}{number of times the super variable may be set to a new value using .set(). \cr
+- Set to NULL to allow unlimited value change \cr
+- Set to 0 to prevent editing the super variable \cr}
 }
 \value{
 no visible return, but variable is created and stored with various functionalities
@@ -49,7 +50,7 @@ for use.\cr\cr
 newSuperVar(mtdf, value = austres) # create a super variable
 head(mtdf) # view it
 mtdf.class # view the store class of the variable, it cannot be changed
-# it means that when the super variable is edited, the new value MUST have the same class
+# it means that when the super variable is edited, the new value MUST have the same class "ts"
 
 # create and lock super variable by default
 # extra security to prevent changing
