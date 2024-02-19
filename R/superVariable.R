@@ -1,7 +1,8 @@
-#' Create and Use a super variable
+#' Create and use a super variable with unique capabilities
 #'
-#' Create a variable that supercedes other variables and has various functionalities
+#' Create a variable that supersedes other variables and has various functionalities
 #'
+#' @rdname supervariable
 #' @param ... variable name super variable
 #' @param value value of the variable
 #' @param lock lock variable to change
@@ -20,7 +21,7 @@
 #'
 #' @details
 #' USE CASE: \cr
-#'  - Preserve originality of variable within an R session. Avoid indavertent deletion.
+#'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.
 #'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc
 #'  - Restricted mutability of variable using set function e.g varname.set()
 #'  - Variable with easy function calls by attaching '.'
