@@ -1,4 +1,4 @@
-# Function that generally go together often
+# Functions that generally go together often
 
 #' Split a string of numbers and return numeric
 #'
@@ -10,6 +10,9 @@
 #' @param useBytes 	logical. If TRUE the matching is done byte-by-byte rather than character-by-character, and inputs with marked encodings are not converted.
 #' @param fixed logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl.
 #' @return numeric values based on split string
+#'
+#' @examples
+#' # to be added
 #' @export
 
 strsplit.num <-
@@ -34,6 +37,10 @@ strsplit.num <-
 #' @param fixed logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl.
 #' @param type type of return, see the as.boolean function for more info
 #' @return boolean values based on split string
+#'
+#'
+#' @examples
+#' # to be added
 #' @export
 
 strsplit.bool <-
@@ -57,6 +64,9 @@ strsplit.bool <-
 #' @inheritParams utils::read.csv
 #' @importFrom utils read.csv
 #' @return read csv content
+#'
+#' @examples
+#' # to be added
 #' @export
 
 read.csv.print <-
@@ -98,6 +108,9 @@ read.csv.print <-
 #' @inheritParams utils::read.table
 #' @importFrom utils read.table
 #' @return read table content
+#'
+#' @examples
+#' # to be added
 #' @export
 
 read.table.print <-
