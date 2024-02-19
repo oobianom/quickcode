@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' # Task: create a super variable to
-#' store dataset that should not be altered
+#' # store dataset that should not be altered
 #' newSuperVar(mtdf, value = mtcars)
 #'
 #' # Task: create a new super variable to store numbers
@@ -103,8 +103,7 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
     eval(parse(text = deparse(ij4)))
   }
 
-  #
-
+  # FUN
   els <- c("", ".rm", ".set", ".contains", ".round", ".signif", ".class")
 
   # remove
@@ -178,10 +177,11 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
   rm(rmv,setv,setl,rldd,cntsa,sgif)
 }
 
-# lockBinding("yooo", env = env1)
 
 
-# to-do
+
+
+# to-do v0.9
 # function to track function usage
 # type3 <-function(x)type1(x)
 # type1 <- function(x){
@@ -215,5 +215,4 @@ newSuperVar <- function(variable, value = 1, lock = TRUE) {
 #   print(getFuncName)
 #   ls("package:quickcode")
 # }
-# type1(number(10))
-# type3(number(12))
+

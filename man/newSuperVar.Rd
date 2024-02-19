@@ -4,26 +4,94 @@
 \alias{newSuperVar}
 \title{Create and Use a super variable}
 \usage{
-newSuperVar(..., value = 1, class = list, lock = TRUE)
+newSuperVar(variable, value = 1, lock = TRUE)
 }
 \arguments{
-\item{...}{variable name super variable}
-
 \item{value}{value of the variable}
 
-\item{class}{class of variable}
-
 \item{lock}{lock variable to change}
+
+\item{...}{variable name super variable}
 }
 \value{
-no visible return, but variable is created and stored
+no visible return, but variable is created and stored with various functionalities
 }
 \description{
 Create a variable that supercedes other variables and has various functionalities
 }
+\details{
+USE CASE: \cr
+ - Preserve originality of variable within an R session. Avoid indavertent deletion.
+ - Widely accessible from any scope e.g functions, lapply, loops, local environment etc
+ - Restricted mutability of variable using set function e.g varname.set()
+ - Variable with easy function calls by attaching '.'
+}
+\note{
+This function ensures that a variable is created and may not easily be altered.
+It helps preserve the original variable by providing only limited access to the variable.
+Creation of this super variable automatically attached some key functions to it,
+such that the user is able to call the function like var.set(), var.rm().
+Super variable value may be set from any scope using the .set() function, which
+means that it is granted global variable features without being present within the
+global environment of the current section. The variable name of the super variable may
+be overwritten in the local environment, but this would not alter the super variable.
+It means that once the local variable is removed, the super variable remains the available
+for use.
+}
 \examples{
-# create a variable to store dataset that should not be altered
-newSuperVar(mtcardf, value = mtcars)
+# Task: create a super variable to
+# store dataset that should not be altered
+newSuperVar(mtdf, value = mtcars)
+
+# Task: create a new super variable to store numbers
+# edit the numbers from various scopes
+newSuperVar(edtvec, value = number(5))
+edtvec # view content of the vector
+
+edtvec.set(number(20)) #set to new numbers locally
+edtvec # view output
+
+for(pu in 1:8){
+edtvec.set(number(pu)) #set to new numbers within for loop
+edtvec # view output within loop
+}
+
+lapply(1:8, function(pu){
+edtvec.set(number(pu)) #set to new numbers within lapply loop
+edtvec # view output within loop
+})
+
+# see that the above changed the super variable easily.
+# local variable will not be altered by the loop
+# example
+bim = 198
+lc = lapply(1:8, function(j){ print(bim);bim = j; })
 
 
+# Task: create and search data.frame
+# create a new super variable with value as mtcars
+# search if it contains the numeric value 21
+newSuperVar(lon2, value = mtcars) # declares lon2
+lon2 # view content of lon2
+lon2.contains("21.0") # WRONG - since df.col is not specific,
+only the first column is search for the character "21.0"
+lon2.contains("21.0",df.col = "mpg") # WRONG - searches mpg column
+for the character "21.0"
+lon2.contains(21.0,df.col = "mpg") # CORRECT - search mpg column for the
+numeric value 21.0
+
+# remove lon2 as a super variable
+lon2.rm()
+
+
+# Task: create and search vector
+# create a new super variable with value as 10 random numbers
+# search if it contains the numeric value 72
+newSuperVar(lon3, value = number(10, seed=12)) # declares lon3
+lon3 # view content of lon3
+lon3.contains(72) # should give TRUE or false if the vector contains the value 45
+lon3.contains(72, fixed = TRUE) # should give TRUE or false if the vector contains the value 45
+
+# remove lon3 as a super variable
+lon3.rm()
 }
