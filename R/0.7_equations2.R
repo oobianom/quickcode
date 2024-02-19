@@ -4,7 +4,7 @@
 #' calculates the distance of points from the centroid of one or more clusters.
 #'
 #' @rdname distance
-#' @param data dataset with atleast 2 columns
+#' @param data dataset with at least 2 columns
 #' @param n Number of observations (scaler)
 #' @param v A vector numerically referencing which column to select;
 #' variable references can be contiguous, non-contiguous,
@@ -35,6 +35,8 @@
 
 pairDist <- function(data, n, v, round = NULL) {
 
+  # check dataset to make sure it had at least 2 columns
+  stopifnot(typeof(data) == "list", ncol(data) >= 2)
 
   # compute based on what is provided
   if (missing(n) | missing(v)) {
