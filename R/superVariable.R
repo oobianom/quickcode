@@ -9,21 +9,21 @@
 #'
 #' @note
 #' This function ensures that a variable is created and may not easily be altered.
-#' It helps preserve the original variable by providing only limited access to the variable.
+#' It helps preserve the original variable by providing only limited access to the variable.\cr\cr
 #' Creation of this super variable automatically attached some key functions to it,
-#' such that the user is able to call the function like var.set(), var.rm().
+#' such that the user is able to call the function like var.set(), var.rm().\cr\cr
 #' Super variable value may be set from any scope using the .set() function, which
 #' means that it is granted global variable features without being present within the
-#' global environment of the current section. The variable name of the super variable may
+#' global environment of the current section.\cr\cr The variable name of the super variable may
 #' be overwritten in the local environment, but this would not alter the super variable.
 #' It means that once the local variable is removed, the super variable remains the available
 #' for use.
 #'
 #' @details
 #' USE CASE: \cr
-#'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.
-#'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc
-#'  - Restricted mutability of variable using set function e.g varname.set()
+#'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.\cr
+#'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc\cr
+#'  - Restricted mutability of variable using set function e.g varname.set()\cr
 #'  - Variable with easy function calls by attaching '.'
 #'
 #'
