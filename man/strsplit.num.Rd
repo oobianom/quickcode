@@ -23,3 +23,6 @@ numeric values based on split string
 \description{
 Given a sting, split by a separator into numbers
 }
+\examples{
+# to be added
+}
