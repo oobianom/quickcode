@@ -44,16 +44,16 @@ Use cases: \cr\cr
 newSuperVar(mtdf, value = austres) # create a super variable
 head(mtdf) # view it
 mtdf.class # view the store class of the variable, it cannot be changed
-# it means that when the super variable is edited, the new value should have the same class
+# it means that when the super variable is edited, the new value MUST have the same class
 
 # create and lock super variable by default
 # extra security to prevent changing
 newSuperVar(mtdf3, value = beaver1, lock = TRUE)
 head(mtdf3) # view
 mtdf3.round(1) # round to 1 decimal places
-mtdf3 # view
+head(mtdf3) # view
 mtdf3.signif(2) # round to 2 significant digits
-mtdf3 # view
+head(mtdf3) # view
 
 # Task: create a new super variable to store numbers
 # edit the numbers from various scopes

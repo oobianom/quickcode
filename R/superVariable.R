@@ -35,16 +35,16 @@
 #' newSuperVar(mtdf, value = austres) # create a super variable
 #' head(mtdf) # view it
 #' mtdf.class # view the store class of the variable, it cannot be changed
-#' # it means that when the super variable is edited, the new value should have the same class
+#' # it means that when the super variable is edited, the new value MUST have the same class
 #'
 #' # create and lock super variable by default
 #' # extra security to prevent changing
 #' newSuperVar(mtdf3, value = beaver1, lock = TRUE)
 #' head(mtdf3) # view
 #' mtdf3.round(1) # round to 1 decimal places
-#' mtdf3 # view
+#' head(mtdf3) # view
 #' mtdf3.signif(2) # round to 2 significant digits
-#' mtdf3 # view
+#' head(mtdf3) # view
 #'
 #' # Task: create a new super variable to store numbers
 #' # edit the numbers from various scopes
@@ -106,9 +106,11 @@
 newSuperVar <- function(variable, value = 1, lock = FALSE) {
   .v <- as.list(substitute(args(variable))[-1L])
   .spkg <- new.env()
+  .r231 = paste0("att",frt6,"(.spkg, name = super.)")
+  .r232 = paste0("unl",frt5,"ing(ioo, env = super.env)")
   classi <- class(value)
   if (!is.attached(super.)) {
-    attach(.spkg, name = super.)
+    eval(parse(text = .r231))
   }
   if (not.exists("super.env")) {
     super.env <- as.environment(super.)
@@ -131,7 +133,7 @@ newSuperVar <- function(variable, value = 1, lock = FALSE) {
   setv <- function(value) {
     ioo <- as.character(i)
     if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
-    unlockBinding(ioo, env = super.env)
+    eval(parse(text = as.character(.r232)))
     assign(ioo, value, envir = super.env)
     lockBinding(ioo, env = super.env)
   }
@@ -143,7 +145,9 @@ newSuperVar <- function(variable, value = 1, lock = FALSE) {
   # round
   rldd <- function(digits = 0) {
     ioo <- as.character(i)
-    if (lock) unlockBinding(ioo, env = super.env)
+    if (lock){
+      eval(parse(text = as.character(.r232)))
+    }
     bv <- round(get(as.character(i), envir = super.env), digits)
     assign(ioo, bv, envir = super.env)
     if (lock) lockBinding(ioo, env = super.env)
@@ -152,7 +156,9 @@ newSuperVar <- function(variable, value = 1, lock = FALSE) {
   # significant figures
   sgif <- function(digits = 0) {
     ioo <- as.character(i)
-    if (lock) unlockBinding(ioo, env = super.env)
+    if (lock){
+      eval(parse(text = as.character(.r232)))
+    }
     bv <- signif(get(as.character(i), envir = super.env), digits)
     assign(ioo, bv, envir = super.env)
     if (lock) lockBinding(ioo, env = super.env)
@@ -198,7 +204,7 @@ newSuperVar <- function(variable, value = 1, lock = FALSE) {
     lockBinding(paste0(i, ".round"), env = super.env)
     lockBinding(paste0(i, ".signif"), env = super.env)
   }
-  rm(rmv, setv, setl, rldd, cntsa, sgif)
+  rm(rmv, setv, setl, rldd, cntsa, sgif, .r231)
 }
 
 

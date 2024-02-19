@@ -55,7 +55,7 @@ strsplit.bool <-
 #'
 #' @param dim dimension of CSV content to show
 #' @inheritParams utils::read.csv
-#'
+#' @importFrom utils read.csv
 #' @return read csv content
 #' @export
 
@@ -96,7 +96,7 @@ read.csv.print <-
 #'
 #' @param dim dimension of table content to show
 #' @inheritParams utils::read.table
-#'
+#' @importFrom utils read.table
 #' @return read table content
 #' @export
 
