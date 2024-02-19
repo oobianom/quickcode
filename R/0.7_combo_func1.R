@@ -4,7 +4,11 @@
 #'
 #' Given a sting, split by a separator into numbers
 #'
-#' @inheritParams base::strsplit
+#' @param x character vector, each element of which is to be split. Other inputs, including a factor, will give an error.
+#' @param split character vector
+#' @param perl logical. Should Perl-compatible regexps be used?
+#' @param useBytes 	logical. If TRUE the matching is done byte-by-byte rather than character-by-character, and inputs with marked encodings are not converted.
+#' @param fixed logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl.
 #' @return numeric values based on split string
 #' @export
 
@@ -23,7 +27,11 @@ strsplit.num <-
 #'
 #' Given a sting, split by a separator into boolean
 #'
-#' @inheritParams base::strsplit
+#' @param x character vector, each element of which is to be split. Other inputs, including a factor, will give an error.
+#' @param split character vector
+#' @param perl logical. Should Perl-compatible regexps be used?
+#' @param useBytes 	logical. If TRUE the matching is done byte-by-byte rather than character-by-character, and inputs with marked encodings are not converted.
+#' @param fixed logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl.
 #' @param type type of return, see the as.boolean function for more info
 #' @return boolean values based on split string
 #' @export

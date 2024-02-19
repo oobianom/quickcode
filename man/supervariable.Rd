@@ -41,15 +41,19 @@ Use cases: \cr\cr
 \examples{
 # Task: create a super variable to
 # store dataset that should not be altered
-newSuperVar(mtdf, value = attenu) # create a super variable
+newSuperVar(mtdf, value = austres) # create a super variable
 head(mtdf) # view it
 mtdf.class # view the store class of the variable, it cannot be changed
 # it means that when the super variable is edited, the new value should have the same class
 
 # create and lock super variable by default
 # extra security to prevent changing
-newSuperVar(mtdf3, value = austres, lock = TRUE)
+newSuperVar(mtdf3, value = beaver1, lock = TRUE)
 head(mtdf3) # view
+mtdf3.round(1) # round to 1 decimal places
+mtdf3 # view
+mtdf3.signif(2) # round to 2 significant digits
+mtdf3 # view
 
 # Task: create a new super variable to store numbers
 # edit the numbers from various scopes
@@ -60,13 +64,13 @@ edtvec.set(number(20)) # set to new numbers locally
 edtvec # view output
 
 for (pu in 1:8) {
+  print(edtvec) # view output within loop
   edtvec.set(number(pu)) # set to new numbers within for loop
-  edtvec # view output within loop
 }
 
-lapply(1:8, function(pu) {
+lc <- lapply(1:8, function(pu) {
+  print(edtvec) # view output within loop
   edtvec.set(number(pu)) # set to new numbers within lapply loop
-  edtvec # view output within loop
 })
 
 # see that the above changed the super variable easily.
@@ -75,7 +79,7 @@ lapply(1:8, function(pu) {
 bim <- 198
 lc <- lapply(1:8, function(j) {
   print(bim)
-  bim <- j
+  bim <- j # will not alter the value of bim in next round
 })
 
 
@@ -92,8 +96,9 @@ lon2.contains(21.0, df.col = "mpg") # CORRECT - search mpg column for the
 # numeric value 21.0
 
 # remove lon2 as a super variable
+exists("lon2") # before removal
 lon2.rm()
-
+exists("lon2") # after removal
 
 # Task: create and search vector
 # create a new super variable with value as 10 random numbers
