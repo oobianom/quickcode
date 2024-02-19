@@ -4,16 +4,12 @@
 \alias{pairDist}
 \title{Calculate the distance of points from the center of a cluster}
 \usage{
-pairDist(data, n, v, round = NULL)
+pairDist(data, n, round = NULL)
 }
 \arguments{
-\item{data}{dataset with atleast 2 columns}
+\item{data}{dataset with at least 2 columns}
 
 \item{n}{Number of observations (scaler)}
-
-\item{v}{A vector numerically referencing which column to select;
-variable references can be contiguous, non-contiguous,
-or a combination as defined; E.g. v = c(3,6:9)}
 
 \item{round}{round result to decimal place}
 }
@@ -30,8 +26,6 @@ Used to generate the computations needed to model pair-distance measures in thre
 }
 
 \examples{
-
-v= c(2,4:10)
 n = 6
 data = attenu[,1:2]
 
@@ -39,12 +33,13 @@ data = attenu[,1:2]
 pairDist(data)
 
 # specify number of observations
-pairDist(data, n, v)
+pairDist(data, n)
 
 # round results to 2 decimal points
-pairDist(data, n, v,2)
+pairDist(data, n,2)
 
 }
 \references{
-the current function was adapted from one of the examples in the svgViewR package, https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
+the current function was adapted from one of the examples in the svgViewR package, \cr
+https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
 }
