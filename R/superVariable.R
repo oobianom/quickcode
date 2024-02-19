@@ -3,11 +3,12 @@
 #' Create a variable that supersedes other variables and has various functionalities
 #'
 #' @rdname supervariable
-#' @param ... variable name super variable
+#' @param variable variable name for super variable
 #' @param value value of the variable
 #' @param lock lock variable to change
 #'
 #' @note
+#' What you should know about the functionality: \cr\cr
 #' This function ensures that a variable is created and may not easily be altered.
 #' It helps preserve the original variable by providing only limited access to the variable.\cr\cr
 #' Creation of this super variable automatically attached some key functions to it,
@@ -17,10 +18,9 @@
 #' global environment of the current section.\cr\cr The variable name of the super variable may
 #' be overwritten in the local environment, but this would not alter the super variable.
 #' It means that once the local variable is removed, the super variable remains the available
-#' for use.
+#' for use.\cr\cr
 #'
-#' @details
-#' USE CASE: \cr
+#' Use cases: \cr\cr
 #'  - Preserve originality of variable within an R session. Avoid inadvertent deletion.\cr
 #'  - Widely accessible from any scope e.g functions, lapply, loops, local environment etc\cr
 #'  - Restricted mutability of variable using set function e.g varname.set()\cr
@@ -32,7 +32,15 @@
 #' @examples
 #' # Task: create a super variable to
 #' # store dataset that should not be altered
-#' newSuperVar(mtdf, value = mtcars)
+#' newSuperVar(mtdf, value = attenu) # create a super variable
+#' head(mtdf) # view it
+#' mtdf.class # view the store class of the variable, it cannot be changed
+#' # it means that when the super variable is edited, the new value should have the same class
+#'
+#' # create and lock super variable by default
+#' # extra security to prevent changing
+#' newSuperVar(mtdf3, value = austres, lock = TRUE)
+#' head(mtdf3) # view
 #'
 #' # Task: create a new super variable to store numbers
 #' # edit the numbers from various scopes
@@ -90,7 +98,7 @@
 #' lon3.rm()
 #' @export
 
-newSuperVar <- function(variable, value = 1, lock = TRUE) {
+newSuperVar <- function(variable, value = 1, lock = FALSE) {
   .v <- as.list(substitute(args(variable))[-1L])
   .spkg <- new.env()
   classi <- class(value)
