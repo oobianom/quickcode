@@ -65,7 +65,7 @@ head(mtdf3) # view
 newSuperVar(edtvec, value = number(5))
 edtvec # view content of the vector
 
-edtvec.set(letters) #ERROR: Cannot set to non-numeric value
+# edtvec.set(letters) #ERROR: Cannot set to value with different class than initial value
 
 edtvec.set(number(20)) # set to new numbers
 edtvec # view output
