@@ -32,3 +32,6 @@ boolean values based on split string
 \description{
 Given a sting, split by a separator into boolean
 }
+\examples{
+# to be added
+}
