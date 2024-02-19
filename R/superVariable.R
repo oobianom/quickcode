@@ -5,8 +5,9 @@
 #' @param variable variable name for super variable
 #' @param value value of the variable
 #' @param lock lock variable to change
-#' @param editn number of times the super variable may be set to a new value using .set(). set
-#' to NULL to deactivate argument
+#' @param editn number of times the super variable may be set to a new value using .set(). \cr
+#'  - Set to NULL to allow unlimited value change \cr
+#'  - Set to 0 to prevent editing the super variable \cr
 #'
 #' @note
 #' \strong{What you should know about the functionality:} \cr\cr
@@ -138,8 +139,6 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
   }
   if (not.exists(".pos80cbca8022ece6174797e10bb8aebf18")) {
     .pos80cbca8022ece6174797e10bb8aebf18 <- as.environment(super.)
-    assign(".pos80cbca8022ece6174797e10bb8aebf18", .pos80cbca8022ece6174797e10bb8aebf18, envir = .pos80cbca8022ece6174797e10bb8aebf18)
-    lockBinding(".pos80cbca8022ece6174797e10bb8aebf18", env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
   # sub functions
   .join <- function(ij4) {
@@ -222,6 +221,11 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
 
     as.logical(length(unlist(res)))
   }
+  # editable
+  editn1 <- 1
+  if(length(editn)){
+    if (editn == 0) editn1 <- editn
+  }
 
   # assign to variable
   for (i in .v) {
@@ -233,10 +237,12 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
     if (lock) lockBinding(i, env = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[7]), classi, envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[2]), .join(rmv), envir = .pos80cbca8022ece6174797e10bb8aebf18)
-    assign(paste0(i, els[3]), .join(ifelse(lock, setv, setl)), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[4]), .join(cntsa), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[5]), .join(rldd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[6]), .join(sgif), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    if(editn1 != 0)
+      assign(paste0(i, els[3]), .join(ifelse(lock, setv, setl)), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    else els <- els[els!=".set"]
     for(k3i in els[-1])
     lockBinding(paste0(i, k3i), env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
@@ -262,3 +268,7 @@ newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
 #   print(getFuncName)
 #   ls("package:quickcode")
 # }
+
+
+#assign(".pos80cbca8022ece6174797e10bb8aebf18", .pos80cbca8022ece6174797e10bb8aebf18, envir = .pos80cbca8022ece6174797e10bb8aebf18)
+#lockBinding(".pos80cbca8022ece6174797e10bb8aebf18", env = .pos80cbca8022ece6174797e10bb8aebf18)
