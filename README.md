@@ -253,4 +253,4 @@ print(p1)
 
 ### And many more useful functions including list_shuffle, in.range ...
 
-###### By Obinna Obi Obianom, Creator of rpkg.net and shinyappstore.com
+###### By Obinna Obi Obianom, Creator of www.rpkg.net and www.shinyappstore.com
