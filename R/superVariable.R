@@ -128,7 +128,7 @@
 #'
 #' @export
 
-newSuperVar <- function(variable, value = 1, lock = FALSE, editn = NULL) {
+newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
   .v <- as.list(substitute(args(variable))[-1L])
   .spkg <- new.env()
   .r231 = paste0("att",frt6,"(.spkg, name = super.)")
