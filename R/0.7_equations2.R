@@ -32,8 +32,8 @@
 pairDist <- function(data, n, round = NULL) {
 
   # check entry arguments
-  if(length(data) %% n > 0)
-    stop("n must be a multiple of data length e.g. n = ",length(data)," or ",length(data)*2," etc")
+  if(ncol(data.frame(data)) %% n > 0)
+    stop("n must be a multiple of data length e.g. n = ",ncol(data.frame(data))," or ",ncol(data.frame(data))*2," etc")
 
   # check dataset to make sure it had at least 2 columns
   if(typeof(data) == "list")stopifnot(ncol(data) >= 2)
