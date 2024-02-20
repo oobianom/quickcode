@@ -4,7 +4,7 @@
 \alias{newSuperVar}
 \title{Create and use a super variable with unique capabilities}
 \usage{
-newSuperVar(variable, value = 1, lock = FALSE, editn = NULL)
+newSuperVar(variable, value = 0L, lock = FALSE, editn = NULL)
 }
 \arguments{
 \item{variable}{variable name for super variable}
