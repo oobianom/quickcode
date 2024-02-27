@@ -12,6 +12,16 @@
 #' @section Function utility:
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
 #'
+#' @section More information about this function:
+#' The pairDist function is used to quantify how far each data point (row)
+#' is from the overall mean across all columns. It’s commonly used in multivariate statistics,
+#' machine learning, and data analysis to assess the variability or similarity of
+#' data points relative to their mean. More specifically, the function is used in
+#' outlier detection and cluster analysis to evaluate the dispersion of data.
+#' Since the output represents a single value for each observation in the dataset,
+#' it can also be used to model data in three dimensions.
+#'
+#'
 #' @references the current function was adapted from one of the examples in the svgViewR package, \cr
 #' https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
 #' @examples
