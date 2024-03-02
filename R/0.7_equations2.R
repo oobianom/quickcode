@@ -40,7 +40,7 @@ pairDist <- function(data, round) {
   squared_diff <- (data - mean_matrix)^2
   row_sums <- rowSums(squared_diff)
   result <- sqrt(row_sums)
-  if (!missing(round)) res <- round(res, round)
+  if (!missing(round)) result <- round(result, round)
   result
 }
 
