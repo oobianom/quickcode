@@ -5,7 +5,6 @@
 #'
 #' @rdname distance
 #' @param data dataset with at least 2 columns
-#' @param n Number of observations (scaler)
 #' @param round round result to decimal place
 #' @return a named vector consisting of a row number and a pair-distance value
 #'
@@ -24,45 +23,48 @@
 #' @references the current function was adapted from one of the examples in the svgViewR package, \cr
 #' https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
 #' @examples
-#' n = 6
 #' data = attenu[,1:2]
 #'
 #' #basic example
 #' pairDist(data)
 #'
-#' # specify number of observations
-#' pairDist(data, n)
 #'
 #' # round results to 2 decimal points
-#' pairDist(data, n,2)
+#' pairDist(data, 2)
 #'
 #' @export
 
-pairDist <- function(data, n, round = NULL) {
-
-  # check entry arguments
-  if(ncol(data.frame(data)) %% n > 0)
-    stop("n must be a multiple of data length e.g. n = ",ncol(data.frame(data))," or ",ncol(data.frame(data))*2," etc")
-
-  # check dataset to make sure it had at least 2 columns
-  if(typeof(data) == "list")stopifnot(ncol(data) >= 2)
-
-  # compute based on what is provided
-  if (missing(n)) {
-    res <- sqrt(rowSums((data - matrix(colMeans(data)))^2))
-  } else {
-    # validate value of n
-    stopifnot(n >= 1, n <= nrow(data))
-    res <- sqrt(rowSums((data - matrix(colMeans(data), n, byrow = TRUE))^2))
-  }
-
-  # round result if specified
-  if (not.null(round)) res <- round(res, round)
-
-  # return
-  res
+pairDist <- function(data, round) {
+  col_means <- colMeans(data)
+  mean_matrix <- matrix(col_means, nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
+  squared_diff <- (data - mean_matrix)^2
+  row_sums <- rowSums(squared_diff)
+  result <- sqrt(row_sums)
+  if (!missing(round)) res <- round(res, round)
+  result
 }
 
 
-
+ # # check entry arguments
+ #  if(ncol(data.frame(data)) %% n > 0)
+ #    stop("n must be a multiple of data length e.g. n = ",ncol(data.frame(data))," or ",ncol(data.frame(data))*2," etc")
+ #
+ #  # check dataset to make sure it had at least 2 columns
+ #  if(typeof(data) == "list")stopifnot(ncol(data) >= 2)
+ #
+ #  # compute based on what is provided
+ #  if (missing(n)) {
+ #    res <- sqrt(rowSums((data - matrix(colMeans(data)))^2))
+ #  } else {
+ #    # validate value of n
+ #    stopifnot(n >= 1, n <= nrow(data))
+ #    res <- sqrt(rowSums((data - matrix(colMeans(data), n, byrow = TRUE))^2))
+ #  }
+ #
+ #  # round result if specified
+ #  if (not.null(round)) res <- round(res, round)
+ #
+ #  # return
+ #  res
+ #
 
