@@ -25,8 +25,11 @@
 #' @examples
 #' data = attenu[,1:2]
 #'
-#' #basic example
+#' #basic example using data.frame
 #' pairDist(data)
+#'
+#' #basic example using as.matrix
+#' pairDist(as.matrix(data))
 #'
 #'
 #' # round results to 2 decimal points
