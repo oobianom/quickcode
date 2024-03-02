@@ -3,8 +3,8 @@
 #' This function operates on multivariate data and
 #' calculates the distance of points from the centroid of one or more clusters.
 #'
-#' @rdname distance
-#' @param data dataset with at least 2 columns
+#' @rdname machine_learning
+#' @param data data frame object or a matrix/array object
 #' @param round round result to decimal place
 #' @return a named vector consisting of a row number and a pair-distance value
 #'
