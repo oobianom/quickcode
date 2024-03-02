@@ -43,28 +43,3 @@ pairDist <- function(data, round) {
   if (!missing(round)) result <- round(result, round)
   result
 }
-
-
- # # check entry arguments
- #  if(ncol(data.frame(data)) %% n > 0)
- #    stop("n must be a multiple of data length e.g. n = ",ncol(data.frame(data))," or ",ncol(data.frame(data))*2," etc")
- #
- #  # check dataset to make sure it had at least 2 columns
- #  if(typeof(data) == "list")stopifnot(ncol(data) >= 2)
- #
- #  # compute based on what is provided
- #  if (missing(n)) {
- #    res <- sqrt(rowSums((data - matrix(colMeans(data)))^2))
- #  } else {
- #    # validate value of n
- #    stopifnot(n >= 1, n <= nrow(data))
- #    res <- sqrt(rowSums((data - matrix(colMeans(data), n, byrow = TRUE))^2))
- #  }
- #
- #  # round result if specified
- #  if (not.null(round)) res <- round(res, round)
- #
- #  # return
- #  res
- #
-
