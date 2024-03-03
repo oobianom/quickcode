@@ -2,7 +2,7 @@
 % Please edit documentation in R/0.7_combo_func1.R
 \name{read.table.print}
 \alias{read.table.print}
-\title{Read in a CSV and show first X rows and Columns}
+\title{Read in a table and show first X rows and columns}
 \usage{
 read.table.print(
   file,
@@ -198,11 +198,35 @@ read.table.print(
 \item{...}{Further arguments to be passed to \code{read.table}.}
 }
 \value{
-read table content
+read table content and a print out of the data head
 }
 \description{
-Read a dataset of type csv and show x rows and y columns
+The purpose of this function is combine the functionality of
+\strong{read.table} and \strong{print}, which are often used together.\cr\cr
+The purpose of this function is to read table from a file into a variable and
+simultaneously display a preview of the data, showing either the first few rows or
+columns based on the user's specification. It is important to emphasize that the
+function expects the user to assign the result of the read operation to a variable
+in order to achieve its intended purpose. eg. Use \strong{var1 = read.table.print(file1)} instead of
+\strong{read.table.print(file1)}
+}
+\details{
+Read a dataset of type table and show x rows and y columns
 }
 \examples{
-# to be added
+\dontrun{
+# Example: read a table file and print the first 10 lines
+# declare file
+new.file <- "test.tab"
+
+# read file and preview default
+dth3 <- read.table.print(file = new.file, sep=";")
+
+# read file and preview 10 rows and all columns
+dth1 <- read.table.print(file = new.file, sep=";", dim = 10)
+
+# read file and preview 10 rows and 5 columns
+dth2 <- read.table.print(file = new.file, sep=";", dim = c(10,5))
+}
+
 }
