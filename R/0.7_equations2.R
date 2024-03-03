@@ -38,6 +38,9 @@
 #' @export
 
 pairDist <- function(data, round) {
+  if(!all(unique(unlist(sapply(data, class))) %in% c("numeric","double","integer")))
+    stop("the data should only include numbers")
+
   col_means <- colMeans(data)
   mean_matrix <- matrix(col_means, nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
   squared_diff <- (data - mean_matrix)^2
