@@ -24,7 +24,7 @@
 ### Create a super variable with unique capability and wide scope
 ![](https://quickcode.obi.obianom.com/quickcode2.png)
 
-## Some Quick R Examples
+## ✅ Some Quick R Examples
 
 ***
 
