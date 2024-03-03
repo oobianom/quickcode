@@ -2,7 +2,7 @@
 % Please edit documentation in R/duplicate.R
 \name{duplicate}
 \alias{duplicate}
-\title{Duplicate a file with global text replace}
+\title{Duplicate a file with global text replacement}
 \usage{
 duplicate(file, new.name, pattern = NULL, replacement = NULL, open = TRUE)
 }
