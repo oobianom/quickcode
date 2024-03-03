@@ -21,8 +21,26 @@ strsplit.num(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE)
 numeric values based on split string
 }
 \description{
+The purpose of this function is combine the functionality of
+\strong{strsplit}, \strong{unlist} and \strong{as.numeric}, which are often used together.\cr\cr
+}
+\details{
 Given a sting, split by a separator into numbers
 }
 \examples{
-# to be added
+# Example 1
+# string of numbers with separator " "
+num.01 = "5 3 2 3 5 2 33 23 5 32 432 42 23 554"
+
+# split a string of numbers and return as numeric
+strsplit.num(num.01, split = " ")
+
+
+# Example 2
+# string of numbers with separator "|||"
+num.02 = "0|||1|||4|||43|||6|||8|||00||| 1||| 0 1 T |||F TRUE |||f"
+
+# split a string of numbers and return as numeric
+strsplit.num(num.02, split = "|||")
+
 }
