@@ -30,8 +30,36 @@ strsplit.bool(
 boolean values based on split string
 }
 \description{
+The purpose of this function is combine the functionality of
+\strong{strsplit}, \strong{unlist} and \strong{as.logical}, which are often used together.\cr\cr
+}
+\details{
 Given a sting, split by a separator into boolean
 }
 \examples{
-# to be added
+# string of numbers
+num.01 = "0 1 0 0 1 0 1 T F TRUE FALSE t f"
+
+# split a string of numbers and return as boolean 1/0
+strsplit.bool(num.01, split = " ", type = 3)
+
+# split a string of numbers and return as boolean TRUE/FALSE
+strsplit.bool(num.01, split = " ", type = 2)
+
+# split a string of numbers and return as boolean Yes/No
+strsplit.bool(num.01, split = " ", type = 1)
+
+
+# string of numbers
+num.02 = "0abc1abc0abc0abc1abc0abc1abcTabcFabcTRUEabcFALSEabcf"
+
+# split a string of numbers and return as boolean 1/0
+strsplit.bool(num.02, split = "abc", type = 3)
+
+# split a string of numbers and return as boolean TRUE/FALSE
+strsplit.bool(num.02, split = " ", type = 2)
+
+# split a string of numbers and return as boolean Yes/No
+strsplit.bool(num.02, split = " ", type = 1)
+
 }
