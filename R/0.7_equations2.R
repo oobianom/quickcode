@@ -38,14 +38,19 @@
 #' @export
 
 pairDist <- function(data, round) {
+  # error handling - check data
   if(!all(unique(unlist(sapply(data, class))) %in% c("numeric","double","integer")))
     stop("the data should only include numbers")
 
-  col_means <- colMeans(data)
-  mean_matrix <- matrix(col_means, nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
+  # compute
+  mean_matrix <- matrix(colMeans(data), nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
   squared_diff <- (data - mean_matrix)^2
   row_sums <- rowSums(squared_diff)
   result <- sqrt(row_sums)
   if (!missing(round)) result <- round(result, round)
+
+  # result
   result
 }
+
+
