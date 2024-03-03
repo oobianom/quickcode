@@ -1,4 +1,4 @@
-#' Duplicate a file with global text replace
+#' Duplicate a file with global text replacement
 #'
 #' Shorthand to return a re-sample number of rows in a data frame by unique column
 #'
