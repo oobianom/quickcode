@@ -2,7 +2,7 @@
 % Please edit documentation in R/0.7_combo_func1.R
 \name{read.csv.print}
 \alias{read.csv.print}
-\title{Read in a CSV and show first X rows and Columns}
+\title{Read a CSV and preview first X rows and columns}
 \usage{
 read.csv.print(
   file,
@@ -69,11 +69,36 @@ read.csv.print(
 \item{dim}{dimension of CSV content to show}
 }
 \value{
-read csv content
+read csv content and a print out of the data head
 }
 \description{
-Read a dataset of type csv and show x rows and y columns
+The purpose of this function is combine the functionality of
+\strong{read.csv} and \strong{print}, which are often used together.\cr\cr
+The purpose of this function is to read data from a file into a variable and
+simultaneously display a preview of the data, showing either the first few rows or
+columns based on the user's specification. It is important to emphasize that the
+function expects the user to assign the result of the read operation to a variable
+in order to achieve its intended purpose. eg. Use \strong{var1 = read.csv.print(file1)} instead of
+\strong{read.csv.print(file1)}
+}
+\details{
+Read a dataset of type csv and show x rows and y columns with
+one function call
 }
 \examples{
-# to be added
+\dontrun{
+# Example: read a csv file and print the first 10 lines
+# declare file
+new.file <- "test.csv"
+
+# read file and preview default
+dth3 <- read.csv.print(file = new.file)
+
+# read file and preview 10 rows and all columns
+dth1 <- read.csv.print(file = new.file, dim = 10)
+
+# read file and preview 10 rows and 5 columns
+dth2 <- read.csv.print(file = new.file, dim = c(10,5))
+}
+
 }
