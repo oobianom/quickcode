@@ -217,16 +217,18 @@ Read a dataset of type table and show x rows and y columns
 \dontrun{
 # Example: read a table file and print the first 10 lines
 # declare file
-new.file <- "test.tab"
+new.file <- "test.csv"
 
 # read file and preview default
-dth3 <- read.table.print(file = new.file, sep=";")
+dth3 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+fill = TRUE, comment.char = "", header = TRUE)
 
 # read file and preview 10 rows and all columns
-dth1 <- read.table.print(file = new.file, sep=";", dim = 10)
+dth1 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+fill = TRUE, comment.char = "", header = TRUE, dim = 10)
 
 # read file and preview 10 rows and 5 columns
-dth2 <- read.table.print(file = new.file, sep=";", dim = c(10,5))
+dth2 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+fill = TRUE, comment.char = "", header = TRUE, dim = c(10,5))
 }
-
 }
