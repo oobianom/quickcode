@@ -26,10 +26,10 @@
 #'
 #' # Example 2
 #' # string of numbers with separator "|||"
-#' num.02 = "0|||1|||4|||43|||6|||8|||00||| 1||| 0 1 T |||F TRUE |||f"
+#' num.02 = "0|||1|||4|||43|||6|||8|||00||| 1||| 0 1||| T |||F|||TRUE |||f"
 #'
 #' # split a string of numbers and return as numeric
-#' strsplit.num(num.02, split = "|||")
+#' strsplit.num(num.02, split = "[|||]")
 #'
 #' @export
 
@@ -81,10 +81,10 @@ strsplit.num <-
 #' strsplit.bool(num.02, split = "abc", type = 3)
 #'
 #' # split a string of numbers and return as boolean TRUE/FALSE
-#' strsplit.bool(num.02, split = " ", type = 2)
+#' strsplit.bool(num.02, split = "abc", type = 2)
 #'
 #' # split a string of numbers and return as boolean Yes/No
-#' strsplit.bool(num.02, split = " ", type = 1)
+#' strsplit.bool(num.02, split = "abc", type = 1)
 #'
 #' @export
 
@@ -137,7 +137,6 @@ strsplit.bool <-
 #' # read file and preview 10 rows and 5 columns
 #' dth2 <- read.csv.print(file = new.file, dim = c(10,5))
 #' }
-#'
 #' @export
 
 read.csv.print <-
@@ -195,18 +194,20 @@ read.csv.print <-
 #' \dontrun{
 #' # Example: read a table file and print the first 10 lines
 #' # declare file
-#' new.file <- "test.tab"
+#' new.file <- "test.csv"
 #'
 #' # read file and preview default
-#' dth3 <- read.table.print(file = new.file, sep=";")
+#' dth3 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+#' fill = TRUE, comment.char = "", header = TRUE)
 #'
 #' # read file and preview 10 rows and all columns
-#' dth1 <- read.table.print(file = new.file, sep=";", dim = 10)
+#' dth1 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+#' fill = TRUE, comment.char = "", header = TRUE, dim = 10)
 #'
 #' # read file and preview 10 rows and 5 columns
-#' dth2 <- read.table.print(file = new.file, sep=";", dim = c(10,5))
+#' dth2 <- read.table.print(file = new.file, sep=",",quote = "\"",dec = ".",
+#' fill = TRUE, comment.char = "", header = TRUE, dim = c(10,5))
 #' }
-#'
 #' @export
 
 read.table.print <-
