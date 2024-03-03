@@ -2,7 +2,7 @@
 % Please edit documentation in R/0.7_combo_func1.R
 \name{strsplit.bool}
 \alias{strsplit.bool}
-\title{Split a string of values and return as boolean}
+\title{Split a string of values and return as boolean vector}
 \usage{
 strsplit.bool(
   x,
@@ -57,9 +57,9 @@ num.02 = "0abc1abc0abc0abc1abc0abc1abcTabcFabcTRUEabcFALSEabcf"
 strsplit.bool(num.02, split = "abc", type = 3)
 
 # split a string of numbers and return as boolean TRUE/FALSE
-strsplit.bool(num.02, split = " ", type = 2)
+strsplit.bool(num.02, split = "abc", type = 2)
 
 # split a string of numbers and return as boolean Yes/No
-strsplit.bool(num.02, split = " ", type = 1)
+strsplit.bool(num.02, split = "abc", type = 1)
 
 }
