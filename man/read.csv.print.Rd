@@ -100,5 +100,4 @@ dth1 <- read.csv.print(file = new.file, dim = 10)
 # read file and preview 10 rows and 5 columns
 dth2 <- read.csv.print(file = new.file, dim = c(10,5))
 }
-
 }
