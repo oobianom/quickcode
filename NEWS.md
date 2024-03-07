@@ -2,15 +2,25 @@
 
 - [ ] Revisions to current functions
     - [ ] in.range
-    - [ ] archivedPkg 
-    - [ ] rDecomPkg 
-    - [ ] genRandImg
 - [ ] New functions 
-    - [ ] pairDist
-    - [ ] strsplit.num
-    - [ ] strsplit.bool
-    - [ ] read.csv.print
-    - [ ] read.table.print
+    - [ ] Date1to3
+    - [ ] Date3to1
+    - [ ] switch_rows
+    
+    
+# quickcode 0.7
+
+- [x] Revisions to current functions
+    - [x] in.range
+    - [x] archivedPkg 
+    - [x] rDecomPkg 
+    - [x] genRandImg
+- [x] New functions 
+    - [x] pairDist
+    - [x] strsplit.num
+    - [x] strsplit.bool
+    - [x] read.csv.print
+    - [x] read.table.print
     
 # quickcode 0.6
 
