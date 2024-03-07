@@ -1,4 +1,4 @@
-# quickcode 0.7
+# quickcode 0.8
 
 - [ ] Revisions to current functions
     - [ ] in.range
