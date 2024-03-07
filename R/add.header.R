@@ -13,22 +13,24 @@
 add.header <- function() {
   insertInText(paste0("
 ############################################################################
-#  Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
-#
-#  Author:
-#
-#  Date: ", Sys.Date(), "
-#
-#  Title:
-#
-#  Description:
-#
-#  Required Files:
-#
-#  Exported Files:
-#
-#  R Version: ", version$version.string, "
-#
+############################################################################
+##  Document Path: ", rstudioapi::getActiveDocumentContext()$path, "
+##
+##  Author:
+##
+##  Date: ", Sys.Date(), "
+##
+##  Title:
+##
+##  Description:
+##
+##  Required Files:
+##
+##  Exported Files:
+##
+##  R Version: ", version$version.string, "
+##
+#############################################################################
 #############################################################################
 
   "))
