@@ -17,10 +17,13 @@ quickcode::libraryAll(
   ...
 )
 quickcode::clean(
-  setwd = '...'
+  setwd = './'
 )
 
 # script body
+
+
+
 
 
 # session information
