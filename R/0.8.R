@@ -2,9 +2,9 @@ Date1to3 <- function(data){
   if (class(data) != "Date") { stop("class(data) is not an object of class Date")
   }
   str = as.character(data)
-  yr1 = easyr::left(str, 4)
-  mth1 = easyr::mid(str, 6, 2)
-  day1 = easyr::right(str, 2)
+  yr1 = easyrleft(str, 4)
+  mth1 = easyrmid(str, 6, 2)
+  day1 = easyrright(str, 2)
   x = data.frame(yr1, mth1, day1)
   x
 }
@@ -19,3 +19,16 @@ switch_rows <- function(data,row1,row2,keep){
   data[row1,] <- .x2
   data
 }
+
+
+easyrleft <-
+function (string, char)
+  substr(string, 1, char)
+
+easyrmid <-
+function (string, start, nchars)
+  substr(string, start, start + nchars - 1)
+
+easyrright<-
+function (string, char)
+  substr(string, nchar(string) - (char - 1), nchar(string))
