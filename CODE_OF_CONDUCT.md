@@ -1,1 +1,0 @@
-Sample code of conduct
