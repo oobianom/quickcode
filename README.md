@@ -11,7 +11,12 @@
 
 ### Package stats: https://rpkg.net/package/quickcode
 
-[![](https://quickcode.obi.obianom.com/quickcode_load_type.svg)](https://rpkg.net/package/quickcode)
+```
+# Install in R
+install.packages("quickcode")
+```
+
+[![](https://quickcode.obi.obianom.com/writeit.svg)](https://rpkg.net/package/quickcode)
 
 # 30+ great R functions to add to your scripts!
 
