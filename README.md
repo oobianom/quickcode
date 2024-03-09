@@ -1,6 +1,6 @@
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+
 <a class="github-button" href="https://github.com/oobianom" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-size="large" aria-label="Follow @oobianom on GitHub">Follow @oobianom</a>
 <a class="github-button" href="https://github.com/oobianom/quickcode" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star oobianom/quickcode on GitHub">Star</a>
 <a class="github-button" href="https://github.com/oobianom/quickcode/subscription" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch oobianom/quickcode on GitHub">Watch</a>
