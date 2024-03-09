@@ -16,7 +16,7 @@
 install.packages("quickcode")
 ```
 
-[![](https://quickcode.obi.obianom.com/writeit.svg)](https://rpkg.net/package/quickcode)
+[![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
 
 # 30+ great R functions to add to your scripts!
 
