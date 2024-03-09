@@ -17,4 +17,5 @@ switch_rows <- function(data,row1,row2,keep){
   .x2 <- data[row2,]
   data[row2,] <- data[row1,]
   data[row1,] <- .x2
+  data
 }
