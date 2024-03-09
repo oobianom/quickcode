@@ -1,12 +1,6 @@
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
 
-<a class="github-button" href="https://github.com/oobianom" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-size="large" aria-label="Follow @oobianom on GitHub">Follow @oobianom</a>
-<a class="github-button" href="https://github.com/oobianom/quickcode" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star oobianom/quickcode on GitHub">Star</a>
-<a class="github-button" href="https://github.com/oobianom/quickcode/subscription" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch oobianom/quickcode on GitHub">Watch</a>
-<a class="github-button" href="https://github.com/oobianom/quickcode/fork" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork oobianom/quickcode on GitHub">Fork</a>
-<a class="github-button" href="https://github.com/oobianom/quickcode/issues" data-color-scheme="no-preference: light; light: light_high_contrast; dark: light_high_contrast;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue oobianom/quickcode on GitHub">Issue</a>
-
 </p>
 
 # quickcode: NOT functions and a compilation of some simple quick plus often used R functions
