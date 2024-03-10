@@ -1,4 +1,5 @@
-Date1to3 <- function(data){
+#' @export
+date1to3 <- function(data){
   if (class(data) != "Date") { stop("class(data) is not an object of class Date")
   }
   str = as.character(data)
@@ -8,7 +9,8 @@ Date1to3 <- function(data){
   x = data.frame(yr1, mth1, day1)
   x
 }
-Date3to1 <- function(dat,sep="-"){
+#' @export
+date3to1 <- function(dat,sep="-"){
   paste(dat[,1],dat[,1],dat[,1],collapse = sep)
 }
 
