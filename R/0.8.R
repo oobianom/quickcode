@@ -6,8 +6,7 @@ date1to3 <- function(data){
   yr1 = easyrleft(str, 4)
   mth1 = easyrmid(str, 6, 2)
   day1 = easyrright(str, 2)
-  x = data.frame(yr1, mth1, day1)
-  x
+  data.frame(yr1, mth1, day1)
 }
 #' @export
 date3to1 <- function(dat,sep="-"){
