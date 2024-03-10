@@ -10,7 +10,7 @@ date1to3 <- function(data){
 }
 #' @export
 date3to1 <- function(dat,sep="-"){
-  paste(dat[,1],dat[,1],dat[,1],collapse = sep)
+  paste(dat[,1],dat[,2],dat[,3],collapse = sep)
 }
 
 #' @export
