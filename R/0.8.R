@@ -116,7 +116,7 @@ is.normal <- function(values,sig = 0.5){
 #' is.uniform uses the "Kolmogorov-Smirnov test"
 #'
 #' @param sig significance level to test p-value against
-#' @return boolean value if normal distributed
+#' @return boolean value if uniform distributed
 #' @export
 is.uniform <- function(values,sig = 0.5){
   {stats::ks.test(values)}$p.value >= sig
