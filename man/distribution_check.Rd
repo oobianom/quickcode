@@ -5,7 +5,8 @@
 \alias{is.normal}
 \alias{is.uniform}
 \alias{is.poisson}
-\title{Check if a data fits a Normal or LogNormal or Uniform or Poisson distribution}
+\alias{is.gamma}
+\title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution}
 \usage{
 is.lognormal(values, sig = 0.5)
 
@@ -14,6 +15,8 @@ is.normal(values, sig = 0.5)
 is.uniform(values, sig = 0.5)
 
 is.poisson(values, sig = 0.5)
+
+is.gamma(values, sig = 0.5)
 }
 \arguments{
 \item{values}{vector of values}
@@ -28,6 +31,8 @@ boolean value if normal distributed
 boolean value if uniform distributed
 
 boolean value if poisson distributed
+
+boolean value if gamma distributed
 }
 \description{
 Check whether a vector of data contains values that fit a distribution
@@ -48,4 +53,6 @@ is.normal and is.lognormal uses the "Shapiro-Wilk test"
 is.uniform uses the "Kolmogorov-Smirnov test"
 
 is.poisson uses the "pchisq"
+
+is.gamma should use the "Anderson-Darling test"
 }
