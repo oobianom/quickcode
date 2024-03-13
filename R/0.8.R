@@ -33,3 +33,11 @@ function (string, start, nchars)
 easyrright<-
 function (string, char)
   substr(string, nchar(string) - (char - 1), nchar(string))
+
+
+
+
+# print all the environment object and sizes and connections to each other
+summarize.envObj <- function(){
+
+}
