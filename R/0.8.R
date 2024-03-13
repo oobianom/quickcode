@@ -95,16 +95,18 @@ fun.time <- function(...){
 #'
 #' @rdname distribution_check
 #' @param values vector of values
+#' @param sig significance level to test p-value against
 #' @return boolean value if lognormal distributed
 #' @export
-is.lognormal <- function(values){
+is.lognormal <- function(values,sig = 0.5){
   (stats::shapiro.test(log(values)))$p.value >= 0.05
 }
 
 #' @rdname distribution_check
 #' @param values vector of values
+#' @param sig significance level to test p-value against
 #' @return boolean value if normal distributed
 #' @export
-is.normal <- function(values){
-  (stats::shapiro.test(values))$p.value >= 0.05
+is.normal <- function(values,sig = 0.5){
+  (stats::shapiro.test(values))$p.value >= sig
 }
