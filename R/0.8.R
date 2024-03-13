@@ -76,7 +76,7 @@ fun.time <- function(...){
 
 
 #check if data is log normal
-#' Check if a data fits a Normal or LogNormal or Uniform or Poisson distribution
+#' Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
 #'
 #' @description
 #' Check whether a vector of data contains values that fit a distribution
@@ -106,7 +106,7 @@ is.lognormal <- function(values,sig = 0.5){
 #' @return boolean value if normal distributed
 #' @export
 is.normal <- function(values,sig = 0.5){
-  (stats::shapiro.test(values))$p.value >= sig
+  {stats::shapiro.test(values)}$p.value >= sig
 }
 
 
@@ -133,9 +133,30 @@ is.uniform <- function(values,sig = 0.5){
 #' @export
 is.poisson <-function(values,sig= 0.5){
   # Perform chi-squared test to check Poisson distribution
-  obs <- table(x)
-  exp <- length(x)*mean(x)
+  obs <- table(values)
+  exp <- length(values)*mean(values)
   chisq <- sum((obs-exp)^2/exp)
   # Compare test statistic to chi-squared distribution
-  {1-pchisq(chisq, length(obs)-1)}  > sig
+  {1-stats::pchisq(chisq, length(obs)-1)}  > sig
+}
+
+
+
+#' @rdname distribution_check
+#' @param values vector of values
+#' @note
+#' is.gamma should use the "Anderson-Darling test"
+#'
+#' @param sig significance level to test p-value against
+#' @return boolean value if gamma distributed
+#' @export
+is.gamma <- function(values,sig = 0.5){
+  # Gamma distribution parameters (shape and rate)
+  shape <- 2
+  rate <- 1/mean(values)
+  # Expected values under a Gamma distribution
+  expected_values <- stats::dgamma(0:max(values), shape, rate) * length(values)
+  # Chi-squared goodness-of-fit test
+  {stats::chisq.test(table(values), p = expected_values)}$p.value >= sig
+
 }
