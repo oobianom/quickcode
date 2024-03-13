@@ -160,3 +160,22 @@ is.gamma <- function(values,sig = 0.5){
   {stats::chisq.test(table(values), p = expected_values)}$p.value >= sig
 
 }
+
+#' @rdname distribution_check
+#' @param values vector of values
+#' @note
+#' is.logistic use the "Kolmogorov-Smirnov test"
+#'
+#' @param sig significance level to test p-value against
+#' @return boolean value if logistic distributed
+#' @export
+is.logistic <- function(values,sig= 0.5) {
+  # Estimate location and scale parameters
+  location <- mean(x)
+  scale <- median(abs(x - location))/0.6745
+
+  # Anderson-Darling test
+  {nortest::ad_test(x, pl = stats::plogis, location = location,
+                     scale = scale)}$p.value> 0.05
+
+}
