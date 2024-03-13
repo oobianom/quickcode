@@ -3,11 +3,17 @@
 \name{is.lognormal}
 \alias{is.lognormal}
 \alias{is.normal}
-\title{Check if a vector of values are Normal or Lognormal distributed}
+\alias{is.uniform}
+\alias{is.poisson}
+\title{Check if a data fits a Normal or LogNormal or Uniform or Poisson distribution}
 \usage{
 is.lognormal(values, sig = 0.5)
 
 is.normal(values, sig = 0.5)
+
+is.uniform(values, sig = 0.5)
+
+is.poisson(values, sig = 0.5)
 }
 \arguments{
 \item{values}{vector of values}
@@ -18,13 +24,18 @@ is.normal(values, sig = 0.5)
 boolean value if lognormal distributed
 
 boolean value if normal distributed
+
+boolean value if normal distributed
+
+boolean value if poisson distributed
 }
 \description{
-Check whether a vector of data contains values that fit a lognormal or normal distribution
+Check whether a vector of data contains values that fit a distribution
 }
 \details{
 This function takes a numeric vector as its input. This vector contains the dataset that will be analyzed.
-\cr
+\cr\cr
+**For Normal and LogNormal:**\cr
 This function first performs a Shapiro-Wilk test on the data to check if it comes from a normal distribution. The Shapiro-Wilk test checks if sample data came from a normal distribution. It returns a p-value, with a higher p-value indicating stronger evidence that the data is normally distributed.
 \cr
 If the p-value from the Shapiro-Wilk test is above a predefined threshold (such as 0.05), the data is considered normally distributed. In this case, the function returns "normal".
@@ -34,4 +45,9 @@ If the data fails the Shapiro-Wilk normality test, the function then checks if t
 If the p-value from this test on the logged data is above the threshold, the function returns "lognormal", indicating the untransformed data fits a lognormal distribution after logging.
 \cr
 If the data fails both the normal and logged Shapiro-Wilk tests, the function returns "neither", indicating the data does not appear to come from a normal or lognormal distribution based on the tests.
+}
+\note{
+is.uniform uses the "Kolmogorov-Smirnov test"
+
+is.poisson uses the "pchisq"
 }
