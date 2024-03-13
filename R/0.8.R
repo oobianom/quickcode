@@ -76,13 +76,14 @@ fun.time <- function(...){
 
 
 #check if data is log normal
-#' Check if a vector of values are Normal or Lognormal distributed
+#' Check if a vector of values are Normal or LogNormal or Uniform or Poisson distributed
 #'
 #' @description
-#' Check whether a vector of data contains values that fit a lognormal or normal distribution
+#' Check whether a vector of data contains values that fit a distribution
 #' @details
 #' This function takes a numeric vector as its input. This vector contains the dataset that will be analyzed.
-#' \cr
+#' \cr\cr
+#' **For Normal and LogNormal:**\cr
 #' This function first performs a Shapiro-Wilk test on the data to check if it comes from a normal distribution. The Shapiro-Wilk test checks if sample data came from a normal distribution. It returns a p-value, with a higher p-value indicating stronger evidence that the data is normally distributed.
 #' \cr
 #' If the p-value from the Shapiro-Wilk test is above a predefined threshold (such as 0.05), the data is considered normally distributed. In this case, the function returns "normal".
@@ -109,4 +110,35 @@ is.lognormal <- function(values,sig = 0.5){
 #' @export
 is.normal <- function(values,sig = 0.5){
   (stats::shapiro.test(values))$p.value >= sig
+}
+
+
+#' @rdname distribution_check
+#' @param values vector of values
+#' @note
+#' is.uniform uses the "Kolmogorov-Smirnov test"
+#'
+#' @param sig significance level to test p-value against
+#' @return boolean value if normal distributed
+#' @export
+is.uniform <- function(values,sig = 0.5){
+  {stats::ks.test(values)}$p.value >= sig
+}
+
+
+#' @rdname distribution_check
+#' @param values vector of values
+#' @note
+#' is.poisson uses the "pchisq"
+#'
+#' @param sig significance level to test p-value against
+#' @return boolean value if poisson distributed
+#' @export
+is.poisson <-function(values,sig= 0.5){
+  # Perform chi-squared test to check Poisson distribution
+  obs <- table(x)
+  exp <- length(x)*mean(x)
+  chisq <- sum((obs-exp)^2/exp)
+  # Compare test statistic to chi-squared distribution
+  {1-pchisq(chisq, length(obs)-1)}  > sig
 }
