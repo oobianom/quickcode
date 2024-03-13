@@ -25,7 +25,7 @@ boolean value if lognormal distributed
 
 boolean value if normal distributed
 
-boolean value if normal distributed
+boolean value if uniform distributed
 
 boolean value if poisson distributed
 }
