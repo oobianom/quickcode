@@ -41,3 +41,11 @@ function (string, char)
 summarize.envObj <- function(){
 
 }
+
+#function execution time
+
+fun.time <- function(...){
+  .m <- Sys.time()
+  local(...)
+  Sys.time() - .m
+}
