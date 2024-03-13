@@ -76,7 +76,7 @@ fun.time <- function(...){
 
 
 #check if data is log normal
-#' Check if a vector of values are Normal or LogNormal or Uniform or Poisson distributed
+#' Check if a data fits a Normal or LogNormal or Uniform or Poisson distribution
 #'
 #' @description
 #' Check whether a vector of data contains values that fit a distribution
