@@ -1,5 +1,6 @@
 #' @export
 date1to3 <- function(data){
+  warning("Function under development")
   if (class(data) != "Date") { stop("class(data) is not an object of class Date")
   }
   str = as.character(data)
@@ -10,11 +11,13 @@ date1to3 <- function(data){
 }
 #' @export
 date3to1 <- function(dat,sep="-"){
+  warning("Function under development")
   paste(dat[,1],dat[,2],dat[,3],collapse = sep)
 }
 
 #' @export
 switch_rows <- function(data,row1,row2,keep){
+  warning("Function under development")
   .x2 <- data[row2,]
   data[row2,] <- data[row1,]
   data[row1,] <- .x2
@@ -137,7 +140,7 @@ is.poisson <-function(values,sig= 0.5){
   exp <- length(values)*mean(values)
   chisq <- sum((obs-exp)^2/exp)
   # Compare test statistic to chi-squared distribution
-  {1-stats::pchisq(chisq, length(obs)-1)}  > sig
+  {1-stats::pchisq(chisq, length(obs)-1)}  >= sig
 }
 
 
@@ -149,16 +152,18 @@ is.poisson <-function(values,sig= 0.5){
 #'
 #' @param sig significance level to test p-value against
 #' @return boolean value if gamma distributed
+#'
+#' @export
+#' Example gamma data
+#' set.seed(5434)
+#' n = 1000
+#' x <- stats::rgamma(n,5, 2)
+#' is.gamma(x) # check if it is gamma distribution
 #' @export
 is.gamma <- function(values,sig = 0.5){
-  # Gamma distribution parameters (shape and rate)
-  shape <- 2
-  rate <- 1/mean(values)
-  # Expected values under a Gamma distribution
-  expected_values <- stats::dgamma(0:max(values), shape, rate) * length(values)
-  # Chi-squared goodness-of-fit test
-  {stats::chisq.test(table(values), p = expected_values)}$p.value >= sig
-
+  warning("Function under development")
+  breaks <- seq(min(values), max(values), length.out = 20)
+  {stats::chisq.test(table(cut(value, breaks = breaks)))}$p.value >= sig
 }
 
 #' @rdname distribution_check
@@ -168,14 +173,62 @@ is.gamma <- function(values,sig = 0.5){
 #'
 #' @param sig significance level to test p-value against
 #' @return boolean value if logistic distributed
+#' @examples
+#' set.seed(231)
+#' n <- 1000
+#' location <- 0
+#' scale <- 1
+#' xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
+#' hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
+#'
+#' is.logistic(xlogi) # test if it is logistic distribution
 #' @export
 is.logistic <- function(values,sig= 0.5) {
-  # Estimate location and scale parameters
-  location <- mean(x)
-  scale <- median(abs(x - location))/0.6745
-
-  # Anderson-Darling test
-  {nortest::ad_test(x, pl = stats::plogis, location = location,
-                     scale = scale)}$p.value> 0.05
-
+  warning("Function under development")
+  {ks.test(values, "plogis")}$p.value >= sig
 }
+
+
+
+#' @rdname distribution_check
+#' @param values vector of values
+#' @note
+#' is.weibull use the "Kolmogorov-Smirnov test"
+#' @examples
+#' x <- rweibull(1000, shape = 2, scale = 1)
+#' is.weibull(x)
+#' @param sig significance level to test p-value against
+#' @return boolean value if logistic distributed
+#' @export
+is.weibull <- function(values,sig= 0.5, shape = 2, scale = 1) {
+  {stats::ks.test(values,"pweibull",shape,scale)}$p.value >= sig
+}
+
+
+#' Generate logistic random values
+#'
+#' generates random values from a logistic distribution. It takes in the number of values to generate (n) and optional location and scale parameters.
+#'
+#' @param n integer number of random values to generate
+#' @param min minimum value
+#' @param max maximum value
+#' @param location numeric location parameter of the logistic distribution (default is 0)
+#' @param scale numeric scale parameter of the logistic distribution (default is 1)
+#'
+#' @details
+#'
+#' Details:\cr\cr
+#'
+#' - The function first generates uniform [0,1] random values using runif(n) \cr
+#' - It then transforms these values using the quantile function qlogis() to map them to the logistic CDF\cr
+#' - stats::qlogis() takes the uniform values and the location and scale parameters\cr
+#' @return random values that follow a logistic distribution with the given parameters\cr
+#'
+#' @export
+sim.logistic <- function(n, location = 0, scale = 1, min = 0, max = 1) {
+  stats::qlogis(runif(n,min,max), location, scale)
+}
+
+
+
+
