@@ -6,6 +6,8 @@
 \alias{is.uniform}
 \alias{is.poisson}
 \alias{is.gamma}
+\alias{is.logistic}
+\alias{is.weibull}
 \title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution}
 \usage{
 is.lognormal(values, sig = 0.5)
@@ -17,6 +19,10 @@ is.uniform(values, sig = 0.5)
 is.poisson(values, sig = 0.5)
 
 is.gamma(values, sig = 0.5)
+
+is.logistic(values, sig = 0.5)
+
+is.weibull(values, sig = 0.5, shape = 2, scale = 1)
 }
 \arguments{
 \item{values}{vector of values}
@@ -33,6 +39,10 @@ boolean value if uniform distributed
 boolean value if poisson distributed
 
 boolean value if gamma distributed
+
+boolean value if logistic distributed
+
+boolean value if logistic distributed
 }
 \description{
 Check whether a vector of data contains values that fit a distribution
@@ -55,4 +65,27 @@ is.uniform uses the "Kolmogorov-Smirnov test"
 is.poisson uses the "pchisq"
 
 is.gamma should use the "Anderson-Darling test"
+
+is.logistic use the "Kolmogorov-Smirnov test"
+
+is.weibull use the "Kolmogorov-Smirnov test"
+}
+\examples{
+
+
+Example gamma data
+set.seed(5434)
+n = 1000
+x <- stats::rgamma(n,5, 2)
+is.gamma(x) # check if it is gamma distribution
+set.seed(231)
+n <- 1000
+location <- 0
+scale <- 1
+xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
+hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
+
+is.logistic(xlogi) # test if it is logistic distribution
+x <- rweibull(1000, shape = 2, scale = 1)
+is.weibull(x)
 }
