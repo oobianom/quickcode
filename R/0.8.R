@@ -1,48 +1,42 @@
-#' @export
-date1to3 <- function(data, in.format = "%Y-%m-%d"){
-  if (class(data) != "Date") {
-    stop("class(data) is not an object of class Date")
-  }
-  str = as.character(data)
-  yr1 = easyrleft(str, 4)
-  mth1 = easyrmid(str, 6, 2)
-  day1 = easyrright(str, 2)
-  data.frame(yr1, mth1, day1)
-}
-
-#' Combine vectors to form date
+#' Combine vectors to create Date, or split Date into vectors
 #'
+#' Combine or split Date into a specified format
+#'
+#' @rdname date_tweaks
+#'
+#' @references
 #' Adapted from Ecfun R package
 #' @examples
+#' \strong{# EXAMPLES FOR date3to1}
 #'
-#' df1 <- data.frame(y=c(NA, -1, 1971:1979),
+#' data0 <- data.frame(y=c(NA, -1, 2001:2009),
 #' m=c(1:2, -1, NA, 13, 2, 12, 6:9),
 #' d=c(0, 0:6, NA, -1, 32) )
-#' head(df)
+#' head(data0)
 #'
 #' # combine and convert to date
 #' # return as data frame
-#' date3to1(df1)
+#' date3to1(data0)
 #'
 #' # combine and convert to date
 #' # return as vector
-#' date3to1(data, as.vector = TRUE)
+#' date3to1(data0, as.vector = TRUE)
 #'
 #'
 #' # combine and convert to date in the format DD_MM_YYYY
-#' date3to1(data, out.format = "%d_%m_%Y") #eg. 04_02_1974
+#' date3to1(data0, out.format = "%d_%m_%Y") #eg. 04_02_1974
 #'
 #'
 #' # combine and convert to date in the format MM_DD_YY
-#' date3to1(data, out.format = "%m_%d_%y") #eg. 02_04_74
+#' date3to1(data0, out.format = "%m_%d_%y") #eg. 02_04_74
 #'
 #' # combine and convert to date in the various date formats
-#' date3to1(data, out.format = "%B %d, %y") #eg. February 04, 74
-#' date3to1(data, out.format = "%a, %b %d, %Y") #eg. Mon, Feb 04, 1974
-#' date3to1(data, out.format = "%A, %B %d, %Y") #eg. Monday, February 04, 1974
-#' date3to1(data, out.format = "Day %j in Year %Y") #eg. Day 035 in Year 1974
-#' date3to1(data, out.format = "Week %U in %Y") #eg. Week 05 in 1974
-#' date3to1(data, out.format = "Numeric month %m in Year %Y") #eg. Numeric month 02 in Year 1974
+#' date3to1(data0, out.format = "%B %d, %y") #eg. February 04, 74
+#' date3to1(data0, out.format = "%a, %b %d, %Y") #eg. Mon, Feb 04, 1974
+#' date3to1(data0, out.format = "%A, %B %d, %Y") #eg. Monday, February 04, 1974
+#' date3to1(data0, out.format = "Day %j in Year %Y") #eg. Day 035 in Year 1974
+#' date3to1(data0, out.format = "Week %U in %Y") #eg. Week 05 in 1974
+#' date3to1(data0, out.format = "Numeric month %m in Year %Y") #eg. Numeric month 02 in Year 1974
 #'
 #' @param data data frame object
 #' @param out.format date output format
@@ -50,9 +44,36 @@ date1to3 <- function(data, in.format = "%Y-%m-%d"){
 #' @param as.vector return output as vector, or leave as data frame
 #' @return date derived from combining values from three columns of a data frame
 #'
+#' @note
+#' \strong{DATE FORMATS IN R}\cr
+#' \tabular{rrrrr}{
+#' \strong{Date Specification}   \tab \strong{Description}          \tab  \strong{Example} \cr
+#' \%a  \tab Abbreviated weekday             \tab Sun, Thu \cr
+#' \%A  \tab Full weekday                    \tab Sunday \cr
+#' \%b  \tab Abbreviated month               \tab May, Jul \cr
+#' \%B  \tab Full month                      \tab March, July \cr
+#' \%d  \tab Day of the month                \tab 27, 07 \cr
+#' \%j  \tab Day of the year                 \tab 148, 188 \cr
+#' \%m  \tab Month                           \tab 05, 07 \cr
+#' \%U  \tab Week, with Sunday as first day  \tab 22, 27 \cr
+#' \%w  \tab Weekday, Sunday is 0            \tab 0, 4 \cr
+#' \%W  \tab Week, with Monday as first day  \tab 21, 27 \cr
+#' \%x  \tab Date, locale-specific           \tab \cr
+#' \%y  \tab Year without century            \tab 84, 05 \cr
+#' \%Y  \tab Year with century               \tab 1984, 2005 \cr
+#' \%C  \tab Century                         \tab 19, 20 \cr
+#' \%D  \tab Date formatted \%m/\%d/\%y      \tab 07/17/23 \cr
+#' \%u  \tab Weekday, Monday is 1            \tab 7, 4 \cr
+#' }
 #' @export
 
-date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3, as.vector = FALSE){
+date3to1 <-
+  function(data,
+           out.format = "%Y-%m-%d",
+           col.YMD = 1:3,
+           as.vector = FALSE
+  ){
+
   stopifnot("data.frame" %in% class(data)) # data must be a data frame
   if(has.error(you[,col.YMD]))
     stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
@@ -62,7 +83,7 @@ date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3, as.vector = F
   b.out <- within(data,{
     output.date = as.POSIXct(paste0(..yyyy..,"-",..mm..,"-",..dd..),format="%Y-%m-%d")
     if(out.format!="%Y-%m-%d")
-    output.date = format(output.date, out.format)
+      output.date = format(output.date, out.format)
   })
 
   if(as.vector){
@@ -72,6 +93,83 @@ date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3, as.vector = F
     b.out
   }
 }
+
+
+
+
+#' Split date into columns of strings
+#'
+#' @examples
+#'
+#'
+#'
+#'
+#' \strong{# EXAMPLES FOR date1to3}
+#'
+#' data1 <- data.frame(Full.Dates =
+#' c("2023-02-14",NA,NA,
+#' "2002-12-04","1974-08-04",
+#' "2008-11-10"))
+#' head(data1)
+#'
+#' # combine and convert to date
+#' # return as data frame
+#' date1to3(data1)
+#'
+#' # combine and convert to date
+#' # return as vector
+#' date1to3(data1, as.vector = TRUE)
+#'
+#'
+#' # combine and convert to date in the format DD_MM_YYYY
+#' date1to3(data1, out.format = "%d_%m_%Y") #eg. 04_02_1974
+#'
+#'
+#' # combine and convert to date in the format MM_DD_YY
+#' date1to3(data1, out.cols = "%m_%d_%y") #eg. 02_04_74
+#'
+#' # combine and convert to date in the various date formats colums
+#' date1to3(data1, out.cols = c("B","d,"y","") ) #eg.
+#' date1to3(data1, out.cols = c("a","b,"y","") ) #eg.
+#' date1to3(data1, out.cols = c("A","B,"y","") ) #eg.
+#' date1to3(data1, out.cols = c("j","Y,"y","") ) #eg.
+#' date1to3(data1, out.cols = c("U","Y,"y","") ) #eg.
+#' date1to3(data1, out.cols = c("m","Y,"y","") ) #eg.
+#'
+#' @param data data frame object
+#' @param in.format date input format
+#' @param date.col numeric value of column within the dataset that contains the dates
+#' @param out.cols cols to of date items to split. Make sure to conform to date formats. See "NOTE" section
+#' for date formats
+#' @rdname date_tweaks
+#' @export
+date1to3 <-
+  function(data,
+           in.format = "%Y-%m-%d",
+           date.col = 1,
+           out.cols = c("Y", "m", "d")
+  ){
+
+  stopifnot("data.frame" %in% class(data)) # data must be a data frame
+  if(has.error(you[,date.col]))
+    stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
+
+  .prevn = names(data)[date.col]
+  names(data)[date.col] = "...dMywhole_"
+
+  b.out <- within(data,{
+    output.date = as.POSIXct(...dMywhole_,format=in.format)
+    for(iui in out.cols)
+    assign(paste0(".date_",iui),format(output.date,paste0("%",iui)))
+    rm(iui,output.date)
+  })
+
+
+  names(data)[date.col] = .prevn
+  b.out
+}
+
+
 
 #' @export
 switch_rows <- function(data,row1,row2,keep){
@@ -155,7 +253,7 @@ summarize.envObj <- function(){
 
 fun.time <- function(...){
   .m <- Sys.time()
-  local(...)
+  local({...})
   Sys.time() - .m
 }
 
