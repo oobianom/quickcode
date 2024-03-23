@@ -46,24 +46,24 @@
 #'
 #' @note
 #' \strong{DATE FORMATS IN R}\cr
-#' \tabular{rrrrr}{
-#' \strong{Date Specification}   \tab \strong{Description}          \tab  \strong{Example} \cr
-#' \%a  \tab Abbreviated weekday             \tab Sun, Thu \cr
-#' \%A  \tab Full weekday                    \tab Sunday \cr
-#' \%b  \tab Abbreviated month               \tab May, Jul \cr
-#' \%B  \tab Full month                      \tab March, July \cr
-#' \%d  \tab Day of the month                \tab 27, 07 \cr
-#' \%j  \tab Day of the year                 \tab 148, 188 \cr
-#' \%m  \tab Month                           \tab 05, 07 \cr
-#' \%U  \tab Week, with Sunday as first day  \tab 22, 27 \cr
-#' \%w  \tab Weekday, Sunday is 0            \tab 0, 4 \cr
-#' \%W  \tab Week, with Monday as first day  \tab 21, 27 \cr
-#' \%x  \tab Date, locale-specific           \tab \cr
-#' \%y  \tab Year without century            \tab 84, 05 \cr
-#' \%Y  \tab Year with century               \tab 1984, 2005 \cr
-#' \%C  \tab Century                         \tab 19, 20 \cr
-#' \%D  \tab Date formatted \%m/\%d/\%y      \tab 07/17/23 \cr
-#' \%u  \tab Weekday, Monday is 1            \tab 7, 4 \cr
+#' \tab \tabular{rrrrr}{
+#' \strong{Date Specification}   \tab \tab \strong{Description}          \tab \tab  \strong{Example} \cr
+#' \%a  \tab \tab Abbreviated weekday             \tab \tab Sun, Thu \cr
+#' \%A  \tab \tab Full weekday                    \tab \tab Sunday \cr
+#' \%b  \tab \tab Abbreviated month               \tab \tab May, Jul \cr
+#' \%B  \tab \tab Full month                      \tab \tab March, July \cr
+#' \%d  \tab \tab Day of the month                \tab \tab 27, 07 \cr
+#' \%j  \tab \tab Day of the year                 \tab \tab 148, 188 \cr
+#' \%m  \tab \tab Month                           \tab \tab 05, 07 \cr
+#' \%U  \tab \tab Week, with Sunday as first day  \tab \tab 22, 27 \cr
+#' \%w  \tab \tab Weekday, Sunday is 0            \tab \tab 0, 4 \cr
+#' \%W  \tab \tab Week, with Monday as first day  \tab \tab 21, 27 \cr
+#' \%x  \tab \tab Date, locale-specific           \tab \tab \cr
+#' \%y  \tab \tab Year without century            \tab \tab 84, 05 \cr
+#' \%Y  \tab \tab Year with century               \tab \tab 1984, 2005 \cr
+#' \%C  \tab \tab Century                         \tab \tab 19, 20 \cr
+#' \%D  \tab \tab Date formatted \%m/\%d/\%y      \tab \tab 07/17/23 \cr
+#' \%u  \tab \tab Weekday, Monday is 1            \tab \tab 7, 4 \cr
 #' }
 #' @export
 
@@ -107,34 +107,31 @@ date3to1 <-
 #' \strong{# EXAMPLES FOR date1to3}
 #'
 #' data1 <- data.frame(Full.Dates =
-#' c("2023-02-14",NA,NA,
-#' "2002-12-04","1974-08-04",
-#' "2008-11-10"))
+#'                       c("2023-02-14",NA,NA,
+#'                         "2002-12-04","1974-08-04",
+#'                         "2008-11-10"))
 #' head(data1)
 #'
-#' # combine and convert to date
-#' # return as data frame
+#' # split date with default settings
+#' # return as data frame with columns
+#' # for day(d), month(m) and year(Y)
 #' date1to3(data1)
 #'
-#' # combine and convert to date
-#' # return as vector
-#' date1to3(data1, as.vector = TRUE)
+#'
+#' # split date in the format and only return year in YYYY
+#' date1to3(data1, out.cols = "Y") #eg. 2002, 2023
 #'
 #'
-#' # combine and convert to date in the format DD_MM_YYYY
-#' date1to3(data1, out.format = "%d_%m_%Y") #eg. 04_02_1974
+#' # split date in the format and only return month in m
+#' date1to3(data1, out.cols = "m") #eg. 02, 12, 08
 #'
-#'
-#' # combine and convert to date in the format MM_DD_YY
-#' date1to3(data1, out.cols = "%m_%d_%y") #eg. 02_04_74
-#'
-#' # combine and convert to date in the various date formats colums
-#' date1to3(data1, out.cols = c("B","d,"y","") ) #eg.
-#' date1to3(data1, out.cols = c("a","b,"y","") ) #eg.
-#' date1to3(data1, out.cols = c("A","B,"y","") ) #eg.
-#' date1to3(data1, out.cols = c("j","Y,"y","") ) #eg.
-#' date1to3(data1, out.cols = c("U","Y,"y","") ) #eg.
-#' date1to3(data1, out.cols = c("m","Y,"y","") ) #eg.
+#' # split date in the format and return multiple date formats colums
+#' date1to3(data1, out.cols = c("B","d") )
+#' date1to3(data1, out.cols = c("a","b","y") )
+#' date1to3(data1, out.cols = c("A","B","Y","y") )
+#' date1to3(data1, out.cols = c("j","Y","y","m") )
+#' date1to3(data1, out.cols = c("U","Y","y","x") )
+#' date1to3(data1, out.cols = c("m","Y","y","C") )
 #'
 #' @param data data frame object
 #' @param in.format date input format
@@ -165,7 +162,7 @@ date1to3 <-
   })
 
 
-  names(data)[date.col] = .prevn
+  names(b.out)[date.col] = .prevn
   b.out
 }
 
