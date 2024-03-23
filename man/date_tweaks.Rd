@@ -72,7 +72,7 @@ date3to1(data0)
 
 # combine and convert to date
 # return as vector
-date3to1(data0, as.vector = TRUE)
+date3to1(data0, as.vector = TRUE) #eg. 2004-02-04
 
 
 # combine and convert to date in the format DD_MM_YYYY
