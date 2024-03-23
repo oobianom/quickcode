@@ -251,11 +251,13 @@ has.error <- function(...) {
 #' # Get a data frame of all environment objects and their size
 #' summarize.envObj()
 #' @export
-summarize.envObj <- function(envir = as.environment(-1L)){
+summarize.envObj <- function(envir = parent.frame()){
  envs = ls(all.names = TRUE, envir = envir)
  envs.size = c()
   for(b in  envs) vector_push(envs.size, eval(parse(text = paste0("object.size(",b,")"))))
- data.frame(objects = c(envs,"TOTAL"), size = c(envs.size,sum(envs.size)))
+ within(data.frame(objects = c(envs,"TOTAL"), size.bytes = c(envs.size,sum(envs.size))),{
+   size.kbytes = size.bytes/1000
+ })
 }
 
 #function execution time
