@@ -36,4 +36,10 @@ has.error({
   res = x + y
 })
 
+# this should result in error because
+# the dataset does not contain a "rpkg.net" column
+# the result should be TRUE
+df1 = mtcars
+has.error(df1[,"rpkg.net"])
+
 }
