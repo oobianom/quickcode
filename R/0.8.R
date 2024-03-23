@@ -1,5 +1,5 @@
 #' @export
-date1to3 <- function(data){
+date1to3 <- function(data, in.format = "%Y-%m-%d"){
   if (class(data) != "Date") {
     stop("class(data) is not an object of class Date")
   }
@@ -20,8 +20,15 @@ date1to3 <- function(data){
 #' head(df)
 #' DateVecS <- date3to1(df1)
 #' @export
-date3to1 <- function(data, default='Start', col.YMD = 1:3){
+date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3){
   stopifnot("data.frame" %in% class(data)) # data must be a data frame
+  if(has.error(you[,col.YMD]))
+    stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
+
+
+  test <- "2013-12-25T04:32:16.500-08:00"
+  z <- as.POSIXct(test,format="%Y-%m-%dT%H:%M:%OS")
+
 }
 
 #' @export
@@ -73,8 +80,15 @@ function (string, char)
 #'   res = x + y
 #' })
 #'
+#' # this should result in error because
+#' # the dataset does not contain a "rpkg.net" column
+#' # the result should be TRUE
+#' df1 = mtcars
+#' has.error(df1[,"rpkg.net"])
+#'
 #' @return boolean value to indicate if the expression produces errors
 #' @export
+
 has.error <- function(...) {
   .error <- FALSE
   tryCatch(...,
