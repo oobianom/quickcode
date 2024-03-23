@@ -9,57 +9,19 @@ date1to3 <- function(data){
   day1 = easyrright(str, 2)
   data.frame(yr1, mth1, day1)
 }
+#' Combine vectors to form date
 #'
 #' Adapted from Ecfun R package
+#' @examples
 #'
+#' df1 <- data.frame(Year=c(NA, -1, 1971:1979),
+#' Month=c(1:2, -1, NA, 13, 2, 12, 6:9),
+#' Day=c(0, 0:6, NA, -1, 32) )
+#' head(df)
+#' DateVecS <- date3to1(df1)
 #' @export
-date3to1 <- function(data, default='Start'){
-  nc <- ncol(data)
-  if(is.null(nc)){
-    stop('data is not a data.frame')
-  }
-  if(nc != 3){
-    stop('ncol(data) = ', nc, ' != 3')
-  }
-  nchd <- nchar(default)
-  if(nchd<1){
-    stop('nchar(default) < 1:  erroneous call')
-  }
-  def1 <- toupper(substring(default, 1, 1))
-  defStart <- (def1 == 'S')
-  defSt1 <- (1+defStart)
-  Dt <- as.list(data)
-  YrNA <- (is.na(Dt[[1]]) | (Dt[[1]]<1))
-  #  3.2.  Month <1 or >12
-  MoNA <- which(is.na(Dt[[2]]) |
-                  (Dt[[2]]<1) | (Dt[[2]]>12))
-  Dt[[2]][MoNA] <- c(12, 1)[defSt1]
-  Mo1 <- Dt[[2]]+1
-  Mo1[Mo1>12] <- 1
-  YM1ch <- paste(Dt[[1]], Mo1, "01", sep='-')
-  YM1ch[YrNA] <- NA
-  YMend <- (as.Date(YM1ch)-1)
-  daysofmonth <- as.numeric(substring(YMend, 9, 10))
-  dayout <- which(is.na(Dt[[3]]) |
-                    (Dt[[3]]<1) | (daysofmonth < Dt[[3]]))
-  if(defStart){
-    Dt[[3]][MoNA] <- 1
-    Dt[[3]][dayout] <- 1
-  } else {
-    Dt[[3]][MoNA] <- daysofmonth[MoNA]
-    Dt[[3]][dayout] <- daysofmonth[dayout]
-  }
-  Dt$sep <- "-"
-  Dte <- do.call(paste, Dt)
-  Dte[YrNA] <- NA
-  msng <- YrNA
-  msng[MoNA] <- TRUE
-  msng[dayout] <- TRUE
-  DTE <- as.Date(Dte)
-  if(any(msng)){
-    attr(DTE, 'missing') <- which(msng)
-  }
-  DTE
+date3to1 <- function(data, default='Start', col.YMD = 1:3){
+  stopifnot("data.frame" %in% class(data)) # data must be a data frame
 }
 
 #' @export
@@ -83,6 +45,47 @@ function (string, start, nchars)
 easyrright<-
 function (string, char)
   substr(string, nchar(string) - (char - 1), nchar(string))
+
+
+#' Check if a call or expression produces errors
+#'
+#' Whether a function or series of calls results in error
+#'
+#' @param ... the expression or function calls
+#' @note
+#' For more information, check: https://rpkg.net/package/quickcode
+#'
+#' @examples
+#' # this should not produce error
+#' # so the function result should be FALSE
+#' has.error({
+#'   x = 8
+#'   y = number(10)
+#'   res = x + y
+#' })
+#'
+#' # this should produce the following error
+#' # Error in x + y : non-numeric argument to binary operator
+#' # so the function result should be TRUE
+#' has.error({
+#'   x = 8
+#'   y = "random"
+#'   res = x + y
+#' })
+#'
+#' @return boolean value to indicate if the expression produces errors
+#' @export
+has.error <- function(...) {
+  .error <- FALSE
+  tryCatch(...,
+    error = function(e) {
+      .error <<- TRUE
+    }
+  )
+  .error
+}
+
+
 
 
 
@@ -200,7 +203,9 @@ is.poisson <-function(values,sig= 0.5){
 #' @param sig significance level to test p-value against
 #' @return boolean value if gamma distributed
 #'
-#' @export
+#' @examples
+#'
+#'
 #' Example gamma data
 #' set.seed(5434)
 #' n = 1000
