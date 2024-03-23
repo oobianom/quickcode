@@ -18,7 +18,7 @@ install.packages("quickcode")
 
 [![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
 
-# 30+ great R functions to add to your scripts!
+# 70+ great R functions to add to your scripts!
 
 ## Featured function 1
 ### Add one-line code in your R script to clear environment, clear console, set working directory and load files
