@@ -242,15 +242,27 @@ has.error <- function(...) {
 
 
 # print all the environment object and sizes and connections to each other
-summarize.envObj <- function(){
-
+#' Get all the environment objects and their sizes
+#'
+#' Retrieve the size contribution of all the available objects in the environment
+#'
+#' @param envir the environment to retrieve objects from
+#' @examples
+#' # Get a data frame of all environment objects and their size
+#' summarize.envObj()
+#' @export
+summarize.envObj <- function(envir = as.environment(-1L)){
+ envs = ls(all.names = TRUE, envir = envir)
+ envs.size = c()
+  for(b in  envs) vector_push(envs.size, eval(parse(text = paste0("object.size(",b,")"))))
+ data.frame(objects = c(envs,"TOTAL"), size = c(envs.size,sum(envs.size)))
 }
 
 #function execution time
 
 fun.time <- function(...){
   .m <- Sys.time()
-  local({...})
+  local(...)
   Sys.time() - .m
 }
 
