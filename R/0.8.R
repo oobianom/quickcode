@@ -46,7 +46,7 @@
 #'
 #' @note
 #' \strong{DATE FORMATS IN R}\cr
-#' \tab \tabular{rrrrr}{
+#' \tabular{rrrrr}{
 #' \strong{Date Specification}   \tab \tab \strong{Description}          \tab \tab  \strong{Example} \cr
 #' \%a  \tab \tab Abbreviated weekday             \tab \tab Sun, Thu \cr
 #' \%A  \tab \tab Full weekday                    \tab \tab Sunday \cr
