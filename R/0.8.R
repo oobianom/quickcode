@@ -9,26 +9,68 @@ date1to3 <- function(data, in.format = "%Y-%m-%d"){
   day1 = easyrright(str, 2)
   data.frame(yr1, mth1, day1)
 }
+
 #' Combine vectors to form date
 #'
 #' Adapted from Ecfun R package
 #' @examples
 #'
-#' df1 <- data.frame(Year=c(NA, -1, 1971:1979),
-#' Month=c(1:2, -1, NA, 13, 2, 12, 6:9),
-#' Day=c(0, 0:6, NA, -1, 32) )
+#' df1 <- data.frame(y=c(NA, -1, 1971:1979),
+#' m=c(1:2, -1, NA, 13, 2, 12, 6:9),
+#' d=c(0, 0:6, NA, -1, 32) )
 #' head(df)
-#' DateVecS <- date3to1(df1)
+#'
+#' # combine and convert to date
+#' # return as data frame
+#' date3to1(df1)
+#'
+#' # combine and convert to date
+#' # return as vector
+#' date3to1(data, as.vector = TRUE)
+#'
+#'
+#' # combine and convert to date in the format DD_MM_YYYY
+#' date3to1(data, out.format = "%d_%m_%Y") #eg. 04_02_1974
+#'
+#'
+#' # combine and convert to date in the format MM_DD_YY
+#' date3to1(data, out.format = "%m_%d_%y") #eg. 02_04_74
+#'
+#' # combine and convert to date in the various date formats
+#' date3to1(data, out.format = "%B %d, %y") #eg. February 04, 74
+#' date3to1(data, out.format = "%a, %b %d, %Y") #eg. Mon, Feb 04, 1974
+#' date3to1(data, out.format = "%A, %B %d, %Y") #eg. Monday, February 04, 1974
+#' date3to1(data, out.format = "Day %j in Year %Y") #eg. Day 035 in Year 1974
+#' date3to1(data, out.format = "Week %U in %Y") #eg. Week 05 in 1974
+#' date3to1(data, out.format = "Numeric month %m in Year %Y") #eg. Numeric month 02 in Year 1974
+#'
+#' @param data data frame object
+#' @param out.format date output format
+#' @param col.YMD columns to combine for Year, Month and Day
+#' @param as.vector return output as vector, or leave as data frame
+#' @return date derived from combining values from three columns of a data frame
+#'
 #' @export
-date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3){
+
+date3to1 <- function(data, out.format = "%Y-%m-%d", col.YMD = 1:3, as.vector = FALSE){
   stopifnot("data.frame" %in% class(data)) # data must be a data frame
   if(has.error(you[,col.YMD]))
     stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
+  or.names<- names(data)
+  names(data)[col.YMD] = c("..yyyy..","..mm..","..dd..")
 
+  b.out <- within(data,{
+    output.date = as.POSIXct(paste0(..yyyy..,"-",..mm..,"-",..dd..),format="%Y-%m-%d")
+    if(out.format!="%Y-%m-%d")
+    output.date = format(output.date, out.format)
+  })
 
-  test <- "2013-12-25T04:32:16.500-08:00"
-  z <- as.POSIXct(test,format="%Y-%m-%dT%H:%M:%OS")
-
+  if(as.vector){
+    as.character(b.out$output.date)
+  }else{
+    names(b.out) <- c(or.names,'output.date')
+    b.out
+  }
 }
 
 #' @export
