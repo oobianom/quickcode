@@ -171,17 +171,18 @@ date1to3 <-
 switch_rows <- function(data,row1,row2,keep = NULL){
   # update row names
   rownames(data)[c(row1,row2)] <- rownames(data)[c(row2,row1)]
-
-  # switch row vals
   .x2 <- data[row2,]
-  data[row2,] <- data[row1,]
-  data[row1,] <- .x2
 
-  # account for keeps
+  # account for keeps and switch rows
   if(not.null(keep)){
-
+    data[row2,keep] <- data[row1,keep]
+    data[row1,keep] <- .x2[,keep]
+    data[row2,-keep] <- data[row1,-keep]
+    data[row1,-keep] <- .x2[,-keep]
+  }else{
+    data[row2,] <- data[row1,]
+    data[row1,] <- .x2
   }
-
   # return output
   data
 }
