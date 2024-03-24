@@ -33,47 +33,78 @@ install.packages("quickcode") # when published
 ```
 
 %nin%	Not in vector or array
-add.header	Snippet function to add header to a current opened file
+add.header	Addin snippet function to add header comment to a current opened file
+add.sect.comment	Addin snippet function to custom section comment
 add.snippet.clear	Snippet R function to clear console and set directory
 add_key	Add index keys to a vector or data frame or list or matrix
 ai.duplicate	Prompt guided duplication if files
 archivedPkg	Listing of all CRAN archived R packages
 as.boolean	Convert boolean values between formats
+bionic_txt	Generate a bionic text
 clean	Clear environment, clear console, set work directory and load files
 compHist	Compare histograms of two distributions
 data_pop	Remove last n rows or column or specified elements from a data frame like array_pop in PHP
 data_pop_filter	Remove elements from a data matching filter
 data_push	Add data to another data like array_push in PHP
+data_rep	Duplicate a data rows or columns X times
 data_shuffle	Shuffle a data frame just like shuffle in PHP
-duplicate	Duplicate a file with global text replace
+date1to3	Combine vectors to create Date, or split Date into vectors
+date3to1	Combine vectors to create Date, or split Date into vectors
+duplicate	Duplicate a file with global text replacement
+fAddDate	Append date to filename
 genRandImg	Download random images from the web
-geo.cv	Calculate geometric coefficient of variation and round
-geo.mean	Calculate geometric mean and round
-geo.sd	Calculate geometric standard deviation and round
+geo.cv	Calculate geometric coefficient of variation, mean, or SD and round
+geo.mean	Calculate geometric coefficient of variation, mean, or SD and round
+geo.sd	Calculate geometric coefficient of variation, mean, or SD and round
+has.error	Check if a call or expression produces errors
 header.rmd	Snippet function to add header to a current Rmd opened file
+in.range	If number falls within a range of values and get closest values
 inc	Increment vector by value
 init	Initialize new variables and objects
 insertInText	Shiny app function to insert string to current file in RStudio
-is.image	Is file extension an image
+is.gamma	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.image	Is file name extension(s) an image
+is.logistic	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.lognormal	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.normal	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.poisson	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.uniform	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.weibull	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
 libraryAll	Load specific R libraries and clear environment
 list_push	Add elements to a list like array_push in PHP
+list_shuffle	Shuffle a list object just like shuffle in PHP
 minus	Decrease vector by value
+mix.color	Mix or Blend two or more colors
+mix.cols.btw	Mix or Blend colors between two or more colors
+multiply	Multiple a vector of numeric values
+newSuperVar	Create and use a super variable with unique capabilities
 not.data	Not a data
 not.duplicated	Not duplicated elements
 not.empty	Not empty
 not.environment	Not an environment
-not.image	File name is Not an image
+not.exists	Not exists
+not.image	File name extension(s) is Not an image
 not.integer	Not an integer
 not.logical	Not logical
 not.na	Not NA
 not.null	Not NULL
 not.numeric	Not numeric
 not.vector	Not a vector
-number	Generate a random number
+number	Generate a random number (integer)
+pairDist	Calculate the distance of points from the center of a cluster
 plus	Increment vector by value
+randString	Generate a random string
 rcolorconst	R Color Constant
+rDecomPkg	Check whether an R package has been decommissioned in CRAN
+read.csv.print	Read a CSV and preview first X rows and columns
+read.table.print	Read in a table and show first X rows and columns
 refresh	Clear environment, clear console, set work directory and load files
 sample_by_column	Re-sample a dataset by column and return number of entry needed
+setOnce	Set a variable only once
+sim.logistic	Generate logistic random values
+strsplit.bool	Split a string of values and return as boolean vector
+strsplit.num	Split a string of numbers and return as numeric vector
+summarize.envobj	Get all the environment objects and their sizes
 vector_pop	Remove last n elements or specified elements from a vector like array_pop in PHP
 vector_push	Add elements to a vector like array_push in PHP
 vector_shuffle	Shuffle a vector just like shuffle in PHP

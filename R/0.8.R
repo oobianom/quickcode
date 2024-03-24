@@ -166,23 +166,41 @@ date1to3 <-
 }
 
 
-
+#' @examples
+#' # Example using mtcars
+#' data100 <- mtcars
+#'
+#' head(data100) # preview overall data
+#'
+#' # task 1: basic result of switching rows 5 and 6
+#' head(switch_rows(data100, 5, 6))
+#'
+#' # task 2: switch rows, but retain some columns
+#' data100[5:6,7:10] # preview the portion that is to be changed
+#'
+#' # lets change those portions and keep content of columns 7, 8, 9 10
+#' res1 <- switch_rows(data100, row1 = 5, row2 = 6, keep = 7:10) # use column numbers
+#' res1[5:6,] # check result, pay attention to columns 7, 8,9 and 10 as well
+#' res2 <- switch_rows(data100, row1 = 5, row2 = 6, keep = c("qsec","vs","am","gear")) # use column names
+#' res2[5:6,] # check result, pay attention to columns "qsec",vs","am","gear" as well
+#'
 #' @export
-switch_rows <- function(data,row1,row2,keep = NULL){
+switch_rows <- function(data, row1, row2, keep = NULL) {
   # update row names
-  rownames(data)[c(row1,row2)] <- rownames(data)[c(row2,row1)]
-  .x2 <- data[row2,]
+  rownames(data)[c(row1, row2)] <- rownames(data)[c(row2, row1)]
+  .x2 <- data[row2, ]
 
-  # account for keeps and switch rows
-  if(not.null(keep)){
-    data[row2,keep] <- data[row1,keep]
-    data[row1,keep] <- .x2[,keep]
-    data[row2,-keep] <- data[row1,-keep]
-    data[row1,-keep] <- .x2[,-keep]
-  }else{
-    data[row2,] <- data[row1,]
-    data[row1,] <- .x2
+  # account for keeps
+  if (not.null(keep) & length(keep)) {
+    if (class(keep) == "character")
+      keep <- which(names(data) %in% keep)
+    .x2[, keep] <- data[row1, keep]
+    data[row1, keep] <- data[row2, keep]
   }
+  # switch rows
+  data[row2, ] <- data[row1, ]
+  data[row1, ] <- .x2
+
   # return output
   data
 }
