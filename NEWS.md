@@ -3,9 +3,13 @@
 - [ ] Revisions to current functions
     - [ ] in.range
 - [ ] New functions 
-    - [ ] Date1to3
-    - [ ] Date3to1
-    - [ ] switch_rows
+    - [x] date1to3
+    - [x] date3to1
+    - [x] switch_rows
+    - [x] switch_cols
+    - [x] has.error
+    - [ ] is.lognormal
+    - [ ] is.normal    
     
     
 # quickcode 0.7
