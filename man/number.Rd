@@ -2,7 +2,7 @@
 % Please edit documentation in R/number.R
 \name{number}
 \alias{number}
-\title{Generate a random number}
+\title{Generate a random number (integer)}
 \usage{
 number(n, max.digits = 10, seed = NULL)
 }
@@ -17,7 +17,7 @@ number(n, max.digits = 10, seed = NULL)
 random numbers between 1 and 1 billion
 }
 \description{
-Shorthand code to generate a random number
+Fetch n random integers between 1 and 1,000,000,000
 }
 \examples{
 number(1)
