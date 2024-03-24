@@ -289,17 +289,7 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 
 
 
-easyrleft <-
-function (string, char)
-  substr(string, 1, char)
 
-easyrmid <-
-function (string, start, nchars)
-  substr(string, start, start + nchars - 1)
-
-easyrright<-
-function (string, char)
-  substr(string, nchar(string) - (char - 1), nchar(string))
 
 
 #' Check if a call or expression produces errors
@@ -380,6 +370,11 @@ summarize.envobj <- function(envir = parent.frame()){
    size.mbytes = size.kbytes/1000
  })
 }
+
+
+
+
+
 
 
 
@@ -565,3 +560,14 @@ sim.logistic <- function(n, location = 0, scale = 1, min = 0, max = 1) {
 
 
 
+# easyrleft <-
+# function (string, char)
+#   substr(string, 1, char)
+#
+# easyrmid <-
+# function (string, start, nchars)
+#   substr(string, start, start + nchars - 1)
+#
+# easyrright<-
+# function (string, char)
+#   substr(string, nchar(string) - (char - 1), nchar(string))
