@@ -1,7 +1,9 @@
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/rockybilly.regular_qc.webp" width="350">
-</p>
+
 # NOT functions, R tricks and a compilation of some simple quick plus often used codes to improve your R scripts
+
+</p>
 
 
 
