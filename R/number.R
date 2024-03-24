@@ -1,6 +1,6 @@
-#' Generate a random number
+#' Generate a random number (integer)
 #'
-#' Shorthand code to generate a random number
+#' Fetch n random integers between 1 and 1,000,000,000
 #'
 #' @param n how many numbers to generate
 #' @param max.digits maximum number of digits in each number
