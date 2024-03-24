@@ -161,7 +161,6 @@ date1to3 <-
     rm(iui,output.date)
   })
 
-
   names(b.out)[date.col] = .prevn
   b.out
 }
@@ -169,11 +168,21 @@ date1to3 <-
 
 
 #' @export
-switch_rows <- function(data,row1,row2,keep){
-  warning("Function under development")
+switch_rows <- function(data,row1,row2,keep = NULL){
+  # update row names
+  rownames(data)[c(row1,row2)] <- rownames(data)[c(row2,row1)]
+
+  # switch row vals
   .x2 <- data[row2,]
   data[row2,] <- data[row1,]
   data[row1,] <- .x2
+
+  # account for keeps
+  if(not.null(keep)){
+
+  }
+
+  # return output
   data
 }
 
