@@ -75,7 +75,7 @@ date3to1 <-
   ){
 
   stopifnot("data.frame" %in% class(data)) # data must be a data frame
-  if(has.error(you[,col.YMD]))
+  if(has.error(data[,col.YMD]))
     stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
   or.names<- names(data)
   names(data)[col.YMD] = c("..yyyy..","..mm..","..dd..")
@@ -148,7 +148,7 @@ date1to3 <-
   ){
 
   stopifnot("data.frame" %in% class(data)) # data must be a data frame
-  if(has.error(you[,date.col]))
+  if(has.error(data[,date.col]))
     stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
 
   .prevn = names(data)[date.col]
