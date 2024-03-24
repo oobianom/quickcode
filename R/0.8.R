@@ -166,7 +166,19 @@ date1to3 <-
 }
 
 
+#' Switch the index of two rows in a data set
+#'
+#' Allows the user to choose precisely which two rows they want to swap places,
+#' while optionally preventing some columns from being altered in the process.
+#' Excluded columns within the rows act as anchors that are immune from the switching operation
+#' on the selected rows.
+#'
+#' @param data dataset object
+#' @param row1 numeric. the first row number
+#' @param row2 numeric. the second row number
+#' @param keep.cols numeric or character. column number or name to keep
 #' @examples
+#'
 #' # Example using mtcars
 #' data100 <- mtcars
 #'
@@ -179,23 +191,23 @@ date1to3 <-
 #' data100[5:6,7:10] # preview the portion that is to be changed
 #'
 #' # lets change those portions and keep content of columns 7, 8, 9 10
-#' res1 <- switch_rows(data100, row1 = 5, row2 = 6, keep = 7:10) # use column numbers
+#' res1 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = 7:10) # use column numbers
 #' res1[5:6,] # check result, pay attention to columns 7, 8,9 and 10 as well
-#' res2 <- switch_rows(data100, row1 = 5, row2 = 6, keep = c("qsec","vs","am","gear")) # use column names
+#' res2 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = c("qsec","vs","am","gear")) # use column names
 #' res2[5:6,] # check result, pay attention to columns "qsec",vs","am","gear" as well
 #'
 #' @export
-switch_rows <- function(data, row1, row2, keep = NULL) {
+switch_rows <- function(data, row1, row2, keep.cols = NULL) {
   # update row names
   rownames(data)[c(row1, row2)] <- rownames(data)[c(row2, row1)]
   .x2 <- data[row2, ]
 
-  # account for keeps
-  if (not.null(keep) & length(keep)) {
-    if (class(keep) == "character")
-      keep <- which(names(data) %in% keep)
-    .x2[, keep] <- data[row1, keep]
-    data[row1, keep] <- data[row2, keep]
+  # account for keep.cols
+  if (not.null(keep.cols) & length(keep.cols)) {
+    if (class(keep.cols) == "character")
+      keep.cols <- which(names(data) %in% keep.cols)
+    .x2[, keep.cols] <- data[row1, keep.cols]
+    data[row1, keep.cols] <- data[row2, keep.cols]
   }
   # switch rows
   data[row2, ] <- data[row1, ]
