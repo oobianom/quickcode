@@ -109,19 +109,19 @@ date1to3(data1)
 
 
 # split date in the format and only return year in YYYY
-date1to3(data1, out.cols = "Y") #eg. 2002, 2023
+date1to3(data1, out.cols = "\%Y") #eg. 2002, 2023
 
 
 # split date in the format and only return month in m
-date1to3(data1, out.cols = "m") #eg. 02, 12, 08
+date1to3(data1, out.cols = "\%m") #eg. 02, 12, 08
 
 # split date in the format and return multiple date formats colums
-date1to3(data1, out.cols = c("B","d") )
-date1to3(data1, out.cols = c("a","b","y") )
-date1to3(data1, out.cols = c("A","B","Y","y") )
-date1to3(data1, out.cols = c("j","Y","y","m") )
-date1to3(data1, out.cols = c("U","Y","y","x") )
-date1to3(data1, out.cols = c("m","Y","y","C") )
+date1to3(data1, out.cols = c("\%B","\%d") )
+date1to3(data1, out.cols = c("\%a","\%b","\%y") )
+date1to3(data1, out.cols = c("\%A","\%B","\%Y","\%y") )
+date1to3(data1, out.cols = c("\%j","\%Y","\%y","\%m") )
+date1to3(data1, out.cols = c("\%U","\%Y","\%y","\%x") )
+date1to3(data1, out.cols = c("\%m","\%Y","\%y","\%C") )
 
 }
 \references{
