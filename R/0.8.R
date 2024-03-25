@@ -144,10 +144,10 @@ date1to3 <-
   function(data,
            in.format = "%Y-%m-%d",
            date.col = 1,
-           out.cols = c("Y", "m", "d")
+           out.cols = c("%Y", "%m", "%d")
   ){
 
-  stopifnot("data.frame" %in% class(data)) # data must be a data frame
+  stopifnot("data.frame" %in% class(data), length(out.cols) > 0) # data must be a data frame
   if(has.error(data[,date.col]))
     stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
 
@@ -156,7 +156,7 @@ date1to3 <-
 
   b.out <- within(data,{
     output.date = as.POSIXct(...dMywhole_,format=in.format)
-    for(iui in out.cols)
+    for(iui in rev(gsub("%","",out.cols)))
     assign(paste0(".date_",iui),format(output.date,paste0("%",iui)))
     rm(iui,output.date)
   })
