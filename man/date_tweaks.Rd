@@ -11,7 +11,7 @@ date1to3(
   data,
   in.format = "\%Y-\%m-\%d",
   date.col = 1,
-  out.cols = c("Y", "m", "d")
+  out.cols = c("\%Y", "\%m", "\%d")
 )
 }
 \arguments{
