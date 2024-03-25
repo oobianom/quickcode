@@ -156,8 +156,8 @@ date1to3 <-
 
   b.out <- within(data,{
     output.date = as.POSIXct(...dMywhole_,format=in.format)
-    for(iui in rev(gsub("%","",out.cols)))
-    assign(paste0(".date_",iui),format(output.date,paste0("%",iui)))
+    for(iui in rev(out.cols))
+    assign(paste0(".date_",iui),format(output.date,iui))
     rm(iui,output.date)
   })
 
