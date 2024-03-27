@@ -7,7 +7,7 @@
 #' @references
 #' Adapted from Ecfun R package
 #' @examples
-#' \strong{# EXAMPLES FOR date3to1}
+#' # EXAMPLES FOR date3to1
 #'
 #' data0 <- data.frame(y=c(NA, -1, 2001:2009),
 #' m=c(1:2, -1, NA, 13, 2, 12, 6:9),
@@ -104,7 +104,7 @@ date3to1 <-
 #'
 #'
 #'
-#' \strong{# EXAMPLES FOR date1to3}
+#' # EXAMPLES FOR date1to3
 #'
 #' data1 <- data.frame(Full.Dates =
 #'                       c("2023-02-14",NA,NA,
@@ -405,7 +405,7 @@ summarize.envobj <- function(envir = parent.frame()){
 
 
 #check if data is log normal
-#' Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+#' Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution
 #'
 #' @description
 #' Check whether a vector of data contains values that fit a distribution
@@ -425,13 +425,16 @@ summarize.envobj <- function(envir = parent.frame()){
 #' @param sig significance level to test p-value against
 #' @return boolean value if lognormal distributed
 #' @examples
+#' # EXAMPLE FOR is.lognormal
 #'
-#' /strong{# EXAMPLE FOR is.lognormal}
-# Set the seed for reproducibility
+#' Set the seed for reproducibility
 #' set.seed(1989)
 #'
 #' # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
 #' lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+#' lognormal_data1 <- rlnorm(n = 100, meanlog = 0, sdlog = 1)
+#' lognormal_data2 <- rlnorm(n = 10, meanlog = 0, sdlog = 1)
+#' lognormal_data3 <- rlnorm(n = 5, meanlog = 0, sdlog = 1)
 #'
 #' # Plot the distribution of the data using a histogram
 #' hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
@@ -441,6 +444,9 @@ summarize.envobj <- function(envir = parent.frame()){
 #'
 #' # Test if the data is lognormal
 #' is.lognormal(lognormal_data)
+#' is.lognormal(lognormal_data1)
+#' is.lognormal(lognormal_data2)
+#' is.lognormal(lognormal_data3)
 #'
 #' @export
 is.lognormal <- function(values,sig = 0.5){
@@ -453,15 +459,16 @@ is.lognormal <- function(values,sig = 0.5){
 #' @return boolean value if normal distributed
 #'
 #' @examples
-#'
-#'
-#' /strong{# EXAMPLE FOR is.normal}
+#' # EXAMPLE FOR is.normal
 #'
 #' # Set the seed for reproducibility
 #' set.seed(1989)
 #'
 #' # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
 #' normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
+#' normal_data1 <- rnorm(n = 500, mean = 0, sd = 1)
+#' normal_data2 <- rnorm(n = 100, mean = 0, sd = 1)
+#' normal_data3 <- rnorm(n = 10, mean = 0, sd = 1)
 #'
 #' # Plot the distribution of the data using a histogram
 #' hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
@@ -471,7 +478,9 @@ is.lognormal <- function(values,sig = 0.5){
 #'
 #' # Test if the data is normal
 #' is.normal(normal_data)
-#' is.normal(lognormal_data)
+#' is.normal(normal_data1)
+#' is.normal(normal_data2)
+#' is.normal(normal_data3)
 #'
 #' @export
 is.normal <- function(values,sig = 0.5){
@@ -514,13 +523,14 @@ is.poisson <-function(values,sig= 0.5){
 #' @rdname distribution_check
 #' @param values vector of values
 #' @note
-#' is.gamma should use the "Anderson-Darling test"
+#' is.gamma uses the "Anderson-Darling test"
 #'
 #' @param sig significance level to test p-value against
 #' @return boolean value if gamma distributed
 #'
 #' @examples
 #'
+#' EXAMPLE for is.gamma
 #'
 #' Example gamma data
 #' set.seed(5434)
