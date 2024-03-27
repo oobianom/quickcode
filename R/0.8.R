@@ -419,7 +419,7 @@ summarize.envobj <- function(envir = parent.frame()){
 #' If the p-value from this test on the logged data is above the threshold, the function returns "lognormal", indicating the untransformed data fits a lognormal distribution after logging.
 #' If the data fails both the normal and logged Shapiro-Wilk tests, the function returns "neither", indicating the data does not appear to come from a normal or lognormal distribution based on the tests.
 #' @note
-#' is.normal and is.lognormal uses the "Shapiro-Wilk test"
+#' is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
 #' @rdname distribution_check
 #' @param values vector of values
 #' @param sig significance level to test p-value against
