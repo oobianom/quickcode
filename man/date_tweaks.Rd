@@ -59,7 +59,7 @@ Combine or split Date into a specified format
 }
 }
 \examples{
-\strong{# EXAMPLES FOR date3to1}
+# EXAMPLES FOR date3to1
 
 data0 <- data.frame(y=c(NA, -1, 2001:2009),
 m=c(1:2, -1, NA, 13, 2, 12, 6:9),
@@ -94,7 +94,7 @@ date3to1(data0, out.format = "Numeric month \%m in Year \%Y") #eg. Numeric month
 
 
 
-\strong{# EXAMPLES FOR date1to3}
+# EXAMPLES FOR date1to3
 
 data1 <- data.frame(Full.Dates =
                       c("2023-02-14",NA,NA,
