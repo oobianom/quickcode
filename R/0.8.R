@@ -424,6 +424,24 @@ summarize.envobj <- function(envir = parent.frame()){
 #' @param values vector of values
 #' @param sig significance level to test p-value against
 #' @return boolean value if lognormal distributed
+#' @examples
+#'
+#' /strong{# EXAMPLE FOR is.lognormal}
+# Set the seed for reproducibility
+#' set.seed(1989)
+#'
+#' # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
+#' lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+#'
+#' # Plot the distribution of the data using a histogram
+#' hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
+#'
+#' # Add a density curve to the histogram
+#' lines(density(lognormal_data), col = "red")
+#'
+#' # Test if the data is lognormal
+#' is.lognormal(lognormal_data)
+#'
 #' @export
 is.lognormal <- function(values,sig = 0.5){
   (stats::shapiro.test(log(values)))$p.value >= 0.05
@@ -433,6 +451,28 @@ is.lognormal <- function(values,sig = 0.5){
 #' @param values vector of values
 #' @param sig significance level to test p-value against
 #' @return boolean value if normal distributed
+#'
+#' @examples
+#'
+#'
+#' /strong{# EXAMPLE FOR is.normal}
+#'
+#' # Set the seed for reproducibility
+#' set.seed(1989)
+#'
+#' # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
+#' normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
+#'
+#' # Plot the distribution of the data using a histogram
+#' hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
+#'
+#' # Add a density curve to the histogram
+#' lines(density(normal_data), col = "red")
+#'
+#' # Test if the data is normal
+#' is.normal(normal_data)
+#' is.normal(lognormal_data)
+#'
 #' @export
 is.normal <- function(values,sig = 0.5){
   {stats::shapiro.test(values)}$p.value >= sig
