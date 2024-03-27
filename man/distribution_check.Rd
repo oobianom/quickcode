@@ -8,7 +8,7 @@
 \alias{is.gamma}
 \alias{is.logistic}
 \alias{is.weibull}
-\title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution}
+\title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution}
 \usage{
 is.lognormal(values, sig = 0.5)
 
@@ -64,19 +64,23 @@ is.uniform uses the "Kolmogorov-Smirnov test"
 
 is.poisson uses the "pchisq"
 
-is.gamma should use the "Anderson-Darling test"
+is.gamma uses the "Anderson-Darling test"
 
 is.logistic use the "Kolmogorov-Smirnov test"
 
 is.weibull use the "Kolmogorov-Smirnov test"
 }
 \examples{
+# EXAMPLE FOR is.lognormal
 
-/strong{# EXAMPLE FOR is.lognormal}
+Set the seed for reproducibility
 set.seed(1989)
 
 # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
 lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+lognormal_data1 <- rlnorm(n = 100, meanlog = 0, sdlog = 1)
+lognormal_data2 <- rlnorm(n = 10, meanlog = 0, sdlog = 1)
+lognormal_data3 <- rlnorm(n = 5, meanlog = 0, sdlog = 1)
 
 # Plot the distribution of the data using a histogram
 hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
@@ -86,16 +90,20 @@ lines(density(lognormal_data), col = "red")
 
 # Test if the data is lognormal
 is.lognormal(lognormal_data)
+is.lognormal(lognormal_data1)
+is.lognormal(lognormal_data2)
+is.lognormal(lognormal_data3)
 
-
-
-/strong{# EXAMPLE FOR is.normal}
+# EXAMPLE FOR is.normal
 
 # Set the seed for reproducibility
 set.seed(1989)
 
 # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
 normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
+normal_data1 <- rnorm(n = 500, mean = 0, sd = 1)
+normal_data2 <- rnorm(n = 100, mean = 0, sd = 1)
+normal_data3 <- rnorm(n = 10, mean = 0, sd = 1)
 
 # Plot the distribution of the data using a histogram
 hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
@@ -105,9 +113,12 @@ lines(density(normal_data), col = "red")
 
 # Test if the data is normal
 is.normal(normal_data)
-is.normal(lognormal_data)
+is.normal(normal_data1)
+is.normal(normal_data2)
+is.normal(normal_data3)
 
 
+EXAMPLE for is.gamma
 
 Example gamma data
 set.seed(5434)
