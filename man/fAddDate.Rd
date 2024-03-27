@@ -4,10 +4,12 @@
 \alias{fAddDate}
 \title{Append date to filename}
 \usage{
-fAddDate(...)
+fAddDate(..., format = "\%d-\%b-\%Y")
 }
 \arguments{
 \item{...}{file name or path to concat}
+
+\item{format}{time format e.g. \%d-\%b-\%Y , refer to \code{\link{date3to1}} for date formats}
 }
 \value{
 file name with the current date added as suffix
