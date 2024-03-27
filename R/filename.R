@@ -3,7 +3,7 @@
 #' Add today's date to the filename
 #'
 #' @param ... file name or path to concat
-#'
+#' @param format time format e.g. \%d-\%b-\%Y , refer to \code{\link{date3to1}} for date formats
 #' @details
 #' The present function enables users to add the current date to the file name,
 #' facilitating the straightforward saving of files with their respective dates.
@@ -31,11 +31,11 @@
 #'
 #' @export
 
-fAddDate <- function(...){
+fAddDate <- function(...,format = "%d-%b-%Y"){
   combine <- paste0(...)
   extt <- tools::file_ext(combine)
   for(ext in extt)
-    combine <- gsub(paste0("\\.",ext,"$"),paste0("_",tolower(format(Sys.Date(),"%d-%b-%Y")),
+    combine <- gsub(paste0("\\.",ext,"$"),paste0("_",format(Sys.Date(), format),
                                                  paste0(".",ext)),combine)
   combine
 }
