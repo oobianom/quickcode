@@ -58,7 +58,7 @@ If the p-value from this test on the logged data is above the threshold, the fun
 If the data fails both the normal and logged Shapiro-Wilk tests, the function returns "neither", indicating the data does not appear to come from a normal or lognormal distribution based on the tests.
 }
 \note{
-is.normal and is.lognormal uses the "Shapiro-Wilk test"
+is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
 
 is.uniform uses the "Kolmogorov-Smirnov test"
 
@@ -71,6 +71,42 @@ is.logistic use the "Kolmogorov-Smirnov test"
 is.weibull use the "Kolmogorov-Smirnov test"
 }
 \examples{
+
+/strong{# EXAMPLE FOR is.lognormal}
+set.seed(1989)
+
+# Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
+lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+
+# Plot the distribution of the data using a histogram
+hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
+
+# Add a density curve to the histogram
+lines(density(lognormal_data), col = "red")
+
+# Test if the data is lognormal
+is.lognormal(lognormal_data)
+
+
+
+/strong{# EXAMPLE FOR is.normal}
+
+# Set the seed for reproducibility
+set.seed(1989)
+
+# Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
+normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
+
+# Plot the distribution of the data using a histogram
+hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
+
+# Add a density curve to the histogram
+lines(density(normal_data), col = "red")
+
+# Test if the data is normal
+is.normal(normal_data)
+is.normal(lognormal_data)
+
 
 
 Example gamma data
