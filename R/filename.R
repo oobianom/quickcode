@@ -35,7 +35,8 @@ fAddDate <- function(...,format = "%d-%b-%Y"){
   combine <- paste0(...)
   extt <- tools::file_ext(combine)
   for(ext in extt)
-    combine <- gsub(paste0("\\.",ext,"$"),paste0("_",format(Sys.Date(), format),
-                                                 paste0(".",ext)),combine)
+    combine <- gsub(paste0("\\.",ext,"$"),
+                    paste0("_",format(Sys.Date(), format),
+                    paste0(".",ext)),combine)
   combine
 }
