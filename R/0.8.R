@@ -430,7 +430,7 @@ summarize.envobj <- function(envir = parent.frame()){
 #' is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
 #' @rdname distribution_check
 #' @param values vector of values
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if lognormal distributed
 #' @examples
 #' # EXAMPLE FOR is.lognormal
@@ -457,13 +457,13 @@ summarize.envobj <- function(envir = parent.frame()){
 #' is.lognormal(lognormal_data3)
 #'
 #' @export
-is.lognormal <- function(values,sig = 0.5){
-  (stats::shapiro.test(log(values)))$p.value >= 0.05
+is.lognormal <- function(values,alpha = 0.5){
+  (stats::shapiro.test(log(values)))$p.value >= alpha
 }
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if normal distributed
 #'
 #' @examples
@@ -491,8 +491,8 @@ is.lognormal <- function(values,sig = 0.5){
 #' is.normal(normal_data3)
 #'
 #' @export
-is.normal <- function(values,sig = 0.5){
-  {stats::shapiro.test(values)}$p.value >= sig
+is.normal <- function(values,alpha = 0.5){
+  {stats::shapiro.test(values)}$p.value >= alpha
 }
 
 
@@ -501,19 +501,20 @@ is.normal <- function(values,sig = 0.5){
 #' @note
 #' is.uniform uses the "Kolmogorov-Smirnov test"
 #'
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if uniform distributed
 #'
 #' @examples
 #' # EXAMPLES for is.uniform
 #'
+#' set.seed(323)
 #' unifdata <- runif(10000,min=0,max=3)
 #'
 #' is.uniform(unifdata)
 #'
 #' @export
-is.uniform <- function(values,sig = 0.5){
-  {stats::ks.test(data, "punif", min(data), max(data))}$p.value >= sig
+is.uniform <- function(values,alpha = 0.5){
+  {stats::ks.test(values, "punif", min(values), max(values))}$p.value >= alpha
 }
 
 
@@ -522,7 +523,7 @@ is.uniform <- function(values,sig = 0.5){
 #' @note
 #' is.poisson uses the "Chi-squared test"
 #'
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if poisson distributed
 #' @examples
 #'
@@ -534,8 +535,8 @@ is.uniform <- function(values,sig = 0.5){
 #' is.poisson(data.normal) # should be FALSE
 #'
 #' @export
-is.poisson <-function(values,sig= 0.5){
-  {suppressWarnings(stats::chisq.test(table(values)))}$p.value < sig
+is.poisson <-function(values,alpha = 0.5){
+  {suppressWarnings(stats::chisq.test(table(values)))}$p.value < alpha
 }
 
 
@@ -544,7 +545,7 @@ is.poisson <-function(values,sig= 0.5){
 #' @param values vector of values
 #' @note
 #' is.gamma uses the "Anderson-Darling test" or "Kolmogorov-Smirnov test"
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if gamma distributed
 #'
 #' @examples
@@ -559,11 +560,11 @@ is.poisson <-function(values,sig= 0.5){
 #' is.gamma(data.norm) # check if it is gamma distribution
 #'
 #' @export
-is.gamma <- function(values,sig = 0.5){
+is.gamma <- function(values,alpha = 0.5){
   .sr <- fitdistrplus::fitdist(values, "gamma")
   shape <- .sr$estimate['shape']
   rate <- .sr$estimate['rate']
-  {stats::ks.test(values, "pgamma", shape = shape, rate = rate)}$p.value >= sig
+  {stats::ks.test(values, "pgamma", shape = shape, rate = rate)}$p.value >= alpha
 }
 
 #' @rdname distribution_check
@@ -571,7 +572,7 @@ is.gamma <- function(values,sig = 0.5){
 #' @note
 #' is.logistic use the "Kolmogorov-Smirnov test"
 #'
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @examples
 #'
@@ -590,13 +591,13 @@ is.gamma <- function(values,sig = 0.5){
 #' is.logistic(data.normal)
 #'
 #' @export
-is.logistic <- function(values,sig= 0.5) {
+is.logistic <- function(values,alpha = 0.5) {
   .sr <- fitdistrplus::fitdist(values, "logis")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
   {stats::ks.test(values, "plogis",
                   location = location,
-                  scale = scale)}$p.value >= sig
+                  scale = scale)}$p.value >= alpha
 }
 
 
@@ -612,14 +613,14 @@ is.logistic <- function(values,sig= 0.5) {
 #' is.weibull(data.weibull) #should return TRUE
 #' is.weibull(data.norm) #should return FALSE
 #'
-#' @param sig significance level to test p-value against
+#' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @export
-is.weibull <- function(values,sig= 0.5) {
+is.weibull <- function(values,alpha = 0.5) {
   .sr <- fitdistrplus::fitdist(values, "weibull")
   shape <- .sr$estimate['shape']
   scale <- .sr$estimate['scale']
-  {stats::ks.test(values,"pweibull",shape = shape,scale = scale)}$p.value >= sig
+  {stats::ks.test(values,"pweibull",shape = shape,scale = scale)}$p.value >= alpha
 }
 
 
@@ -638,7 +639,7 @@ is.weibull <- function(values,sig= 0.5) {
 
 
 #' @export
-checkDistribution <- function(data,...){
+checkDistribution <- function(data,alpha,...){
   data.frame(Distributions = c(
     "Beta",
     "Binomial",
