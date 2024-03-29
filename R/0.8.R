@@ -543,16 +543,14 @@ is.poisson <-function(values,sig= 0.5){
 #' @rdname distribution_check
 #' @param values vector of values
 #' @note
-#' is.gamma uses the "Anderson-Darling test"
-#'
+#' is.gamma uses the "Anderson-Darling test" or "Kolmogorov-Smirnov test"
 #' @param sig significance level to test p-value against
 #' @return boolean value if gamma distributed
 #'
 #' @examples
 #'
-#' EXAMPLE for is.gamma
+#' # EXAMPLE for is.gamma
 #'
-#' Example gamma data
 #' set.seed(5434)
 #' data.gamma <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
 #' data.norm = runif(1000,min = 0, max = 1) # not gamma data
@@ -576,10 +574,13 @@ is.gamma <- function(values,sig = 0.5){
 #' @param sig significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @examples
+#'
+#' # EXAMPLE for is.logistic
+#'
 #' set.seed(231)
 #' n <- 1000
-#' location <- 0
-#' scale <- 1
+#' location <- 4
+#' scale <- 2
 #' xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
 #' hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
 #'
@@ -590,7 +591,12 @@ is.gamma <- function(values,sig = 0.5){
 #'
 #' @export
 is.logistic <- function(values,sig= 0.5) {
-  {stats::ks.test(values, "plogis")}$p.value >= sig
+  .sr <- fitdistrplus::fitdist(values, "logis")
+  location <- .sr$estimate['location']
+  scale <- .sr$estimate['scale']
+  {stats::ks.test(values, "plogis",
+                  location = location,
+                  scale = scale)}$p.value >= sig
 }
 
 
@@ -600,8 +606,12 @@ is.logistic <- function(values,sig= 0.5) {
 #' @note
 #' is.weibull use the "Kolmogorov-Smirnov test"
 #' @examples
-#' values <- rweibull(1000, shape = 2, scale = 1)
-#' is.weibull(x)
+#' data.weibull <- rweibull(1000, shape = 4, scale = 2) # weibull data
+#' data.norm = runif(1000, min = 0, max = 1) # not weibull data
+#'
+#' is.weibull(data.weibull) #should return TRUE
+#' is.weibull(data.norm) #should return FALSE
+#'
 #' @param sig significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @export
@@ -609,34 +619,22 @@ is.weibull <- function(values,sig= 0.5) {
   .sr <- fitdistrplus::fitdist(values, "weibull")
   shape <- .sr$estimate['shape']
   scale <- .sr$estimate['scale']
-
-  {stats::ks.test(values,"pweibull",shape,scale)}$p.value >= sig
+  {stats::ks.test(values,"pweibull",shape = shape,scale = scale)}$p.value >= sig
 }
 
 
-#' Generate logistic random values
-#'
-#' generates random values from a logistic distribution. It takes in the number of values to generate (n) and optional location and scale parameters.
-#'
-#' @param n integer number of random values to generate
-#' @param min minimum value
-#' @param max maximum value
-#' @param location numeric location parameter of the logistic distribution (default is 0)
-#' @param scale numeric scale parameter of the logistic distribution (default is 1)
-#'
-#' @details
-#'
-#' Details:\cr\cr
-#'
-#' - The function first generates uniform [0,1] random values using runif(n) \cr
-#' - It then transforms these values using the quantile function qlogis() to map them to the logistic CDF\cr
-#' - stats::qlogis() takes the uniform values and the location and scale parameters\cr
-#' @return random values that follow a logistic distribution with the given parameters\cr
-#'
-#' @export
-sim.logistic <- function(n, location = 0, scale = 1, min = 0, max = 1) {
-  stats::qlogis(runif(n,min,max), location, scale)
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #' @export
