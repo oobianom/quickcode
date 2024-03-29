@@ -20,7 +20,7 @@ Imports:
     rstudioapi,
     tools,
     Polychrome,
-    nortest
+    fitdistrplus
 Suggests: 
     rmarkdown,
     knitr,
