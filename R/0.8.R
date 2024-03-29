@@ -717,17 +717,3 @@ checkDistribution <- function(data,...){
 
 }
 
-
-# easyrleft <-
-# function (string, char)
-#   substr(string, 1, char)
-#
-# easyrmid <-
-# function (string, start, nchars)
-#   substr(string, start, start + nchars - 1)
-#
-# easyrright<-
-# function (string, char)
-#   substr(string, nchar(string) - (char - 1), nchar(string))
-
-
