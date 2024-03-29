@@ -520,18 +520,21 @@ is.uniform <- function(values,sig = 0.5){
 #' @rdname distribution_check
 #' @param values vector of values
 #' @note
-#' is.poisson uses the "pchisq"
+#' is.poisson uses the "Chi-squared test"
 #'
 #' @param sig significance level to test p-value against
 #' @return boolean value if poisson distributed
+#' @examples
+#' # EXAMPLE for is.poisson
+#'
+#' set.seed(1989)
+#' data.poisson <- rpois(1000, lambda = 5)
+#' data.normal <- runif(1000, min = 5, max = 10)
+#' is.poisson(data.poisson) # should be TRUE
+#' is.poisson(data.normal) # should be FALSE
 #' @export
 is.poisson <-function(values,sig= 0.5){
-  # Perform chi-squared test to check Poisson distribution
-  obs <- table(values)
-  exp <- length(values)*mean(values)
-  chisq <- sum((obs-exp)^2/exp)
-  # Compare test statistic to chi-squared distribution
-  {1-stats::pchisq(chisq, length(obs)-1)}  >= sig
+  {suppressWarnings(stats::chisq.test(table(values)))}$p.value < sig
 }
 
 
