@@ -22,7 +22,7 @@ is.gamma(values, sig = 0.5)
 
 is.logistic(values, sig = 0.5)
 
-is.weibull(values, sig = 0.5, shape = 2, scale = 1)
+is.weibull(values, sig = 0.5)
 }
 \arguments{
 \item{values}{vector of values}
@@ -62,9 +62,9 @@ is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
 
 is.uniform uses the "Kolmogorov-Smirnov test"
 
-is.poisson uses the "pchisq"
+is.poisson uses the "Chi-squared test"
 
-is.gamma uses the "Anderson-Darling test"
+is.gamma uses the "Anderson-Darling test" or "Kolmogorov-Smirnov test"
 
 is.logistic use the "Kolmogorov-Smirnov test"
 
@@ -117,22 +117,49 @@ is.normal(normal_data1)
 is.normal(normal_data2)
 is.normal(normal_data3)
 
+# EXAMPLES for is.uniform
 
-EXAMPLE for is.gamma
+unifdata <- runif(10000,min=0,max=3)
 
-Example gamma data
+is.uniform(unifdata)
+
+
+# EXAMPLE for is.poisson
+set.seed(1989)
+data.poisson <- rpois(1000, lambda = 5) #poisson data
+data.normal <- runif(1000, min = 5, max = 10) #uniform data
+is.poisson(data.poisson) # should be TRUE
+is.poisson(data.normal) # should be FALSE
+
+
+# EXAMPLE for is.gamma
+
 set.seed(5434)
-n = 1000
-x <- stats::rgamma(n,5, 2)
-is.gamma(x) # check if it is gamma distribution
+data.gamma <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
+data.norm = runif(1000,min = 0, max = 1) # not gamma data
+
+is.gamma(data.gamma) # check if it is gamma distribution
+is.gamma(data.norm) # check if it is gamma distribution
+
+
+# EXAMPLE for is.logistic
+
 set.seed(231)
 n <- 1000
-location <- 0
-scale <- 1
+location <- 4
+scale <- 2
 xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
 hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
 
+data.normal <- runif(1000) #uniform ditribution for negative test
+
 is.logistic(xlogi) # test if it is logistic distribution
-x <- rweibull(1000, shape = 2, scale = 1)
-is.weibull(x)
+is.logistic(data.normal)
+
+data.weibull <- rweibull(1000, shape = 4, scale = 2) # weibull data
+data.norm = runif(1000, min = 0, max = 1) # not weibull data
+
+is.weibull(data.weibull) #should return TRUE
+is.weibull(data.norm) #should return FALSE
+
 }
