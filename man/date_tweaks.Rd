@@ -3,7 +3,7 @@
 \name{date3to1}
 \alias{date3to1}
 \alias{date1to3}
-\title{Combine vectors to create Date, or split Date into vectors}
+\title{Combine vector to create Date, or split Date into vector}
 \usage{
 date3to1(data, out.format = "\%Y-\%m-\%d", col.YMD = 1:3, as.vector = FALSE)
 
