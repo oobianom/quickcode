@@ -65,6 +65,14 @@
 #' \%D  \tab \tab Date formatted \%m/\%d/\%y      \tab \tab 07/17/23 \cr
 #' \%u  \tab \tab Weekday, Monday is 1            \tab \tab 7, 4 \cr
 #' }
+#'
+#' @details
+#' \strong{NOTE for date3to1}\cr
+#'
+#' The three input columns corresponding to "Year Month Day" must be numeric values. \cr\cr
+#' For example, Do not provide the month variable as non-numeric such as "Mar", "Jul", or "Jan". \cr\cr
+#' If the values of the columns are non-numeric, the results will return an "NA" in the output.date column.
+#'
 #' @export
 
 date3to1 <-
