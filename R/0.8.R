@@ -1,4 +1,4 @@
-#' Combine vectors to create Date, or split Date into vectors
+#' Combine vector to create Date, or split Date into vector
 #'
 #' Combine or split Date into a specified format
 #'
