@@ -525,13 +525,14 @@ is.uniform <- function(values,sig = 0.5){
 #' @param sig significance level to test p-value against
 #' @return boolean value if poisson distributed
 #' @examples
-#' # EXAMPLE for is.poisson
 #'
+#' # EXAMPLE for is.poisson
 #' set.seed(1989)
-#' data.poisson <- rpois(1000, lambda = 5)
-#' data.normal <- runif(1000, min = 5, max = 10)
+#' data.poisson <- rpois(1000, lambda = 5) #poisson data
+#' data.normal <- runif(1000, min = 5, max = 10) #uniform data
 #' is.poisson(data.poisson) # should be TRUE
 #' is.poisson(data.normal) # should be FALSE
+#'
 #' @export
 is.poisson <-function(values,sig= 0.5){
   {suppressWarnings(stats::chisq.test(table(values)))}$p.value < sig
@@ -627,6 +628,31 @@ sim.logistic <- function(n, location = 0, scale = 1, min = 0, max = 1) {
 }
 
 
+#' @export
+checkDistribution <- function(data,...){
+  data.frame(Distributions = c(
+    "Beta",
+    "Binomial",
+    "Cauchy",
+    "Chi-Square",
+    "Exponential",
+    "F",
+    "Gamma",
+    "Geometric",
+    "Hypergeometric",
+    "Logistic",
+    "Log Normal",
+    "Negative Binomial",
+    "Normal",
+    "Poisson",
+    "Student",
+    "Studentized Range",
+    "Uniform",
+    "Weibull",
+    "Wilcoxon Rank Sum Statistic",
+    "Wilcoxon Signed Rank Statistic"
+  ))
+}
 
 
 # easyrleft <-
