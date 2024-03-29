@@ -503,9 +503,17 @@ is.normal <- function(values,sig = 0.5){
 #'
 #' @param sig significance level to test p-value against
 #' @return boolean value if uniform distributed
+#'
+#' @examples
+#' # EXAMPLES for is.uniform
+#'
+#' unifdata <- runif(10000,min=0,max=3)
+#'
+#' is.uniform(unifdata)
+#'
 #' @export
 is.uniform <- function(values,sig = 0.5){
-  {stats::ks.test(values)}$p.value >= sig
+  {stats::ks.test(data, "punif", min(data), max(data))}$p.value >= sig
 }
 
 
