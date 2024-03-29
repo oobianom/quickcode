@@ -10,24 +10,24 @@
 \alias{is.weibull}
 \title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution}
 \usage{
-is.lognormal(values, sig = 0.5)
+is.lognormal(values, alpha = 0.5)
 
-is.normal(values, sig = 0.5)
+is.normal(values, alpha = 0.5)
 
-is.uniform(values, sig = 0.5)
+is.uniform(values, alpha = 0.5)
 
-is.poisson(values, sig = 0.5)
+is.poisson(values, alpha = 0.5)
 
-is.gamma(values, sig = 0.5)
+is.gamma(values, alpha = 0.5)
 
-is.logistic(values, sig = 0.5)
+is.logistic(values, alpha = 0.5)
 
-is.weibull(values, sig = 0.5)
+is.weibull(values, alpha = 0.5)
 }
 \arguments{
 \item{values}{vector of values}
 
-\item{sig}{significance level to test p-value against}
+\item{alpha}{significance level to test p-value against}
 }
 \value{
 boolean value if lognormal distributed
@@ -119,6 +119,7 @@ is.normal(normal_data3)
 
 # EXAMPLES for is.uniform
 
+set.seed(323)
 unifdata <- runif(10000,min=0,max=3)
 
 is.uniform(unifdata)
