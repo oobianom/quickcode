@@ -562,7 +562,7 @@ is.poisson <-function(values,sig= 0.5){
 #'
 #' @export
 is.gamma <- function(values,sig = 0.5){
-  .sr <- fitdistrplus::fitdist(x, "gamma")
+  .sr <- fitdistrplus::fitdist(values, "gamma")
   shape <- .sr$estimate['shape']
   rate <- .sr$estimate['rate']
   {stats::ks.test(values, "pgamma", shape = shape, rate = rate)}$p.value >= sig
@@ -600,12 +600,16 @@ is.logistic <- function(values,sig= 0.5) {
 #' @note
 #' is.weibull use the "Kolmogorov-Smirnov test"
 #' @examples
-#' x <- rweibull(1000, shape = 2, scale = 1)
+#' values <- rweibull(1000, shape = 2, scale = 1)
 #' is.weibull(x)
 #' @param sig significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @export
-is.weibull <- function(values,sig= 0.5, shape = 2, scale = 1) {
+is.weibull <- function(values,sig= 0.5) {
+  .sr <- fitdistrplus::fitdist(values, "weibull")
+  shape <- .sr$estimate['shape']
+  scale <- .sr$estimate['scale']
+
   {stats::ks.test(values,"pweibull",shape,scale)}$p.value >= sig
 }
 
