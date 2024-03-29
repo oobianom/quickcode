@@ -36,6 +36,13 @@ date derived from combining values from three columns of a data frame
 \description{
 Combine or split Date into a specified format
 }
+\details{
+\strong{NOTE for date3to1}\cr
+
+The three input columns corresponding to "Year Month Day" must be numeric values. \cr\cr
+For example, Do not provide the month variable as non-numeric such as "Mar", "Jul", or "Jan". \cr\cr
+If the values of the columns are non-numeric, the results will return an "NA" in the output.date column.
+}
 \note{
 \strong{DATE FORMATS IN R}\cr
 \tabular{rrrrr}{
