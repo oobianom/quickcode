@@ -640,28 +640,28 @@ is.weibull <- function(values,alpha = 0.5) {
 
 #' @export
 checkDistribution <- function(data,alpha,...){
-  data.frame(Distributions = c(
-    "Beta",
-    "Binomial",
-    "Cauchy",
-    "Chi-Square",
-    "Exponential",
-    "F",
-    "Gamma",
-    "Geometric",
-    "Hypergeometric",
-    "Logistic",
-    "Log Normal",
-    "Negative Binomial",
-    "Normal",
-    "Poisson",
-    "Student",
-    "Studentized Range",
-    "Uniform",
-    "Weibull",
-    "Wilcoxon Rank Sum Statistic",
-    "Wilcoxon Signed Rank Statistic"
-  ))
+  # data.frame(Distributions = c(
+  #   "Beta",
+  #   "Binomial",
+  #   "Cauchy",
+  #   "Chi-Square",
+  #   "Exponential",
+  #   "F",
+  #   "Gamma",
+  #   "Geometric",
+  #   "Hypergeometric",
+  #   "Logistic",
+  #   "Log Normal",
+  #   "Negative Binomial",
+  #   "Normal",
+  #   "Poisson",
+  #   "Student",
+  #   "Studentized Range",
+  #   "Uniform",
+  #   "Weibull",
+  #   "Wilcoxon Rank Sum Statistic",
+  #   "Wilcoxon Signed Rank Statistic"
+  # ))
 
 
 
