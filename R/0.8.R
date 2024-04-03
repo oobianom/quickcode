@@ -296,9 +296,21 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 }
 
 
-
+#' Fetch GitHub repository Creation Date
+#'
+#' Get the information of when the repository was created
+#'
+#' @param repo_name name of the repository
+#' @return date of creation of repository as a character
+#'
+#' @examples
+#' getGitHubRepoStart("oobianom/quickcode")
+#'
+#' getGitHubRepoStart("cran/dplyr")
+#'
 #' @export
 getGitHubRepoStart = function(repo_name){
+  message(" Fundtion under construction. Error handling would be added to the function that returns either an NA or some other message alerting the user that the passed repo name was not found on GitHub.")
   str = paste0("https://api.github.com/repos/", repo_name)
   read = readLines(str, warn = FALSE)
   pat = unlist(gregexpr("created_at", read)) + 13
