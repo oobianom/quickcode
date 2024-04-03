@@ -297,6 +297,14 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 
 
 
+#' @export
+getGitHubRepoStart = function(repo_name){
+  str = paste0("https://api.github.com/repos/", repo_name)
+  read = readLines(str, warn = FALSE)
+  pat = unlist(gregexpr("created_at", read)) + 13
+  repocreated = as.Date(substr(read, start = pat, stop = pat + 13))
+  return(repocreated)
+}
 
 
 
