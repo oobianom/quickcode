@@ -296,7 +296,7 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 }
 
 
-#' Fetch GitHub repository Creation Date
+#' Fetch GitHub repository Creation & Last Updated Date
 #'
 #' Get the information of when the repository was created
 #' @rdname github-tweaks
