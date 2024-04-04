@@ -299,25 +299,45 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 #' Fetch GitHub repository Creation Date
 #'
 #' Get the information of when the repository was created
-#'
+#' @rdname github-tweaks
 #' @param repo_name name of the repository
+#' @param out.format date output format
 #' @return date of creation of repository as a character
 #'
 #' @examples
-#' getGitHubRepoStart("oobianom/quickcode")
+#' getGitRepoStart("oobianom/quickcode")
 #'
-#' getGitHubRepoStart("cran/dplyr")
+#' getGitRepoStart("cran/dplyr")
 #'
 #' @export
-getGitHubRepoStart = function(repo_name){
-  message(" Fundtion under construction. Error handling would be added to the function that returns either an NA or some other message alerting the user that the passed repo name was not found on GitHub.")
-  str = paste0("https://api.github.com/repos/", repo_name)
+getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
+  str = paste0(git.api, repo_name)
   read = readLines(str, warn = FALSE)
   pat = unlist(gregexpr("created_at", read)) + 13
-  repocreated = as.Date(substr(read, start = pat, stop = pat + 13))
-  return(repocreated)
+  format(as.POSIXct(substr(read, start = pat, stop = pat + 18), format = "%Y-%m-%dT%H:%M:%S"),out.format)
 }
 
+
+#' Fetch GitHub repository last changed date
+#'
+#' Get the information of when the repository was last changed
+#' @rdname github-tweaks
+#' @param repo_name name of the repository
+#' @param out.format date output format
+#' @return date of creation of repository as a character
+#'
+#' @examples
+#' getGitRepoChange(repo_name="oobianom/quickcode")
+#'
+#' getGitRepoChange("cran/dplyr")
+#'
+#' @export
+getGitRepoChange = function(repo_name,out.format = "%Y-%m-%d"){
+  str = paste0(git.api, repo_name)
+  read = readLines(str, warn = FALSE)
+  pat = unlist(gregexpr("updated_at", read)) + 13
+  format(as.POSIXct(substr(read, start = pat, stop = pat + 18), format = "%Y-%m-%dT%H:%M:%S"),out.format)
+}
 
 
 #' Check if a call or expression produces errors
