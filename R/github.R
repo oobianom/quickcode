@@ -27,6 +27,8 @@
 #'
 #' @export
 getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
+  if(!grepl("/",repo_name))
+    stop("The format of the repo_name is incorrect. It should include user name and repository eg. 'oobianom/r2social'")
   str = paste0(git.api, repo_name)
   read = readLines(str, warn = FALSE)
   pat = unlist(gregexpr("created_at", read)) + 13
@@ -41,11 +43,13 @@ getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
 #' @return date of the last update of repository as a character
 #'
 #' @examples
-#' getGitRepoChange(repo_name = "oobianom/quickcode", out.format = "%d-%b-%Y")
-#' getGitRepoChange(repo_name = "oobianom/quickcode", out.format = "%Y/%m/%d")
+#' getGitRepoChange(repo_name = "oobianom/shinyStorePlus", out.format = "%d-%b-%Y")
+#' getGitRepoChange(repo_name = "oobianom/r2social", out.format = "%Y/%m/%d")
 #'
 #' @export
 getGitRepoChange = function(repo_name,out.format = "%Y-%m-%d"){
+  if(!grepl("/",repo_name))
+    stop("The format of the repo_name is incorrect. It should include user name and repository eg. 'oobianom/r2social'")
   str = paste0(git.api, repo_name)
   read = readLines(str, warn = FALSE)
   pat = unlist(gregexpr("updated_at", read)) + 13
