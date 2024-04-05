@@ -39,7 +39,7 @@ getGitRepoStart(repo_name = "oobianom/quickcode")
 getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "\%j|\%Y")
 getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "\%D|\%j")
 
-getGitRepoChange(repo_name = "oobianom/quickcode", out.format = "\%d-\%b-\%Y")
-getGitRepoChange(repo_name = "oobianom/quickcode", out.format = "\%Y/\%m/\%d")
+getGitRepoChange(repo_name = "oobianom/shinyStorePlus", out.format = "\%d-\%b-\%Y")
+getGitRepoChange(repo_name = "oobianom/r2social", out.format = "\%Y/\%m/\%d")
 
 }
