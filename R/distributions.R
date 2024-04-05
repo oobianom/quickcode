@@ -26,14 +26,14 @@
 #' # Prepare all data to test
 #' # Set the seed for reproducibility
 #' set.seed(13200323)
-#' lognormal_data <- stats::rlnorm(n = 10000, meanlog = 1, sdlog = 1) #lognormal data
-#' normal_data <- stats::rnorm(n = 10000, mean = 10, sd = 3) #normal data
-#' uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
-#' poisson_data <- stats::rpois(10000, lambda = 5) #poisson data
-#' gamma_data <- stats::rgamma(10000,shape = 5, rate = 2) #gamma data
-#' logis_data <- stats::rlogis(10000, location = 4, scale = 2)#logistic values
-#' weibull_data <- stats::rweibull(10000, shape = 4, scale = 2) #weibull data
-#' cauchy_data <- stats::rcauchy(10000, location = 8, scale = 5) #cauchy data
+#' lognormal_data <- stats::rlnorm(n = 4000, meanlog = 1, sdlog = 1) #lognormal data
+#' normal_data <- stats::rnorm(n = 4000, mean = 10, sd = 3) #normal data
+#' uniform_data <- stats::runif(4000,min=0,max=10) #uniform data
+#' poisson_data <- stats::rpois(4000, lambda = 5) #poisson data
+#' gamma_data <- stats::rgamma(4000,shape = 5, rate = 2) #gamma data
+#' logis_data <- stats::rlogis(4000, location = 4, scale = 2)#logistic values
+#' weibull_data <- stats::rweibull(4000, shape = 4, scale = 2) #weibull data
+#' cauchy_data <- stats::rcauchy(4000, location = 8, scale = 5) #cauchy data
 #'
 #' # EXAMPLE FOR is.lognormal
 #'
@@ -46,7 +46,7 @@
 #' is.lognormal(logis_data)
 #' is.lognormal(weibull_data)
 #' is.lognormal(cauchy_data)
-#' is.lognormal(1:10000)
+#' is.lognormal(1:4000)
 #'
 #' @export
 is.lognormal <- function(values, alpha = 0.05, method = 1) {
@@ -59,14 +59,14 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
 
   if (method == 2) {
     # Test for log-normal distribution using Kolmogorov-Smirnov test
-    message("Kolmogorov-Smirnov test for log-normal distribution")
+    # message("Kolmogorov-Smirnov test for log-normal distribution")
     {
       stats::ks.test(log(values), "pnorm", mean = mean(log(values)), sd = sd(log(values)))
     }$p.value >= alpha
   } else {
     # Test for log-normal distribution using Shapiro-Wilk test
     if (method == 1) {
-      message("Shapiro-Wilk test for log-normal distribution")
+      # message("Shapiro-Wilk test for log-normal distribution")
       {
         stats::shapiro.test(log(values))
       }$p.value >= alpha
@@ -93,7 +93,7 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
 #' is.normal(logis_data)
 #' is.normal(weibull_data)
 #' is.normal(cauchy_data)
-#' is.normal(1:10000)
+#' is.normal(1:4000)
 #'
 #' @export
 is.normal <- function(values, alpha = 0.05, method = 1) {
@@ -106,14 +106,14 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
 
   if (method == 2) {
     # Test for normal distribution using Kolmogorov-Smirnov test
-    message("Kolmogorov-Smirnov test for normal distribution")
+    # message("Kolmogorov-Smirnov test for normal distribution")
     {
       stats::ks.test((values), "pnorm", mean = mean((values)), sd = sd((values)))
     }$p.value >= alpha
   } else {
     # Test for normal distribution using Shapiro-Wilk test
     if (method == 1) {
-      message("Shapiro-Wilk test for normal distribution")
+      # message("Shapiro-Wilk test for normal distribution")
       {
         stats::shapiro.test((values))
       }$p.value >= alpha
@@ -142,7 +142,7 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
 #' is.uniform(logis_data)
 #' is.uniform(weibull_data)
 #' is.uniform(cauchy_data)
-#' is.uniform(1:10000)
+#' is.uniform(1:4000)
 #' }
 #' @export
 is.uniform <- function(values,alpha = 0.05){
@@ -172,7 +172,7 @@ is.uniform <- function(values,alpha = 0.05){
 #' is.poisson(logis_data)
 #' is.poisson(weibull_data)
 #' is.poisson(cauchy_data)
-#' is.poisson(1:10000)
+#' is.poisson(1:4000)
 #' }
 #' @export
 is.poisson <-function(values,alpha = 0.05){
@@ -203,7 +203,7 @@ is.poisson <-function(values,alpha = 0.05){
 #' is.gamma(logis_data)
 #' is.gamma(weibull_data)
 #' is.gamma(cauchy_data)
-#' is.gamma(1:10000)
+#' is.gamma(1:4000)
 #' }
 #' @export
 is.gamma <- function(values, alpha = 0.05) {
@@ -244,7 +244,7 @@ is.gamma <- function(values, alpha = 0.05) {
 #' is.logistic(logis_data)
 #' is.logistic(weibull_data)
 #' is.logistic(cauchy_data)
-#' is.logistic(1:10000)
+#' is.logistic(1:4000)
 #' }
 #' @export
 is.logistic <- function(values,alpha = 0.05) {
@@ -275,7 +275,7 @@ is.logistic <- function(values,alpha = 0.05) {
 #' is.weibull(logis_data)
 #' is.weibull(weibull_data)
 #' is.weibull(cauchy_data)
-#' is.weibull(1:10000)
+#' is.weibull(1:4000)
 #' }
 #' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
@@ -324,7 +324,7 @@ is.weibull <- function(values, alpha = 0.05) {
 #' is.cauchy(logis_data)
 #' is.cauchy(weibull_data)
 #' is.cauchy(cauchy_data)
-#' is.cauchy(1:10000)
+#' is.cauchy(1:4000)
 #' }
 #' @export
 is.cauchy <- function(values,alpha = 0.05){
