@@ -12,7 +12,7 @@
 #' @examples
 #'
 #' # Example using mtcars
-#' data100 <- mtcars
+#' data100 <- mtcars[1:7,]
 #'
 #' head(data100) # preview overall data
 #'
@@ -20,13 +20,16 @@
 #' head(switch_rows(data100, 5, 6))
 #'
 #' # task 2: switch rows, but retain some columns
-#' data100[5:6,7:10] # preview the portion that is to be changed
+#' data100[5:6,2:10] # preview the portion that is to be changed
 #'
 #' # lets switch 2 rows, but keep content of columns 7, 8, 9 10 within the changed rows
 #' res1 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = 7:10) # use column numbers
-#' res1[5:6,] # check result, pay attention to columns 7, 8,9 and 10 as well
-#' res2 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = c("qsec","vs","am","gear")) # use column names
-#' res2[5:6,] # check result, pay attention to columns "qsec",vs","am","gear" as well
+#' res1[5:6,] # check result, pay attention to columns 9 and 10 as well
+#' res2 <- switch_rows(data100,
+#' row1 = 5,
+#' row2 = 6,
+#' keep.cols = c("disp","cyl")) # use column names
+#' res2[5:6,] # check result, pay attention to columns "disp","cyl" as well
 #'
 #' @export
 switch_rows <- function(data, row1, row2, keep.cols = NULL) {
@@ -67,7 +70,7 @@ switch_rows <- function(data, row1, row2, keep.cols = NULL) {
 #' @examples
 #'
 #' # Example using mtcars
-#' data101 <- mtcars
+#' data101 <- mtcars[1:7,]
 #'
 #' head(data101) # preview overall data
 #'
@@ -85,12 +88,15 @@ switch_rows <- function(data, row1, row2, keep.cols = NULL) {
 #'
 #'
 #' # lets exchange some columns, but keep content of row 4, 5 intact
-#' data101[1:6,5:6] # preview the portion that is to be changed
+#' data101[1:6,4:7] # preview the portion that is to be changed
 #' res1 <- switch_cols(data101, col1 = 5, col2 = 6, keep.rows = 4:5) # use column numbers
-#' res1[1:6,5:6] # check result, pay attention to rows 4, 5 of columns 5, 6 as well
+#' res1[1:6,4:7] # check result, pay attention to rows 4, 5 of columns 5, 6 as well
 #'
 #' data101[1:6,6:11] # preview the portion that is to be changed
-#' res2 <- switch_cols(data101, col1 = "qsec", col2 = "carb", keep.rows = c(1,2,3)) # keep 1, 2, 3
+#' res2 <- switch_cols(data101,
+#' col1 = "qsec",
+#' col2 = "carb",
+#' keep.rows = c(1,2,3)) # keep 1, 2, 3
 #' res2[1:6,6:11] # check result
 #'
 #' @export

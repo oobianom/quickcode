@@ -1,5 +1,7 @@
 #INTERNAL FUNCTIONS and VARIABLES
 
+utils::globalVariables(c("...dMywhole_", "..dd..", "..mm..", "..yyyy..","size.bytes"))
+
 # fetch my environment
 getEnvir <- function(nme,e = parent.frame()){
   if(exists(nme,where = e, inherits = FALSE)) e else getEnvir(nme, e = parent.env(e))

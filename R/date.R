@@ -105,7 +105,7 @@ date3to1 <-
 
 
 
-#' Split date into columns of strings
+
 #'
 #' @examples
 #'

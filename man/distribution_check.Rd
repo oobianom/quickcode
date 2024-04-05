@@ -10,24 +10,26 @@
 \alias{is.weibull}
 \title{Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution}
 \usage{
-is.lognormal(values, alpha = 0.5)
+is.lognormal(values, alpha = 0.05, method = 1)
 
-is.normal(values, alpha = 0.5)
+is.normal(values, alpha = 0.05, method = 1)
 
-is.uniform(values, alpha = 0.5)
+is.uniform(values, alpha = 0.05)
 
-is.poisson(values, alpha = 0.5)
+is.poisson(values, alpha = 0.05)
 
-is.gamma(values, alpha = 0.5)
+is.gamma(values, alpha = 0.05)
 
-is.logistic(values, alpha = 0.5)
+is.logistic(values, alpha = 0.05)
 
-is.weibull(values, alpha = 0.5)
+is.weibull(values, alpha = 0.05)
 }
 \arguments{
 \item{values}{vector of values}
 
 \item{alpha}{significance level to test p-value against}
+
+\item{method}{method for calculation, where 1 = Shapiro-Wilk test and 2 = Kolmogorov-Smirnov test}
 }
 \value{
 boolean value if lognormal distributed
@@ -71,22 +73,26 @@ is.logistic use the "Kolmogorov-Smirnov test"
 is.weibull use the "Kolmogorov-Smirnov test"
 }
 \examples{
+
+# Prepare all data to test
+# Set the seed for reproducibility
+set.seed(323)
+lognormal_data <- stats::rlnorm(n = 1000, meanlog = 1, sdlog = 1) #lognormal data
+normal_data <- stats::rnorm(n = 1000, mean = 10, sd = 3) #normal data
+uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
+poisson_data <- stats::rpois(1000, lambda = 5) #poisson data
+gamma_data <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
+logis_data <- stats::rlogis(1000, location = 4, scale = 2)# Simulate logistic values
+weibull_data <- stats::rweibull(1000, shape = 4, scale = 2) # weibull data
+
 # EXAMPLE FOR is.lognormal
 
-# Set the seed for reproducibility
-set.seed(1989)
-
 # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
-lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+
 lognormal_data1 <- rlnorm(n = 100, meanlog = 0, sdlog = 1)
 lognormal_data2 <- rlnorm(n = 10, meanlog = 0, sdlog = 1)
 lognormal_data3 <- rlnorm(n = 5, meanlog = 0, sdlog = 1)
 
-# Plot the distribution of the data using a histogram
-hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
-
-# Add a density curve to the histogram
-lines(density(lognormal_data), col = "red")
 
 # Test if the data is lognormal
 is.lognormal(lognormal_data)
@@ -100,16 +106,9 @@ is.lognormal(lognormal_data3)
 set.seed(1989)
 
 # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
-normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
 normal_data1 <- rnorm(n = 500, mean = 0, sd = 1)
 normal_data2 <- rnorm(n = 100, mean = 0, sd = 1)
 normal_data3 <- rnorm(n = 10, mean = 0, sd = 1)
-
-# Plot the distribution of the data using a histogram
-hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
-
-# Add a density curve to the histogram
-lines(density(normal_data), col = "red")
 
 # Test if the data is normal
 is.normal(normal_data)
@@ -119,48 +118,27 @@ is.normal(normal_data3)
 
 # EXAMPLES for is.uniform
 
-set.seed(323)
-unifdata <- runif(10000,min=0,max=3)
+is.uniform(uniform_data)
 
-is.uniform(unifdata)
-
-
+\dontrun{
 # EXAMPLE for is.poisson
-set.seed(1989)
-data.poisson <- rpois(1000, lambda = 5) #poisson data
-data.normal <- runif(1000, min = 5, max = 10) #uniform data
-is.poisson(data.poisson) # should be TRUE
-is.poisson(data.normal) # should be FALSE
-
-
+is.poisson(poisson_data) # should be TRUE
+is.poisson(normal_data) # should be FALSE
+}
+\dontrun{
 # EXAMPLE for is.gamma
 
-set.seed(5434)
-data.gamma <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
-data.norm = runif(1000,min = 0, max = 1) # not gamma data
-
-is.gamma(data.gamma) # check if it is gamma distribution
+is.gamma(gamma_data) # check if it is gamma distribution
 is.gamma(data.norm) # check if it is gamma distribution
-
-
+}
+\dontrun{
 # EXAMPLE for is.logistic
 
-set.seed(231)
-n <- 1000
-location <- 4
-scale <- 2
-xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
-hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
+is.logistic(logis_data) # test if it is logistic distribution
+is.logistic(normal_data)
+}
 
-data.normal <- runif(1000) #uniform ditribution for negative test
-
-is.logistic(xlogi) # test if it is logistic distribution
-is.logistic(data.normal)
-
-data.weibull <- rweibull(1000, shape = 4, scale = 2) # weibull data
-data.norm = runif(1000, min = 0, max = 1) # not weibull data
-
-is.weibull(data.weibull) #should return TRUE
-is.weibull(data.norm) #should return FALSE
+is.weibull(weibull_data) #should return TRUE
+is.weibull(normal_data) #should return FALSE
 
 }

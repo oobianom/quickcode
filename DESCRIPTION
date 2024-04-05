@@ -1,13 +1,13 @@
 Package: quickcode
 Type: Package
-Title: A Compilation of Quick and Essential R Tricks for Better Scripts
+Title: Quick and Essential 'R' Tricks for Better Scripts
 Version: 0.8
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")),
     person("Brice", "Richard", email = "wem3mew@msn.com", role = "aut")
     )
 Maintainer: Obinna Obianom <idonshayo@gmail.com>
-Description: The NOT functions, R tricks and a compilation of some simple quick plus often used R codes to improve your scripts. Improve the quality and reproducibilty of R scripts.
+Description: The NOT functions, 'R' tricks and a compilation of some simple quick plus often used 'R' codes to improve your scripts. Improve the quality and reproducibilty of 'R' scripts.
 License: MIT + file LICENSE
 URL: https://quickcode.obi.obianom.com
 BugReports: https://github.com/oobianom/quickcode

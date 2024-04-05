@@ -24,7 +24,7 @@ on the selected rows.
 \examples{
 
 # Example using mtcars
-data100 <- mtcars
+data100 <- mtcars[1:7,]
 
 head(data100) # preview overall data
 
@@ -32,12 +32,15 @@ head(data100) # preview overall data
 head(switch_rows(data100, 5, 6))
 
 # task 2: switch rows, but retain some columns
-data100[5:6,7:10] # preview the portion that is to be changed
+data100[5:6,2:10] # preview the portion that is to be changed
 
 # lets switch 2 rows, but keep content of columns 7, 8, 9 10 within the changed rows
 res1 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = 7:10) # use column numbers
-res1[5:6,] # check result, pay attention to columns 7, 8,9 and 10 as well
-res2 <- switch_rows(data100, row1 = 5, row2 = 6, keep.cols = c("qsec","vs","am","gear")) # use column names
-res2[5:6,] # check result, pay attention to columns "qsec",vs","am","gear" as well
+res1[5:6,] # check result, pay attention to columns 9 and 10 as well
+res2 <- switch_rows(data100,
+row1 = 5,
+row2 = 6,
+keep.cols = c("disp","cyl")) # use column names
+res2[5:6,] # check result, pay attention to columns "disp","cyl" as well
 
 }

@@ -1,29 +1,3 @@
-#https://www.stat.umn.edu/geyer/old/5101/rlook.html
-
-# Distribution	Functions
-# Beta	pbeta	qbeta	dbeta	rbeta
-# Binomial	pbinom	qbinom	dbinom	rbinom
-# Cauchy	pcauchy	qcauchy	dcauchy	rcauchy
-# Chi-Square	pchisq	qchisq	dchisq	rchisq
-# Exponential	pexp	qexp	dexp	rexp
-# F	pf	qf	df	rf
-# Gamma	pgamma	qgamma	dgamma	rgamma
-# Geometric	pgeom	qgeom	dgeom	rgeom
-# Hypergeometric	phyper	qhyper	dhyper	rhyper
-# Logistic	plogis	qlogis	dlogis	rlogis
-# Log Normal	plnorm	qlnorm	dlnorm	rlnorm
-# Negative Binomial	pnbinom	qnbinom	dnbinom	rnbinom
-# Normal	pnorm	qnorm	dnorm	rnorm
-# Poisson	ppois	qpois	dpois	rpois
-# Student t	pt	qt	dt	rt
-# Studentized Range	ptukey	qtukey	dtukey	rtukey
-# Uniform	punif	qunif	dunif	runif
-# Weibull	pweibull	qweibull	dweibull	rweibull
-# Wilcoxon Rank Sum Statistic	pwilcox	qwilcox	dwilcox	rwilcox
-# Wilcoxon Signed Rank Statistic	psignrank	qsignrank	dsignrank	rsignrank
-
-
-# check if data is log normal
 #' Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution
 #'
 #' @description
@@ -39,27 +13,34 @@
 #' If the data fails both the normal and logged Shapiro-Wilk tests, the function returns "neither", indicating the data does not appear to come from a normal or lognormal distribution based on the tests.
 #' @note
 #' is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
+#'
+#'
 #' @rdname distribution_check
 #' @param values vector of values
 #' @param alpha significance level to test p-value against
+#' @param method method for calculation, where 1 = Shapiro-Wilk test and 2 = Kolmogorov-Smirnov test
 #' @return boolean value if lognormal distributed
 #' @examples
+#'
+#' # Prepare all data to test
+#' # Set the seed for reproducibility
+#' set.seed(323)
+#' lognormal_data <- stats::rlnorm(n = 1000, meanlog = 1, sdlog = 1) #lognormal data
+#' normal_data <- stats::rnorm(n = 1000, mean = 10, sd = 3) #normal data
+#' uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
+#' poisson_data <- stats::rpois(1000, lambda = 5) #poisson data
+#' gamma_data <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
+#' logis_data <- stats::rlogis(1000, location = 4, scale = 2)# Simulate logistic values
+#' weibull_data <- stats::rweibull(1000, shape = 4, scale = 2) # weibull data
+#'
 #' # EXAMPLE FOR is.lognormal
 #'
-#' # Set the seed for reproducibility
-#' set.seed(1989)
-#'
 #' # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
-#' lognormal_data <- rlnorm(n = 1000, meanlog = 0, sdlog = 1)
+#'
 #' lognormal_data1 <- rlnorm(n = 100, meanlog = 0, sdlog = 1)
 #' lognormal_data2 <- rlnorm(n = 10, meanlog = 0, sdlog = 1)
 #' lognormal_data3 <- rlnorm(n = 5, meanlog = 0, sdlog = 1)
 #'
-#' # Plot the distribution of the data using a histogram
-#' hist(lognormal_data, main = "Lognormal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
-#'
-#' # Add a density curve to the histogram
-#' lines(density(lognormal_data), col = "red")
 #'
 #' # Test if the data is lognormal
 #' is.lognormal(lognormal_data)
@@ -68,8 +49,27 @@
 #' is.lognormal(lognormal_data3)
 #'
 #' @export
-is.lognormal <- function(values,alpha = 0.5){
-  (stats::shapiro.test(log(values)))$p.value >= alpha
+is.lognormal <- function(values, alpha = 0.05, method = 1) {
+  # error check
+  stopifnot(method %in% 1:2)
+
+  if (method == 2) {
+    # Test for log-normal distribution using Kolmogorov-Smirnov test
+    message("Kolmogorov-Smirnov test for log-normal distribution")
+    {
+      stats::ks.test(log(values), "pnorm", mean = mean(log(values)), sd = sd(log(values)))
+    }$p.value >= alpha
+  } else {
+    # Test for log-normal distribution using Shapiro-Wilk test
+    if (method == 1) {
+      message("Shapiro-Wilk test for log-normal distribution")
+      {
+        stats::shapiro.test(log(values))
+      }$p.value >= alpha
+    } else {
+      NULL
+    }
+  }
 }
 
 #' @rdname distribution_check
@@ -84,16 +84,10 @@ is.lognormal <- function(values,alpha = 0.5){
 #' set.seed(1989)
 #'
 #' # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
-#' normal_data <- rnorm(n = 1000, mean = 0, sd = 1)
+
 #' normal_data1 <- rnorm(n = 500, mean = 0, sd = 1)
 #' normal_data2 <- rnorm(n = 100, mean = 0, sd = 1)
 #' normal_data3 <- rnorm(n = 10, mean = 0, sd = 1)
-#'
-#' # Plot the distribution of the data using a histogram
-#' hist(normal_data, main = "Normal Distribution with Mean 0 and Standard Deviation 1", xlab = "Data Values", col = "lightblue")
-#'
-#' # Add a density curve to the histogram
-#' lines(density(normal_data), col = "red")
 #'
 #' # Test if the data is normal
 #' is.normal(normal_data)
@@ -102,8 +96,27 @@ is.lognormal <- function(values,alpha = 0.5){
 #' is.normal(normal_data3)
 #'
 #' @export
-is.normal <- function(values,alpha = 0.5){
-  {stats::shapiro.test(values)}$p.value >= alpha
+is.normal <- function(values, alpha = 0.05, method = 1) {
+  # error check
+  stopifnot(method %in% 1:2)
+
+  if (method == 2) {
+    # Test for normal distribution using Kolmogorov-Smirnov test
+    message("Kolmogorov-Smirnov test for normal distribution")
+    {
+      stats::ks.test((values), "pnorm", mean = mean((values)), sd = sd((values)))
+    }$p.value >= alpha
+  } else {
+    # Test for normal distribution using Shapiro-Wilk test
+    if (method == 1) {
+      message("Shapiro-Wilk test for normal distribution")
+      {
+        stats::shapiro.test((values))
+      }$p.value >= alpha
+    } else {
+      NULL
+    }
+  }
 }
 
 
@@ -118,13 +131,10 @@ is.normal <- function(values,alpha = 0.5){
 #' @examples
 #' # EXAMPLES for is.uniform
 #'
-#' set.seed(323)
-#' unifdata <- runif(10000,min=0,max=3)
-#'
-#' is.uniform(unifdata)
+#' is.uniform(uniform_data)
 #'
 #' @export
-is.uniform <- function(values,alpha = 0.5){
+is.uniform <- function(values,alpha = 0.05){
   {stats::ks.test(values, "punif", min(values), max(values))}$p.value >= alpha
 }
 
@@ -137,16 +147,13 @@ is.uniform <- function(values,alpha = 0.5){
 #' @param alpha significance level to test p-value against
 #' @return boolean value if poisson distributed
 #' @examples
-#'
+#' \dontrun{
 #' # EXAMPLE for is.poisson
-#' set.seed(1989)
-#' data.poisson <- rpois(1000, lambda = 5) #poisson data
-#' data.normal <- runif(1000, min = 5, max = 10) #uniform data
-#' is.poisson(data.poisson) # should be TRUE
-#' is.poisson(data.normal) # should be FALSE
-#'
+#' is.poisson(poisson_data) # should be TRUE
+#' is.poisson(normal_data) # should be FALSE
+#' }
 #' @export
-is.poisson <-function(values,alpha = 0.5){
+is.poisson <-function(values,alpha = 0.05){
   {suppressWarnings(stats::chisq.test(table(values)))}$p.value < alpha
 }
 
@@ -160,18 +167,14 @@ is.poisson <-function(values,alpha = 0.5){
 #' @return boolean value if gamma distributed
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # EXAMPLE for is.gamma
 #'
-#' set.seed(5434)
-#' data.gamma <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
-#' data.norm = runif(1000,min = 0, max = 1) # not gamma data
-#'
-#' is.gamma(data.gamma) # check if it is gamma distribution
+#' is.gamma(gamma_data) # check if it is gamma distribution
 #' is.gamma(data.norm) # check if it is gamma distribution
-#'
+#' }
 #' @export
-is.gamma <- function(values,alpha = 0.5){
+is.gamma <- function(values,alpha = 0.05){
   .sr <- fitdistrplus::fitdist(values, "gamma")
   shape <- .sr$estimate['shape']
   rate <- .sr$estimate['rate']
@@ -186,23 +189,14 @@ is.gamma <- function(values,alpha = 0.5){
 #' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @examples
-#'
+#' \dontrun{
 #' # EXAMPLE for is.logistic
 #'
-#' set.seed(231)
-#' n <- 1000
-#' location <- 4
-#' scale <- 2
-#' xlogi <- sim.logistic(n, location, scale)# Simulate logistic values
-#' hist(xlogi, prob=TRUE, main="Plot of simulated logistic")# Plot histogram
-#'
-#' data.normal <- runif(1000) #uniform ditribution for negative test
-#'
-#' is.logistic(xlogi) # test if it is logistic distribution
-#' is.logistic(data.normal)
-#'
+#' is.logistic(logis_data) # test if it is logistic distribution
+#' is.logistic(normal_data)
+#' }
 #' @export
-is.logistic <- function(values,alpha = 0.5) {
+is.logistic <- function(values,alpha = 0.05) {
   .sr <- fitdistrplus::fitdist(values, "logis")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
@@ -218,16 +212,14 @@ is.logistic <- function(values,alpha = 0.5) {
 #' @note
 #' is.weibull use the "Kolmogorov-Smirnov test"
 #' @examples
-#' data.weibull <- rweibull(1000, shape = 4, scale = 2) # weibull data
-#' data.norm = runif(1000, min = 0, max = 1) # not weibull data
 #'
-#' is.weibull(data.weibull) #should return TRUE
-#' is.weibull(data.norm) #should return FALSE
+#' is.weibull(weibull_data) #should return TRUE
+#' is.weibull(normal_data) #should return FALSE
 #'
 #' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @export
-is.weibull <- function(values,alpha = 0.5) {
+is.weibull <- function(values,alpha = 0.05) {
   .sr <- fitdistrplus::fitdist(values, "weibull")
   shape <- .sr$estimate['shape']
   scale <- .sr$estimate['scale']
@@ -324,6 +316,29 @@ is.weibull <- function(values,alpha = 0.5) {
 #     return(fitdist_nbinom(data, method, start, ...))
 #
 # }
+# https://www.stat.umn.edu/geyer/old/5101/rlook.html
+
+# Distribution	Functions
+# Beta	pbeta	qbeta	dbeta	rbeta
+# Binomial	pbinom	qbinom	dbinom	rbinom
+# Cauchy	pcauchy	qcauchy	dcauchy	rcauchy
+# Chi-Square	pchisq	qchisq	dchisq	rchisq
+# Exponential	pexp	qexp	dexp	rexp
+# F	pf	qf	df	rf
+# Gamma	pgamma	qgamma	dgamma	rgamma
+# Geometric	pgeom	qgeom	dgeom	rgeom
+# Hypergeometric	phyper	qhyper	dhyper	rhyper
+# Logistic	plogis	qlogis	dlogis	rlogis
+# Log Normal	plnorm	qlnorm	dlnorm	rlnorm
+# Negative Binomial	pnbinom	qnbinom	dnbinom	rnbinom
+# Normal	pnorm	qnorm	dnorm	rnorm
+# Poisson	ppois	qpois	dpois	rpois
+# Student t	pt	qt	dt	rt
+# Studentized Range	ptukey	qtukey	dtukey	rtukey
+# Uniform	punif	qunif	dunif	runif
+# Weibull	pweibull	qweibull	dweibull	rweibull
+# Wilcoxon Rank Sum Statistic	pwilcox	qwilcox	dwilcox	rwilcox
+# Wilcoxon Signed Rank Statistic	psignrank	qsignrank	dsignrank	rsignrank
 
 
 
