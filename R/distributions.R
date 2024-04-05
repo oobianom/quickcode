@@ -5,14 +5,13 @@
 #' @details
 #' This function takes a numeric vector as its input. This vector contains the dataset that will be analyzed.
 #' \cr\cr
-#' \strong{For Normal and LogNormal:}\cr
-#' This function first performs a Shapiro-Wilk test on the data to check if it comes from a normal distribution. The Shapiro-Wilk test checks if sample data came from a normal distribution. It returns a p-value, with a higher p-value indicating stronger evidence that the data is normally distributed.
-#' If the p-value from the Shapiro-Wilk test is above a predefined threshold (such as 0.05), the data is considered normally distributed. In this case, the function returns "normal".
-#' If the data fails the Shapiro-Wilk normality test, the function then checks if the data fits a lognormal distribution. It transforms the data by taking the natural logarithm of each value. It then runs the Shapiro-Wilk test on the transformed data.
-#' If the p-value from this test on the logged data is above the threshold, the function returns "lognormal", indicating the untransformed data fits a lognormal distribution after logging.
-#' If the data fails both the normal and logged Shapiro-Wilk tests, the function returns "neither", indicating the data does not appear to come from a normal or lognormal distribution based on the tests.
-#' @note
-#' is.normal and is.lognormal uses the "Shapiro-Wilk test" from the utils package
+#' \strong{For Normal and LogNormal:}\cr\cr
+#' - Method 1: we perform the Shapiro-Wilk test on the (log-transformed) data to test for normality.
+#' The null hypothesis of the Shapiro-Wilk test is that the data are normally distributed.
+#' If the p-value is greater than the chosen significance level (typically 0.05),
+#' we fail to reject the null hypothesis, indicating that the data may follow a log-normal distribution.\cr\cr
+#' - Method 2: we perform the Kolmogorov-Smirnov test on the log-transformed data, comparing it to a normal distribution with the same mean and standard deviation. Again, if the p-value is greater than the chosen significance level, it suggests that the data may follow a log-normal distribution.
+#' These tests provide a statistical assessment of whether your data follows a log-normal distribution.
 #'
 #'
 #' @rdname distribution_check
@@ -24,29 +23,26 @@
 #'
 #' # Prepare all data to test
 #' # Set the seed for reproducibility
-#' set.seed(323)
+#' set.seed(13200323)
 #' lognormal_data <- stats::rlnorm(n = 1000, meanlog = 1, sdlog = 1) #lognormal data
 #' normal_data <- stats::rnorm(n = 1000, mean = 10, sd = 3) #normal data
 #' uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
 #' poisson_data <- stats::rpois(1000, lambda = 5) #poisson data
-#' gamma_data <- stats::rgamma(1000,shape = 5, rate = 2) # gamma data
-#' logis_data <- stats::rlogis(1000, location = 4, scale = 2)# Simulate logistic values
-#' weibull_data <- stats::rweibull(1000, shape = 4, scale = 2) # weibull data
+#' gamma_data <- stats::rgamma(1000,shape = 5, rate = 2) #gamma data
+#' logis_data <- stats::rlogis(1000, location = 4, scale = 2)#logistic values
+#' weibull_data <- stats::rweibull(1000, shape = 4, scale = 2) #weibull data
+#' cauchy_data <- stats::rcauchy(1000, location = 4, scale = 2) #cauchy data
 #'
 #' # EXAMPLE FOR is.lognormal
 #'
-#' # Generate 1000 data points from a lognormal distribution with mean 0 and standard deviation 1
-#'
-#' lognormal_data1 <- rlnorm(n = 100, meanlog = 0, sdlog = 1)
-#' lognormal_data2 <- rlnorm(n = 10, meanlog = 0, sdlog = 1)
-#' lognormal_data3 <- rlnorm(n = 5, meanlog = 0, sdlog = 1)
-#'
-#'
 #' # Test if the data is lognormal
 #' is.lognormal(lognormal_data)
-#' is.lognormal(lognormal_data1)
-#' is.lognormal(lognormal_data2)
-#' is.lognormal(lognormal_data3)
+#' is.lognormal(normal_data)
+#' is.lognormal(uniform_data)
+#' is.lognormal(poisson_data)
+#' is.lognormal(gamma_data)
+#' is.lognormal(logis_data)
+#' is.lognormal(logis_data)
 #'
 #' @export
 is.lognormal <- function(values, alpha = 0.05, method = 1) {
@@ -122,9 +118,6 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @note
-#' is.uniform uses the "Kolmogorov-Smirnov test"
-#'
 #' @param alpha significance level to test p-value against
 #' @return boolean value if uniform distributed
 #'
@@ -141,8 +134,6 @@ is.uniform <- function(values,alpha = 0.05){
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @note
-#' is.poisson uses the "Chi-squared test"
 #'
 #' @param alpha significance level to test p-value against
 #' @return boolean value if poisson distributed
@@ -161,8 +152,6 @@ is.poisson <-function(values,alpha = 0.05){
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @note
-#' is.gamma uses the "Anderson-Darling test" or "Kolmogorov-Smirnov test"
 #' @param alpha significance level to test p-value against
 #' @return boolean value if gamma distributed
 #'
@@ -183,9 +172,6 @@ is.gamma <- function(values,alpha = 0.05){
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @note
-#' is.logistic use the "Kolmogorov-Smirnov test"
-#'
 #' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @examples
@@ -209,8 +195,6 @@ is.logistic <- function(values,alpha = 0.05) {
 
 #' @rdname distribution_check
 #' @param values vector of values
-#' @note
-#' is.weibull use the "Kolmogorov-Smirnov test"
 #' @examples
 #'
 #' is.weibull(weibull_data) #should return TRUE
@@ -231,7 +215,23 @@ is.weibull <- function(values,alpha = 0.05) {
 
 
 
-
+#' @rdname distribution_check
+#' @param values vector of values
+#' @param alpha significance level to test p-value against
+#' @return boolean value if cauchy distributed
+#'
+#' @examples
+#' # EXAMPLES for is.is.cauchy
+#'
+#' is.cauchy(uniform_data)
+#'
+#' @export
+is.cauchy <- function(values,alpha = 0.05){
+  .sr <- fitdistrplus::fitdist(values, "cauchy")
+  location <- .sr$estimate['location']
+  scale <- .sr$estimate['scale']
+  {stats::ks.test(values,"pcauchy",location = location,scale = scale)}$p.value >= alpha
+}
 
 
 
