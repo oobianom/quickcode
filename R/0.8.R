@@ -298,7 +298,18 @@ switch_cols <- function(data, col1, col2, keep.rows = NULL) {
 
 #' Fetch GitHub repository Creation & Last Updated Date
 #'
-#' Get the information of when the repository was created
+#' @description
+#' The GitHub REST API is a powerful tool that allows developers
+#' to interact with GitHub programmatically. It provides a set of
+#' endpoints that allows a user to create integration, retrieve data,
+#' and automate workflows related to GitHub repositories. It is a means
+#' by which users can interact with GitHub without directly using a web interface.
+#'
+#' @details
+#' The following Two functions in the quickcode package utilize the GitHub REST API to extract important temporal information about a GitHub repository. \cr\cr
+#'  - the getGitRepoStart function is used to retrieve the date a GitHub repository was first created.\cr\cr
+#'  - the getGitRepoChange function retrieves the date a GitHub repository was last updated.
+#'
 #' @rdname github-tweaks
 #' @param repo_name name of the repository
 #' @param out.format date output format
@@ -317,13 +328,11 @@ getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
 }
 
 
-#' Fetch GitHub repository last changed date
-#'
-#' Get the information of when the repository was last changed
+
 #' @rdname github-tweaks
 #' @param repo_name name of the repository
 #' @param out.format date output format
-#' @return date of creation of repository as a character
+#' @return date of the last update of repository as a character
 #'
 #' @examples
 #' getGitRepoChange(repo_name = "oobianom/quickcode", out.format = "%d-%b-%Y")
@@ -344,7 +353,7 @@ getGitRepoChange = function(repo_name,out.format = "%Y-%m-%d"){
 #'
 #' @param ... the expression or function calls
 #' @note
-#' For more information, check: https://rpkg.net/package/quickcode
+#' More information, check: https://rpkg.net/package/quickcode
 #'
 #' @examples
 #' # this should not produce error
