@@ -53,9 +53,11 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
+
   #test for lognormal
+  values <- values[values>0]
   # error check
-  stopifnot(method %in% 1:2)
+  stopifnot(length(values) > 3, method %in% 1:2)
 
   if (method == 2) {
     # Test for log-normal distribution using Kolmogorov-Smirnov test
@@ -102,7 +104,7 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
     alpha = options()$qc.sig.alpha.level
   #test for normality
   # error check
-  stopifnot(method %in% 1:2)
+  stopifnot(length(values) > 3, method %in% 1:2)
 
   if (method == 2) {
     # Test for normal distribution using Kolmogorov-Smirnov test
@@ -149,6 +151,7 @@ is.uniform <- function(values,alpha = 0.05){
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
+  stopifnot(length(values) > 3)
   #test for uniform
   {stats::ks.test(values, "punif", min(values), max(values))}$p.value >= alpha
 }
@@ -179,6 +182,7 @@ is.poisson <-function(values,alpha = 0.05){
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
+  stopifnot(length(values) > 3)
   #test for poisson
   {suppressWarnings(stats::chisq.test(table(values)))}$p.value < alpha
 }
@@ -211,6 +215,7 @@ is.gamma <- function(values, alpha = 0.05) {
   if (not.null(options()$qc.sig.alpha.level)) {
     alpha <- options()$qc.sig.alpha.level
   }
+  stopifnot(length(values) > 3)
   # test for gamma
   tryCatch(
     {
@@ -252,6 +257,7 @@ is.logistic <- function(values,alpha = 0.05) {
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
   #test for logistic
+  stopifnot(length(values) > 3)
   .sr <- fitdistrplus::fitdist(values, "logis")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
@@ -285,6 +291,8 @@ is.weibull <- function(values, alpha = 0.05) {
   if (not.null(options()$qc.sig.alpha.level)) {
     alpha <- options()$qc.sig.alpha.level
   }
+  values[values<=0] = 0
+  stopifnot(length(values) > 3)
   # test for weibull
   tryCatch(
     {
@@ -332,6 +340,7 @@ is.cauchy <- function(values,alpha = 0.05){
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
   #test for cachy
+  stopifnot(length(values) > 3)
   .sr <- fitdistrplus::fitdist(values, "cauchy")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
