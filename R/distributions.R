@@ -108,14 +108,14 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
     # Test for normal distribution using Kolmogorov-Smirnov test
     # message("Kolmogorov-Smirnov test for normal distribution")
     {
-      stats::ks.test((values), "pnorm", mean = mean((values)), sd = sd((values)))
+      stats::ks.test(values, "pnorm", mean = mean(values), sd = sd(values))
     }$p.value >= alpha
   } else {
     # Test for normal distribution using Shapiro-Wilk test
     if (method == 1) {
       # message("Shapiro-Wilk test for normal distribution")
       {
-        stats::shapiro.test((values))
+        stats::shapiro.test(values)
       }$p.value >= alpha
     } else {
       NULL
