@@ -1,4 +1,4 @@
-#' Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma or Logistic distribution
+#' Check if a data fits the distribution
 #'
 #' @description
 #' Check whether a vector of data contains values that fit a distribution
@@ -20,18 +20,20 @@
 #' @param method method for calculation, where 1 = Shapiro-Wilk test and 2 = Kolmogorov-Smirnov test
 #' @return boolean value if lognormal distributed
 #' @examples
+#' # Set global alpha for testing significance
+#' setDisAlpha(alpha = 0.05)
 #'
 #' # Prepare all data to test
 #' # Set the seed for reproducibility
 #' set.seed(13200323)
-#' lognormal_data <- stats::rlnorm(n = 1000, meanlog = 1, sdlog = 1) #lognormal data
-#' normal_data <- stats::rnorm(n = 1000, mean = 10, sd = 3) #normal data
+#' lognormal_data <- stats::rlnorm(n = 10000, meanlog = 1, sdlog = 1) #lognormal data
+#' normal_data <- stats::rnorm(n = 10000, mean = 10, sd = 3) #normal data
 #' uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
-#' poisson_data <- stats::rpois(1000, lambda = 5) #poisson data
-#' gamma_data <- stats::rgamma(1000,shape = 5, rate = 2) #gamma data
-#' logis_data <- stats::rlogis(1000, location = 4, scale = 2)#logistic values
-#' weibull_data <- stats::rweibull(1000, shape = 4, scale = 2) #weibull data
-#' cauchy_data <- stats::rcauchy(1000, location = 4, scale = 2) #cauchy data
+#' poisson_data <- stats::rpois(10000, lambda = 5) #poisson data
+#' gamma_data <- stats::rgamma(10000,shape = 5, rate = 2) #gamma data
+#' logis_data <- stats::rlogis(10000, location = 4, scale = 2)#logistic values
+#' weibull_data <- stats::rweibull(10000, shape = 4, scale = 2) #weibull data
+#' cauchy_data <- stats::rcauchy(10000, location = 8, scale = 5) #cauchy data
 #'
 #' # EXAMPLE FOR is.lognormal
 #'
@@ -42,10 +44,16 @@
 #' is.lognormal(poisson_data)
 #' is.lognormal(gamma_data)
 #' is.lognormal(logis_data)
-#' is.lognormal(logis_data)
+#' is.lognormal(weibull_data)
+#' is.lognormal(cauchy_data)
+#' is.lognormal(1:10000)
 #'
 #' @export
 is.lognormal <- function(values, alpha = 0.05, method = 1) {
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for lognormal
   # error check
   stopifnot(method %in% 1:2)
 
@@ -76,23 +84,23 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
 #' @examples
 #' # EXAMPLE FOR is.normal
 #'
-#' # Set the seed for reproducibility
-#' set.seed(1989)
-#'
-#' # Generate 1000 data points from a normal distribution with mean 0 and standard deviation 1
-
-#' normal_data1 <- rnorm(n = 500, mean = 0, sd = 1)
-#' normal_data2 <- rnorm(n = 100, mean = 0, sd = 1)
-#' normal_data3 <- rnorm(n = 10, mean = 0, sd = 1)
-#'
-#' # Test if the data is normal
+#' # Test if the data fits a normal distribution
+#' is.normal(lognormal_data)
 #' is.normal(normal_data)
-#' is.normal(normal_data1)
-#' is.normal(normal_data2)
-#' is.normal(normal_data3)
+#' is.normal(uniform_data)
+#' is.normal(poisson_data)
+#' is.normal(gamma_data)
+#' is.normal(logis_data)
+#' is.normal(weibull_data)
+#' is.normal(cauchy_data)
+#' is.normal(1:10000)
 #'
 #' @export
 is.normal <- function(values, alpha = 0.05, method = 1) {
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for normality
   # error check
   stopifnot(method %in% 1:2)
 
@@ -122,12 +130,26 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
 #' @return boolean value if uniform distributed
 #'
 #' @examples
+#' \dontrun{
 #' # EXAMPLES for is.uniform
 #'
+#' # Test if the data fits a uniform distribution
+#' is.uniform(lognormal_data)
+#' is.uniform(normal_data)
 #' is.uniform(uniform_data)
-#'
+#' is.uniform(poisson_data)
+#' is.uniform(gamma_data)
+#' is.uniform(logis_data)
+#' is.uniform(weibull_data)
+#' is.uniform(cauchy_data)
+#' is.uniform(1:10000)
+#' }
 #' @export
 is.uniform <- function(values,alpha = 0.05){
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for uniform
   {stats::ks.test(values, "punif", min(values), max(values))}$p.value >= alpha
 }
 
@@ -140,11 +162,24 @@ is.uniform <- function(values,alpha = 0.05){
 #' @examples
 #' \dontrun{
 #' # EXAMPLE for is.poisson
-#' is.poisson(poisson_data) # should be TRUE
-#' is.poisson(normal_data) # should be FALSE
+#'
+#' # Test if the data fits a poisson distribution
+#' is.poisson(lognormal_data)
+#' is.poisson(normal_data)
+#' is.poisson(uniform_data)
+#' is.poisson(poisson_data)
+#' is.poisson(gamma_data)
+#' is.poisson(logis_data)
+#' is.poisson(weibull_data)
+#' is.poisson(cauchy_data)
+#' is.poisson(1:10000)
 #' }
 #' @export
 is.poisson <-function(values,alpha = 0.05){
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for poisson
   {suppressWarnings(stats::chisq.test(table(values)))}$p.value < alpha
 }
 
@@ -159,15 +194,37 @@ is.poisson <-function(values,alpha = 0.05){
 #' \dontrun{
 #' # EXAMPLE for is.gamma
 #'
-#' is.gamma(gamma_data) # check if it is gamma distribution
-#' is.gamma(data.norm) # check if it is gamma distribution
+#' # Test if the data fits a gamma distribution
+#' is.gamma(lognormal_data)
+#' is.gamma(normal_data)
+#' is.gamma(uniform_data)
+#' is.gamma(poisson_data)
+#' is.gamma(gamma_data)
+#' is.gamma(logis_data)
+#' is.gamma(weibull_data)
+#' is.gamma(cauchy_data)
+#' is.gamma(1:10000)
 #' }
 #' @export
-is.gamma <- function(values,alpha = 0.05){
-  .sr <- fitdistrplus::fitdist(values, "gamma")
-  shape <- .sr$estimate['shape']
-  rate <- .sr$estimate['rate']
-  {stats::ks.test(values, "pgamma", shape = shape, rate = rate)}$p.value >= alpha
+is.gamma <- function(values, alpha = 0.05) {
+  # override alpha if global significance level set
+  if (not.null(options()$qc.sig.alpha.level)) {
+    alpha <- options()$qc.sig.alpha.level
+  }
+  # test for gamma
+  tryCatch(
+    {
+      .sr <- fitdistrplus::fitdist(values, "gamma")
+      shape <- .sr$estimate["shape"]
+      rate <- .sr$estimate["rate"]
+      {
+        stats::ks.test(values, "pgamma", shape = shape, rate = rate)
+      }$p.value >= alpha
+    },
+    error = function(msg) {
+      return(FALSE)
+    }
+  )
 }
 
 #' @rdname distribution_check
@@ -178,11 +235,23 @@ is.gamma <- function(values,alpha = 0.05){
 #' \dontrun{
 #' # EXAMPLE for is.logistic
 #'
-#' is.logistic(logis_data) # test if it is logistic distribution
+#' # Test if the data fits a logistic distribution
+#' is.logistic(lognormal_data)
 #' is.logistic(normal_data)
+#' is.logistic(uniform_data)
+#' is.logistic(poisson_data)
+#' is.logistic(gamma_data)
+#' is.logistic(logis_data)
+#' is.logistic(weibull_data)
+#' is.logistic(cauchy_data)
+#' is.logistic(1:10000)
 #' }
 #' @export
 is.logistic <- function(values,alpha = 0.05) {
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for logistic
   .sr <- fitdistrplus::fitdist(values, "logis")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
@@ -196,18 +265,40 @@ is.logistic <- function(values,alpha = 0.05) {
 #' @rdname distribution_check
 #' @param values vector of values
 #' @examples
-#'
-#' is.weibull(weibull_data) #should return TRUE
-#' is.weibull(normal_data) #should return FALSE
-#'
+#' \dontrun{
+#' # Test if the data fits a weibull distribution
+#' is.weibull(lognormal_data)
+#' is.weibull(normal_data)
+#' is.weibull(uniform_data)
+#' is.weibull(poisson_data)
+#' is.weibull(gamma_data)
+#' is.weibull(logis_data)
+#' is.weibull(weibull_data)
+#' is.weibull(cauchy_data)
+#' is.weibull(1:10000)
+#' }
 #' @param alpha significance level to test p-value against
 #' @return boolean value if logistic distributed
 #' @export
-is.weibull <- function(values,alpha = 0.05) {
-  .sr <- fitdistrplus::fitdist(values, "weibull")
-  shape <- .sr$estimate['shape']
-  scale <- .sr$estimate['scale']
-  {stats::ks.test(values,"pweibull",shape = shape,scale = scale)}$p.value >= alpha
+is.weibull <- function(values, alpha = 0.05) {
+  # override alpha if global significance level set
+  if (not.null(options()$qc.sig.alpha.level)) {
+    alpha <- options()$qc.sig.alpha.level
+  }
+  # test for weibull
+  tryCatch(
+    {
+      .sr <- fitdistrplus::fitdist(values, "weibull")
+      shape <- .sr$estimate["shape"]
+      scale <- .sr$estimate["scale"]
+      {
+        stats::ks.test(values, "pweibull", shape = shape, scale = scale)
+      }$p.value >= alpha
+    },
+    error = function(msg) {
+      return(FALSE)
+    }
+  )
 }
 
 
@@ -221,21 +312,64 @@ is.weibull <- function(values,alpha = 0.05) {
 #' @return boolean value if cauchy distributed
 #'
 #' @examples
-#' # EXAMPLES for is.is.cauchy
+#' \dontrun{
+#' # EXAMPLES for is.cauchy
 #'
+#' # Test if the data fits a cauchy distribution
+#' is.cauchy(lognormal_data)
+#' is.cauchy(normal_data)
 #' is.cauchy(uniform_data)
-#'
+#' is.cauchy(poisson_data)
+#' is.cauchy(gamma_data)
+#' is.cauchy(logis_data)
+#' is.cauchy(weibull_data)
+#' is.cauchy(cauchy_data)
+#' is.cauchy(1:10000)
+#' }
 #' @export
 is.cauchy <- function(values,alpha = 0.05){
+  #override alpha if global significance level set
+  if(not.null(options()$qc.sig.alpha.level))
+    alpha = options()$qc.sig.alpha.level
+  #test for cachy
   .sr <- fitdistrplus::fitdist(values, "cauchy")
   location <- .sr$estimate['location']
   scale <- .sr$estimate['scale']
   {stats::ks.test(values,"pcauchy",location = location,scale = scale)}$p.value >= alpha
 }
 
-
-
-
+#' @rdname distribution_check
+#' @param alpha significance level to test p-value against
+#' @return setDisAlpha sets global significance level for testing of distribution
+#'
+#' @examples
+#' \dontrun{
+#' # set global distribution alpha
+#'
+#' # default setting
+#' setDisAlpha()
+#'
+#' # set to 0.001
+#' setDisAlpha(alpha = 0.01)
+#' }
+#' @export
+setDisAlpha <- function(alpha = 0.05){
+  stopifnot(is.numeric(alpha) == TRUE)
+  options(qc.sig.alpha.level = alpha)
+}
+#' @rdname distribution_check
+#' @return unsetDisAlpha removes global significance level for testing of distribution
+#'
+#' @examples
+#' \dontrun{
+#' # unset global distribution alpha
+#'
+#' unsetDisAlpha()
+#' }
+#' @export
+unsetDisAlpha <- function(){
+  options(qc.sig.alpha.level = NULL)
+}
 
 # Future functions
 # checkDistribution <- function(data,alpha,...){
