@@ -82,14 +82,14 @@ setDisAlpha(alpha = 0.05)
 # Prepare all data to test
 # Set the seed for reproducibility
 set.seed(13200323)
-lognormal_data <- stats::rlnorm(n = 10000, meanlog = 1, sdlog = 1) #lognormal data
-normal_data <- stats::rnorm(n = 10000, mean = 10, sd = 3) #normal data
-uniform_data <- stats::runif(10000,min=0,max=10) #uniform data
-poisson_data <- stats::rpois(10000, lambda = 5) #poisson data
-gamma_data <- stats::rgamma(10000,shape = 5, rate = 2) #gamma data
-logis_data <- stats::rlogis(10000, location = 4, scale = 2)#logistic values
-weibull_data <- stats::rweibull(10000, shape = 4, scale = 2) #weibull data
-cauchy_data <- stats::rcauchy(10000, location = 8, scale = 5) #cauchy data
+lognormal_data <- stats::rlnorm(n = 4000, meanlog = 1, sdlog = 1) #lognormal data
+normal_data <- stats::rnorm(n = 4000, mean = 10, sd = 3) #normal data
+uniform_data <- stats::runif(4000,min=0,max=10) #uniform data
+poisson_data <- stats::rpois(4000, lambda = 5) #poisson data
+gamma_data <- stats::rgamma(4000,shape = 5, rate = 2) #gamma data
+logis_data <- stats::rlogis(4000, location = 4, scale = 2)#logistic values
+weibull_data <- stats::rweibull(4000, shape = 4, scale = 2) #weibull data
+cauchy_data <- stats::rcauchy(4000, location = 8, scale = 5) #cauchy data
 
 # EXAMPLE FOR is.lognormal
 
@@ -102,7 +102,7 @@ is.lognormal(gamma_data)
 is.lognormal(logis_data)
 is.lognormal(weibull_data)
 is.lognormal(cauchy_data)
-is.lognormal(1:10000)
+is.lognormal(1:4000)
 
 # EXAMPLE FOR is.normal
 
@@ -115,7 +115,7 @@ is.normal(gamma_data)
 is.normal(logis_data)
 is.normal(weibull_data)
 is.normal(cauchy_data)
-is.normal(1:10000)
+is.normal(1:4000)
 
 \dontrun{
 # EXAMPLES for is.uniform
@@ -129,7 +129,7 @@ is.uniform(gamma_data)
 is.uniform(logis_data)
 is.uniform(weibull_data)
 is.uniform(cauchy_data)
-is.uniform(1:10000)
+is.uniform(1:4000)
 }
 \dontrun{
 # EXAMPLE for is.poisson
@@ -143,7 +143,7 @@ is.poisson(gamma_data)
 is.poisson(logis_data)
 is.poisson(weibull_data)
 is.poisson(cauchy_data)
-is.poisson(1:10000)
+is.poisson(1:4000)
 }
 \dontrun{
 # EXAMPLE for is.gamma
@@ -157,7 +157,7 @@ is.gamma(gamma_data)
 is.gamma(logis_data)
 is.gamma(weibull_data)
 is.gamma(cauchy_data)
-is.gamma(1:10000)
+is.gamma(1:4000)
 }
 \dontrun{
 # EXAMPLE for is.logistic
@@ -171,7 +171,7 @@ is.logistic(gamma_data)
 is.logistic(logis_data)
 is.logistic(weibull_data)
 is.logistic(cauchy_data)
-is.logistic(1:10000)
+is.logistic(1:4000)
 }
 \dontrun{
 # Test if the data fits a weibull distribution
@@ -183,7 +183,7 @@ is.weibull(gamma_data)
 is.weibull(logis_data)
 is.weibull(weibull_data)
 is.weibull(cauchy_data)
-is.weibull(1:10000)
+is.weibull(1:4000)
 }
 \dontrun{
 # EXAMPLES for is.cauchy
@@ -197,7 +197,7 @@ is.cauchy(gamma_data)
 is.cauchy(logis_data)
 is.cauchy(weibull_data)
 is.cauchy(cauchy_data)
-is.cauchy(1:10000)
+is.cauchy(1:4000)
 }
 \dontrun{
 # set global distribution alpha
