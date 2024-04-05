@@ -1,15 +1,17 @@
 # quickcode 0.8
 
-- [ ] Revisions to current functions
-    - [ ] in.range
-- [ ] New functions 
+- [x] Revisions to current functions
+    - [x] fAddDate
+- [x] New functions 
     - [x] date1to3
     - [x] date3to1
     - [x] switch_rows
     - [x] switch_cols
     - [x] has.error
-    - [ ] is.lognormal
-    - [ ] is.normal    
+    - [x] is.lognormal
+    - [x] is.normal
+    - [x] getGitRepoStart
+    - [x] getGitRepoChange
     
     
 # quickcode 0.7

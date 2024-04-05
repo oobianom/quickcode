@@ -1,6 +1,6 @@
 Package: quickcode
 Type: Package
-Title: A Compilation of Some Frequently Used R Functions
+Title: A Compilation of Quick and Essential R Tricks for Better Scripts
 Version: 0.8
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")),
@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 URL: https://quickcode.obi.obianom.com
 BugReports: https://github.com/oobianom/quickcode
 Depends: 
-    R (>= 3.6)
+    R (> 3.6)
 Imports: 
     utils,
     grDevices,
