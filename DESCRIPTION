@@ -7,7 +7,7 @@ Authors@R: c(
     person("Brice", "Richard", email = "wem3mew@msn.com", role = "aut")
     )
 Maintainer: Obinna Obianom <idonshayo@gmail.com>
-Description: The NOT functions, 'R' tricks and a compilation of some simple quick plus often used 'R' codes to improve your scripts. Improve the quality and reproducibilty of 'R' scripts.
+Description: The NOT functions, 'R' tricks and a compilation of some simple quick plus often used 'R' codes to improve your scripts. Improve the quality and reproducibility of 'R' scripts.
 License: MIT + file LICENSE
 URL: https://quickcode.obi.obianom.com
 BugReports: https://github.com/oobianom/quickcode

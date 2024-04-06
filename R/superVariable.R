@@ -162,7 +162,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     }
     if(continue){
     ioo <- as.character(i)
-    if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
+    if (not.inherits(value,classi)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
     eval(parse(text = as.character(.r232)))
     assign(ioo, value, envir = .pos80cbca8022ece6174797e10bb8aebf18)
     lockBinding(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)
@@ -176,7 +176,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
       else continue = FALSE
     }
     if(continue){
-    if (classi != class(value)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
+    if (not.inherits(value,classi)) stop("Class of new value must be ", classi, ", the same as the original value of ", i)
     assign(as.character(i), value, envir = .pos80cbca8022ece6174797e10bb8aebf18)
     }
   }

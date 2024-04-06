@@ -1,6 +1,6 @@
 #' Not logical
 #'
-#' Check if entry is a logical object
+#' Opposite of is.logical(). Check if entry is a logical object
 #'
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is logical
@@ -13,4 +13,6 @@
 #'
 #' @export
 
-not.logical <- function(x) !is.logical(x)
+not.logical <- function(x)!{
+  is.logical(x)
+}

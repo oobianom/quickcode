@@ -82,7 +82,7 @@ date3to1 <-
            as.vector = FALSE
   ){
 
-    stopifnot("data.frame" %in% class(data)) # data must be a data frame
+    stopifnot(inherits(data,"data.frame")) # data must be a data frame
     if(has.error(data[,col.YMD]))
       stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
     or.names<- names(data)
@@ -155,7 +155,7 @@ date1to3 <-
            out.cols = c("%Y", "%m", "%d")
   ){
 
-    stopifnot("data.frame" %in% class(data), length(out.cols) > 0) # data must be a data frame
+    stopifnot(inherits(data,"data.frame"), length(out.cols) > 0) # data must be a data frame
     if(has.error(data[,date.col]))
       stop("The columns for Year Month Day (col.YMD) does not exist in the dataset")
 

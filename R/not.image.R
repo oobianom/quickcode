@@ -63,7 +63,9 @@
 #' not.image(v2)
 #' @export
 
-not.image <- function(x) !is.image(x)
+not.image <- function(x)!{
+  is.image(x)
+}
 
 
 

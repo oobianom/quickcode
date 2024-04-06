@@ -13,7 +13,7 @@ not.logical(x)
 a boolean value to indicate if entry is logical
 }
 \description{
-Check if entry is a logical object
+Opposite of is.logical(). Check if entry is a logical object
 }
 \examples{
 test.env <- TRUE

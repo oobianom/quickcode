@@ -13,7 +13,7 @@ not.na(x)
 a boolean value to indicate if entry is NA
 }
 \description{
-Check if entry is not NA
+Opposite of is.na(). Check if entry is not NA
 }
 \examples{
 not.na(NA) # FALSE

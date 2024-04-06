@@ -42,7 +42,7 @@ switch_rows <- function(data, row1, row2, keep.cols = NULL) {
 
   # account for keep.cols
   if (not.null(keep.cols)) {
-    if (class(keep.cols) == "character")
+    if (inherits(keep.cols,"character"))
       keep.cols <- which(names(data) %in% keep.cols)
     .x2[, keep.cols] <- data[row1, keep.cols]
     data[row1, keep.cols] <- data[row2, keep.cols]
@@ -102,11 +102,11 @@ switch_rows <- function(data, row1, row2, keep.cols = NULL) {
 #' @export
 switch_cols <- function(data, col1, col2, keep.rows = NULL) {
   # check
-  stopifnot(col1 != col2, class(keep.rows) != "character")
+  stopifnot(col1 != col2, not.inherits(keep.rows,"character"))
 
   # update column names
-  if (class(col1) == "character") col1 <- which(names(data) %in% col1)
-  if (class(col2) == "character") col2 <- which(names(data) %in% col2)
+  if (inherits(col1,"character")) col1 <- which(names(data) %in% col1)
+  if (inherits(col2,"character")) col2 <- which(names(data) %in% col2)
 
   colnames(data)[c(col1, col2)] <- colnames(data)[c(col2, col1)]
 

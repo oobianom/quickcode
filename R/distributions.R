@@ -49,7 +49,7 @@
 #' is.lognormal(1:4000)
 #'
 #' @export
-is.lognormal <- function(values, alpha = 0.05, method = 1) {
+is.lognormal <- function(values, alpha = 0.05, method = 1)!{
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
@@ -64,16 +64,16 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
     # message("Kolmogorov-Smirnov test for log-normal distribution")
     {
       stats::ks.test(log(values), "pnorm", mean = mean(log(values)), sd = sd(log(values)))
-    }$p.value >= alpha
+    }$p.value < alpha
   } else {
     # Test for log-normal distribution using Shapiro-Wilk test
     if (method == 1) {
       # message("Shapiro-Wilk test for log-normal distribution")
       {
         stats::shapiro.test(log(values))
-      }$p.value >= alpha
+      }$p.value < alpha
     } else {
-      NULL
+      TRUE
     }
   }
 }
@@ -98,7 +98,7 @@ is.lognormal <- function(values, alpha = 0.05, method = 1) {
 #' is.normal(1:4000)
 #'
 #' @export
-is.normal <- function(values, alpha = 0.05, method = 1) {
+is.normal <- function(values, alpha = 0.05, method = 1)!{
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
@@ -111,16 +111,16 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
     # message("Kolmogorov-Smirnov test for normal distribution")
     {
       stats::ks.test(values, "pnorm", mean = mean(values), sd = sd(values))
-    }$p.value >= alpha
+    }$p.value < alpha
   } else {
     # Test for normal distribution using Shapiro-Wilk test
     if (method == 1) {
       # message("Shapiro-Wilk test for normal distribution")
       {
         stats::shapiro.test(values)
-      }$p.value >= alpha
+      }$p.value < alpha
     } else {
-      NULL
+      TRUE
     }
   }
 }
@@ -147,13 +147,13 @@ is.normal <- function(values, alpha = 0.05, method = 1) {
 #' is.uniform(1:4000)
 #' }
 #' @export
-is.uniform <- function(values,alpha = 0.05){
+is.uniform <- function(values,alpha = 0.05)!{
   #override alpha if global significance level set
   if(not.null(options()$qc.sig.alpha.level))
     alpha = options()$qc.sig.alpha.level
   stopifnot(length(values) > 3)
   #test for uniform
-  {stats::ks.test(values, "punif", min(values), max(values))}$p.value >= alpha
+  {stats::ks.test(values, "punif", min(values), max(values))}$p.value < alpha
 }
 
 

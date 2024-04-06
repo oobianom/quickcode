@@ -13,9 +13,10 @@ not.null(x)
 a boolean value to indicate if entry is NULL
 }
 \description{
-Check if entry is not NULL
+Opposite of is.null(). Check if entry is not NULL
 }
 \examples{
+is.null("") # FALSE
 not.null("") # TRUE
 not.null(NULL) # FALSE
 if(not.null(45)) message("something") # yes
