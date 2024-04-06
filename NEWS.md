@@ -8,11 +8,18 @@
     - [x] switch_rows
     - [x] switch_cols
     - [x] has.error
-    - [x] is.lognormal
-    - [x] is.normal
     - [x] getGitRepoStart
     - [x] getGitRepoChange
-    
+    - [x] is.lognormal
+    - [x] is.normal
+    - [x] is.uniform
+    - [x] is.poisson
+    - [x] is.gamma
+    - [x] is.logistic
+    - [x] is.weibull
+    - [x] is.cauchy
+    - [x] setDisAlpha
+    - [x] unsetDisAlpha
     
 # quickcode 0.7
 
