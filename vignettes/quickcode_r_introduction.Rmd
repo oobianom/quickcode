@@ -37,7 +37,7 @@ add.header	Addin snippet function to add header comment to a current opened file
 add.sect.comment	Addin snippet function to custom section comment
 add.snippet.clear	Snippet R function to clear console and set directory
 add_key	Add index keys to a vector or data frame or list or matrix
-ai.duplicate	Prompt guided duplication if files
+ai.duplicate	Prompt guided duplication of files
 archivedPkg	Listing of all CRAN archived R packages
 as.boolean	Convert boolean values between formats
 bionic_txt	Generate a bionic text
