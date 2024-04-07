@@ -75,7 +75,7 @@ duplicate <- function(file, new.name,pattern = NULL, replacement = NULL,open = T
 }
 
 
-#' Prompt guided duplication if files
+#' Prompt guided duplication and editing of files
 #'
 #' AI like duplication and editing of files
 #'
