@@ -2,7 +2,7 @@
 % Please edit documentation in R/duplicate.R
 \name{ai.duplicate}
 \alias{ai.duplicate}
-\title{Prompt guided duplication if files}
+\title{Prompt guided duplication and editing of files}
 \usage{
 ai.duplicate(file = NULL, new.name = NULL, open = TRUE)
 }
