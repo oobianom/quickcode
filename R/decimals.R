@@ -1,4 +1,17 @@
 #' Count the number of decimal places
+#'
+#' @param num a numeric value
+#'
+#' @examples
+#' #example 1
+#' ndecimal(9.000322)
+#'
+#' #example 2
+#' ndecimal(34)
+#'
+#' #example 3
+#' ndecimal(45.)
+#'
 #' @export
 
 ndecimal<-function(num){
@@ -14,18 +27,4 @@ ndecimal<-function(num){
 #
 
 
-saml <- function(...){
-  print(...length())
-  k=match.call()[-1L]
-  print(names(k))
-
-  for(y in 1:3){
-  r= ...elt(y)
-  print(r)
-}
-
-  k
-}
-saml(y=8,k=9,list(1:5))
-...el
 
