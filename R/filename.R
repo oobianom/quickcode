@@ -32,6 +32,7 @@
 #' @export
 
 fAddDate <- function(...,format = "%d-%b-%Y"){
+  stopifnot(...length()>0)
   combine <- paste0(...)
   extt <- tools::file_ext(combine)
   for(ext in extt)
@@ -40,3 +41,14 @@ fAddDate <- function(...,format = "%d-%b-%Y"){
                     paste0(".",ext)),combine)
   combine
 }
+
+# data("USArrests")
+# USArrests$fn = paste0(row.names(USArrests), ".txt")
+# head(fAddDate(USArrests$fn),2)
+#
+#
+# res <- with(data.frame(f=gooo,e=extt),{
+#   b = gsub(paste0("\\.",ext,"$"),
+#            paste0("_",format(Sys.time(), format),
+#                   paste0(".",ext)),f)
+# })
