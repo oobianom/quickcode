@@ -11,7 +11,9 @@
 
 ### R dependency: https://depends.rpkg.net/package/quickcode
 
-### Package stats: https://rpkg.net/package/quickcode
+### Package stats: https://rpkg.net/package/quickcode 
+
+### Author R scholar profile: https://scholar.rpkg.net/aut/obinna+obianom 
 
 ```
 # Install in R

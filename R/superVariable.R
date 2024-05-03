@@ -146,7 +146,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
   }
 
   # FUN
-  els <- c("", ".rm", ".set", ".contains", ".round", ".signif", ".class")
+  els <- c("", ".rm", ".set", ".contains", ".round", ".signif", ".class",".head",".tail")
 
   # remove
   rmv <- function() {
@@ -191,6 +191,21 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     assign(ioo, bv, envir = .pos80cbca8022ece6174797e10bb8aebf18)
     if (lock) lockBinding(ioo, env = .pos80cbca8022ece6174797e10bb8aebf18)
   }
+
+  # head
+  headd <- function(n = 10) {
+    .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
+    stopifnot(inherits(.l,"data.frame")) # data must be a data frame
+    print(.l[1:n,])
+  }
+  # head
+  taill <- function(n = 10) {
+    .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
+    stopifnot(inherits(.l,"data.frame")) # data must be a data frame
+    print(.l[(nrow(.l)-n+1):nrow(.l),])
+  }
+
+
 
   # significant figures
   sgif <- function(digits = 0) {
@@ -240,6 +255,15 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     assign(paste0(i, els[4]), .join(cntsa), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[5]), .join(rldd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[6]), .join(sgif), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+
+    if(inherits(value,"data.frame")){
+      #if data frame, add the head and tail functions
+      assign(paste0(i, els[8]), .join(headd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+      assign(paste0(i, els[9]), .join(taill), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    }else{
+      els <- els %-% c(".head",".tail")
+    }
+
     if(editn1 != 0)
       assign(paste0(i, els[3]), .join(ifelse(lock, setv, setl)), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     else els <- els[els!=".set"]
@@ -250,6 +274,13 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
 }
 
 
+
+#' Shorthand to subtract element from list
+#' @export
+#'
+`%-%` <- function(char1,char2,return=FALSE){
+  char1[char1%nin%char2]
+}
 
 
 

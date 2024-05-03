@@ -19,8 +19,8 @@
 #' vector_num1[vector_num1 %nin% c(83615,85229)]#return values not 83615 or 85229
 #' @export
 
-`%nin%` <- function(x, table) {
-  !(x %in% table)
+`%nin%` <- function(x, table)!{
+  (x %in% table)
 }
 
 `%nin%` -> `%!in%`
