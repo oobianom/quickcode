@@ -28,27 +28,20 @@
 #' # Task 4
 #' fAddDate(c("path1/","path2/"),"filepre","filemid",c("fileend.png",".pdf"))
 #'
-#'
+#' # Task 5
+#' data("USArrests")
+#' USArrests$fn = paste0(row.names(USArrests), ".txt")
+#' head(fAddDate(USArrests$fn),10)
 #' @export
 
 fAddDate <- function(...,format = "%d-%b-%Y"){
   stopifnot(...length()>0)
   combine <- paste0(...)
   extt <- tools::file_ext(combine)
-  for(ext in extt)
-    combine <- gsub(paste0("\\.",ext,"$"),
-                    paste0("_",format(Sys.time(), format),
-                    paste0(".",ext)),combine)
-  combine
+  apply(data.frame(f=combine,e=extt), 1, function(e){
+    gsub(paste0("\\.",e['e'],"$"),
+         paste0("_",format(Sys.time(), format),
+                paste0(".",e['e'])),e['f'])
+  })
 }
 
-# data("USArrests")
-# USArrests$fn = paste0(row.names(USArrests), ".txt")
-# head(fAddDate(USArrests$fn),2)
-#
-#
-# res <- with(data.frame(f=gooo,e=extt),{
-#   b = gsub(paste0("\\.",ext,"$"),
-#            paste0("_",format(Sys.time(), format),
-#                   paste0(".",ext)),f)
-# })
