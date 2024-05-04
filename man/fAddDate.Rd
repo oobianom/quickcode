@@ -40,5 +40,8 @@ fAddDate("one_file_name_fileend.pdf")
 # Task 4
 fAddDate(c("path1/","path2/"),"filepre","filemid",c("fileend.png",".pdf"))
 
-
+# Task 5
+data("USArrests")
+USArrests$fn = paste0(row.names(USArrests), ".txt")
+head(fAddDate(USArrests$fn),10)
 }
