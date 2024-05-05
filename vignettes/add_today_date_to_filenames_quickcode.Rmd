@@ -1,0 +1,124 @@
+---
+title: "Easily add today's date to filenames in R using quickcode package"
+author: "Obinna (OBI) Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Easily add today's date to filenames in R using quickcode package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+# quickcode::clean(clearPkgs = TRUE) #clear environment and clear previous package
+quickcode::libraryAll(datasets) #load in-built dataset
+```
+
+## fAddDate function
+
+#### In R, data often gets saved to files for future use or subsequent processes. However, without a version control system in place, ensuring the consistency and reproducibility of saved data can pose challenges, particularly when scripts evolve over time. The "fAddDate" function addresses such concerns by automatically appending the current date to the file name, mitigating the risk of data loss and enhancing reproducibility. By simplifying the process with just a single line of code, users no longer need to manually update the date of each run, thereby streamlining workflow efficiency. Reproducibility in programming is crucial for maintaining the integrity of analyses and fostering trust in research outcomes. Ensuring that results can be consistently replicated not only enhances transparency but also facilitates collaboration and builds confidence in the reliability of findings. Therefore, by incorporating automated date stamping, this function not only safeguards against data inconsistency but also reinforces the fundamental principles of reproducible research in R programming.
+
+![](https://quickcode.obi.obianom.com/fadddate.png)
+
+## Usage
+
+Let's load the USArrests data. And let's assume that we want to save data to the system using the content of the row names as our file names.
+
+```{r}
+data("USArrests")
+
+filenames = paste0(row.names(USArrests), ".txt")
+
+head(filenames,8) # before adding today's date
+
+rev.filenames = fAddDate(filenames) # append today's date to the file names
+
+rev.filenames
+
+#...write further codes to use the file names to save new files.
+
+```
+
+## List of other cool functions to use
+
+```
+
+%nin%	Not in vector or array
+add.header	Addin snippet function to add header comment to a current opened file
+add.sect.comment	Addin snippet function to custom section comment
+add.snippet.clear	Snippet R function to clear console and set directory
+add_key	Add index keys to a vector or data frame or list or matrix
+ai.duplicate	Prompt guided duplication of files
+archivedPkg	Listing of all CRAN archived R packages
+as.boolean	Convert boolean values between formats
+bionic_txt	Generate a bionic text
+clean	Clear environment, clear console, set work directory and load files
+compHist	Compare histograms of two distributions
+data_pop	Remove last n rows or column or specified elements from a data frame like array_pop in PHP
+data_pop_filter	Remove elements from a data matching filter
+data_push	Add data to another data like array_push in PHP
+data_rep	Duplicate a data rows or columns X times
+data_shuffle	Shuffle a data frame just like shuffle in PHP
+date1to3	Combine vectors to create Date, or split Date into vectors
+date3to1	Combine vectors to create Date, or split Date into vectors
+duplicate	Duplicate a file with global text replacement
+fAddDate	Append date to filename
+genRandImg	Download random images from the web
+geo.cv	Calculate geometric coefficient of variation, mean, or SD and round
+geo.mean	Calculate geometric coefficient of variation, mean, or SD and round
+geo.sd	Calculate geometric coefficient of variation, mean, or SD and round
+has.error	Check if a call or expression produces errors
+header.rmd	Snippet function to add header to a current Rmd opened file
+in.range	If number falls within a range of values and get closest values
+inc	Increment vector by value
+init	Initialize new variables and objects
+insertInText	Shiny app function to insert string to current file in RStudio
+is.gamma	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.image	Is file name extension(s) an image
+is.logistic	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.lognormal	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.normal	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.poisson	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.uniform	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+is.weibull	Check if a data fits a Normal or LogNormal or Uniform or Poisson or Gamma distribution
+libraryAll	Load specific R libraries and clear environment
+list_push	Add elements to a list like array_push in PHP
+list_shuffle	Shuffle a list object just like shuffle in PHP
+minus	Decrease vector by value
+mix.color	Mix or Blend two or more colors
+mix.cols.btw	Mix or Blend colors between two or more colors
+multiply	Multiple a vector of numeric values
+newSuperVar	Create and use a super variable with unique capabilities
+not.data	Not a data
+not.duplicated	Not duplicated elements
+not.empty	Not empty
+not.environment	Not an environment
+not.exists	Not exists
+not.image	File name extension(s) is Not an image
+not.integer	Not an integer
+not.logical	Not logical
+not.na	Not NA
+not.null	Not NULL
+not.numeric	Not numeric
+not.vector	Not a vector
+number	Generate a random number (integer)
+pairDist	Calculate the distance of points from the center of a cluster
+plus	Increment vector by value
+randString	Generate a random string
+rcolorconst	R Color Constant
+rDecomPkg	Check whether an R package has been decommissioned in CRAN
+read.csv.print	Read a CSV and preview first X rows and columns
+read.table.print	Read in a table and show first X rows and columns
+refresh	Clear environment, clear console, set work directory and load files
+sample_by_column	Re-sample a dataset by column and return number of entry needed
+setOnce	Set a variable only once
+sim.logistic	Generate logistic random values
+strsplit.bool	Split a string of values and return as boolean vector
+strsplit.num	Split a string of numbers and return as numeric vector
+summarize.envobj	Get all the environment objects and their sizes
+vector_pop	Remove last n elements or specified elements from a vector like array_pop in PHP
+vector_push	Add elements to a vector like array_push in PHP
+vector_shuffle	Shuffle a vector just like shuffle in PHP
+yesNoBool	Convert Yes/No to Binary or Logical
+
+```
