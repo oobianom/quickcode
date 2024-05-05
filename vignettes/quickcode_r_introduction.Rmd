@@ -1,10 +1,10 @@
 ---
-title: "NOT functions, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package"
-author: "Obinna (OBI) Obianom"
+title: "NOT functions, is.log, is.poisson, is.weibull, date3to1, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package"
+author: "Obinna (OBI) Obianom, Brice Richard"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{NOT functions, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package}
+  %\VignetteIndexEntry{NOT functions, is.log, is.poisson, is.weibull, date3to1, genRandImg, vector_shuffle, data_pop,  and init function amongst many great new functions in the quickcode R package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
