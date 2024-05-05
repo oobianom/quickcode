@@ -1,6 +1,9 @@
-#' Convert Date to Numeric Week
+#' Derive Numeric Week Based on Dates
 #'
-#' Convert the input date to week
+#' Convert the range of date to number of weeks
+#'
+#' @param start_date the start date
+#' @param end_date the end date
 #'
 #' @export
 #'
