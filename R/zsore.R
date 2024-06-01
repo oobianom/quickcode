@@ -4,6 +4,7 @@
 #'
 #' @param data dataiable
 #' @param round round output to how many decimal place description
+#' @param na.rm remove NA values before calculating z-scores
 #'
 #' @examples
 #' Capture z-scores from the following distribution x
@@ -15,8 +16,8 @@
 #' head(df)
 #' @export
 
-zscore <- function(data, round) {
-  .x <- (data - mean(data, na.rm = TRUE)) / sd(data, na.rm = TRUE)
+zscore <- function(data, round, na.rm = TRUE) {
+  .x <- (data - mean(data, na.rm = na.rm)) / sd(data, na.rm = na.rm)
   if(!missing(round)){
    .x <-  round(.x, round)
   }
