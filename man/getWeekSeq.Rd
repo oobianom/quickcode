@@ -2,15 +2,25 @@
 % Please edit documentation in R/dat2week.R
 \name{getWeekSeq}
 \alias{getWeekSeq}
-\title{Derive Numeric Week Based on Dates}
+\title{Convert Dates into Numeric Week Counts}
 \usage{
-getWeekSeq(start_date, end_date)
+getWeekSeq(start_date, end_date, date, seq)
 }
 \arguments{
-\item{start_date}{the start date}
+\item{start_date}{A scaler of class Date (if this argument is populated, the date arg must be empty)}
 
-\item{end_date}{the end date}
+\item{end_date}{A scaler of class Date; must be later than the start_date (if this argument is populated, the date arg must be empty)}
+
+\item{date}{A variable of dates that need not be sequential but that reference values of class Date; if this argument is populated, the start_date and end_date arguments must be empty}
+
+\item{seq}{= The sequential method used to generate the data frame; the options for configuring this argument are as follows:
+\cr\cr - bywk
+\cr\cr - byseq
+\cr\cr - bycont}
 }
 \description{
 Convert the range of date to number of weeks
+}
+\note{
+The default configuration for the seq argument should be "bywk."
 }
