@@ -26,7 +26,8 @@ getWeekSeq <- function(start_date, end_date, date, seq) {
   # Create a data frame
   week_df <- data.frame(DATE = date_sequence)
 
-  # Add a column for the week's sequence starting with the numeric week of the year as provided by lubridate's week function
+  # Add a column for the week's sequence starting with the numeric
+  # week of the year as provided by lubridate's week function
   sequence = lubridate::week(week_df$DATE)
   week_df$WEEK <- paste("WEEK", sequence)
 
