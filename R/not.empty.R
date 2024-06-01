@@ -2,6 +2,7 @@
 #'
 #' Check if entry is not empty
 #'
+#' @rdname empty
 #' @param x vector entry
 #' @return a boolean value to indicate if entry is empty
 #' @examples
@@ -17,6 +18,12 @@ not.empty <- function(x){
   eval
 }
 
+#' @rdname empty
+#' @export
+
+is.empty <- function(x)!{
+  not.empty(x)
+}
 
 #' Not exists
 #'
