@@ -4,6 +4,8 @@
     - [x] clean/refresh
 - [x] New functions 
     - [ ] getWeekSeq
+    - [ ] zscore
+    - [ ] getDistribution
 
 # quickcode 0.8
 
