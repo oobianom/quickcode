@@ -1,5 +1,12 @@
 # quickcode 0.8
 
+- [x] Fixed bugs in functions
+    - [x] clean/refresh
+- [x] New functions 
+    - [ ] getWeekSeq
+
+# quickcode 0.8
+
 - [x] Revisions to current functions
     - [x] fAddDate
 - [x] New functions 
