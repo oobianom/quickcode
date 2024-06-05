@@ -96,7 +96,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   # source in any required files
   if (length(source)) {
     for (sourced in source) {
-      message("Importing ",loaded)
+      message("Importing ",sourced)
       if (file.exists(sourced)) source(sourced)
       else warning(sourced," does not exist.\n")
     }
