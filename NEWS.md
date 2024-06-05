@@ -1,4 +1,4 @@
-# quickcode 0.8
+# quickcode 0.9
 
 - [x] Fixed bugs in functions
     - [x] clean/refresh
