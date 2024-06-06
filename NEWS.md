@@ -3,8 +3,8 @@
 - [x] Fixed bugs in functions
     - [x] clean/refresh
 - [x] New functions 
-    - [ ] getWeekSeq
-    - [ ] zscore
+    - [x] getWeekSeq
+    - [x] zscore
     - [ ] getDistribution
 
 # quickcode 0.8
