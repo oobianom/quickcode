@@ -2,10 +2,10 @@
 % Please edit documentation in R/supervariable.R
 \name{\%-\%}
 \alias{\%-\%}
-\title{Shorthand to subtract element from list}
+\title{Shorthand to subtract elements from vector or minus two lists}
 \usage{
-char1 \%-\% char2
+item1 \%-\% item2
 }
 \description{
-Shorthand to subtract element from list
+Shorthand to subtract elements from vector or minus two lists
 }
