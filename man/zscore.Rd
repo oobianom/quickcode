@@ -2,14 +2,19 @@
 % Please edit documentation in R/zsore.R
 \name{zscore}
 \alias{zscore}
+\alias{ZscoreGrowthCurve}
 \title{Calculates Z-Scores of a distribution}
 \usage{
-zscore(data, round)
+zscore(data, round, na.rm = TRUE)
+
+ZscoreGrowthCurve(X, M, S, L = !0)
 }
 \arguments{
 \item{data}{dataiable}
 
 \item{round}{round output to how many decimal place description}
+
+\item{na.rm}{remove NA values before calculating z-scores}
 }
 \description{
 Calculates Z-Scores based on data
