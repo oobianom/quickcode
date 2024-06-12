@@ -275,11 +275,19 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
 
 
 
-#' Shorthand to subtract element from list
+#' Shorthand to subtract elements from vector or minus two lists
 #' @export
 #'
-`%-%` <- function(char1,char2,return=FALSE){
-  char1[char1%nin%char2]
+`%-%` <- function(item1,item2,return=FALSE){
+  if(!all(class(item1) == class(item2))) stop("Both variables must have the same class")
+
+  res <- "The variables have to be either two lists or two character vectors"
+  if(inherits(char1,"character"))
+  res <- char1[char1%nin%char2]
+  if(inherits(item1,"list"))
+  res <- mapply('-', y, x, SIMPLIFY = FALSE)
+
+  res
 }
 
 
