@@ -1,7 +1,7 @@
 #' Calculates Z-Scores of a distribution
 #'
 #' Calculates Z-Scores based on data
-#'
+#' @rdname zscore
 #' @param data dataiable
 #' @param round round output to how many decimal place description
 #' @param na.rm remove NA values before calculating z-scores
@@ -22,4 +22,19 @@ zscore <- function(data, round, na.rm = TRUE) {
    .x <-  round(.x, round)
   }
   .x
+}
+
+
+
+#' @rdname zscore
+#'
+#' @export
+
+ZscoreGrowthCurve <- function(X,M,S,L=!0){
+  stopifnot(is.numeric(L))
+  if(L){
+   (((X/M)**L) - 1)/(L*S)
+  }else{
+   ln(X/M)/S
+  }
 }
