@@ -27,7 +27,12 @@ zscore <- function(data, round, na.rm = TRUE) {
 
 
 #' @rdname zscore
+#' @param X description
+#' @param M description
+#' @param S description
+#' @param L description
 #'
+#' @references CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/zscore.htm
 #' @export
 
 ZscoreGrowthCurve <- function(X,M,S,L=!0){
@@ -35,6 +40,6 @@ ZscoreGrowthCurve <- function(X,M,S,L=!0){
   if(L){
    (((X/M)**L) - 1)/(L*S)
   }else{
-   ln(X/M)/S
+   log(X/M)/S
   }
 }
