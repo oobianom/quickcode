@@ -21,7 +21,9 @@ This function removes all NAs prior to sorting the vector
 # sort by length of content
 x = c("acs","tt","jdssr","h","grab")
 y = sort.length(vec = x)
+y
 z = sort.length(vec = x, asc = FALSE)
+z
 
 
 }
