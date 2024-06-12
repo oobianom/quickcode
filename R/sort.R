@@ -6,6 +6,7 @@
 #' @param asc TRUE or FALSE whether to sort by ascending or descending order
 #' @note
 #' This function removes all NAs prior to sorting the vector
+#'
 #' @examples
 #' # sort by length of content
 #' x = c("acs","tt","jdssr","h","grab")
