@@ -11,7 +11,9 @@
 #' # sort by length of content
 #' x = c("acs","tt","jdssr","h","grab")
 #' y = sort.length(vec = x)
+#' y
 #' z = sort.length(vec = x, asc = FALSE)
+#' z
 #'
 #'
 #' @export
