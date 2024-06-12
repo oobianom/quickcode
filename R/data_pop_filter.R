@@ -12,7 +12,7 @@
 #'
 #' #task: remove all mpg > 20
 #' data.01 #data.01 data before pop
-#' data_pop_filter2(data.01,mpg > 15) #computes and resaves to variable
+#' data_pop_filter(data.01,mpg > 15) #computes and resaves to variable
 #' #note: this is different from subset(data.01,data.01$mpg > 15)
 #' data.01 #modified data after pop based on filter
 #'
@@ -24,7 +24,7 @@
 #' @export
 #'
 
-data_pop_filter2 <- function(.,remove){
+data_pop_filter <- function(.,remove){
   .. <- substitute(.)
   .... <- substitute(remove)
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
