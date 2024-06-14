@@ -32,6 +32,14 @@ zscore <- function(data, round, na.rm = TRUE) {
 #' @param S description
 #' @param L description
 #'
+#' @examples
+#' # Calculate the zscore for a patient weighing 50kg
+#' L=-0.1600954
+#' M=9.476500305
+#' S=0.11218624
+#' X=50
+#' ZscoreGrowthCurve(X,M,S,L)
+#'
 #' @references CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/zscore.htm
 #' @export
 
