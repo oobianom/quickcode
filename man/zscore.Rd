@@ -15,6 +15,14 @@ ZscoreGrowthCurve(X, M, S, L = !0)
 \item{round}{round output to how many decimal place description}
 
 \item{na.rm}{remove NA values before calculating z-scores}
+
+\item{X}{description}
+
+\item{M}{description}
+
+\item{S}{description}
+
+\item{L}{description}
 }
 \description{
 Calculates Z-Scores based on data
@@ -27,4 +35,14 @@ z_scores = zscore(x) # no decimal place limit
 
 df = data.frame(val = x, zscore = z_scores)
 head(df)
+# Calculate the zscore for a patient weighing 50kg
+L=-0.1600954
+M=9.476500305
+S=0.11218624
+X=50
+ZscoreGrowthCurve(X,M,S,L)
+
+}
+\references{
+CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/zscore.htm
 }
