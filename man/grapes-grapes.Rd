@@ -6,6 +6,11 @@
 \usage{
 item1 \%-\% item2
 }
+\arguments{
+\item{item1}{first vector or list}
+
+\item{item2}{second vector or list}
+}
 \description{
 Shorthand to subtract elements from vector or minus two lists
 }
