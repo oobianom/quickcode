@@ -57,4 +57,58 @@ add_key <- function(vector){
   assign(as.character(..), ., envir = parent.frame())
 }
 
-#message("Function being further developed to accomodate data frames and other lists")
+
+
+
+#' Return index keys to a vector or data frame or list or matrix
+#'
+#' Index a vector or lists and convert to a list of objects
+#'
+#' @param . vector or data frame to transform
+#' @return a transformed list containing keys along with vector values
+#' @details
+#' This function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
+#' This allows the output to be used in loops such as for loops or lapply or other functions to track
+#' the index of the list content e.g. 1,2,3...\cr\cr
+#'
+#' This function also contains a validator to ensure that a vector had not been previously 'keyed',
+#' which prevents the user from inadvertently calling the function twice on a vector. Helps especially
+#' because the function keys the vector, and sets the new list to the variable name of the original
+#' vector.
+#'
+#'
+#' @section Use case:
+#' Efficient for loops and for tracking various steps through a vector contents
+#'
+#' @examples
+#' #ex1 simple conversion of a vector
+#' rti2 <- c("rpkg","obinna", "obianom")
+#' indexed(rti2)
+#'
+#' #ex2 add keys to a vector content for use in downstream processes
+#' ver1 <- c("Test 1","Test 2","Test 3")
+#'
+#'
+#' #ex3 use keyed ver1 in for loop
+#' for(i in indexed(ver1)){
+#'   message(sprintf("%s is the key for this %s", i$key, i$value))
+#' }
+#'
+#' #ex4 use keyed ver1 in lapply loop
+#' xl1 <- lapply(indexed(ver1),function(i){
+#'   message(sprintf("lapply - %s is the key for this %s", i$key, i$value))
+#' })
+#'
+#'
+#' @export
+#'
+indexed <- function(.){
+  #create list and add keys
+  . = list()
+  iky = 1
+  for(i in vector){
+    .[[length(.)+1]] <- list(key = iky, value = i)
+    inc(iky)
+  }
+  .
+}
