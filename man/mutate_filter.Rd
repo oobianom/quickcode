@@ -4,7 +4,12 @@
 \alias{mutate_filter}
 \title{Mutate a subset of dataset, and reattach it to the dataset}
 \usage{
-mutate_filter(., filter, ...)
+mutate_filter(., filter., ...)
+}
+\arguments{
+\item{...}{mutation syntax similar to dplyr::mutate}
+
+\item{filter}{subset of data to modify}
 }
 \description{
 Mutate a subset of dataset, and reattach it to the dataset
