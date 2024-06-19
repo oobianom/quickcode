@@ -14,6 +14,9 @@
 #' because the function keys the vector, and sets the new list to the variable name of the original
 #' vector.
 #'
+#' @note
+#' add_key - resaves the keys
+#' indexed - return the keys
 #'
 #' @section Use case:
 #' Efficient for loops and for tracking various steps through a vector contents
