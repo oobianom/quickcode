@@ -17,7 +17,7 @@
 #'
 #' @section Use case:
 #' Efficient for loops and for tracking various steps through a vector contents
-#'
+#' @rdname addkey
 #' @examples
 #' #ex1 simple conversion of a vector
 #' rti2 <- c("rpkg","obinna", "obianom")
@@ -63,7 +63,7 @@ add_key <- function(vector){
 #' Return index keys to a vector or data frame or list or matrix
 #'
 #' Index a vector or lists and convert to a list of objects
-#'
+#' @rdname addkey
 #' @param . vector or data frame to transform
 #' @return a transformed list containing keys along with vector values
 #' @details
