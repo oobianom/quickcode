@@ -4,13 +4,21 @@
 \alias{mutate_filter}
 \title{Mutate a subset of dataset, and reattach it to the dataset}
 \usage{
-mutate_filter(., filter., ...)
+mutate_filter(., subset, ...)
 }
 \arguments{
-\item{filter.}{subset of data to modify}
+\item{subset}{subset of data to modify}
 
 \item{...}{mutation syntax similar to dplyr::mutate}
 }
+\value{
+data frame containing original data, but with a subset mutated
+}
 \description{
-Mutate a subset of dataset, and reattach it to the dataset
+Extension of the dplyr::mutate function that allows the user to mutate only a specific filtered subset of a data, while leaving the other parts of the data intact
+}
+\examples{
+#mutate a subsection filter of mtcars
+dt =mtcars
+mutate_filter(dt,mpg == 21.0 & cyl == 6, cyl=1000,hp=2000,vs=hp*2)
 }
