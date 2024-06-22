@@ -55,3 +55,5 @@ getGitRepoChange = function(repo_name,out.format = "%Y-%m-%d"){
   pat = unlist(gregexpr("updated_at", read)) + 13
   format(as.POSIXct(substr(read, start = pat, stop = pat + 18), format = "%Y-%m-%dT%H:%M:%S"),out.format)
 }
+
+
