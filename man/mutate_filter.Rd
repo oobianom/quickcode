@@ -7,9 +7,9 @@
 mutate_filter(., filter., ...)
 }
 \arguments{
-\item{...}{mutation syntax similar to dplyr::mutate}
+\item{filter.}{subset of data to modify}
 
-\item{filter}{subset of data to modify}
+\item{...}{mutation syntax similar to dplyr::mutate}
 }
 \description{
 Mutate a subset of dataset, and reattach it to the dataset
