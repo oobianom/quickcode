@@ -1,3 +1,8 @@
+#' Get the IP address of the current user
+#'
+#' Obtain my IP address
+#'
+#' @rdname cybersecurity
 #' @export
 #'
 getMyIP <- function() {
