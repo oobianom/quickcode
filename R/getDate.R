@@ -29,3 +29,15 @@ extract_IP <- function(input) {
   # Return the extracted IP addresses (or an empty list if not found)
   unlist(extracted_ips)
 }
+
+
+#' Combine unique() and length()
+#'
+#' Combine two frequently used function together
+#'
+#' @param . object
+#' @export
+
+unique.len <- function(.){
+  length(unique(.))
+}
