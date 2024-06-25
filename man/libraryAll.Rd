@@ -4,7 +4,13 @@
 \alias{libraryAll}
 \title{Load specific R libraries and clear environment}
 \usage{
-libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = TRUE)
+libraryAll(
+  ...,
+  lib.loc = NULL,
+  quietly = FALSE,
+  clear = TRUE,
+  clearPkgs = FALSE
+)
 }
 \arguments{
 \item{...}{multiple library names}
@@ -14,6 +20,8 @@ libraryAll(..., lib.loc = NULL, quietly = FALSE, clear = TRUE)
 \item{quietly}{OPTIONAL. attach library quietly}
 
 \item{clear}{OPTIONAL. clear environment after attach}
+
+\item{clearPkgs}{Clear previous loaded packages, TRUE or FALSE}
 }
 \value{
 loaded libraries and clear environment
