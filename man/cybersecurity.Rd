@@ -8,9 +8,12 @@
 \usage{
 get_active_conn()
 
-extract_IP(input_string)
+extract_IP(input)
 
 getMyIP()
+}
+\arguments{
+\item{input}{input string containing IP}
 }
 \value{
 a data frame containing the list of all connextions
