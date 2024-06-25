@@ -7,6 +7,7 @@
 #' @param lib.loc OPTIONAL. library store location
 #' @param quietly OPTIONAL. attach library quietly
 #' @param clear OPTIONAL. clear environment after attach
+#' @param clearPkgs Clear previous loaded packages, TRUE or FALSE
 #' @return loaded libraries and clear environment
 #' @examples
 #' \donttest{
@@ -32,7 +33,11 @@
 #' }
 #' @export
 
-libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE) {
+libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE, clearPkgs = FALSE) {
+  # remove previous loaded packages
+  if (clearPkgs) {
+    clearPreviouslyLoadedPkgs()
+  }
   # load quickcode if not loaded
   if("quickcode" %nin% (.packages())) library(quickcode, quietly = TRUE)
   # load user requested libraries
