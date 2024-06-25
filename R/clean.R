@@ -75,18 +75,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 
   # remove previous loaded packages
   if (clearPkgs) {
-    deftPkg <- c("base", "quickcode", getOption("defaultPackages"))
-    for (i in grep("package:", search(), value = TRUE)) {
-      curr <- strsplit(i, ":")[[1]][2]
-      if (curr %nin% deftPkg){
-        tryCatch({
-          detach(name = i, character.only = TRUE, force = TRUE)
-        }, warning = function(w) {},
-        error = function(e) {},
-        finally = {})
-
-      }
-    }
+    clearPreviouslyLoadedPkgs()
   }
 
   # load quickcode if not loaded
@@ -169,3 +158,18 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 #'
 refresh <- clean
 
+
+clearPreviouslyLoadedPkgs <- function(){
+  deftPkg <- c("base", "quickcode", getOption("defaultPackages"))
+  for (i in grep("package:", search(), value = TRUE)) {
+    curr <- strsplit(i, ":")[[1]][2]
+    if (curr %nin% deftPkg){
+      tryCatch({
+        detach(name = i, character.only = TRUE, force = TRUE)
+      }, warning = function(w) {},
+      error = function(e) {},
+      finally = {})
+
+    }
+  }
+}
