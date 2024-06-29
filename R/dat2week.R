@@ -34,36 +34,42 @@ getWeekSeq <- function(start_date, end_date, in.format = "%m/%d/%y") {
 
 weeki <- function (x)
 {
-  (yday1(x) - 1)%/%7 + 1
+  unlist(lapply(x, function(h){
+    (yday2(h) - 1)%/%7 + 1
+  }))
+}
+yday2 = function(date){
+  .year <- as.numeric(format(date,"%Y"))
+  .month <- as.numeric(format(date,"%m"))
+  .day <- as.numeric(format(date,"%d"))
+  dinm <- c(31,28,31,30,31,30,31,31,30,31,30,31)
+  if(is.leap(.year)) dinm[2] <- 29
+  cumsum(dinm)[.month-1]+.day
 }
 
-yday1 <- function(date) {
-
-
-  year <- as.numeric(format(start, "%Y"))
-  month <- as.numeric(format(date, "%m"))
-  day <- as.numeric(format(date, "%d"))
-
-  # Calculate days in months
-  monthsDays <- function(year) {
-    days <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-    if(year%%400 == 0 || (year%%100 != 0 && year%%4 == 0)) days[2] <- 29
-    days
-  }
-
-  days_in_months <- function(year) {
-    cumsum(c(0, monthsDays(year)))
-  }
-
-  # Calculate day of year
-  doy <- days_in_months(year)[month] + day - 1
-
-  return(doy)
-
-}
 
 #' @rdname date-topic
+#' @param x date item to check
 #' @export
 is.Date <- function(x){
   inherits(x, "Date")
 }
+#' @rdname date-topic
+#' @export
+not.Date <- function(x)!{
+  inherits(x, "Date")
+}
+
+#' @rdname date-topic
+#' @param year year numeric value eg 1989
+#' @export
+is.leap <- function(y){
+  if(missing(y)) y = as.numeric(format(Sys.Date(),"%Y"))
+  y = as.numeric(y)
+  unlist(lapply(y, function(y1){
+    y1%%4==0 && !(y1%%100==0 && y1%%400!=0)
+  }))
+
+}
+
+
