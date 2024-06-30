@@ -11,6 +11,7 @@
 #' @return loaded libraries and clear environment
 #' @examples
 #' \donttest{
+#' # load packages and print their versions to the console
 #' libraryAll(base) #one package
 #'
 #' libraryAll(
@@ -30,6 +31,13 @@
 #' libraryAll(
 #'   base,
 #' clear = FALSE) #do not clear console after load
+#'
+#' # clear previously loaded packages, then load r2resize and r2social
+#' libraryAll(
+#'   r2resize,
+#'   r2social,
+#'   clearPkgs = TRUE
+#' )
 #' }
 #' @export
 
