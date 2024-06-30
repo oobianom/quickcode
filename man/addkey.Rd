@@ -16,12 +16,8 @@ indexed(.)
 }
 \value{
 a transformed list containing keys along with vector values
-
-a transformed list containing keys along with vector values
 }
 \description{
-Index a vector or lists and convert to a list of objects
-
 Index a vector or lists and convert to a list of objects
 }
 \details{
@@ -44,18 +40,18 @@ because the function keys the vector, and sets the new list to the variable name
 vector.
 }
 \note{
-add_key - resaves the keys
+add_key - resaves the keys \cr\cr
 indexed - return the keys
 }
 \section{Use case}{
 
 Efficient for loops and for tracking various steps through a vector contents
-
-
-Efficient for loops and for tracking various steps through a vector contents
 }
 
 \examples{
+# EXAMPLES for add_key()
+
+
 #ex1 simple conversion of a vector
 rti2 <- c("rpkg","obinna", "obianom")
 add_key(rti2)
@@ -75,6 +71,8 @@ xl1 <- lapply(ver1,function(i){
   message(sprintf("lapply - \%s is the key for this \%s", i$key, i$value))
 })
 
+
+# EXAMPLES for indexed()
 
 #ex1 simple conversion of a vector
 rti2 <- c("rpkg","obinna", "obianom")
