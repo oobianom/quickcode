@@ -25,26 +25,21 @@ getWeekSeq <- function(start_date, end_date, in.format = "%m/%d/%y") {
 
   # Add a column for the week's sequence starting with the numeric
   # week of the year as provided by lubridate's week function
-  week_df$WEEK <- weeki(week_df$DATE)
-
+  week_df$WEEK <- unlist(lapply(week_df$DATE, function(h){
+    (yday2(h) - 1)%/%7 + 1
+  }))
   week_df
 }
 
 
 
-weeki <- function (x)
-{
-  unlist(lapply(x, function(h){
-    (yday2(h) - 1)%/%7 + 1
-  }))
-}
 yday2 = function(date){
   .year <- as.numeric(format(date,"%Y"))
   .month <- as.numeric(format(date,"%m"))
   .day <- as.numeric(format(date,"%d"))
-  dinm <- c(31,28,31,30,31,30,31,31,30,31,30,31)
+  dinm <- c(0,31,28,31,30,31,30,31,31,30,31,30,31)
   if(is.leap(.year)) dinm[2] <- 29
-  cumsum(dinm)[.month-1]+.day
+  cumsum(dinm)[.month]+.day
 }
 
 
@@ -69,7 +64,6 @@ is.leap <- function(y){
   unlist(lapply(y, function(y1){
     y1%%4==0 && !(y1%%100==0 && y1%%400!=0)
   }))
-
 }
 
 
