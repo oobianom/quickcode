@@ -5,7 +5,8 @@
 - [x] New functions 
     - [x] getWeekSeq
     - [x] zscore
-    - [ ] getDistribution
+    - [x] getDistribution
+    - And many more...check documentation and website
 
 # quickcode 0.8
 
