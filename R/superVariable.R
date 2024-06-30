@@ -274,12 +274,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
 }
 
 
-
-#' Shorthand to subtract elements from vector or minus two lists
-#' @param item1 first vector or list
-#' @param item2 second vector or list
-#' @export
-#'
+# will be exported in future release
 `%-%` <- function(item1,item2,return=FALSE){
   if(!all(class(item1) == class(item2))) stop("Both variables must have the same class")
   res <- "The variables have to be either two lists or two character vectors"
@@ -289,27 +284,3 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
   res <- mapply('-', item1, item2, SIMPLIFY = FALSE)
   res
 }
-
-
-
-# to-do v0.9
-# function to track function usage
-# type3 <-function(x)type1(x)
-# type1 <- function(x){
-#   mean(x)
-#   sd(x)
-#   tracker()
-# }
-#
-# tracker <- function(apiId){
-#   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
-#   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
-#   print(getFuncName)
-#   ls("package:quickcode")
-# }
-
-
-
-
-#assign(".pos80cbca8022ece6174797e10bb8aebf18", .pos80cbca8022ece6174797e10bb8aebf18, envir = .pos80cbca8022ece6174797e10bb8aebf18)
-#lockBinding(".pos80cbca8022ece6174797e10bb8aebf18", env = .pos80cbca8022ece6174797e10bb8aebf18)
