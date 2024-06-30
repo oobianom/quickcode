@@ -15,13 +15,16 @@
 #' vector.
 #'
 #' @note
-#' add_key - resaves the keys
+#' add_key - resaves the keys \cr\cr
 #' indexed - return the keys
 #'
 #' @section Use case:
 #' Efficient for loops and for tracking various steps through a vector contents
 #' @rdname addkey
 #' @examples
+#' # EXAMPLES for add_key()
+#'
+#'
 #' #ex1 simple conversion of a vector
 #' rti2 <- c("rpkg","obinna", "obianom")
 #' add_key(rti2)
@@ -63,12 +66,8 @@ add_key <- function(vector){
 
 
 
-#' Return index keys to a vector or data frame or list or matrix
-#'
-#' Index a vector or lists and convert to a list of objects
 #' @rdname addkey
 #' @param . vector or data frame to transform
-#' @return a transformed list containing keys along with vector values
 #' @details
 #' This function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
 #' This allows the output to be used in loops such as for loops or lapply or other functions to track
@@ -80,10 +79,10 @@ add_key <- function(vector){
 #' vector.
 #'
 #'
-#' @section Use case:
-#' Efficient for loops and for tracking various steps through a vector contents
 #'
 #' @examples
+#' # EXAMPLES for indexed()
+#'
 #' #ex1 simple conversion of a vector
 #' rti2 <- c("rpkg","obinna", "obianom")
 #' indexed(rti2)
@@ -107,11 +106,11 @@ add_key <- function(vector){
 #'
 indexed <- function(.){
   #create list and add keys
-  . = list()
+  .. = list()
   iky = 1
-  for(i in vector){
-    .[[length(.)+1]] <- list(key = iky, value = i)
+  for(i in .){
+    ..[[length(..)+1]] <- list(key = iky, value = i)
     inc(iky)
   }
-  .
+  ..
 }
