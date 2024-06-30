@@ -2,9 +2,11 @@
 #'
 #' Calculates Z-Scores based on data
 #' @rdname zscore
-#' @param data dataiable
+#' @param data data object
 #' @param round round output to how many decimal place description
 #' @param na.rm remove NA values before calculating z-scores
+#'
+#' @return zscore calculated based on data object or parameters
 #'
 #' @examples
 #' Capture z-scores from the following distribution x
@@ -27,23 +29,25 @@ zscore <- function(data, round, na.rm = TRUE) {
 
 
 #' @rdname zscore
-#' @param X description
-#' @param M description
-#' @param S description
-#' @param L description
+#' @param X physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)
+#' @param M values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
+#' @param S values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
+#' @param L values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
 #'
 #' @examples
+#' #EXAMPLE for zscore based on CDC growth chart
+#'
 #' # Calculate the zscore for a patient weighing 50kg
 #' L=-0.1600954
 #' M=9.476500305
 #' S=0.11218624
 #' X=50
-#' ZscoreGrowthCurve(X,M,S,L)
+#' zscoreGrowthCurve(X,M,S,L)
 #'
-#' @references CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/zscore.htm
+#' @references CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/cdc-data-files.htm
 #' @export
 
-ZscoreGrowthCurve <- function(X,M,S,L=!0){
+zscoreGrowthCurve <- function(X,M,S,L=!0){
   stopifnot(is.numeric(L))
   if(L){
    (((X/M)**L) - 1)/(L*S)
