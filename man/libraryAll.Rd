@@ -32,6 +32,7 @@ Only include libraries, don't install if library doesn't exist
 }
 \examples{
 \donttest{
+# load packages and print their versions to the console
 libraryAll(base) #one package
 
 libraryAll(
@@ -51,5 +52,12 @@ libraryAll(
 libraryAll(
   base,
 clear = FALSE) #do not clear console after load
+
+# clear previously loaded packages, then load r2resize and r2social
+libraryAll(
+  r2resize,
+  r2social,
+  clearPkgs = TRUE
+)
 }
 }
