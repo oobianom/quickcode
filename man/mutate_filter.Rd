@@ -2,11 +2,13 @@
 % Please edit documentation in R/mutate_filter.R
 \name{mutate_filter}
 \alias{mutate_filter}
-\title{Mutate a subset of dataset, and reattach it to the dataset}
+\title{Mutate only a subset of dataset intact}
 \usage{
 mutate_filter(., subset, ...)
 }
 \arguments{
+\item{.}{data object}
+
 \item{subset}{subset of data to modify}
 
 \item{...}{mutation syntax similar to dplyr::mutate}
@@ -19,6 +21,14 @@ Extension of the dplyr::mutate function that allows the user to mutate only a sp
 }
 \examples{
 #mutate a subsection filter of mtcars
-dt =mtcars
+dt = mtcars
+names(dt)
+head(dt)
 mutate_filter(dt,mpg == 21.0 & cyl == 6, cyl=1000,hp=2000,vs=hp*2)
+
+
+dt2 = beaver1
+names(dt2)
+head(dt2)
+mutate_filter(dt2, day == 346 & time < 1200, activ = 12, temp = round(temp*10,1))
 }
