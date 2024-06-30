@@ -1,6 +1,13 @@
 #' Get the IP address of the current user
 #'
-#' Obtain my IP address
+#' Obtain my local IP address
+#'
+#' @return local IP address numeric value
+#'
+#' @examples
+#' # Fetch my IP address
+#' getMyIP() # show my current IP address
+#'
 #'
 #' @rdname cybersecurity
 #' @export
