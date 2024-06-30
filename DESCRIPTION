@@ -18,6 +18,7 @@ Imports:
     grDevices,
     stats,
     rstudioapi,
+    stringi,
     tools,
     Polychrome,
     fitdistrplus
