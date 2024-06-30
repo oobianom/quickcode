@@ -6,20 +6,19 @@
 #' @param asc TRUE or FALSE whether to sort by ascending or descending order
 #' @note
 #' This function removes all NAs prior to sorting the vector
+#' @return vector of items sorted by length
 #'
 #' @examples
 #' # sort by length of content
 #' x = c("acs","tt","jdssr","h","grab")
-#' y = sort.length(vec = x)
-#' y
-#' z = sort.length(vec = x, asc = FALSE)
-#' z
+#' sortLength(vec = x) # ascending order of length
+#' sortLength(vec = x, asc = FALSE) # descending order of length
 #'
 #'
 #' @export
 #'
 
-sort.length <- function(vec, asc = TRUE) {
+sortLength <- function(vec, asc = TRUE) {
   # Remove NA values
   vec <- vec[not.na(vec)]
 
