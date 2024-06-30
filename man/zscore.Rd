@@ -2,27 +2,30 @@
 % Please edit documentation in R/zsore.R
 \name{zscore}
 \alias{zscore}
-\alias{ZscoreGrowthCurve}
+\alias{zscoreGrowthCurve}
 \title{Calculates Z-Scores of a distribution}
 \usage{
 zscore(data, round, na.rm = TRUE)
 
-ZscoreGrowthCurve(X, M, S, L = !0)
+zscoreGrowthCurve(X, M, S, L = !0)
 }
 \arguments{
-\item{data}{dataiable}
+\item{data}{data object}
 
 \item{round}{round output to how many decimal place description}
 
 \item{na.rm}{remove NA values before calculating z-scores}
 
-\item{X}{description}
+\item{X}{physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)}
 
-\item{M}{description}
+\item{M}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
 
-\item{S}{description}
+\item{S}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
 
-\item{L}{description}
+\item{L}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
+}
+\value{
+zscore calculated based on data object or parameters
 }
 \description{
 Calculates Z-Scores based on data
@@ -35,14 +38,16 @@ z_scores = zscore(x) # no decimal place limit
 
 df = data.frame(val = x, zscore = z_scores)
 head(df)
+#EXAMPLE for zscore based on CDC growth chart
+
 # Calculate the zscore for a patient weighing 50kg
 L=-0.1600954
 M=9.476500305
 S=0.11218624
 X=50
-ZscoreGrowthCurve(X,M,S,L)
+zscoreGrowthCurve(X,M,S,L)
 
 }
 \references{
-CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/zscore.htm
+CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/cdc-data-files.htm
 }
