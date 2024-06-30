@@ -1,6 +1,6 @@
-#' Get distribution of a data
-#'
-#' Check a data against multiple distributions
+#' @note
+#' getDistribution() checks if data fits multiple distributions
+#' @rdname distribution_check
 #' @param data the data to check against distributions
 #' @param alpha p-value alpha level
 #' @export
