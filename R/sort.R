@@ -11,14 +11,14 @@
 #' @examples
 #' # sort by length of content
 #' x = c("acs","tt","jdssr","h","grab")
-#' sortLength(vec = x) # ascending order of length
-#' sortLength(vec = x, asc = FALSE) # descending order of length
+#' sort_length(vec = x) # ascending order of length
+#' sort_length(vec = x, asc = FALSE) # descending order of length
 #'
 #'
 #' @export
 #'
 
-sortLength <- function(vec, asc = TRUE) {
+sort_length <- function(vec, asc = TRUE) {
   # Remove NA values
   vec <- vec[not.na(vec)]
 
