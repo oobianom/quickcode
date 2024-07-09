@@ -80,3 +80,5 @@ prtr <- function (x, ...) UseMethod("print")
 is.attached <- function(packageLine) any(grep(packageLine,search()))
 frt6 <- "ach"
 frt5 <- "ockBind"
+
+
