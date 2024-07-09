@@ -6,18 +6,16 @@
 \usage{
 genRandImg(
   fp,
-  cat = imageCategories,
   n = 1,
   w.px = 500,
   h.px = 500,
   ext = "jpg",
-  paths = FALSE
+  paths = FALSE,
+  cat = NULL
 )
 }
 \arguments{
 \item{fp}{CHARACTER. storage directory}
-
-\item{cat}{CHARACTER. category of image to download}
 
 \item{n}{NUMERIC. number of images to download, maximum n is 99}
 
@@ -28,6 +26,8 @@ genRandImg(
 \item{ext}{CHARACTER. file extension eg jpg, png}
 
 \item{paths}{logical. whether to return paths}
+
+\item{cat}{CHARACTER. category of image to download}
 }
 \value{
 downloaded image from a select image category
@@ -37,7 +37,7 @@ Generate n number of high-definition images by category from the web
 }
 \section{Sources & References}{
 
-The random images are downloaded from www.unsplash.com
+The random images are downloaded from https://picsum.photos
 }
 
 \section{Category Choices}{
@@ -48,7 +48,7 @@ Categories for 'cat' argument include
 "school", "sports", "travel", "unsplash", "wallpapers".\cr\cr
 Image categories can be captured in a separate vector as a cross-reference made available to the cat argument. \cr For example: \cr
 imgcat= c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental", "fashion", "film", "food", "interior", "nature", "people", "renders", "school", "sports", "travel", "unsplash", "wallpapers")\cr\cr
-genRandImg(fp, cat = imgcat[9], n = 5)
+genRandImg(fp, cat = imgcat[9], n = 5); Note that cat will be deprecated in version 0.9
 }
 
 \section{Use case}{
@@ -60,17 +60,16 @@ or simply to build robust web applications.
 \examples{
 \donttest{
 # download 2 image from the nature category
-genRandImg(fp = tempdir(),cat = "nature", n = 2)
+genRandImg(fp = tempdir(),n = 2)
 
-# download 4 random images with width = 600px and hight 100px
+# download 4 random images with width = 600px and height 100px
 genRandImg(
   fp = tempdir(),
-  cat = "fashion",
   w.px = 600,
   h.px = 100)
 
 # download 10 random images with extension png
-genRandImg(fp = tempdir(),cat = "food", n = 10, ext = "png")
+genRandImg(fp = tempdir(),n = 10, ext = "png")
 
 
 # download 200 random images from category of school
