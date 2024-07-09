@@ -33,10 +33,10 @@ getWeekSeq <- function(start_date, end_date, in.format = "%m/%d/%y") {
 
 
 
-yday2 = function(date){
-  .year <- as.numeric(format(date,"%Y"))
-  .month <- as.numeric(format(date,"%m"))
-  .day <- as.numeric(format(date,"%d"))
+yday2 = function(start_date){
+  .year <- as.numeric(format(start_date,"%Y"))
+  .month <- as.numeric(format(start_date,"%m"))
+  .day <- as.numeric(format(start_date,"%d"))
   dinm <- c(0,31,28,31,30,31,30,31,31,30,31,30,31)
   if(is.leap(.year)) dinm[2] <- 29
   cumsum(dinm)[.month]+.day
@@ -56,12 +56,12 @@ not.Date <- function(x)!{
 }
 
 #' @rdname date-topic
-#' @param year year numeric value eg 1989
+#' @param yyyy year numeric value eg 1989
 #' @export
-is.leap <- function(y){
-  if(missing(y)) y = as.numeric(format(Sys.Date(),"%Y"))
-  y = as.numeric(y)
-  unlist(lapply(y, function(y1){
+is.leap <- function(yyyy){
+  if(missing(yyyy)) yyyy = as.numeric(format(Sys.Date(),"%Y"))
+  yyyy = as.numeric(yyyy)
+  unlist(lapply(yyyy, function(y1){
     y1%%4==0 && !(y1%%100==0 && y1%%400!=0)
   }))
 }
