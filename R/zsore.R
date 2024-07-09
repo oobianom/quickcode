@@ -2,14 +2,14 @@
 #'
 #' Calculates Z-Scores based on data
 #' @rdname zscore
-#' @param data data object
+#' @param .data data object
 #' @param round round output to how many decimal place description
 #' @param na.rm remove NA values before calculating z-scores
 #'
 #' @return zscore calculated based on data object or parameters
 #'
 #' @examples
-#' Capture z-scores from the following distribution x
+#' # Capture z-score from the following distribution x
 #' x = c(6, 7, 7, 12, 13, 13, 15, 16, 19, 22)
 #' z_scores = zscore(x, round = 2) # limit to 2 decimal place
 #' z_scores = zscore(x) # no decimal place limit
@@ -18,8 +18,8 @@
 #' head(df)
 #' @export
 
-zscore <- function(data, round, na.rm = TRUE) {
-  .x <- (data - mean(data, na.rm = na.rm)) / sd(data, na.rm = na.rm)
+zscore <- function(.data, round, na.rm = TRUE) {
+  .x <- (.data - mean(.data, na.rm = na.rm)) / sd(.data, na.rm = na.rm)
   if(!missing(round)){
    .x <-  round(.x, round)
   }
@@ -29,29 +29,29 @@ zscore <- function(data, round, na.rm = TRUE) {
 
 
 #' @rdname zscore
-#' @param X physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)
-#' @param M values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
-#' @param S values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
-#' @param L values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)
+#' @param Xi physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)
+#' @param Mi values from the table (see reference) corresponding to the age in months of the child
+#' @param Si values from the table (see reference) corresponding to the age in months of the child
+#' @param Li values from the table (see reference) corresponding to the age in months of the child
 #'
 #' @examples
 #' #EXAMPLE for zscore based on CDC growth chart
 #'
 #' # Calculate the zscore for a patient weighing 50kg
-#' L=-0.1600954
-#' M=9.476500305
-#' S=0.11218624
-#' X=50
-#' zscoreGrowthCurve(X,M,S,L)
+#' Li=-0.1600954
+#' Mi=9.476500305
+#' Si=0.11218624
+#' Xi=50
+#' zscoreGrowthCurve(Xi,Mi,Si,Li)
 #'
 #' @references CDC growth chart Z score calculation: https://www.cdc.gov/growthcharts/cdc-data-files.htm
 #' @export
 
-zscoreGrowthCurve <- function(X,M,S,L=!0){
-  stopifnot(is.numeric(L))
-  if(L){
-   (((X/M)**L) - 1)/(L*S)
+zscoreGrowthCurve <- function(Xi,Mi,Si,Li=!0){
+  stopifnot(is.numeric(Li))
+  if(Li){
+   (((Xi/Mi)**Li) - 1)/(Li*Si)
   }else{
-   log(X/M)/S
+   log(Xi/Mi)/Si
   }
 }
