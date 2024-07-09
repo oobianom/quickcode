@@ -34,8 +34,8 @@
 #'
 #' # clear previously loaded packages, then load r2resize and r2social
 #' libraryAll(
-#'   r2resize,
-#'   r2social,
+#'   stats,
+#'   utils,
 #'   clearPkgs = TRUE
 #' )
 #' }
