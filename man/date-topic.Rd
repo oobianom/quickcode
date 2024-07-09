@@ -13,7 +13,7 @@ is.Date(x)
 
 not.Date(x)
 
-is.leap(y)
+is.leap(yyyy)
 }
 \arguments{
 \item{start_date}{A scaler of class Date (if this argument is populated, the date arg must be empty)}
@@ -24,7 +24,7 @@ is.leap(y)
 
 \item{x}{date item to check}
 
-\item{year}{year numeric value eg 1989}
+\item{yyyy}{year numeric value eg 1989}
 }
 \value{
 data frame of the dates along with their corresponding week
