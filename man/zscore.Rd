@@ -5,24 +5,24 @@
 \alias{zscoreGrowthCurve}
 \title{Calculates Z-Scores of a distribution}
 \usage{
-zscore(data, round, na.rm = TRUE)
+zscore(.data, round, na.rm = TRUE)
 
-zscoreGrowthCurve(X, M, S, L = !0)
+zscoreGrowthCurve(Xi, Mi, Si, Li = !0)
 }
 \arguments{
-\item{data}{data object}
+\item{.data}{data object}
 
 \item{round}{round output to how many decimal place description}
 
 \item{na.rm}{remove NA values before calculating z-scores}
 
-\item{X}{physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)}
+\item{Xi}{physical measurement (e.g. weight, length, head circumference, stature or calculated BMI value)}
 
-\item{M}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
+\item{Mi}{values from the table (see reference) corresponding to the age in months of the child}
 
-\item{S}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
+\item{Si}{values from the table (see reference) corresponding to the age in months of the child}
 
-\item{L}{values from the appropriate table (see reference) corresponding to the age in months of the child (or length/stature)}
+\item{Li}{values from the table (see reference) corresponding to the age in months of the child}
 }
 \value{
 zscore calculated based on data object or parameters
@@ -31,7 +31,7 @@ zscore calculated based on data object or parameters
 Calculates Z-Scores based on data
 }
 \examples{
-Capture z-scores from the following distribution x
+# Capture z-score from the following distribution x
 x = c(6, 7, 7, 12, 13, 13, 15, 16, 19, 22)
 z_scores = zscore(x, round = 2) # limit to 2 decimal place
 z_scores = zscore(x) # no decimal place limit
@@ -41,11 +41,11 @@ head(df)
 #EXAMPLE for zscore based on CDC growth chart
 
 # Calculate the zscore for a patient weighing 50kg
-L=-0.1600954
-M=9.476500305
-S=0.11218624
-X=50
-zscoreGrowthCurve(X,M,S,L)
+Li=-0.1600954
+Mi=9.476500305
+Si=0.11218624
+Xi=50
+zscoreGrowthCurve(Xi,Mi,Si,Li)
 
 }
 \references{
