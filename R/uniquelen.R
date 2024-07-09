@@ -7,10 +7,10 @@
 #'
 #' @examples
 #' frenchnames1 = c("Léa","Obinna","Bastien","Léa","Obinna", "Hugo", "Amélie","Louis")
-#' uniqLen(frenchnames1)
+#' unique_len(frenchnames1)
 #'
 #' @export
 
-uniqLen <- function(.){
+unique_len <- function(.){
   length(unique(.))
 }
