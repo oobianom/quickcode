@@ -5,8 +5,10 @@
 #' @return local IP address numeric value
 #'
 #' @examples
+#' \donttest{
 #' # Fetch my IP address
 #' getMyIP() # show my current IP address
+#' }
 #'
 #'
 #' @rdname cybersecurity
