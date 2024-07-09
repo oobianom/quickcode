@@ -4,12 +4,12 @@
 \alias{mutate_filter}
 \title{Mutate only a subset of dataset intact}
 \usage{
-mutate_filter(., subset, ...)
+mutate_filter(., sub.set, ...)
 }
 \arguments{
 \item{.}{data object}
 
-\item{subset}{subset of data to modify}
+\item{sub.set}{subset of data to modify}
 
 \item{...}{mutation syntax similar to dplyr::mutate}
 }
