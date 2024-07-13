@@ -7,24 +7,63 @@
 #' @param start_date A scaler of class Date (if this argument is populated, the date arg must be empty)
 #' @param end_date A scaler of class Date; must be later than the start_date (if this argument is populated, the date arg must be empty)
 #' @param in.format date input format
+#' @param seq sequential method used to generate the data frame
 #' @return data frame of the dates along with their corresponding week
 #' @examples
+#' # simple example with start and end date
 #' getWeekSeq(start_date="12/29/25",end_date="1/8/26")
+#'
+#' # enter specific dates instead
+#' # specify format
+#' getWeekSeq(
+#' dates = c(
+#'   '2025-12-29',
+#'   '2025-12-30',
+#'   '2025-12-31',
+#'   '2026-01-01',
+#'   '2026-01-04',
+#'   '2026-01-05',
+#'   '2026-01-06',
+#'   '2026-01-07',
+#'   '2026-01-08'),
+#'   in.format = "%Y-%m-%d"
+#' )
+#'
+#' getWeekSeq(
+#' dates = c(
+#'   '12/29/25',
+#'   '12/30/25',
+#'   '12/31/25',
+#'   '01/01/26',
+#'   '01/02/26',
+#'   '01/03/26',
+#'   '01/06/26',
+#'   '01/07/26',
+#'   '01/08/26'
+#'   ),
+#'   in.format = "%m/%d/%y"
+#' )
 #'
 #' @export
 #'
 
-getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y") {
-  if(!missing(dates)){
-    if(!missing(start_date) | !missing(end_date))
-      stop("'start_date' and 'end_date' should not be provided if 'dates' is provided")
-  }
+getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y", seq = c("bywk","byseq","bycont")) {
+  seq0 <- match.arg(seq)
+
   # Convert input dates to Date objects
   start_date <- as.Date(start_date, format=in.format)
   end_date <- as.Date(end_date, format=in.format)
 
-  # Generate a sequence of dates
-  date_sequence <- seq(from = start_date, to = end_date, by = "day")
+
+
+  if(!missing(dates)){
+    date_sequence <- as.Date(dates, format=in.format)
+    if(!missing(start_date) | !missing(end_date))
+      stop("'start_date' and 'end_date' should not be provided if 'dates' is provided")
+  }else{
+    # Generate a sequence of dates
+    date_sequence <- seq(from = start_date, to = end_date, by = "day")
+  }
 
   # Create a data frame
   week_df <- data.frame(DATE = date_sequence)
