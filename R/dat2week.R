@@ -50,9 +50,7 @@
 getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y", seq = c("bywk","byseq","bycont")) {
   seq0 <- match.arg(seq)
 
-  # Convert input dates to Date objects
-  start_date <- as.Date(start_date, format=in.format)
-  end_date <- as.Date(end_date, format=in.format)
+
 
 
 
@@ -61,6 +59,9 @@ getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y", seq 
     if(!missing(start_date) | !missing(end_date))
       stop("'start_date' and 'end_date' should not be provided if 'dates' is provided")
   }else{
+    # Convert input dates to Date objects
+    start_date <- as.Date(start_date, format=in.format)
+    end_date <- as.Date(end_date, format=in.format)
     # Generate a sequence of dates
     date_sequence <- seq(from = start_date, to = end_date, by = "day")
   }
