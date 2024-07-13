@@ -7,7 +7,6 @@
 #' @param start_date A scaler of class Date (if this argument is populated, the date arg must be empty)
 #' @param end_date A scaler of class Date; must be later than the start_date (if this argument is populated, the date arg must be empty)
 #' @param in.format date input format
-#' @param seq sequential method used to generate the data frame
 #' @return data frame of the dates along with their corresponding week
 #' @examples
 #' # simple example with start and end date
@@ -47,13 +46,7 @@
 #' @export
 #'
 
-getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y", seq = c("bywk","byseq","bycont")) {
-  seq0 <- match.arg(seq)
-
-
-
-
-
+getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y") {
   if(!missing(dates)){
     date_sequence <- as.Date(dates, format=in.format)
     if(!missing(start_date) | !missing(end_date))
