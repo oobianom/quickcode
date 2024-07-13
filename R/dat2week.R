@@ -2,6 +2,8 @@
 #'
 #' Convert the range of date to number of weeks
 #' @rdname date-topic
+#' @param dates vector of dates that need not be sequential but that reference values of class Date;
+#' Note that if this argument is populated, the start_date and end_date arguments must be empty
 #' @param start_date A scaler of class Date (if this argument is populated, the date arg must be empty)
 #' @param end_date A scaler of class Date; must be later than the start_date (if this argument is populated, the date arg must be empty)
 #' @param in.format date input format
@@ -12,7 +14,11 @@
 #' @export
 #'
 
-getWeekSeq <- function(start_date, end_date, in.format = "%m/%d/%y") {
+getWeekSeq <- function(start_date, end_date, dates, in.format = "%m/%d/%y") {
+  if(!missing(dates)){
+    if(!missing(start_date) | !missing(end_date))
+      stop("'start_date' and 'end_date' should not be provided if 'dates' is provided")
+  }
   # Convert input dates to Date objects
   start_date <- as.Date(start_date, format=in.format)
   end_date <- as.Date(end_date, format=in.format)
