@@ -9,7 +9,19 @@ or(test, alternative)
 \arguments{
 \item{test}{an object to return}
 
-\item{alternative}{alternative object to return}
+\item{alternative}{alternative object to return
+
+test1 <- c(4,NA,5,2,0,21)
+
+test2 <- data.frame(ID = 1:10,ED = LETTERS[10:1])
+
+or(test1[which(test1==4)],100)
+
+or(test1[which(test1==43)],100)
+
+or(test2[which(test2$ID == 10),2],"BBBBB")
+
+or(test2[which(test2$ID == 323),2],"CCCCC")}
 }
 \description{
 Return alternative if the value of expression is empty or NA or NULL
