@@ -7,13 +7,7 @@
 \alias{is.leap}
 \title{Convert Dates into Numeric Week Counts}
 \usage{
-getWeekSeq(
-  start_date,
-  end_date,
-  dates,
-  in.format = "\%m/\%d/\%y",
-  seq = c("bywk", "byseq", "bycont")
-)
+getWeekSeq(start_date, end_date, dates, in.format = "\%m/\%d/\%y")
 
 is.Date(x)
 
@@ -30,8 +24,6 @@ is.leap(yyyy)
 Note that if this argument is populated, the start_date and end_date arguments must be empty}
 
 \item{in.format}{date input format}
-
-\item{seq}{sequential method used to generate the data frame}
 
 \item{x}{date item to check}
 
