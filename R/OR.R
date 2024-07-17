@@ -26,3 +26,7 @@ or <- function(test,alternative){
   res
 
 }
+
+
+#' @export
+`%or%` <- or
