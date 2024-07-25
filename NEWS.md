@@ -1,3 +1,7 @@
+# quickcode 0.9.1
+
+- [x] Quick bug fixes in functions 
+
 # quickcode 0.9
 
 - [x] Fixed bugs in functions
