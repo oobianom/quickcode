@@ -14,12 +14,25 @@ tracker <- function(apiId){
   ls("package:quickcode")
 }
 
+#' Extract all comments from a file
+#'
+#' Vectorize all comments from the file
+#'
+#' @return vector of all comments within a file
+#' @examples
+#' \dontrun{
+#' ex_file1 <- "path/file1.R"
+#' # get all comments
+#' cmmts <- extract_comments(ex_file1)
+#' cmmts
+#' }
+#'
+#' @param file file to parse
+#' @export
 
-
-
-extract_comments <- function(file_path) {
+extract_comments <- function(file) {
   # Read the file line by line
-  lines <- readLines(file_path)
+  lines <- readLines(file)
 
   # Initialize a vector to store comments
   comments <- c()
