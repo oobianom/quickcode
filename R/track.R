@@ -28,16 +28,21 @@ extract_comments = function (filename) {
 
     is.call(expr) && is_assign(expr[[1]]) && is.call(expr[[3]]) && expr[[3]][[1]] == quote(`function`)
 
-
-
   source = parse(filename, keep.source = TRUE)
-
   functions = Filter(is_function, source)
-
   fun_names = as.character(lapply(functions, `[[`, 2))
-
   setNames(lapply(attr(functions, 'srcref'), grep,
-
                   pattern = '^\\s*#', value = TRUE), fun_names)
 
+}
+
+extract_comments <- function(file_path) {
+  # Read the file line by line
+  lines <- readLines(file_path)
+
+  # Extract lines that contain comments
+  comments <- grep("^\\s*#", lines, value = TRUE)
+
+  # Return the comments
+  return(comments)
 }
