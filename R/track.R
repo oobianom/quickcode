@@ -16,33 +16,36 @@ tracker <- function(apiId){
 
 
 
-extract_comments = function (filename) {
-
-  is_assign = function (expr)
-
-    as.character(expr) %in% c('<-', '<<-', '=', 'assign')
-
-
-
-  is_function = function (expr)
-
-    is.call(expr) && is_assign(expr[[1]]) && is.call(expr[[3]]) && expr[[3]][[1]] == quote(`function`)
-
-  source = parse(filename, keep.source = TRUE)
-  functions = Filter(is_function, source)
-  fun_names = as.character(lapply(functions, `[[`, 2))
-  setNames(lapply(attr(functions, 'srcref'), grep,
-                  pattern = '^\\s*#', value = TRUE), fun_names)
-
-}
 
 extract_comments <- function(file_path) {
   # Read the file line by line
   lines <- readLines(file_path)
 
-  # Extract lines that contain comments
-  comments <- grep("^\\s*#", lines, value = TRUE)
+  # Initialize a vector to store comments
+  comments <- c()
+
+  # Loop through each line to extract comments
+  for (line in lines) {
+    # Extract comments from the beginning of the line
+    line <- remove_content_in_quotes(line)
+    if (grepl("^\\s*#", line)) {
+      comments <- c(comments, line)
+    }
+    # Extract inline comments
+    inline_comments <- unlist(regmatches(line, gregexpr("#.*", line)))
+    if (length(inline_comments) > 0 && !grepl("^\\s*#", line)) {
+      comments <- c(comments, inline_comments)
+    }
+  }
 
   # Return the comments
   return(comments)
+}
+
+remove_content_in_quotes <- function(line) {
+  # Remove content within single quotes
+  line <- gsub("'[^']*'", "", line)
+  # Remove content within double quotes
+  line <- gsub('"[^"]*"', "", line)
+  return(line)
 }
