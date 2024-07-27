@@ -4,10 +4,10 @@ type3 <-function(x)type1(x)
 type1 <- function(x){
   mean(x)
   sd(x)
-  tracker()
+  track_function()
 }
 
-tracker <- function(apiId){
+track_function <- function(apiId){
   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
   print(getFuncName)
