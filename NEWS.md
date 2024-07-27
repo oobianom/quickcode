@@ -1,3 +1,9 @@
+# quickcode 1.0.0
+
+- [x] New functions
+    - [x] extract_comments
+    - [ ] track_function
+    
 # quickcode 0.9.1
 
 - [x] Quick bug fixes in functions 
