@@ -1,0 +1,12 @@
+# This is the comment 1
+
+f <- function(){
+ print("hellow")# This is the comment 2
+}
+
+    # This is the comment 3
+
+    f rre # This is the comment 4
+  ####################only
+
+  print("#here it is") ## This is the comment 5
