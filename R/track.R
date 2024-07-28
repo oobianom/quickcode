@@ -64,20 +64,15 @@ remove_content_in_quotes <- function(line) {
 }
 
 
-
+hide_int_cmts <- function(string) {
+  string <- gsub('("[^"]*)#+([^"]*)"', '\\1*5&9%8**\\2"', string, perl = TRUE)
+  string <- gsub("('[^']*)#+([^']*)'", '\\1*5&9%8**\\2\'', string, perl = TRUE)
+  string
+}
 
 clean_r_file <- function(file_path, output_file_path) {
   # Read the file line by line
   lines <- readLines(file_path)
-
-  # Function to remove content within quotes
-  remove_content_in_quotes <- function(line) {
-    # Remove content within single quotes
-    line <- gsub("'[^']*'", "", line)
-    # Remove content within double quotes
-    line <- gsub('"[^"]*"', "", line)
-    return(line)
-  }
 
   # Function to remove comments
   remove_comments <- function(line) {
