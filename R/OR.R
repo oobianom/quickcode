@@ -1,11 +1,13 @@
-#' Alternative return for statements
+#' Nullish coalescing operator
 #'
-#' Return alternative if the value of expression is empty or NA or NULL
+#' Alternative return for empty, null or na statements.Return alternative if the value of expression is empty or NA or NULL
 #'
 #' @rdname orsign
 #' @param test an object to return
 #' @param alternative alternative object to return
 #' @return value of test if not null or empty, else return value of alternative
+#' @note
+#' Equivalent to Nullish coalescing operator ?? in javascript or PHP
 #'
 #' test1 <- c(4,NA,5,2,0,21)
 #'
