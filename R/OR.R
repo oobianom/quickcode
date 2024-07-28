@@ -7,7 +7,8 @@
 #' @param alternative alternative object to return
 #' @return value of test if not null or empty, else return value of alternative
 #' @note
-#' Equivalent to Nullish coalescing operator ?? in javascript or PHP
+#' Equivalent to Nullish coalescing operator ?? in javascript or PHP like
+#' $Var = $operand1 ?? $operand2;
 #'
 #' test1 <- c(4,NA,5,2,0,21)
 #'
