@@ -63,48 +63,32 @@ remove_content_in_quotes <- function(line) {
   return(line)
 }
 
-
+# Function to numb internal comments
 hide_int_cmts <- function(string) {
-  string <- gsub('("[^"]*)#+([^"]*)"', '\\1*5&9%8**\\2"', string, perl = TRUE)
-  string <- gsub("('[^']*)#+([^']*)'", '\\1*5&9%8**\\2\'', string, perl = TRUE)
+  string <- gsub('("[^"]*)#+([^"]*)"', '\\10x5&9%80x\\2"', string, perl = TRUE)
+  string <- gsub("('[^']*)#+([^']*)'", '\\10x5&9%80x\\2\'', string, perl = TRUE)
   string
+}
+# Function to remove comments
+remove_comments <- function(line) {
+  # Find the position of the first unquoted #
+  comment_positions <- gregexpr("#", line)[[1]]
+  for (pos in comment_positions) {
+    if (pos != -1 && !is_inside_quotes(line, pos)) {
+      return(substr(line, 1, pos - 1))
+    }
+  }
+  return(line)
 }
 
 clean_r_file <- function(file_path, output_file_path) {
   # Read the file line by line
   lines <- readLines(file_path)
 
-  # Function to remove comments
-  remove_comments <- function(line) {
-    # Find the position of the first unquoted #
-    comment_positions <- gregexpr("#", line)[[1]]
-    for (pos in comment_positions) {
-      if (pos != -1 && !is_inside_quotes(line, pos)) {
-        return(substr(line, 1, pos - 1))
-      }
-    }
-    return(line)
-  }
-
-  # Function to determine if a character is inside quotes
-  is_inside_quotes <- function(line, pos) {
-    single_quote_positions <- gregexpr("'", line)[[1]]
-    double_quote_positions <- gregexpr('"', line)[[1]]
-
-    quote_positions <- sort(c(single_quote_positions, double_quote_positions))
-    inside_quote <- FALSE
-
-    for (quote_pos in quote_positions) {
-      if (quote_pos > pos) break
-      inside_quote <- !inside_quote
-    }
-
-    return(inside_quote)
-  }
-
   # Process each line: remove comments and empty lines
   cleaned_lines <- sapply(lines, function(line) {
-    line <- remove_comments(line)
+    line <- hide_int_cmts(line)
+    line <- gsub("0x5&9%80x","#",remove_comments(line))
     line <- trimws(line)  # Remove leading and trailing whitespace
     if (nchar(line) > 0) {
       return(line)
@@ -113,16 +97,7 @@ clean_r_file <- function(file_path, output_file_path) {
     }
   })
 
-  # Remove NULL elements
-  cleaned_lines <- cleaned_lines[!sapply(cleaned_lines, is.null)]
-
-  # Properly indent the R file
-  properly_indented_lines <- paste(capture.output(styler::style_text(cleaned_lines)), collapse = "\n")
-
-  # Write the cleaned and indented lines back to a file
-  writeLines(properly_indented_lines, output_file_path)
-
-  cat("File cleaned and saved to", output_file_path, "\n")
+  cleaned_lines[!sapply(cleaned_lines, is.null)]
 }
 
 # Example usage
