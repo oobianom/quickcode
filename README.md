@@ -52,6 +52,7 @@ alternative <- 500
 # Give an alternative result if the test is NULL NA or empty
 
 or(ex.V1,alternative) # result will give 5 because ex.V1 is not NULL NA or empty
+
 ex.V1 %or% alternative # result will give 5 because ex.V1 is not NULL NA or empty
 
 ex.V2 %or% alternative # result will give 500 because ex.V2 is NA
