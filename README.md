@@ -20,7 +20,6 @@
 install.packages("quickcode")
 ```
 
-[![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
 
 # 70+ great R functions to add to your scripts!
 
@@ -38,6 +37,36 @@ install.packages("quickcode")
 ***
 
 ![](https://quickcode.obi.obianom.com/bionic_txt2.png)
+
+***
+
+
+```
+# Use the nullish coalescing operator using  "or()" or "%or%"
+ex.V1 <- 5
+ex.V2 <- NA
+ex.V3 <- NULL
+ex.V4 <- ""
+alternative <- 500
+
+# Give an alternative result if the test is NULL NA or empty
+
+or(ex.V1,alternative) # result will give 5 because ex.V1 is not NULL NA or empty
+ex.V1 %or% alternative # result will give 5 because ex.V1 is not NULL NA or empty
+
+ex.V2 %or% alternative # result will give 500 because ex.V2 is NA
+
+ex.V3 %or% alternative # result will give 500 because ex.V3 is NULL
+
+ex.V4 %or% alternative # result will give 500 because ex.V4 is empty
+
+# Further chaining
+
+ex.V2 %or% ex.V1 %or% alternative # result will be 5 because ex.V2 is NA but ex.V1 is 5
+
+ex.V2 %or% ex.V2 %or% alternative # result will be 500 because ex.V2 is NA and ex.V3 is NULL
+
+```
 
 ***
 
@@ -312,6 +341,7 @@ print(p1)
 ```
 
 
+[![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
 
 
 
