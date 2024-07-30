@@ -1,0 +1,51 @@
+---
+title: "Introducing the Nullish coalescing operator in the quickcode R package"
+author: "Obinna (OBI) Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introducing the Nullish coalescing operator in the quickcode R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+The nullish coalescing operator, also known as the nullish assignment operator, is a logical operator that was introduced in ECMAScript 2020. It has the form ?? and is used to define a default value for a variable if that variable is null or undefined.
+
+In statistical programming and data analysis with R, dealing with missing or undefined values is very common. Oftentimes variables may be initialized without a value, or functions may return undefined if no suitable value can be determined. Previously in R, programmers would have to explicitly check if a value was NULL using if/else statements before using it or assigning a default.
+
+The nullish coalescing operator with the Quickcode R package helps address this in a more succinct way. It allows defining a fallback value inline, without needing an additional check. This can make code more readable where default values are assigned.
+
+```
+
+# Use the nullish coalescing operator using  "%or%"
+ex.V1 <- 5
+ex.V2 <- NA
+ex.V3 <- NULL
+ex.V1 <- ""
+alternative <- 500
+
+# Give an alternative result if the test is NULL NA or empty
+
+ex.V1 %or% alternative # result will give 5 because ex.V1 is not NULL NA or empty
+
+ex.V2 %or% alternative # result will give 500 because ex.V2 is NA
+
+ex.V3 %or% alternative # result will give 500 because ex.V3 is NULL
+
+ex.V4 %or% alternative # result will give 500 because ex.V4 is empty
+
+# Further chaining
+
+ex.V2 %or% ex.V1 %or% alternative # result will be 5 because ex.V2 is NA but ex.V1 is 5
+
+ex.V2 %or% ex.V2 %or% alternative # result will be 500 because ex.V2 is NA and ex.V3 is NULL
+
+```
