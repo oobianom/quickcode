@@ -65,7 +65,7 @@ ex.V4 %or% alternative # result will give 500 because ex.V4 is empty
 
 ex.V2 %or% ex.V1 %or% alternative # result will be 5 because ex.V2 is NA but ex.V1 is 5
 
-ex.V2 %or% ex.V2 %or% alternative # result will be 500 because ex.V2 is NA and ex.V3 is NULL
+ex.V2 %or% ex.V3 %or% alternative # result will be 500 because ex.V2 is NA and ex.V3 is NULL
 
 ```
 
