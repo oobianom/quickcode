@@ -9,20 +9,20 @@
 #' @return the result of applying the chained functions to the data object
 #' @note
 #' chain_sep allows the user to preset the separator for the function chaining \cr\cr
-#' e.g. you can call the function to set sep = "__" before using the %.% call to parse the chained function "__unique__sum"
+#' e.g. you can call the function to set sep = "__" before using the %c% call to parse the chained function "__unique__sum"
 #' @examples
 #' #use defult sep ".."
-#' 1:3%.%unique.length
-#' sample(1:1000,10,replace=TRUE) %.%unique..length
-#' sample(1:10,10,replace=TRUE) %.%unique..cumsum
+#' 1:3%c%unique.length
+#' sample(1:1000,10,replace=TRUE) %c%unique..length
+#' sample(1:10,10,replace=TRUE) %c%unique..cumsum
 #'
 #' # set sep before function chaining
 #' chain_sep("__")
-#' sample(1:10,10,replace=TRUE) %.%unique__cumsum
-#' sample(1:10,10,replace=TRUE) %.%unique__cumsum__length
+#' sample(1:10,10,replace=TRUE) %c%unique__cumsum
+#' sample(1:10,10,replace=TRUE) %c%unique__cumsum__length
 #' @export
 
-`%.%` <- function(obj, funcs){
+`%c%` <- function(obj, funcs){
   sep. <- options()$quickcode_chain_sep %or% "\\.\\."
   .pF <- as.character(substitute(funcs))
   .pF2 <- strsplit(.pF,sep.)[[1]]
