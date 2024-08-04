@@ -7,7 +7,8 @@ type1 <- function(x){
   track_function()
 }
 
-track_function <- function(apiId){
+#'
+track_function <- function(apiId, output.dest = "output_tracking.csv"){
   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
   print(getFuncName)
