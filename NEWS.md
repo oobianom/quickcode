@@ -2,7 +2,8 @@
 
 - [x] New functions
     - [x] extract_comments
-    - [ ] track_function
+    - [x] track_function
+    - [x] extract_IP
     
 # quickcode 0.9.1
 
