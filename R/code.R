@@ -7,7 +7,6 @@
 #'   m= y +9
 #' })
 #'
-#' @export
 
 c.ode <- function(...){
   for(i in 1:...length()){
