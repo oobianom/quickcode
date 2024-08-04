@@ -38,17 +38,17 @@
 #'
 #' # download 200 random images from category of school
 #' # Note that maximum download is 99, so the function will only download 99
-#' genRandImg(fp = tempdir(), n = 200)
+#' genRandImg(fp = tempdir(), n = 121)
 #'
 #' # download 5 random images with extension jif and return paths
-#' genRandImg(fp = tempdir(), n = 5, ext = "jif", paths = TRUE)
+#' genRandImg(fp = tempdir(), n = 5, ext = "jpg", paths = TRUE)
 #' }
 #' @export
 #'
 genRandImg = function (fp, n = 1, w.px = 500, h.px = 500,
                        ext = "jpg", paths = FALSE, cat = NULL)
 {
-  if(not.null(cat)) message("Please note that the 'cat' category is now deprecated.")
+  if(not.null(cat)) message("Note that the 'cat' category is now deprecated.")
   if (!dir.exists(fp))
     stop(paste0("The directory path declared in the 'fp' argument must exist."))
   if (n > 99) {
