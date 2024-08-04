@@ -1,3 +1,7 @@
+#' Extract all IP addresses from a string
+#'
+#' Parse a string and vectorize the IP addresses within it
+#'
 #' @rdname cybersecurity
 #' @param input input string containing IP
 #' @return extract_IP returns a vector of IP addresses
