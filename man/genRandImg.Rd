@@ -63,9 +63,9 @@ genRandImg(fp = tempdir(),n = 10, ext = "png")
 
 # download 200 random images from category of school
 # Note that maximum download is 99, so the function will only download 99
-genRandImg(fp = tempdir(), n = 200)
+genRandImg(fp = tempdir(), n = 121)
 
 # download 5 random images with extension jif and return paths
-genRandImg(fp = tempdir(), n = 5, ext = "jif", paths = TRUE)
+genRandImg(fp = tempdir(), n = 5, ext = "jpg", paths = TRUE)
 }
 }
