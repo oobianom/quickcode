@@ -40,17 +40,6 @@ Generate n number of high-definition images by category from the web
 The random images are downloaded from https://picsum.photos
 }
 
-\section{Category Choices}{
-
-Categories for 'cat' argument include
-"3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
-"fashion", "film", "food", "interior", "nature", "people", "renders",
-"school", "sports", "travel", "unsplash", "wallpapers".\cr\cr
-Image categories can be captured in a separate vector as a cross-reference made available to the cat argument. \cr For example: \cr
-imgcat= c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental", "fashion", "film", "food", "interior", "nature", "people", "renders", "school", "sports", "travel", "unsplash", "wallpapers")\cr\cr
-genRandImg(fp, cat = imgcat[9], n = 5); Note that cat will be deprecated in version 0.9
-}
-
 \section{Use case}{
 
 This functionality is great for developers trying to obtain one or more images for use in displays/analysis
@@ -74,9 +63,9 @@ genRandImg(fp = tempdir(),n = 10, ext = "png")
 
 # download 200 random images from category of school
 # Note that maximum download is 99, so the function will only download 99
-genRandImg(fp = tempdir(),cat = "school", n = 200)
+genRandImg(fp = tempdir(), n = 200)
 
 # download 5 random images with extension jif and return paths
-genRandImg(fp = tempdir(),cat = "beauty", n = 5, ext = "jif", paths = TRUE)
+genRandImg(fp = tempdir(), n = 5, ext = "jif", paths = TRUE)
 }
 }
