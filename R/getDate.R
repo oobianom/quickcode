@@ -25,9 +25,9 @@
 #' }
 #'
 #' @export
-getDate <- function(str1,out.format = "%Y-%m-%d") {
+  getDate <- function(str1,out.format = "%Y-%m-%d") {
   # Match various date patterns using regex
-  dt_pattern <- "(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}|\\d{1,2}-[A-Za-z]{3}-\\d{2,4}|[A-Za-z]+ \\d{1,2},? \\d{4}|\\d{8}|\\d{6}|\\d{1,2}\\.\\d{1,2}\\.\\d{2,4})"
+  dt_pattern <- "(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}|\\d{1,2}-[A-Za-z]{3}-\\d{2,4}|[A-Za-z]+ \\d{1,2},?\\s*\\d{4}|\\d{8}|\\d{6}|\\d{1,2}\\.\\d{1,2}\\.\\d{2,4})"
 
   # Extract all occurrences of a date
   extracted_dt <- regmatches(str1, gregexpr(dt_pattern, str1))
@@ -35,11 +35,12 @@ getDate <- function(str1,out.format = "%Y-%m-%d") {
   # Convert dates to an object of Class Date
   # Return the extracted dates as a list object (or character(0) if not found)
   output.date <- lapply(extracted_dt, function(m){
-    print(m)
+    #print(m)
     as.POSIXct(easyr::todate(m),format="%Y-%m-%d")
     #do.call("as.POSIXct",c(easyr::todate(m)))
     easyr::todate(m)
     })
+  output.date
   #format(output.date, format = out.format)
 }
 
@@ -47,3 +48,12 @@ getDate <- function(str1,out.format = "%Y-%m-%d") {
 
 
 
+str1 = "The video was recorded on July 19, 2023."
+str2 = "The video was recorded over a 4 hour period starting on July 19, 2023."
+str3 = "The first batch aug 12,2024 of aug 12, 2024 reports are due on July 12, 2024; the second batch on 7/19/24."
+str4 = c("On 3.12.25, Jerry is taking one month of leave and is not scheduled to return until around 4-9-2025.", "The staff will be out on training on 10/11/24, Oct 12, 2024, and 10-13-24.")
+
+getDate(str1)
+getDate(str2,out.format = "%Y-%m-%d")
+getDate(str3,out.format = "%m-%d/%Y")
+getDate(str4)
