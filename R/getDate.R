@@ -81,22 +81,22 @@
     #stop(paste0("Unable to parse date. Please check the format. check: ",dae))
   }
 
-#   # Example usage
-#   dates <- c("aug 12,2024", "aug 12, 2024", "July 12, 2024", "7/19/24")
-#
-#   # Apply the function to the dates
-#   converted_dates <- sapply(dates, convert_to_mdy)
-#
-#   # Display the results
-#   print(converted_dates)
-#
-#
-# str1 = "The video was recorded on July 19, 2023."
-# str2 = "The video was recorded over a 4 hour period starting on July 19, 2023."
-# str3 = "The first batch aug 12,2024 of aug 12, 2024 reports are due on July 12, 2024; the second batch on 7/19/24."
-# str4 = c("On 3.12.25, Jerry is taking one month of leave and is not scheduled to return until around 4-9-2025.", "The staff will be out on training on 10/11/24, Oct 12, 2024, and 10-13-24.")
-#
-# getDate(str1)
-# getDate(str2,out.format = "%Y-%m-%d")
-# getDate(str3,out.format = "%m-%d/%Y")
-# getDate(str4)
+  # Example usage
+  dates <- c("aug 12,2024", "aug 12, 2024", "July 12, 2024", "7/19/24")
+
+  # Apply the function to the dates
+  converted_dates <- sapply(dates, convert_to_mdy)
+
+  # Display the results
+  print(converted_dates)
+
+
+str1 = "The video was recorded on July 19, 2023."
+str2 = "The video was recorded over a 4 hour period starting on July 19, 2023."
+str3 = "The first batch aug 12,2024 of aug 12, 2024 reports are due on July 12, 2024; the second batch on 7/19/24."
+str4 = c("On 3.12.25, Jerry is taking one month of leave and is not scheduled to return until around 4-9-2025.", "The staff will be out on training on 10/11/24, Oct 12, 2024, and 10-13-24.")
+
+getDate(str1)
+getDate(str2,out.format = "%Y-%m-%d")
+getDate(str3,out.format = "%m-%d/%Y")
+getDate(str4)
