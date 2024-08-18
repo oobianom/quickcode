@@ -26,10 +26,10 @@
 #' @details
 #' Case Sensitivity: \cr
 #'
-#'   The function can optionally consider or ignore case sensitivity based on the case_sensitive argument.\cr\cr
+#'   The function can optionally consider or ignore case sensitivity based on the \code{case_sensitive} argument.\cr\cr
 #' Whitespace Handling:\cr
 #'
-#'   With ignore_whitespace set to TRUE, the function removes all whitespaces before comparison. This can be useful for matching strings that may have inconsistent spacing.\cr\cr
+#'   With \code{ignore_whitespace} set to TRUE, the function removes all whitespaces before comparison. This can be useful for matching strings that may have inconsistent spacing.\cr\cr
 #' Exact Character-by-Character Matching:\cr
 #'
 #'   The function computes the percentage of matching characters in the same positions.\cr\cr
@@ -88,6 +88,12 @@ percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_white
   ))
 }
 
+
+string0 <- "october 12,1898"
+string1 <- "2018-10-12"
+string2 <- "1898-10-12"
+percent_match(string0, string1)
+percent_match(string0, string2)
 
 
 
