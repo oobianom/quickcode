@@ -3,6 +3,7 @@
 #' @param string2 second string
 #' @param case_sensitive if to check case sensitivity
 #' @param ignore_whitespace if to ignore whitespace
+#' @param frag_size fragment size of string
 #' @rdname percentmatch
 #' @return numeric value of the match percent
 #' @examples
@@ -20,6 +21,7 @@
 #' string2 <- "1898-10-12"
 #' percent_match(string0, string1)
 #' percent_match(string0, string2)
+#' percent_match(string1, string2)
 #'
 #' @export
 #'
@@ -39,13 +41,18 @@
 #' Levenshtein Distance:\cr
 #'
 #'   The function uses Levenshtein distance to calculate the similarity and integrates this into the overall match percentage.\cr\cr
-#' Overall Match Percentage:\cr
+#' Fragment Matching:\cr
 #'
-#'   The function averages the exact match percentage, the substring match percentage, and the Levenshtein match percentage to give an overall match percentage.\cr\cr
+#'    - A \code{frag_size} argument is introduced that compares fragments (substrings) of a given size (default is 3) from both strings.\cr
+#'  - The function creates unique fragments from each string and compares them to find common fragments.\cr
+#'  - The percentage match is calculated based on the ratio of common fragments to the total number of unique fragments.\cr\cr
+#' Combining Metrics:\cr
+#'
+#'   The overall match percentage is computed as the average of exact match, substring match, Levenshtein match, and fragment match percentages.
 #'
 #'
 
-percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_whitespace = TRUE) {
+percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_whitespace = TRUE, frag_size = 3) {
 
   # Optional case-insensitive comparison
   if (!case_sensitive) {
@@ -60,9 +67,13 @@ percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_white
   }
 
   # Exact character-by-character matching
-  char_match <- sum(strsplit(string1, NULL)[[1]] == strsplit(string2, NULL)[[1]])
-  max_len <- max(nchar(string1), nchar(string2))
-  exact_match_percent <- (char_match / max_len) * 100
+  max_len <- nchar(string1) #max(nchar(string1), nchar(string2))
+  if(nchar(string1) == nchar(string2)){
+    char_match <- sum(strsplit(string1, NULL)[[1]] == strsplit(string2, NULL)[[1]])
+    exact_match_percent <- (char_match / max_len) * 100
+  }else{
+    exact_match_percent <- 0
+  }
 
   # Substring matching (percentage of one string being a substring of the other)
   if (grepl(string1, string2) || grepl(string2, string1)) {
@@ -75,25 +86,33 @@ percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_white
   lev_dist <- adist(string1, string2)
   levenshtein_match_percent <- (1 - lev_dist / max_len) * 100
 
-  # Combine all three metrics (weighted average or any other logic)
-  # Here, we give equal weight to exact match and Levenshtein distance
-  overall_match_percent <- (exact_match_percent + levenshtein_match_percent + substring_match_percent) / 3
+  # Fragment matching
+  fragment_match <- function(str1, str2, frag_size) {
+    fragments1 <- unique(unlist(lapply(1:(nchar(str1) - frag_size + 1), function(i) substring(str1, i, i + frag_size - 1))))
+    fragments2 <- unique(unlist(lapply(1:(nchar(str2) - frag_size + 1), function(i) substring(str2, i, i + frag_size - 1))))
+
+    common_fragments <- intersect(fragments1, fragments2)
+    fragment_match_percent <- (length(common_fragments) / length(union(fragments1, fragments2))) * 100
+
+    return(fragment_match_percent)
+  }
+
+  fragment_match_percent <- fragment_match(string1, string2, frag_size)
+
+  # Combine all metrics (weighted average or any other logic)
+  # Here, we give equal weight to exact match, Levenshtein distance, and fragment match
+  overall_match_percent <- (exact_match_percent + levenshtein_match_percent + substring_match_percent + fragment_match_percent) / 4
 
   # Return a list of different match percentages for deeper insights
   return(list(
-    exact_match_percent = exact_match_percent,
+    exact_match_percent = round(exact_match_percent, 2),
     substring_match_percent = substring_match_percent,
-    levenshtein_match_percent = levenshtein_match_percent,
-    overall_match_percent = overall_match_percent
+    levenshtein_match_percent = round(levenshtein_match_percent, 2),
+    fragment_match_percent = round(fragment_match_percent, 2),
+    overall_match_percent = round(overall_match_percent, 2)
   ))
 }
 
-
-string0 <- "october 12,1898"
-string1 <- "2018-10-12"
-string2 <- "1898-10-12"
-percent_match(string0, string1)
-percent_match(string0, string2)
 
 
 
