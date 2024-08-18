@@ -35,17 +35,60 @@
   # Convert dates to an object of Class Date
   # Return the extracted dates as a list object (or character(0) if not found)
   output.date <- lapply(extracted_dt, function(m){
-    #print(m)
-    as.POSIXct(easyr::todate(m),format="%Y-%m-%d")
-    #do.call("as.POSIXct",c(easyr::todate(m)))
-    easyr::todate(m)
+    print(m)
+    to..date(m,out.format = out.format)
     })
-  output.date
+  list(raw = extracted_dt, transformed = output.date)
   #format(output.date, format = out.format)
 }
 
 
 
+
+  # Function to convert any date format to Month-Day-Year (MM-DD-YYYY)
+  to..date <- function(dae,out.format) {
+    # Define a list of common date formats
+    date_formats <- c(
+      "%B %d, %y",   # Full month name, day, full year (e.g., "August 12, 24")
+      "%b %d, %y",   # Abbreviated month name, day, full year (e.g., "Aug 12, 24")
+      "%B %d,%y",    # Full month name, day, full year without space (e.g., "August 12,24")
+      "%b %d,%y",    # Abbreviated month name, day, full year without space (e.g., "Aug 12,24")
+      "%B %d, %Y",   # Full month name, day, full year (e.g., "August 12, 2024")
+      "%b %d, %Y",   # Abbreviated month name, day, full year (e.g., "Aug 12, 2024")
+      "%B %d,%Y",    # Full month name, day, full year without space (e.g., "August 12,2024")
+      "%b %d,%Y",    # Abbreviated month name, day, full year without space (e.g., "Aug 12,2024")
+      "%m/%d/%Y",    # Month/day/year with full year (e.g., "07/19/2024")
+      "%m/%d/%y",    # Month/day/year with two-digit year (e.g., "07/19/24")
+      "%Y-%m-%d",    # ISO format (e.g., "2024-08-12")
+      "%d-%m-%Y",    # Day-month-year (e.g., "12-08-2024")
+      "%d/%m/%Y",    # Day/month/year (e.g., "12/08/2024")
+      "%m-%d-%Y",    # Month-day-year with dashes (e.g., "07-19-2024")
+      "%m-%d-%y"     # Month-day-year with two-digit year and dashes (e.g., "07-19-24")
+    )
+
+    # Try to convert the date using the defined formats
+    resp <- c()
+    for(ut in dae)
+    for (fmt in date_formats) {
+      parsed_date <- tryCatch(as.Date(ut, format = fmt), error = function(e) NA)
+      if (!is.na(parsed_date)) {
+        vector_push(resp,format(parsed_date, out.format))
+        break;
+      }
+    }
+    resp
+    # If none of the formats worked, return NA or an error message
+    #stop(paste0("Unable to parse date. Please check the format. check: ",dae))
+  }
+
+  # Example usage
+  dates <- c("aug 12,2024", "aug 12, 2024", "July 12, 2024", "7/19/24")
+
+  # Apply the function to the dates
+  converted_dates <- sapply(dates, convert_to_mdy)
+
+  # Display the results
+  print(converted_dates)
 
 
 str1 = "The video was recorded on July 19, 2023."
