@@ -64,5 +64,5 @@ error.out <- function(test,alternative){
 
 #' @rdname errorout
 #' @export
-`%eor%` <- error.out
+`%eo%` <- error.out
 
