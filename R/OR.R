@@ -42,3 +42,27 @@ or <- function(test,alternative){
 #' @rdname orsign
 #' @export
 `%or%` <- or
+
+#' Error coalescing operator
+#'
+#' Alternative return for error statements.Return alternative if the value of expression is erroneous
+#'
+#' @param test an object to return
+#' @param alternative alternative object to return
+#' @return value of test if error, else return value of alternative
+#' @rdname errorout
+#' @export
+error.out <- function(test,alternative){
+  tryCatch({
+    test
+  },error = function(e){
+    if(!missing(alternative))
+    alternative else
+    e
+  })
+}
+
+#' @rdname errorout
+#' @export
+`%eor%` <- error.out
+
