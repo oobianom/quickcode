@@ -4,7 +4,7 @@
 #' @param case_sensitive if to check case sensitivity
 #' @param ignore_whitespace if to ignore whitespace
 #' @param frag_size fragment size of string
-#' @rdname percentmatch
+#' @rdname percentmatch1
 #' @return numeric value of the match percent
 #' @examples
 #' # Example 1: simple match
@@ -127,18 +127,18 @@ fragment_match <- function(str1, str2, frag_size) {
   return(f_m_p)
 }
 #' @export
-#' @rdname percentmatch
-`%match%` <- percent_match
+#' @rdname percentmatch1
+`%match%` <- function(string1,string2) percent_match(string1,string2)
 
 #' @export
-#' @rdname percentmatch
+#' @rdname percentmatch1
 #' @return match word sounds
 #' @examples
 #' sound_match("Robert","rupert")
 #' sound_match("rupert","Rubin")
 #' sound_match("book","oops")
 sound_match <- function(string1,string2){
-  soundex_m(string1) == soundex_m(sting2)
+  soundex_m(string1) == soundex_m(string2)
 }
 soundex_m <- function(name) {
   # Convert to uppercase
@@ -164,3 +164,7 @@ soundex_m <- function(name) {
   # Pad with zeros or trim to ensure the result is exactly 4 characters long
   substr(paste0(name, "000"), 1, 4)
 }
+
+case_sensitive = FALSE
+ignore_whitespace = TRUE
+frag_size = 2
