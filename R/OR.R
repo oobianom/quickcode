@@ -56,21 +56,20 @@ or <- function(test,alternative){
 #' @examples
 #' # The following statement would produce
 #' # error because 'stat1' does not exist
-#' stat1 + 1
+#'
+#' # stat1 + 1
 #'
 #' # To prevent the statement from
 #' # stopping the process, when can have alternative out
-#' alternative = 0
-#' error.out(stats1 + 1, alternative)
+#' alt = 0
+#' error.out(stats1 + 1, alt)
 #'
 #' @export
-error.out <- function(test,alternative){
+error.out <- function(test,alternative = ""){
   tryCatch({
     test
   },error = function(e){
-    if(!missing(alternative))
-    alternative else
-    e
+    alternative
   })
 }
 
