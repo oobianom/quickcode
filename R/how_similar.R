@@ -21,6 +21,7 @@
 #' string2 <- "1898-10-12"
 #' percent_match(string0, string1)
 #' percent_match(string0, string2)
+#' percent_match(string0, string2, frag_size = 4)
 #' percent_match(string1, string2)
 #'
 #' @export
@@ -90,7 +91,8 @@ percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_white
   fragment_match <- function(str1, str2, frag_size) {
     fragments1 <- unique(unlist(lapply(1:(nchar(str1) - frag_size + 1), function(i) substring(str1, i, i + frag_size - 1))))
     fragments2 <- unique(unlist(lapply(1:(nchar(str2) - frag_size + 1), function(i) substring(str2, i, i + frag_size - 1))))
-
+print(fragments1)
+print(fragments2)
     common_fragments <- intersect(fragments1, fragments2)
     fragment_match_percent <- (length(common_fragments) / length(union(fragments1, fragments2))) * 100
 
@@ -112,8 +114,6 @@ percent_match <- function(string1, string2, case_sensitive = FALSE, ignore_white
     overall_match_percent = round(overall_match_percent, 2)
   ))
 }
-
-
 
 
 #' @export
