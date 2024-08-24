@@ -36,5 +36,4 @@ in the scan. One was at 92.234.1.0.
 The other IP was 62.3.45.255."
 extract_IP(str2)
 }
-
 }
