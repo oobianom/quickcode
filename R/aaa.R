@@ -1,5 +1,5 @@
 #INTERNAL FUNCTIONS and VARIABLES
-
+#' @importFrom utils adist
 utils::globalVariables(c("...dMywhole_", "..dd..", "..mm..", "..yyyy..","size.bytes"))
 
 # fetch my environment
