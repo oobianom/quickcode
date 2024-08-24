@@ -9,7 +9,8 @@ percent_match(
   string1,
   string2,
   case_sensitive = FALSE,
-  ignore_whitespace = TRUE
+  ignore_whitespace = TRUE,
+  frag_size = 3
 )
 
 string1 \%match\% string2
@@ -22,6 +23,8 @@ string1 \%match\% string2
 \item{case_sensitive}{if to check case sensitivity}
 
 \item{ignore_whitespace}{if to ignore whitespace}
+
+\item{frag_size}{fragment size of string}
 }
 \value{
 numeric value of the match percent
@@ -45,9 +48,14 @@ Substring Matching:\cr
 Levenshtein Distance:\cr
 
   The function uses Levenshtein distance to calculate the similarity and integrates this into the overall match percentage.\cr\cr
-Overall Match Percentage:\cr
+Fragment Matching:\cr
 
-  The function averages the exact match percentage, the substring match percentage, and the Levenshtein match percentage to give an overall match percentage.\cr\cr
+   - A \code{frag_size} argument is introduced that compares fragments (substrings) of a given size (default is 3) from both strings.\cr
+ - The function creates unique fragments from each string and compares them to find common fragments.\cr
+ - The percentage match is calculated based on the ratio of common fragments to the total number of unique fragments.\cr\cr
+Combining Metrics:\cr
+
+  The overall match percentage is computed as the average of exact match, substring match, Levenshtein match, and fragment match percentages.
 }
 \examples{
 #Example 1: simple match
@@ -64,5 +72,6 @@ string1 <- "2018-10-12"
 string2 <- "1898-10-12"
 percent_match(string0, string1)
 percent_match(string0, string2)
+percent_match(string1, string2)
 
 }
