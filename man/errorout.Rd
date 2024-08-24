@@ -5,7 +5,7 @@
 \alias{\%eo\%}
 \title{Error coalescing operator}
 \usage{
-error.out(test, alternative)
+error.out(test, alternative = "")
 
 test \%eo\% alternative
 }
@@ -23,11 +23,12 @@ Alternative return for error statements.Return alternative if the value of expre
 \examples{
 # The following statement would produce
 # error because 'stat1' does not exist
-stat1 + 1
+
+# stat1 + 1
 
 # To prevent the statement from
 # stopping the process, when can have alternative out
-alternative = 0
-error.out(stats1 + 1, alternative)
+alt = 0
+error.out(stats1 + 1, alt)
 
 }
