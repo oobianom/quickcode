@@ -1,4 +1,5 @@
 ^_pkgdown\.yml$
 ^.*\.Rproj$
 ^.*\.future
+^.*\.testR
 ^\.Rproj\.user$
