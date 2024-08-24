@@ -3,6 +3,7 @@
 \name{percent_match}
 \alias{percent_match}
 \alias{\%match\%}
+\alias{sound_match}
 \title{Function to calculate the percentage of matching between two strings}
 \usage{
 percent_match(
@@ -10,10 +11,12 @@ percent_match(
   string2,
   case_sensitive = FALSE,
   ignore_whitespace = TRUE,
-  frag_size = 3
+  frag_size = 2
 )
 
 string1 \%match\% string2
+
+sound_match(string1, string2)
 }
 \arguments{
 \item{string1}{first string}
@@ -28,6 +31,8 @@ string1 \%match\% string2
 }
 \value{
 numeric value of the match percent
+
+match word sounds
 }
 \description{
 Function to calculate the percentage of matching between two strings
@@ -58,7 +63,7 @@ Combining Metrics:\cr
   The overall match percentage is computed as the average of exact match, substring match, Levenshtein match, and fragment match percentages.
 }
 \examples{
-#Example 1: simple match
+# Example 1: simple match
 string1 <- "Hello World"
 string2 <- "helo world"
 
@@ -66,12 +71,16 @@ match_percent <- percent_match(string1, string2)
 message("Percentage of matching: ", match_percent)
 
 
-#Example 2: which date is closest
+# Example 2: which date is closest
 string0 <- "october 12,1898"
 string1 <- "2018-10-12"
 string2 <- "1898-10-12"
 percent_match(string0, string1)
 percent_match(string0, string2)
+percent_match(string0, string2, frag_size = 4)
 percent_match(string1, string2)
 
+sound_match("Robert","rupert")
+sound_match("rupert","Rubin")
+sound_match("book","oops")
 }
