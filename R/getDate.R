@@ -27,9 +27,16 @@
 #' @export
 #' @examples
 #' str1 <- "The video was recorded on July 19, 2023."
-#' str2 <- "The video was recorded over a 4 hour period starting on July 19, 2023."
-#' str3 <- "The first batch aug 12,2024 of aug 12, 2024 reports are due on July 12, 2024; the second batch on 7/19/24."
-#' str4 <- c("On 3.12.25, Jerry is taking one month of leave and is not scheduled to return until around 4-9-2025.", "The staff will be out on training on 10/11/24, Oct 12, 2024, and 10-13-24.")
+#' str2 <- "The video was recorded over a 4 hour period
+#' starting on July 19, 2023."
+#' str3 <- "The first batch aug 12,2024 of aug 12,
+#' 2024 reports are due on July 12, 2024; the second
+#' batch on 7/19/24."
+#' str4 <- c("On 3.12.25, Jerry is taking one month
+#' 05.13.1895 of leave and is not scheduled to
+#' return until around 4-9-2025.", "The staff
+#' will be out on training on 10/11/24,
+#' Oct 12, 2024, and 10-13-24.")
 #' getDate(str1)
 #' getDate(str2, out.format = "%Y-%m-%d")
 #' getDate(str3, out.format = "%m-%d/%Y")
@@ -45,51 +52,72 @@ getDate <- function(str1, out.format = "%Y-%m-%d") {
   # Convert dates to an object of Class Date
   # Return the extracted dates as a list object (or character(0) if not found)
   output.date <- lapply(extracted_dt, function(m) {
-    print(m)
-    to..date(m, out.format = out.format)
+    .to..date(m, out.format = out.format)
   })
   list(raw = extracted_dt, transformed = output.date)
-  # format(output.date, format = out.format)
 }
 
 
 
 
 # Function to convert any date format to Month-Day-Year (MM-DD-YYYY)
-to..date <- function(dae, out.format) {
-  # Define a list of common date formats
-  date_formats <- c(
-    "%B %d, %y", # Full month name, day, full year (e.g., "August 12, 24")
-    "%b %d, %y", # Abbreviated month name, day, full year (e.g., "Aug 12, 24")
-    "%B %d,%y", # Full month name, day, full year without space (e.g., "August 12,24")
-    "%b %d,%y", # Abbreviated month name, day, full year without space (e.g., "Aug 12,24")
-    "%B %d, %Y", # Full month name, day, full year (e.g., "August 12, 2024")
-    "%b %d, %Y", # Abbreviated month name, day, full year (e.g., "Aug 12, 2024")
-    "%B %d,%Y", # Full month name, day, full year without space (e.g., "August 12,2024")
-    "%b %d,%Y", # Abbreviated month name, day, full year without space (e.g., "Aug 12,2024")
-    "%m/%d/%Y", # Month/day/year with full year (e.g., "07/19/2024")
-    "%m/%d/%y", # Month/day/year with two-digit year (e.g., "07/19/24")
-    "%Y-%m-%d", # ISO format (e.g., "2024-08-12")
-    "%d-%m-%Y", # Day-month-year (e.g., "12-08-2024")
-    "%d/%m/%Y", # Day/month/year (e.g., "12/08/2024")
-    "%m-%d-%Y", # Month-day-year with dashes (e.g., "07-19-2024")
-    "%m-%d-%y" # Month-day-year with two-digit year and dashes (e.g., "07-19-24")
-  )
+# Example usage
+# dates <- c("aug 12,1902", "aug 12, 1986", "July 12, 2024", "7/19/24")
+
+.to..date <- function(dae, out.format) {
 
   # Try to convert the date using the defined formats
-  resp <- c()
-  for (ut in dae) {
-    for (fmt in date_formats) {
+  res <- c()
+  for (ut in trimws(dae)) {
+  resp <- c(NA)
+  respm <- c(-1)
+    for (fmt in .date_stringi) {
       parsed_date <- tryCatch(as.Date(ut, format = fmt), error = function(e) NA)
-      if (!is.na(parsed_date)) {
-        vector_push(resp, format(parsed_date, out.format))
-        break
+      if (!is.na(parsed_date) & !grepl("^00",parsed_date)) {
+        j = format(parsed_date, out.format)
+        vector_push(resp, j)
+        vector_push(respm, paste0(percent_match(j,ut)$overall_match_percent," - ",fmt))
+        #break
       }
     }
+    vector_push(res, resp[which(respm == max(respm))])
   }
-  resp
+  res
   # If none of the formats worked, return NA or an error message
   # stop(paste0("Unable to parse date. Please check the format. check: ",dae))
 }
 
 
+
+
+.date_stringi <- c(
+  "%D","%F",
+  "%B %d, %Y",  # "August 15, 2024"
+  "%b %d, %Y",  # "Aug 15, 2024"
+  "%m/%d/%Y",   # "08/15/2024"
+  "%m/%d/%y",   # "08/15/24"
+  "%d-%m-%Y",   # "15-08-2024"
+  "%d-%m-%y",   # "15-08-24"
+  "%m-%d-%Y",   #
+  "%m-%d-%y",   #
+  "%Y-%m-%d",   # "2024-08-15"
+  "%d %B %Y",   # "15 August 2024"
+  "%d %b %Y",   # "15 Aug 2024"
+  "%B %d %Y",   # "August 15 2024"
+  "%b %d %Y",   # "Aug 15 2024"
+  "%y-%m-%d",   # "24-08-15"
+  "%Y/%m/%d",   # "2024/08/15"
+  "%d/%m/%Y",   # "15/08/2024"
+  "%A, %B %d, %Y", # "Thursday, August 15, 2024"
+  "%a, %b %d, %Y", # "Thu, Aug 15, 2024"
+  "%m%d%Y",     # "08152024"
+  "%m%d%y",     # "081524"
+  "%Y.%m.%d",   # "2024.08.15"
+  "%y.%m.%d",   # "24.08.15"
+  "%d.%m.%Y",   # "15.08.2024"
+  "%d.%m.%y",   # "15.08.24"
+  "%m.%d.%Y",   #
+  "%m.%d.%y",   #
+  "%Y %m %d",   # "2024 08 15"
+  "%y %m %d"    # "24 08 15"
+)
