@@ -7,8 +7,9 @@
 #' @param alternative alternative object to return
 #' @return value of test if not null or empty, else return value of alternative
 #' @note
-#' Equivalent to Nullish coalescing operator ?? in javascript or PHP like
-#' $Var = $operand1 ?? $operand2;
+#' Equivalent to Nullish coalescing operator ?? in javascript or PHP like $Var = $operand1 ?? $operand2;
+#'
+#' @examples
 #'
 #' test1 <- c(4,NA,5,2,0,21)
 #'
@@ -51,6 +52,17 @@ or <- function(test,alternative){
 #' @param alternative alternative object to return
 #' @return value of test if error, else return value of alternative
 #' @rdname errorout
+#'
+#' @examples
+#' # The following statement would produce
+#' # error because 'stat1' does not exist
+#' stat1 + 1
+#'
+#' # To prevent the statement from
+#' # stopping the process, when can have alternative out
+#' alternative = 0
+#' error.out(stats1 + 1, alternative)
+#'
 #' @export
 error.out <- function(test,alternative){
   tryCatch({
