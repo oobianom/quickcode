@@ -27,7 +27,7 @@
 #' The other IP was 62.3.45.255."
 #' extract_IP(str2)
 #' }
-#'
+#' @export
 
 extract_IP <- function(input) {
   # Match an IP address pattern
