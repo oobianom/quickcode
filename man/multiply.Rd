@@ -4,10 +4,12 @@
 \alias{multiply}
 \title{Multiple a vector of numeric values}
 \usage{
-multiply(...)
+multiply(..., na.rm = FALSE)
 }
 \arguments{
 \item{...}{the numeric values to multiply}
+
+\item{na.rm}{remove NAs}
 }
 \value{
 multiple of all content
