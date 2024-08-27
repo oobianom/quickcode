@@ -3,6 +3,7 @@
 #' Multiple all the content of a vector
 #'
 #' @param ... the numeric values to multiply
+#' @param na.rm remove NAs
 #' @return multiple of all content
 #'
 #' @examples
@@ -26,10 +27,9 @@
 #'
 #' @export
 
-multiply <- function(...) {
-  args <- unlist(c(as.list(environment()), list(...)))
-  stopifnot(length(args) > 1)
-  utils::tail(cumprod(args), n = 1)
+multiply <- function(..., na.rm = FALSE) {
+  message("This function will soon be deprecated. Please use prod()")
+  prod(..., na.rm = na.rm)
 }
 
 
