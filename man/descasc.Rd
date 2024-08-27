@@ -5,10 +5,30 @@
 \alias{is.decreasing}
 \title{Check is numbers in a vector is decreasing or increasing}
 \usage{
-is.increasing(.)
+is.increasing(., na.last = TRUE)
 
-is.decreasing(.)
+is.decreasing(., na.last = TRUE)
+}
+\arguments{
+\item{.}{a numeric vector}
+
+\item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.}
 }
 \description{
 Check is numbers in a vector is decreasing or increasing
+}
+\examples{
+# example code
+doy1 <- rnorm(1e3)
+doy2 <- sort(doy1, decreasing = F)
+doy3 <- sort(doy1, decreasing = T)
+
+is.increasing(doy1)
+is.decreasing(doy1)
+
+is.increasing(doy2)
+is.decreasing(doy2)
+
+is.increasing(doy3)
+is.decreasing(doy3)
 }
