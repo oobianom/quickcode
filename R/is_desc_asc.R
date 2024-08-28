@@ -10,8 +10,8 @@
 #' @examples
 #' # example code
 #' doy1 <- rnorm(1e3)
-#' doy2 <- sort(doy1, decreasing = F)
-#' doy3 <- sort(doy1, decreasing = T)
+#' doy2 <- sort(doy1, decreasing = FALSE)
+#' doy3 <- sort(doy1, decreasing = TRUE)
 #'
 #' is.increasing(doy1)
 #' is.decreasing(doy1)
