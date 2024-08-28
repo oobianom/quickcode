@@ -146,7 +146,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
   }
 
   # FUN
-  els <- c("", ".rm", ".set", ".contains", ".round", ".signif", ".class",".head",".tail")
+  els <- c("", ".rm", ".set", ".contains", ".round", ".signif", ".class",".head",".tail",".push",".pop")
 
   # remove
   rmv <- function() {
@@ -198,14 +198,26 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     stopifnot(inherits(.l,"data.frame")) # data must be a data frame
     print(.l[1:n,])
   }
-  # head
+  # tail
   taill <- function(n = 10) {
     .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
     stopifnot(inherits(.l,"data.frame")) # data must be a data frame
     print(.l[(nrow(.l)-n+1):nrow(.l),])
   }
 
+  # head
+  pushl <- function(n = 10) {
+    .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
+    if(inherits(.l,"data.frame")) data_push(.l, n = n)
+    else vector_push(.l, n = n)
+  }
 
+  # head
+  popl <- function(n = 10) {
+    .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
+    if(inherits(.l,"data.frame")) data_pop(.l, n = n)
+    else vector_pop(.l, n = n)
+  }
 
   # significant figures
   sgif <- function(digits = 0) {
@@ -255,6 +267,8 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     assign(paste0(i, els[4]), .join(cntsa), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[5]), .join(rldd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     assign(paste0(i, els[6]), .join(sgif), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[10]), .join(pushl), envir = .pos80cbca8022ece6174797e10bb8aebf18)
+    assign(paste0(i, els[11]), .join(popl), envir = .pos80cbca8022ece6174797e10bb8aebf18)
 
     if(inherits(value,"data.frame")){
       #if data frame, add the head and tail functions
