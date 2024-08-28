@@ -205,14 +205,14 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
     print(.l[(nrow(.l)-n+1):nrow(.l),])
   }
 
-  # head
-  pushl <- function(n = 10) {
+  # push
+  pushl <- function(add) {
     .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
-    if(inherits(.l,"data.frame")) data_push(.l, n = n)
-    else vector_push(.l, n = n)
+    if(inherits(.l,"data.frame")) data_push(.l, add = add)
+    else vector_push(.l, add = add)
   }
 
-  # head
+  # pop
   popl <- function(n = 10) {
     .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
     if(inherits(.l,"data.frame")) data_pop(.l, n = n)
