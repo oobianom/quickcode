@@ -1,14 +1,14 @@
 # to-do v1.0
 # function to track function usage
-type3 <-function(x)type1(x)
-type1 <- function(x){
-  mean(x)
-  sd(x)
-  track_function()
-}
+# type3 <-function(x)type1(x)
+# type1 <- function(x){
+#   mean(x)
+#   sd(x)
+#   track_func
+# }
 
 #'
-track_function <- function(apiId, output.dest = "output_tracking.csv"){
+track_func <- function(apiId, output.dest = "output_tracking.csv"){
   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
   print(getFuncName)
@@ -80,6 +80,23 @@ remove_comments <- function(line) {
     }
   }
   return(line)
+}
+
+is_inside_quotes <- function(text,pos = 1) {
+  # Define regex patterns for single and double quotes
+  pattern <- '"[^"]*"|\'[^\']*\''
+
+  # Find all matches using gregexpr
+  matches <- gregexpr(pattern, text, perl = TRUE)
+  match_texts <- regmatches(text, matches)
+
+  # Process matches to remove quotes and return unique values
+  extracted <- unlist(lapply(match_texts[[1]], function(x) {
+    gsub('^"|"$|\'|\'$', '', x)
+  }))
+
+  # Return unique matches
+  unique(extracted)
 }
 
 clean_r_file <- function(file_path, output_file_path) {
