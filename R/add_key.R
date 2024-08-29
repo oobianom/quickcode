@@ -17,8 +17,8 @@
 #' vector.
 #'
 #' @note
-#' add_key - resaves the keys \cr\cr
-#' indexed - return the keys
+#' add_key - resaves the keys and value pairs to original variable\cr\cr
+#' indexed - return the keys and value pairs
 #'
 #' @section Use case:
 #' Efficient for loops and for tracking various steps through a vector contents
