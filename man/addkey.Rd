@@ -44,8 +44,8 @@ because the function keys the vector, and sets the new list to the variable name
 vector.
 }
 \note{
-add_key - resaves the keys \cr\cr
-indexed - return the keys
+add_key - resaves the keys and value pairs to original variable\cr\cr
+indexed - return the keys and value pairs
 }
 \section{Use case}{
 
@@ -91,7 +91,15 @@ for(i in indexed(ver1)){
   message(sprintf("\%s is the key for this \%s", i$key, i$value))
 }
 
-#ex4 use keyed ver1 in lapply loop
+#ex4 use keyed ver1 in for loop
+#specify name for key and value
+for(i in indexed(ver1,k,v)){
+  message(
+  sprintf("\%s is the new key for this value \%s",
+  i$k, i$v))
+}
+
+#ex5 use keyed ver1 in lapply loop
 xl1 <- lapply(indexed(ver1),function(i){
   message(sprintf("lapply - \%s is the key for this \%s", i$key, i$value))
 })
