@@ -7,12 +7,16 @@
 \usage{
 add_key(vector)
 
-indexed(.)
+indexed(., key = key, value = value)
 }
 \arguments{
 \item{vector}{vector or data frame to transform}
 
 \item{.}{vector or data frame to transform}
+
+\item{key}{variable name for keys}
+
+\item{value}{variable name for values}
 }
 \value{
 a transformed list containing keys along with vector values
