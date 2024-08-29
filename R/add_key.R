@@ -117,13 +117,13 @@ add_key <- function(vector){
 indexed <- function(.,key = key,value = value){
   #create list and add keys
   .. = list()
-  iky = 1
+  count = 1
   for(i in .){
     num <- length(..)+1
     ..[[num]] <- list()
     ..[[num]][[as.character(substitute(key))]] = iky
     ..[[num]][[as.character(substitute(value))]] = i
-    inc(iky)
+    inc(count) #increment count
   }
   ..
 }
