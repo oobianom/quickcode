@@ -3,6 +3,8 @@
 #' Index a vector or lists and convert to a list of objects
 #'
 #' @param vector vector or data frame to transform
+#' @param key variable name for keys
+#' @param value variable name for values
 #' @return a transformed list containing keys along with vector values
 #' @details
 #' This function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
@@ -104,12 +106,15 @@ add_key <- function(vector){
 #'
 #' @export
 #'
-indexed <- function(.){
+indexed <- function(.,key = key,value = value){
   #create list and add keys
   .. = list()
   iky = 1
   for(i in .){
-    ..[[length(..)+1]] <- list(key = iky, value = i)
+    num <- length(..)+1
+    ..[[num]] <- list()
+    ..[[num]][[as.character(substitute(key))]] = iky
+    ..[[num]][[as.character(substitute(value))]] = i
     inc(iky)
   }
   ..
