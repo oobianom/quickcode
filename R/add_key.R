@@ -98,7 +98,15 @@ add_key <- function(vector){
 #'   message(sprintf("%s is the key for this %s", i$key, i$value))
 #' }
 #'
-#' #ex4 use keyed ver1 in lapply loop
+#' #ex4 use keyed ver1 in for loop
+#' #specify name for key and value
+#' for(i in indexed(ver1,k,v)){
+#'   message(
+#'   sprintf("%s is the new key for this value %s",
+#'   i$k, i$v))
+#' }
+#'
+#' #ex5 use keyed ver1 in lapply loop
 #' xl1 <- lapply(indexed(ver1),function(i){
 #'   message(sprintf("lapply - %s is the key for this %s", i$key, i$value))
 #' })
