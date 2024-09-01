@@ -112,20 +112,7 @@ percent_match <-
     )
   }
 
-# Fragment matching
-fragment_match <- function(str1, str2, frag_size) {
-  fragments1 <-
-    unique(unlist(lapply(1:(nchar(str1) - frag_size + 1), function(i)
-      substring(str1, i, i + frag_size - 1))))
-  fragments2 <-
-    unique(unlist(lapply(1:(nchar(str2) - frag_size + 1), function(i)
-      substring(str2, i, i + frag_size - 1))))
-  common_fragments <- intersect(fragments1, fragments2)
-  f_m_p <-
-    (length(common_fragments) / length(union(fragments1, fragments2))) * 100
 
-  return(f_m_p)
-}
 #' @export
 #' @rdname percentmatch1
 `%match%` <- function(string1,string2) percent_match(string1,string2)
@@ -140,31 +127,3 @@ fragment_match <- function(str1, str2, frag_size) {
 sound_match <- function(string1,string2){
   soundex_m(string1) == soundex_m(string2)
 }
-soundex_m <- function(name) {
-  # Convert to uppercase
-  name <- toupper(name)
-
-  # Retain the first letter
-  first_letter <- substr(name, 1, 1)
-
-  # Replace letters with corresponding Soundex digits
-  name <- gsub("[BFPV]", "1", name)
-  name <- gsub("[CGJKQSXZ]", "2", name)
-  name <- gsub("[DT]", "3", name)
-  name <- gsub("L", "4", name)
-  name <- gsub("[MN]", "5", name)
-  name <- gsub("R", "6", name)
-
-  # Replace adjacent same digits with a single digit
-  name <- gsub("(\\d)\\1+", "\\1", name)
-
-  # Remove vowels (A, E, I, O, U), H, W, and Y after the first letter
-  name <- paste0(first_letter, gsub("[AEIOUHWY]", "", substr(name, 2, nchar(name))))
-
-  # Pad with zeros or trim to ensure the result is exactly 4 characters long
-  substr(paste0(name, "000"), 1, 4)
-}
-
-case_sensitive = FALSE
-ignore_whitespace = TRUE
-frag_size = 2
