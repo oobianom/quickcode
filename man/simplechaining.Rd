@@ -28,7 +28,7 @@ e.g. you can call the function to set sep = "__" before using the %.% call to pa
 }
 \examples{
 #use defult sep ".."
-1:3\%.\%unique.length
+1:3\%.\%unique..length
 sample(1:1000,10,replace=TRUE) \%.\%unique..length
 sample(1:10,10,replace=TRUE) \%.\%unique..cumsum
 
