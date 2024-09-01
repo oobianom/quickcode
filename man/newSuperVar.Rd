@@ -96,7 +96,7 @@ lc <- lapply(1:8, function(j) {
 # search if it contains the numeric value 21
 newSuperVar(lon2, value = mtcars) # declares lon2
 lon2 # view content of lon2
-lon2.contains("21.0") # WRONG - since df.col is not specific,
+lon2.contains("21.0") # WRONG - since df.col is not specified,
 # only the first column is search for the character "21.0"
 lon2.contains("21.0", df.col = "mpg") # WRONG - searches mpg column
 # for the character "21.0"
