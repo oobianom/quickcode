@@ -32,14 +32,14 @@ vector of all comments within a file
 Vectorize all comments from the file
 }
 \examples{
-\donttest{
+\dontrun{
 ex_file1 <- "path/file1.R"
 # get all comments
 cmmts <- extract_comment(ex_file1)
 cmmts
 }
 
-\donttest{
+\dontrun{
 # Ex to clean out comments from file
 file_path <- ".testR"
 output_file_path <- ".cleaned_script.R"
@@ -49,7 +49,7 @@ clean_file(file_path, output_file_path)
 
 # example code
 
-\donttest{
+\dontrun{
 # Ex to get all defined functions
 # within a file
 file_path <- ".testR"
