@@ -25,7 +25,6 @@
 
 `%.%` <- function(obj, funcs){
   sep. <- options()$quickcode_chain_sep %or% "\\.\\."
-  print(sep.)
   .pF <- as.character(substitute(funcs))
   .pF2 <- trimws(strsplit(.pF,sep.)[[1]])
   lapply(.pF2, function(l) eval(parse(text = paste0("obj<<- ",l,"(obj)"))))
