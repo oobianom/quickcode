@@ -1,6 +1,6 @@
 #INTERNAL FUNCTIONS and VARIABLES
 #' @importFrom utils adist
-utils::globalVariables(c("...dMywhole_", "..dd..", "..mm..", "..yyyy..","size.bytes"))
+utils::globalVariables(c("...dMywhole_", "..dd..", "..mm..", "..yyyy..","Function","size.bytes"))
 
 # fetch my environment
 getEnvir <- function(nme,e = parent.frame()){
