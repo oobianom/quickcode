@@ -1,18 +1,47 @@
-# to-do v1.0
-# function to track function usage
-# type3 <-function(x)type1(x)
-# type1 <- function(x){
-#   mean(x)
-#   sd(x)
-#   track_func
-# }
-
+#' A function that tracks usage of other functions
 #'
-track_func <- function(apiId, output.dest = "output_tracking.csv"){
+#' Up count the number of times a particular function is called
+#'
+#' @param output.dest destination of csv file to store outputs
+#' @return the numeric count of a function usage
+#' @examples
+#' \donttest{
+#' #Track usage of type2 and type1 functions
+#' store.usage.file <- tempfile()
+#' type5 <-function(x)type2(x)
+#' type4 <-function(x)type3(x)
+#' type3 <-function(x)type1(x)
+#' type1 <- function(x){
+#'   mean(x)
+#'   sd(x)
+#'   track_func(store.usage.file)
+#' }
+#' type2 <- function(x){
+#'   type1(x)
+#'   track_func(store.usage.file)
+#' }
+#'
+#' # add usage counts to store.usage.file
+#' type1(number(10))
+#' type2(number(10))
+#' type3(number(10))
+#' type4(number(10))
+#' type5(number(10))
+#' }
+#' @export
+track_func <- function( output.dest = "output_tracking.csv"){
   getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
   getFuncName <- strsplit(getCall,"\\(")[[1]][1]
-  print(getFuncName)
-  ls("package:quickcode")
+  appenddf <- data.frame(Function = getFuncName, Usage = 1)
+  if(file.exists(output.dest)){
+    out.f <- read.csv(output.dest, header = T)
+    match.f <- subset(out.f,Function == getFuncName)
+    if(nrow(out.f[out.f$Function == getFuncName,])) out.f[out.f$Function == getFuncName,]$Usage = out.f[out.f$Function == getFuncName,]$Usage  + 1
+    else out.f <- rbind(out.f,appenddf)
+    write.csv(out.f,output.dest, quote = FALSE, row.names = FALSE)
+  }else{
+    write.csv(appenddf,output.dest, quote = FALSE, row.names = FALSE)
+  }
 }
 
 #' Extract all comments or functions from a file
@@ -22,17 +51,17 @@ track_func <- function(apiId, output.dest = "output_tracking.csv"){
 #' @param file path of file to use for processes
 #' @return vector of all comments within a file
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ex_file1 <- "path/file1.R"
 #' # get all comments
-#' cmmts <- extract_comments(ex_file1)
+#' cmmts <- extract_comment(ex_file1)
 #' cmmts
 #' }
 #'
 #' @param file file to parse
 #' @export
 
-extract_comments <- function(file) {
+extract_comment <- function(file) {
   # Read the file line by line
   lines <- readLines(file)
 
@@ -44,7 +73,6 @@ extract_comments <- function(file) {
     # Extract comments from the beginning of the line
     message(line)
     line <- remove_content_in_quotes(line)
-    print(line)
     if (grepl("^\\s*#", line)) {
       comments <- c(comments, line)
     }
@@ -73,7 +101,7 @@ remove_content_in_quotes <- function(line) {
 
 #' @rdname comments
 #' @export
-remove_comments <- function(line){
+remove_comment <- function(line){
   stopifnot(length(line) == 1)
   comment_index <- regexpr("#", line)
   if(comment_index == -1) line else gsub("#.*$", "", line)
@@ -92,8 +120,8 @@ hide_int_cmts <- function(string) {
 #' @param output_file file path to write the output of the new file
 #' @export
 #' @examples
-#' \dontrun{
-#' # Example usage
+#' \donttest{
+#' # Ex to clean out comments from file
 #' file_path <- ".testR"
 #' output_file_path <- ".cleaned_script.R"
 #' clean_file(file_path, output_file_path)
@@ -107,7 +135,7 @@ clean_file <- function(file, output_file) {
   # Process each line: remove comments and empty lines
   cleaned_lines <- sapply(lines, function(line) {
     line <- hide_int_cmts(line)
-    line <- gsub(master_file_clean_sep ,"#",remove_comments(line))
+    line <- gsub(master_file_clean_sep ,"#",remove_comment(line))
     line <- trimws(line)  # Remove leading and trailing whitespace
     if (nchar(line) > 0) {
       return(line)
@@ -122,11 +150,20 @@ clean_file <- function(file, output_file) {
 
 #' Get all defined functions within a file
 #'
+#' @examples
+#' # example code
+#'
+#' \donttest{
+#' # Ex to get all defined functions
+#' # within a file
+#' file_path <- ".testR"
+#' get_func_def(file_path)
+#' }
 #' @rdname comments
 #' @export
-get_function_def <- function(file) {
-  code <- clean_file(file)
-  envi = new.env()
-  eval(parse(text = code), envir = envi)
-  ls(envir = envi)
+get_func_def <- function(file) {
+  code = clean_file(file)
+  .envi = new.env()
+  eval(parse(text = code), envir = .envi)
+  ls(envir = .envi)
 }
