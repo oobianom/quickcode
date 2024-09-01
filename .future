@@ -183,7 +183,30 @@
 # }
 
 
-
+# get_calls <- function(filepath) {
+#   code <- parse(filepath)
+#   tokens <- as.list(code)
+#   calls <- c()
+#   while (TRUE) {
+#     any_unpacked <- FALSE
+#     for (ii in seq_along(tokens)) {
+#       part <- tokens[[ii]]
+#       # Calls always have the function name as the first element
+#       if (is.call(part)) {
+#         fun_token <- part[[1]]
+#         calls <- c(calls, deparse(fun_token))
+#       }
+#       # Expressions have a length
+#       if (length(part) > 1) {
+#         tokens[[ii]] <- as.list(part)
+#         any_unpacked <- TRUE
+#       }
+#     }
+#     tokens <- unlist(tokens)
+#     if (!any_unpacked) break
+#   }
+#   unique(calls)
+# }
 
 #assign(".pos80cbca8022ece6174797e10bb8aebf18", .pos80cbca8022ece6174797e10bb8aebf18, envir = .pos80cbca8022ece6174797e10bb8aebf18)
 #lockBinding(".pos80cbca8022ece6174797e10bb8aebf18", env = .pos80cbca8022ece6174797e10bb8aebf18)
