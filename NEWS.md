@@ -1,9 +1,11 @@
 # quickcode 1.0.0
 
 - [x] New functions
-    - [x] extract_comments
-    - [x] track_function
-    - [x] extract_IP
+    - [x] extract_comment: extract all comments from a file
+    - [x] clean_file: remove all comments from a file
+    - [x] extract_IP: extract IP addresses from a string
+    - [x] track_func: track usage of other functions
+    ... and many more.
     
 # quickcode 0.9.1
 
