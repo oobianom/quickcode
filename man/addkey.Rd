@@ -7,12 +7,10 @@
 \usage{
 add_key(vector)
 
-indexed(., key = key, value = value)
+indexed(vector, key = key, value = value)
 }
 \arguments{
 \item{vector}{vector or data frame to transform}
-
-\item{.}{vector or data frame to transform}
 
 \item{key}{variable name for keys}
 
