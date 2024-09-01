@@ -12,7 +12,7 @@
 #' e.g. you can call the function to set sep = "__" before using the %.% call to parse the chained function "__unique__sum"
 #' @examples
 #' #use defult sep ".."
-#' 1:3%.%unique.length
+#' 1:3%.%unique..length
 #' sample(1:1000,10,replace=TRUE) %.%unique..length
 #' sample(1:10,10,replace=TRUE) %.%unique..cumsum
 #'
@@ -25,10 +25,10 @@
 
 `%.%` <- function(obj, funcs){
   sep. <- options()$quickcode_chain_sep %or% "\\.\\."
+  print(sep.)
   .pF <- as.character(substitute(funcs))
-  .pF2 <- strsplit(.pF,sep.)[[1]]
-  print(.pF2)
-  lapply(.pF2, function(l) eval(parse(text = paste0("obj<<-obj %>% ",l))))
+  .pF2 <- trimws(strsplit(.pF,sep.)[[1]])
+  lapply(.pF2, function(l) eval(parse(text = paste0("obj<<- ",l,"(obj)"))))
   obj
 }
 
