@@ -1,0 +1,58 @@
+---
+title: "Function that allows you to track usage of other functions"
+author: "Obinna Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Function that allows you to track usage of other functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Why it may be important to track the usage of functions
+
+Tracking the usage of functions within an R package is important for package maintenance and improvement over time. As package developers add new functions and features, it's useful to know which existing functions and components are actually being utilized by users. Function usage data provides insights into where efforts should be focused to add value for end users. It helps identify functions that could be optimized, enhanced or deprecated based on real-world adoption.
+
+Overall, systematically collecting telemetry on how end users interact with an R package helps maintainers deliver more valuable and polished software over the long run. It brings transparency to decision making around new features and improvements through a data-driven understanding of user needs and behaviors. This strengthens the partnership between package authors and the community that relies on their work.
+
+The quickcode R package now has the "track_func()" to help with tracking functions and porting the results to a file.
+
+## Example of the usage
+
+```
+
+# track usage of type2 and type1 functions
+store.usage.file <- tempfile()
+type5 <-function(x)type2(x)
+type4 <-function(x)type3(x)
+type3 <-function(x)type1(x)
+type1 <- function(x){
+  mean(x)
+  sd(x)
+  track_func(store.usage.file)
+}
+type2 <- function(x){
+  type1(x)
+  track_func(store.usage.file)
+}
+
+# calling the below functions will record all usage counts to 
+# the file store.usage.file
+
+type1(number(10))
+type2(number(10))
+type3(number(10))
+type4(number(10))
+type5(number(10))
+
+```
+
+
+The intent is to further develop this function over time and make it more seamless to integrate and allow it to consume less time.
