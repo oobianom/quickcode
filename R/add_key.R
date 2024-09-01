@@ -69,7 +69,6 @@ add_key <- function(vector){
 
 
 #' @rdname addkey
-#' @param . vector or data frame to transform
 #' @details
 #' This function takes a vector and turns it into a list containing 'key' and 'value' for each vector.
 #' This allows the output to be used in loops such as for loops or lapply or other functions to track
@@ -114,14 +113,14 @@ add_key <- function(vector){
 #'
 #' @export
 #'
-indexed <- function(.,key = key,value = value){
+indexed <- function(vector,key = key,value = value){
   #create list and add keys
   .. = list()
   count = 1
-  for(i in .){
+  for(i in vector){
     num <- length(..)+1
     ..[[num]] <- list()
-    ..[[num]][[as.character(substitute(key))]] = iky
+    ..[[num]][[as.character(substitute(key))]] = count
     ..[[num]][[as.character(substitute(value))]] = i
     inc(count) #increment count
   }
