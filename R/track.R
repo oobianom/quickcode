@@ -15,10 +15,11 @@ track_func <- function(apiId, output.dest = "output_tracking.csv"){
   ls("package:quickcode")
 }
 
-#' Extract all comments from a file
+#' Extract all comments or functions from a file
 #'
 #' Vectorize all comments from the file
-#'
+#' @rdname comments
+#' @param file path of file to use for processes
 #' @return vector of all comments within a file
 #' @examples
 #' \dontrun{
@@ -41,7 +42,9 @@ extract_comments <- function(file) {
   # Loop through each line to extract comments
   for (line in lines) {
     # Extract comments from the beginning of the line
+    message(line)
     line <- remove_content_in_quotes(line)
+    print(line)
     if (grepl("^\\s*#", line)) {
       comments <- c(comments, line)
     }
@@ -56,6 +59,9 @@ extract_comments <- function(file) {
   return(comments)
 }
 
+#' @rdname comments
+#' @param line string vector to remove contents within quotes or comments
+#' @export
 remove_content_in_quotes <- function(line) {
   # Remove content within single quotes
   line <- gsub("'[^']*'", "", line)
@@ -64,49 +70,44 @@ remove_content_in_quotes <- function(line) {
   return(line)
 }
 
+
+#' @rdname comments
+#' @export
+remove_comments <- function(line){
+  stopifnot(length(line) == 1)
+  comment_index <- regexpr("#", line)
+  if(comment_index == -1) line else gsub("#.*$", "", line)
+}
+
+
 # Function to numb internal comments
 hide_int_cmts <- function(string) {
   string <- gsub('("[^"]*)#+([^"]*)"', '\\10x5&9%80x\\2"', string, perl = TRUE)
   string <- gsub("('[^']*)#+([^']*)'", '\\10x5&9%80x\\2\'', string, perl = TRUE)
   string
 }
-# Function to remove comments
-remove_comments <- function(line) {
-  # Find the position of the first unquoted #
-  comment_positions <- gregexpr("#", line)[[1]]
-  for (pos in comment_positions) {
-    if (pos != -1 && !is_inside_quotes(line, pos)) {
-      return(substr(line, 1, pos - 1))
-    }
-  }
-  return(line)
-}
 
-is_inside_quotes <- function(text,pos = 1) {
-  # Define regex patterns for single and double quotes
-  pattern <- '"[^"]*"|\'[^\']*\''
 
-  # Find all matches using gregexpr
-  matches <- gregexpr(pattern, text, perl = TRUE)
-  match_texts <- regmatches(text, matches)
-
-  # Process matches to remove quotes and return unique values
-  extracted <- unlist(lapply(match_texts[[1]], function(x) {
-    gsub('^"|"$|\'|\'$', '', x)
-  }))
-
-  # Return unique matches
-  unique(extracted)
-}
-
-clean_r_file <- function(file_path, output_file_path) {
+#' @rdname comments
+#' @param output_file file path to write the output of the new file
+#' @export
+#' @examples
+#' \dontrun{
+#' # Example usage
+#' file_path <- ".testR"
+#' output_file_path <- ".cleaned_script.R"
+#' clean_file(file_path, output_file_path)
+#' }
+#'
+#'
+clean_file <- function(file, output_file) {
   # Read the file line by line
-  lines <- readLines(file_path)
+  lines <- readLines(file)
 
   # Process each line: remove comments and empty lines
   cleaned_lines <- sapply(lines, function(line) {
     line <- hide_int_cmts(line)
-    line <- gsub("0x5&9%80x","#",remove_comments(line))
+    line <- gsub(master_file_clean_sep ,"#",remove_comments(line))
     line <- trimws(line)  # Remove leading and trailing whitespace
     if (nchar(line) > 0) {
       return(line)
@@ -114,12 +115,18 @@ clean_r_file <- function(file_path, output_file_path) {
       return(NULL)
     }
   })
-
-  cleaned_lines[!sapply(cleaned_lines, is.null)]
+  res <- as.character(cleaned_lines[!sapply(cleaned_lines, is.null)])
+  if(missing(output_file)) res else writeLines(res, output_file)
 }
 
-# Example usage
-# file_path <- ".testR"
-# output_file_path <- ".cleaned_script.R"
-# clean_r_file(file_path, output_file_path)
 
+#' Get all defined functions within a file
+#'
+#' @rdname comments
+#' @export
+get_function_def <- function(file) {
+  code <- clean_file(file)
+  envi = new.env()
+  eval(parse(text = code), envir = envi)
+  ls(envir = envi)
+}
