@@ -5,7 +5,7 @@
 #' @param output.dest destination of csv file to store outputs
 #' @return the numeric count of a function usage
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' #Track usage of type2 and type1 functions
 #' store.usage.file <- tempfile()
 #' type5 <-function(x)type2(x)
@@ -51,7 +51,7 @@ track_func <- function( output.dest = "output_tracking.csv"){
 #' @param file path of file to use for processes
 #' @return vector of all comments within a file
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' ex_file1 <- "path/file1.R"
 #' # get all comments
 #' cmmts <- extract_comment(ex_file1)
@@ -120,7 +120,7 @@ hide_int_cmts <- function(string) {
 #' @param output_file file path to write the output of the new file
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Ex to clean out comments from file
 #' file_path <- ".testR"
 #' output_file_path <- ".cleaned_script.R"
@@ -153,7 +153,7 @@ clean_file <- function(file, output_file) {
 #' @examples
 #' # example code
 #'
-#' \donttest{
+#' \dontrun{
 #' # Ex to get all defined functions
 #' # within a file
 #' file_path <- ".testR"
