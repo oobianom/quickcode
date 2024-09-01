@@ -6,17 +6,17 @@
 #' @return the numeric count of a function usage
 #' @examples
 #' \dontrun{
-#' #Track usage of type2 and type1 functions
+#' # Track usage of type2 and type1 functions
 #' store.usage.file <- tempfile()
-#' type5 <-function(x)type2(x)
-#' type4 <-function(x)type3(x)
-#' type3 <-function(x)type1(x)
-#' type1 <- function(x){
+#' type5 <- function(x) type2(x)
+#' type4 <- function(x) type3(x)
+#' type3 <- function(x) type1(x)
+#' type1 <- function(x) {
 #'   mean(x)
 #'   sd(x)
 #'   track_func(store.usage.file)
 #' }
-#' type2 <- function(x){
+#' type2 <- function(x) {
 #'   type1(x)
 #'   track_func(store.usage.file)
 #' }
@@ -29,18 +29,21 @@
 #' type5(number(10))
 #' }
 #' @export
-track_func <- function( output.dest = "output_tracking.csv"){
-  getCall<-as.character(sys.calls()[[length(sys.calls())-1]])
-  getFuncName <- strsplit(getCall,"\\(")[[1]][1]
+track_func <- function(output.dest = "output_tracking.csv") {
+  getCall <- as.character(sys.calls()[[length(sys.calls()) - 1]])
+  getFuncName <- strsplit(getCall, "\\(")[[1]][1]
   appenddf <- data.frame(Function = getFuncName, Usage = 1)
-  if(file.exists(output.dest)){
+  if (file.exists(output.dest)) {
     out.f <- read.csv(output.dest, header = T)
-    match.f <- subset(out.f,Function == getFuncName)
-    if(nrow(out.f[out.f$Function == getFuncName,])) out.f[out.f$Function == getFuncName,]$Usage = out.f[out.f$Function == getFuncName,]$Usage  + 1
-    else out.f <- rbind(out.f,appenddf)
-    write.csv(out.f,output.dest, quote = FALSE, row.names = FALSE)
-  }else{
-    write.csv(appenddf,output.dest, quote = FALSE, row.names = FALSE)
+    match.f <- subset(out.f, Function == getFuncName)
+    if (nrow(out.f[out.f$Function == getFuncName, ])) {
+      out.f[out.f$Function == getFuncName, ]$Usage <- out.f[out.f$Function == getFuncName, ]$Usage + 1
+    } else {
+      out.f <- rbind(out.f, appenddf)
+    }
+    utils::write.csv(out.f, output.dest, quote = FALSE, row.names = FALSE)
+  } else {
+    utils::write.csv(appenddf, output.dest, quote = FALSE, row.names = FALSE)
   }
 }
 
@@ -101,17 +104,17 @@ remove_content_in_quotes <- function(line) {
 
 #' @rdname comments
 #' @export
-remove_comment <- function(line){
+remove_comment <- function(line) {
   stopifnot(length(line) == 1)
   comment_index <- regexpr("#", line)
-  if(comment_index == -1) line else gsub("#.*$", "", line)
+  if (comment_index == -1) line else gsub("#.*$", "", line)
 }
 
 
 # Function to numb internal comments
 hide_int_cmts <- function(string) {
   string <- gsub('("[^"]*)#+([^"]*)"', '\\10x5&9%80x\\2"', string, perl = TRUE)
-  string <- gsub("('[^']*)#+([^']*)'", '\\10x5&9%80x\\2\'', string, perl = TRUE)
+  string <- gsub("('[^']*)#+([^']*)'", "\\10x5&9%80x\\2'", string, perl = TRUE)
   string
 }
 
@@ -127,7 +130,6 @@ hide_int_cmts <- function(string) {
 #' clean_file(file_path, output_file_path)
 #' }
 #'
-#'
 clean_file <- function(file, output_file) {
   # Read the file line by line
   lines <- readLines(file)
@@ -135,8 +137,8 @@ clean_file <- function(file, output_file) {
   # Process each line: remove comments and empty lines
   cleaned_lines <- sapply(lines, function(line) {
     line <- hide_int_cmts(line)
-    line <- gsub(master_file_clean_sep ,"#",remove_comment(line))
-    line <- trimws(line)  # Remove leading and trailing whitespace
+    line <- gsub(master_file_clean_sep, "#", remove_comment(line))
+    line <- trimws(line) # Remove leading and trailing whitespace
     if (nchar(line) > 0) {
       return(line)
     } else {
@@ -144,7 +146,7 @@ clean_file <- function(file, output_file) {
     }
   })
   res <- as.character(cleaned_lines[!sapply(cleaned_lines, is.null)])
-  if(missing(output_file)) res else writeLines(res, output_file)
+  if (missing(output_file)) res else writeLines(res, output_file)
 }
 
 
@@ -162,8 +164,8 @@ clean_file <- function(file, output_file) {
 #' @rdname comments
 #' @export
 get_func_def <- function(file) {
-  code = clean_file(file)
-  .envi = new.env()
+  code <- clean_file(file)
+  .envi <- new.env()
   eval(parse(text = code), envir = .envi)
   ls(envir = .envi)
 }
