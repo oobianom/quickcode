@@ -85,7 +85,7 @@
 #' # search if it contains the numeric value 21
 #' newSuperVar(lon2, value = mtcars) # declares lon2
 #' lon2 # view content of lon2
-#' lon2.contains("21.0") # WRONG - since df.col is not specific,
+#' lon2.contains("21.0") # WRONG - since df.col is not specified,
 #' # only the first column is search for the character "21.0"
 #' lon2.contains("21.0", df.col = "mpg") # WRONG - searches mpg column
 #' # for the character "21.0"
@@ -206,17 +206,27 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
   }
 
   # push
-  pushl <- function(add) {
+  pushl <- function(add, .df = c("row", "col")) {
+    .df <- match.arg(.df)
     .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
-    if(inherits(.l,"data.frame")) data_push(.l, add = add)
-    else vector_push(.l, add = add)
+    if(inherits(.l,"data.frame")){
+      if(.df == "row").l <- rbind(.l, add) else .l <- cbind(.l, add)
+    }
+    else .l <- c(.l, add)
+    .l
   }
 
   # pop
-  popl <- function(n = 10) {
+  popl <- function(n = 10, .df = c("row", "col")) {
+    .df <- match.arg(.df)
     .l = {get(as.character(i), envir = .pos80cbca8022ece6174797e10bb8aebf18)}
-    if(inherits(.l,"data.frame")) data_pop(.l, n = n)
-    else vector_pop(.l, n = n)
+    if(inherits(.l,"data.frame")){
+      if(.df == "row").l <- .l[1:{nrow(.l)-n},] else .l <- .l[,1:{ncol(.l)-n}]
+    }
+    else{
+      .l <- .l[-{length(.l):{length(.l) - {n-1}}}]
+    }
+    .l
   }
 
   # significant figures
