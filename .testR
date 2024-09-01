@@ -6,7 +6,16 @@ f <- function(){
 
     # This is the comment 3
 
-    f rre # This is the comment 4
+   # f rre # This is the comment 4
   ####################only
 
   print("#here it is") ## This is the comment 5
+
+# Quick code 6
+
+dt %>% case_when(
+  t == 1 ~ "78 ", #comment 7
+  #t ==2 comment 8
+  t==2 ~90, #comment 9
+  .default = 6
+) #here it is
