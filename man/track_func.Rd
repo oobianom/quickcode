@@ -16,7 +16,7 @@ the numeric count of a function usage
 Up count the number of times a particular function is called
 }
 \examples{
-\donttest{
+\dontrun{
 #Track usage of type2 and type1 functions
 store.usage.file <- tempfile()
 type5 <-function(x)type2(x)
