@@ -29,18 +29,18 @@ const <- list(
     khinchin = 2.685452001,
     ramanujan_soldner = 1.4513692348
   ),
-  symbols = list(
-    pi = "π",
-    e = "e",
-    golden_ratio = "φ",
-    euler_mascheroni = "γ",
-    feigenbaum = "δ",
-    champernowne = "C",
-    apery = "ζ(3)",
-    gelfond_schneider = "eπ",
-    khinchin = "K",
-    ramanujan_soldner = "μ"
-  ),
+  # symbols = list(
+  #   pi = "π",
+  #   e = "e",
+  #   golden_ratio = "φ",
+  #   euler_mascheroni = "γ",
+  #   feigenbaum = "δ",
+  #   champernowne = "C",
+  #   apery = "ζ(3)",
+  #   gelfond_schneider = "eπ",
+  #   khinchin = "K",
+  #   ramanujan_soldner = "μ"
+  # ),
   defs = list(
     pi = "Pi is the ratio of a circle's circumference to its diameter and is approximately 3.14159. It is one of the most important mathematical constants and is used in various mathematical and scientific calculations.",
     e = "Euler's number is an irrational number approximately equal to 2.71828. It is the base of the natural logarithm and appears in various mathematical and scientific contexts, such as exponential growth and decay.",
