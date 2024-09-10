@@ -285,7 +285,7 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
       assign(paste0(i, els[8]), .join(headd), envir = .pos80cbca8022ece6174797e10bb8aebf18)
       assign(paste0(i, els[9]), .join(taill), envir = .pos80cbca8022ece6174797e10bb8aebf18)
     }else{
-      els <- els %-% c(".head",".tail")
+      els <- els[els %nin% c(".head",".tail")]
     }
 
     if(editn1 != 0)
@@ -299,12 +299,12 @@ newSuperVar <- function(variable, value = 0L, lock = FALSE, editn = NULL) {
 
 
 # will be exported in future release
-`%-%` <- function(item1,item2,return=FALSE){
-  if(!all(class(item1) == class(item2))) stop("Both variables must have the same class")
-  res <- "The variables have to be either two lists or two character vectors"
-  if(inherits(item1,"character"))
-  res <- item1[item1%nin%item2]
-  if(inherits(item1,"list"))
-  res <- mapply('-', item1, item2, SIMPLIFY = FALSE)
-  res
-}
+# `%-%` <- function(item1,item2,return=FALSE){
+#   if(!all(class(item1) == class(item2))) stop("Both variables must have the same class")
+#   res <- "The variables have to be either two lists or two character vectors"
+#   if(inherits(item1,"character"))
+#   res <- item1[item1%nin%item2]
+#   if(inherits(item1,"list"))
+#   res <- mapply('-', item1, item2, SIMPLIFY = FALSE)
+#   res
+# }
