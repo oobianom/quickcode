@@ -10,7 +10,7 @@ Maintainer: Obinna Obianom <idonshayo@gmail.com>
 Description: The NOT functions, 'R' tricks and a compilation of some simple quick plus often used 'R' codes to improve your scripts. Improve the quality and reproducibility of 'R' scripts.
 License: MIT + file LICENSE
 URL: https://quickcode.obi.obianom.com
-BugReports: https://github.com/oobianom/quickcode
+BugReports: https://github.com/oobianom/quickcode/issues
 Depends: 
     R (> 3.6)
 Imports: 
