@@ -2,18 +2,6 @@
 #'
 #' List of mathematical functions
 #'
-#' @note
-#' \cr 1. Pi (`pi`): Pi is the ratio of a circle's circumference to its diameter and is approximately 3.14159. It is one of the most important mathematical constants and is used in various mathematical and scientific calculations.
-#' \cr 2. Euler's number (`e`): Euler's number is an irrational number approximately equal to 2.71828. It is the base of the natural logarithm and appears in various mathematical and scientific contexts, such as exponential growth and decay.
-#' \cr 3. Golden Ratio (`golden_ratio`): The golden ratio is an irrational number approximately equal to 1.61803. It is often represented by the Greek letter phi (f) and is known for its aesthetically pleasing proportions. It has applications in art, architecture, design, and mathematics.
-#' \cr 4. Euler-Mascheroni constant (`euler_mascheroni`): The Euler-Mascheroni constant is a mathematical constant approximately equal to 0.5772. It is denoted by the symbol <U+03B3> and appears in various mathematical and statistical contexts, such as the harmonic series and the asymptotic behavior of certain functions.
-#' \cr 5. Feigenbaum constant (`feigenbaum`): The Feigenbaum constant is a mathematical constant approximately equal to 4.6692. It appears in the study of chaos theory and describes the universal scaling behavior of certain mathematical sequences.
-#' \cr 6. Champernowne constant (`champernowne`): The Champernowne constant is an irrational number obtained by concatenating the positive integers in decimal form. It is often denoted by the symbol C and has applications in number theory and algorithmic randomness.
-#' \cr 7. Apery's constant (`apery`): Apery's constant is an irrational number approximately equal to 1.20206. It was first discovered by the mathematician Roger Apery and appears in the study of number theory, specifically in the context of the Riemann zeta function.
-#' \cr 8. Gelfond-Schneider constant (`gelfond_schneider`): The Gelfond-Schneider constant is a transcendental number approximately equal to 23.14069. It is denoted by the symbol G and is a key constant in number theory and the theory of transcendental numbers.
-#' \cr 9. Khinchin constant (`khinchin`): The Khinchin constant is a mathematical constant approximately equal to 2.68545. It appears in the study of continued fractions and provides information about the distribution of the coefficients of these fractions.
-#' \cr 10. Ramanujan-Soldner constant (`ramanujan_soldner`): The Ramanujan-Soldner constant is a mathematical constant approximately equal to 1.45137. It is named after the mathematician Srinivasa Ramanujan and appears in various mathematical formulas and series.
-#'
 #' @export
 
 const <- list(
@@ -29,18 +17,6 @@ const <- list(
     khinchin = 2.685452001,
     ramanujan_soldner = 1.4513692348
   ),
-  # symbols = list(
-  #   pi = "π",
-  #   e = "e",
-  #   golden_ratio = "φ",
-  #   euler_mascheroni = "γ",
-  #   feigenbaum = "δ",
-  #   champernowne = "C",
-  #   apery = "ζ(3)",
-  #   gelfond_schneider = "eπ",
-  #   khinchin = "K",
-  #   ramanujan_soldner = "μ"
-  # ),
   defs = list(
     pi = "Pi is the ratio of a circle's circumference to its diameter and is approximately 3.14159. It is one of the most important mathematical constants and is used in various mathematical and scientific calculations.",
     e = "Euler's number is an irrational number approximately equal to 2.71828. It is the base of the natural logarithm and appears in various mathematical and scientific contexts, such as exponential growth and decay.",
