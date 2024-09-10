@@ -17,17 +17,17 @@ Up count the number of times a particular function is called
 }
 \examples{
 \dontrun{
-#Track usage of type2 and type1 functions
+# Track usage of type2 and type1 functions
 store.usage.file <- tempfile()
-type5 <-function(x)type2(x)
-type4 <-function(x)type3(x)
-type3 <-function(x)type1(x)
-type1 <- function(x){
+type5 <- function(x) type2(x)
+type4 <- function(x) type3(x)
+type3 <- function(x) type1(x)
+type1 <- function(x) {
   mean(x)
   sd(x)
   track_func(store.usage.file)
 }
-type2 <- function(x){
+type2 <- function(x) {
   type1(x)
   track_func(store.usage.file)
 }
