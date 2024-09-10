@@ -46,7 +46,6 @@ output_file_path <- ".cleaned_script.R"
 clean_file(file_path, output_file_path)
 }
 
-
 # example code
 
 \dontrun{
