@@ -27,7 +27,9 @@
   sep. <- options()$quickcode_chain_sep %or% "\\.\\."
   .pF <- as.character(substitute(funcs))
   .pF2 <- trimws(strsplit(.pF,sep.)[[1]])
-  lapply(.pF2, function(l) eval(parse(text = paste0("obj<<- ",l,"(obj)"))))
+
+  for(u in .pF2) obj<- do.call(u,list(obj))
+  #lapply(.pF2, function(l) eval(parse(text = paste0("obj<<- ",l,"(obj)"))))
   obj
 }
 
