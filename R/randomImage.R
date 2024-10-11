@@ -48,32 +48,6 @@
 genRandImg = function (fp, n = 1, w.px = 500, h.px = 500,
                        ext = "jpg", paths = FALSE, cat = NULL)
 {
-  if(not.null(cat)) message("Note that the 'cat' category is now deprecated.")
-  if (!dir.exists(fp))
-    stop(paste0("The directory path declared in the 'fp' argument must exist."))
-  if (n > 99) {
-    warning("The value of n exceeds 99, so n was set to 99")
-    n <- 99L
-  }
-  checksum.files <- c()
-  downloaded.files <- c()
-  while (n > 0) {
-    file.store <- file.path(fp, paste0("img_", randString(1, 5), n, ".", ext))
-    utils::download.file(url = paste0("https://picsum.photos/", w.px, "/", h.px), destfile = file.store, mode = "wb")
-    Sys.sleep(1)
-    checksum <- as.vector(tools::md5sum(file.store))
-    if (checksum %in% checksum.files) {
-      unlink(file.store)
-    }
-    else {
-      vector_push(checksum.files, checksum)
-      vector_push(downloaded.files, file.store)
-      minus(n)
-    }
-  }
-  message(paste0("Downloaded ", length(downloaded.files), " files to ",
-                 fp))
-  if (paths)
-    gsub("\\\\", "/", downloaded.files)
+  message("As of version 1.0.1, this function is now deprecated as the external URLs to aided download of images no longer work.")
 }
 
