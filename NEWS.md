@@ -1,3 +1,8 @@
+# quickcode 1.0.1
+
+- [x] Deprecate genRandImg function due to URL issues
+- [x] Update clean function
+
 # quickcode 1.0.0
 
 - [x] New functions
