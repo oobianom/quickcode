@@ -37,4 +37,8 @@ chain_sep("__")
 sample(1:10,10,replace=TRUE) \%.\%unique__cumsum
 sample(1:10,10,replace=TRUE) \%.\%unique__cumsum__length
 
+
+# set sep before function chaining
+chain_sep("X")
+sample(1:10,10,replace=TRUE) \%.\%uniqueXcumsum
 }
