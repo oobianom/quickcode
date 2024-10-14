@@ -36,14 +36,15 @@
 #'
 
 vector_shuffle <- function(., replace = FALSE, prob = NULL, seed = NULL) {
-  if(not.vector(.)) stop("The first element must be a vector")
+  if(not.vector(.)) stop("The first argument must be a vector")
   .. <- substitute(.)
+  if(not.null(seed))set.seed(seed)
+  if (typeof(..) == "language")
+    return(sample(., replace = replace, prob = prob))
 
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   val <- get(as.character(..), envir = parent.frame())
-
-  if(not.null(seed))set.seed(seed)
 
   assign(as.character(..), sample(val, length(val), replace = replace, prob = prob), envir = parent.frame())
 }
