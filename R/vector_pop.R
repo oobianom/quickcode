@@ -8,6 +8,12 @@
 #' @param ret TRUE or FALSE. whether to return value instead of setting it to the parent vector
 #' @return vector with elements removed
 #' @examples
+#' # basic example: pop off the last 2 values from vector
+#' c(0,3,"A","Apple", TRUE) #before
+#' vector_pop(c(0,3,"A","Apple", TRUE)) #after 1 pop
+#' vector_pop(c(0,3,"A","Apple", TRUE), n=3) #after 3 pop
+#'
+#' # using objects
 #' num1 <- sample(330:400,10)
 #' name1 <- "ObinnaObianomObiObianom"
 #'
