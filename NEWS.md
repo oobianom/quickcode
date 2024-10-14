@@ -1,3 +1,7 @@
+# quickcode 1.0.2
+
+- [x] Expand functionality of data_pop, vector_pop, vector_shuffle
+
 # quickcode 1.0.1
 
 - [x] Deprecate genRandImg function due to URL issues
