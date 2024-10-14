@@ -20,6 +20,18 @@ shuffled data frame of items store to the data frame name
 Shorthand to shuffle a data frame and save
 }
 \examples{
+
+#basic example
+data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5))) #before
+data_shuffle(
+  data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+) #after shuffle row
+data_shuffle(
+  data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5))),
+  which = "cols"
+) #after shuffle column
+
+
 df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
 
 #illustrate basic functionality
