@@ -23,13 +23,14 @@
 
 
 find_packages <- function(keyword) {
-  packages <- rownames(available.packages())
+  options(repos = structure(c(CRAN = "https://cran.r-project.org")))
+  packages <- rownames(utils::available.packages())
 
   matched_pkgs <- c()
 
   for (pkg in packages) {
     tryCatch({
-      desc <- packageDescription(pkg)$Description
+      desc <- utils::packageDescription(pkg)$Description
 
       if (grepl(keyword, desc, ignore.case = TRUE)) {
         matched_pkgs <- c(matched_pkgs, pkg)
