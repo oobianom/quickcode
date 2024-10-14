@@ -22,6 +22,11 @@ data with elements removed
 Shorthand to remove elements from a data frame and save as the same name
 }
 \examples{
+#basic example: pop off 1 row from sample data
+data.frame(ID=1:10,N=number(10)) #before
+data_pop(data.frame(ID=1:10,N=number(10))) #after
+
+#using data objects
 data.01 <- mtcars[1:7,]
 
 #task: remove 1 element from the end of the data and set it to the data name
@@ -38,5 +43,6 @@ data.01 #data.01 data updated after pop
 data.01 #data.01 data before pop
 data_pop(data.01,5, ret = TRUE) #return modified data
 data.01 #data.01 data remains the same after pop
+
 
 }
