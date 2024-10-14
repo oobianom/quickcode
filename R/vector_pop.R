@@ -51,6 +51,9 @@
 #'
 vector_pop <- function(., n = 1, el = NULL, ret = FALSE){
   .. <- substitute(.)
+  if (typeof(..) == "language"){
+    return(.[1:(length(.)-n)])
+  }
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   init(val,vali,value = get(as.character(..), envir = parent.frame()))
