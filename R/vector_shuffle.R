@@ -9,8 +9,13 @@
 #' @return shuffled vector of items store to the vector name
 #'
 #' @examples
-#' v1<-c(3,45,23,3,2,4,1)
 #'
+#' #basic example
+#' vector_shuffle(c(3,45,23,3,2,4,1))
+#'
+#'
+#' #using objects
+#' v1<-c(3,45,23,3,2,4,1)
 #'
 #' #demonstrate vector_shuffle
 #' vector_shuffle(v1)
