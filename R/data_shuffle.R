@@ -8,6 +8,19 @@
 #' @return shuffled data frame of items store to the data frame name
 #'
 #' @examples
+#'
+#' #basic example
+#' data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5))) #before
+#' data_shuffle(
+#'   data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
+#' ) #after shuffle row
+#' data_shuffle(
+#'   data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5))),
+#'   which = "cols"
+#' ) #after shuffle column
+#'
+#'
+#' # examples using object
 #' df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
 #'
 #' #illustrate basic functionality
@@ -38,11 +51,24 @@ data_shuffle <- function(., which = c("rows", "cols"), seed = NULL) {
 
   .. <- substitute(.)
 
+  if(not.null(seed))set.seed(seed)
+
+  if (typeof(..) == "language"){
+    switch(which,
+           "rows" = {
+             d05 <- .[sample(nrow(.)), ]
+           },
+           "cols" = {
+             d05 <- .[, sample(ncol(.))]
+           }
+    )
+    return(d05)
+  }
+
   if (typeof(..) != "symbol") stop(paste0(.., " must be an object."))
 
   data <- as.data.frame(get(as.character(..), envir = parent.frame()))
 
-  if(not.null(seed))set.seed(seed)
 
   switch(which,
          "rows" = {
