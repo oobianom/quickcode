@@ -39,7 +39,7 @@
 
 pairDist <- function(data, round) {
   if (!all(unique(unlist(sapply(data, class))) %in% c("numeric", "double", "integer")))
-  stop("The data should only include numeric values and NAs")
+    stop("The data should only include numeric values and NAs")
 
   # Compute the column means ignoring NA values
   mean_matrix <- matrix(colMeans(data, na.rm = TRUE), nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
@@ -52,15 +52,10 @@ pairDist <- function(data, round) {
   result <- sqrt(row_sums)
 
   # Round the result if specified
-  if (!missing(round))
-    result <- round(result, round)
+  if (!missing(round))result <- round(result, round)
 
   # Apply function to check for NAs in each record
-  bln <- apply(data, 1, function(row) any(is.na(row)))
-  ds <- data.frame(pdist = result, isNA = bln)
-
-  return(ds)
-
-  }
+  data.frame(pdist = result, isNA = apply(data, 1, function(row) any(is.na(row))))
+}
 
 
