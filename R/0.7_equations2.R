@@ -38,19 +38,29 @@
 #' @export
 
 pairDist <- function(data, round) {
-  # error handling - check data
-  if(!all(unique(unlist(sapply(data, class))) %in% c("numeric","double","integer")))
-    stop("the data should only include numbers")
+  if (!all(unique(unlist(sapply(data, class))) %in% c("numeric", "double", "integer")))
+  stop("The data should only include numeric values and NAs")
 
-  # compute
-  mean_matrix <- matrix(colMeans(data), nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
+  # Compute the column means ignoring NA values
+  mean_matrix <- matrix(colMeans(data, na.rm = TRUE), nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
+
+  # Compute squared differences ignoring NA values
   squared_diff <- (data - mean_matrix)^2
-  row_sums <- rowSums(squared_diff)
-  result <- sqrt(row_sums)
-  if (!missing(round)) result <- round(result, round)
+  row_sums <- rowSums(squared_diff, na.rm = TRUE)
 
-  # result
-  result
-}
+  # Calculate the result
+  result <- sqrt(row_sums)
+
+  # Round the result if specified
+  if (!missing(round))
+    result <- round(result, round)
+
+  # Apply function to check for NAs in each record
+  bln <- apply(data, 1, function(row) any(is.na(row)))
+  ds <- data.frame(pdist = result, isNA = bln)
+
+  return(ds)
+
+  }
 
 
