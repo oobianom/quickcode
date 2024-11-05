@@ -1,6 +1,7 @@
 # quickcode 1.0.2
 
 - [x] Expand functionality of data_pop, vector_pop, data_shuffle, vector_shuffle
+- [x] Update pairDist
 
 # quickcode 1.0.1
 
