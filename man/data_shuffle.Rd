@@ -32,6 +32,7 @@ data_shuffle(
 ) #after shuffle column
 
 
+# examples using object
 df1<-data.frame(ID=46:55,PK=c(rep("Treatment",5),rep("Placebo",5)))
 
 #illustrate basic functionality
