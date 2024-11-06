@@ -40,7 +40,7 @@
 #' getquart = quantile(values, probs = ci)
 #' print(getquart)
 #'
-#'
+#' @export
 #'
 math.qt <- function(ci = 0.9){
   c(1 - (1-ci)/2,(1-ci)/2)
