@@ -27,6 +27,4 @@ ci = math.qt(0.95)
 getquart = quantile(values, probs = ci)
 print(getquart)
 
-
-
 }
