@@ -74,7 +74,6 @@ extract_comment <- function(file) {
   # Loop through each line to extract comments
   for (line in lines) {
     # Extract comments from the beginning of the line
-    message(line)
     line <- remove_content_in_quotes(line)
     if (grepl("^\\s*#", line)) {
       comments <- c(comments, line)
