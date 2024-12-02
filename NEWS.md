@@ -1,3 +1,7 @@
+# quickcode 1.0.3
+
+- [x] Minor updates to functions and examples
+
 # quickcode 1.0.2
 
 - [x] Expand functionality of data_pop, vector_pop, data_shuffle, vector_shuffle

@@ -23,17 +23,26 @@
 #' @references the current function was adapted from one of the examples in the svgViewR package, \cr
 #' https://cran.r-project.org/web/packages/svgViewR/svgViewR.pdf
 #' @examples
+#'
 #' data = attenu[,1:2]
 #'
-#' #basic example using data.frame
+#' # example 1: basic example using data.frame
 #' pairDist(data)
 #'
-#' #basic example using as.matrix
+#' # example 2: basic example using as.matrix
 #' pairDist(as.matrix(data))
 #'
-#'
-#' # round results to 2 decimal points
+#' # example 3: round results to 2 decimal points
 #' pairDist(data, 2)
+#'
+#' # example 4
+#' data = matrix(
+#' c(1, 5, NA, 4, 5, 6, NA, 8, 9, NA, 12, 23, 6, 0, 3, 3, 8, 15),
+#' ncol = 3,
+#' byrow = TRUE)
+#' x = pairDist(data, 3)
+#' data = data.frame(data)
+#' data = cbind(data, x)
 #'
 #' @export
 
