@@ -1,7 +1,7 @@
 #' Clear environment, clear console, set work directory and load files
 #'
 #' Shorthand to quickly clear console, clear environment, set working directory, load files
-#'
+#' @rdname clearenvironment
 #' @param setwd OPTIONAL. set working directory
 #' @param source OPTIONAL. source in file(s)
 #' @param load OPTIONAL. load in Rdata file(s)
@@ -69,6 +69,7 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
 
   # set directory if it exists
   prevwd <- getwd()
+  options("last.used.wd" = prevwd)
   #on.exit(setwd(prevwd))
 
   if (not.null(setwd)) {
@@ -105,6 +106,26 @@ clean <- function(setwd = NULL, source = c(), load = c(), clearPkgs = FALSE) {
   }
 }
 
+#' Go back to previous directory
+#'
+#' Navigate to previous working directory if the setwd was called by clean() or refresh() function
+#'
+#' @note
+#' In order to use this function to retrieve the last/previous working directory, you must use the quickcode::clean() or quickcode::refresh() function to set the working directory.
+#' @examples
+#' lastwd()
+#' @return the previous directory
+#' @export
+
+lastwd <- function() {
+  .lastdir <- options()$last.used.wd
+  if (is.null(.lastdir)) {
+    message("In order to use this function to retrieve the last/previous working directory, you must use the quickcode::clean() or quickcode::refresh() function to set the working directory.")
+  } else {
+    options("last.used.wd" = getwd())
+    setwd(.lastdir)
+  }
+}
 
 
 #' Clear environment, clear console, set work directory and load files
