@@ -123,7 +123,8 @@ lastwd <- function() {
     message("In order to use this function to retrieve the last/previous working directory, you must use the quickcode::clean() or quickcode::refresh() function to set the working directory.")
   } else {
     options("last.used.wd" = getwd())
-    setwd(.lastdir)
+    if(dir.exists(.lastdir)) setwd(.lastdir)
+    else message("The last directory (",.lastdir,") no longer exists.")
   }
 }
 
