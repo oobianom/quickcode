@@ -43,12 +43,3 @@
 chain_sep <- function(sep = "\\.\\."){
   options(quickcode_chain_sep = sep)
 }
-
-#' @export
-#' @rdname simplechaining
-chain_func <- function(...){
-  for(j in ...length()){
-    print(as.character(substitute(...elt(j))))
-  }
-  as.character(substitute(...))
-}
