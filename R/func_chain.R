@@ -48,29 +48,28 @@ chain_sep <- function(sep = "\\.\\."){
 
 
 
-#' @rdname simplechaining2
 #' Combine specific functions as store as one function
-#' 
+#'
 #' Use many functions in one call using predeclared calls
-#' 
+#'
 #' @param ... functions to include. see example for how to use
 #' @param otherargs other arguments for use in each function
-#' 
+#' @rdname simplechaining2
 #' @return returns a function that combines multiple function
 #' @export
 #' @examples
-#' 
+#'
 #' # Example 1 with base functions
 #' combf1 <- chain_func(unique, cumsum, print)
 #' result <- combf1(sample(1:5,10,replace = TRUE))
-#' #or 
+#' #or
 #' u = sample(1:5,10,replace = TRUE)
 #' result <- combf1(u)
-#' 
+#'
 #' # Example 2 with base functions with arguments
 #' combf2 <- chain_func(unique, print, otherargs = list(.= c(FALSE),.=c(2)))
 #' result <- combf2(sample(1:3,10,replace = TRUE))
-#' 
+#'
 #' # Example 3 with custom functions
 #' r = function(a,b,c){
 #'   if(!missing(a))print(a)
@@ -78,14 +77,14 @@ chain_sep <- function(sep = "\\.\\."){
 #'   if(!missing(c))print(c)
 #'   return(a)
 #' }
-#' 
+#'
 #' r2 = function(a,b,c){
 #'   if(!missing(a))message(a)
 #'   if(!missing(b))message(b)
 #'   if(!missing(c))message(c)
 #'   return(a)
 #' }
-#' 
+#'
 #' combf3 <- chain_func(r,r2, otherargs =list(.=c("apple","cat"),.=c("rice")))
 #' res <- combf3(head(mtcars))
 
