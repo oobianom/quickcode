@@ -1,3 +1,7 @@
+# quickcode 1.0.4
+
+- [x] Minor updates to functions and examples
+
 # quickcode 1.0.3
 
 - [x] Minor updates to functions and examples
