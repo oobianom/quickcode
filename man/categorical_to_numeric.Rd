@@ -5,9 +5,9 @@
 \alias{cat_to_num2}
 \title{Convert Categorical Values to Numeric}
 \usage{
-cat_to_num(x, decreasing = T)
+cat_to_num(x, decreasing = FALSE)
 
-cat_to_num2(x, decreasing = T)
+cat_to_num2(x, decreasing = FALSE)
 }
 \arguments{
 \item{x}{A vector containing categorical values (character or factor)}
@@ -23,7 +23,7 @@ alphabetically/numerically and assigning sequential numbers starting from 1
 \examples{
 # Example 1: Basic character vector
 fruits <- c("apple", "banana", "apple", "cherry", "banana")
-cat_to_num(fruits)  # Returns: 1, 2, 1, 3, 2
+cat_to_num(fruits, decreasing = FALSE)  # Returns: 1, 2, 1, 3, 2
 
 # Example 2: Vector with NAs
 grades <- c("A", NA, "C", "B", "A", NA)
@@ -47,7 +47,8 @@ cat_to_num(status)  # Returns: 1, 1, 1
 # Call the value assignment to assign
 # a numeric value to a new categorical value
 
-cat_to_num2(letters[1:7])("a")
+cat_to_num2(letters[1:7])("b")
+cat_to_num2(letters[1:7], decreasing = FALSE)("d")
 # the above assigns numeric values to letters a-g
 # and then calls the number for "a"
 
