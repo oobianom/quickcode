@@ -12,7 +12,7 @@
 #' @examples
 #' # Example 1: Basic character vector
 #' fruits <- c("apple", "banana", "apple", "cherry", "banana")
-#' cat_to_num(fruits)  # Returns: 1, 2, 1, 3, 2
+#' cat_to_num(fruits, decreasing = FALSE)  # Returns: 1, 2, 1, 3, 2
 #'
 #' # Example 2: Vector with NAs
 #' grades <- c("A", NA, "C", "B", "A", NA)
@@ -32,7 +32,7 @@
 #'
 #' @export
 #' @rdname categorical_to_numeric
-cat_to_num <- function(x, decreasing = T) {
+cat_to_num <- function(x, decreasing = FALSE) {
   # Remove NA values and get unique sorted values
   unique_vals <- sort(unique(na.omit(x)), decreasing = decreasing)
 
@@ -54,7 +54,8 @@ cat_to_num <- function(x, decreasing = T) {
 #' # Call the value assignment to assign
 #' # a numeric value to a new categorical value
 #'
-#' cat_to_num2(letters[1:7])("a")
+#' cat_to_num2(letters[1:7])("b")
+#' cat_to_num2(letters[1:7], decreasing = FALSE)("d")
 #' # the above assigns numeric values to letters a-g
 #' # and then calls the number for "a"
 #'
@@ -65,13 +66,13 @@ cat_to_num <- function(x, decreasing = T) {
 #'
 #'
 #' @rdname categorical_to_numeric
-cat_to_num2 <- function(x, decreasing = T){
+cat_to_num2 <- function(x, decreasing = FALSE){
   # assign numeric values
-  getassignment <- setNames(cat_to_num(x, decreasing = decreasing),x)
+  getassignment <- cat_to_num(x, decreasing = decreasing)
 
   # set function for subsequent calls
   function(val){
-    stopifnot(val %nin% x)
-    getassignment[val]
+    stopifnot(val %in% x)
+    as.numeric(getassignment[val])
   }
 }
