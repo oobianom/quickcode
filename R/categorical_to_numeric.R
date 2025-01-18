@@ -41,9 +41,7 @@ cat_to_num <- function(x, decreasing = FALSE) {
   names(val_map) <- unique_vals
 
   # Convert to numeric while preserving NA
-  numeric_vals <- val_map[x]
-
-  return(numeric_vals)
+  val_map[x]
 }
 
 #' @export
