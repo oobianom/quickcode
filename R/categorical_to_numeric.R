@@ -1,4 +1,4 @@
-#' Convert Categorical Values to Numeric
+#' Convert Categorical Values to Numeric Improvement to seq_along()
 #'
 #' @description
 #' Converts categorical values into numeric by sorting unique values
