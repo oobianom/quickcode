@@ -1,3 +1,8 @@
+# quickcode 1.0.5
+
+- [x] Minor updates to functions and examples
+- [x] Introduced cat_to_num() and cat_to_num2()
+
 # quickcode 1.0.4
 
 - [x] Minor updates to functions and examples
