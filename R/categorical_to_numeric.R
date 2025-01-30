@@ -5,6 +5,7 @@
 #' alphabetically/numerically and assigning sequential numbers starting from 1
 #'
 #' @param x A vector containing categorical values (character or factor)
+#' @param decreasing logical. Should the sort be increasing or decreasing?
 #'
 #' @return A numeric vector where each category is mapped to a number based on its
 #' sorted position. NA values in the input remain NA in the output.
