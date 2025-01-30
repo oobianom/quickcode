@@ -2,6 +2,7 @@
 
 - [x] Minor updates to functions and examples
 - [x] Introduced cat_to_num() and cat_to_num2()
+- [x] Removed multiply() and genRandImg()
 
 # quickcode 1.0.4
 
