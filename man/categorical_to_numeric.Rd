@@ -11,6 +11,8 @@ cat_to_num2(x, decreasing = FALSE)
 }
 \arguments{
 \item{x}{A vector containing categorical values (character or factor)}
+
+\item{decreasing}{logical. Should the sort be increasing or decreasing?}
 }
 \value{
 A numeric vector where each category is mapped to a number based on its
