@@ -127,7 +127,9 @@ lastwd <- function() {
     else message("The last directory (",.lastdir,") no longer exists.")
   }
 }
-
+#' @export
+#' @rdname clearenvironment
+clear <- clean
 
 #' Clear environment, clear console, set work directory and load files
 #'
