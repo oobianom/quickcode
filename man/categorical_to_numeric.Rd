@@ -3,7 +3,7 @@
 \name{cat_to_num}
 \alias{cat_to_num}
 \alias{cat_to_num2}
-\title{Convert Categorical Values to Numeric}
+\title{Convert Categorical Values to Numeric Improvement to seq_along()}
 \usage{
 cat_to_num(x, decreasing = FALSE)
 
