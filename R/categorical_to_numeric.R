@@ -34,7 +34,7 @@
 #' @rdname categorical_to_numeric
 cat_to_num <- function(x, decreasing = FALSE) {
   # Remove NA values and get unique sorted values
-  unique_vals <- sort(unique(na.omit(x)), decreasing = decreasing)
+  unique_vals <- sort(unique(stats::na.omit(x)), decreasing = decreasing)
 
   # Create a named vector mapping categories to numbers
   val_map <- seq_along(unique_vals)
