@@ -161,7 +161,7 @@ read.csv.print <-
       ...
     )
     if (length(dim) > 1 & dim[1] != 0) {
-      if (multiply(dim) > 0) {
+      if (prod(dim) > 0) {
         prtr(x[1:dim[1],1:dim[2]])
       }
     } else {
@@ -265,7 +265,7 @@ read.table.print <-
       ...
     )
     if (length(dim) > 1 & dim[1] != 0) {
-      if (multiply(dim) > 0) {
+      if (prod(dim) > 0) {
         prtr(x[1:dim[1],1:dim[2]])
       }
     } else {
