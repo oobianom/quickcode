@@ -14,7 +14,7 @@ chain_sep(sep = "\\\\.\\\\.")
 
 \item{funcs}{function chains to apply to the data object}
 
-\item{sep}{separated for funcs argument values}
+\item{sep}{separator for functions argument values}
 }
 \value{
 the result of applying the chained functions to the data object
@@ -27,7 +27,7 @@ chain_sep allows the user to preset the separator for the function chaining \cr\
 e.g. you can call the function to set sep = "__" before using the %.% call to parse the chained function "__unique__sum"
 }
 \examples{
-#use defult sep ".."
+#use default sep ".."
 1:3\%.\%unique..length
 sample(1:1000,10,replace=TRUE) \%.\%unique..length
 sample(1:10,10,replace=TRUE) \%.\%unique..cumsum
