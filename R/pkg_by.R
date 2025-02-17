@@ -13,10 +13,10 @@
 #' \donttest{
 #' # find the list of R packages for data or machine learning
 #'
-#' matched_pkgs <- find_packages("data")
+#' matched_pkgs <- suppressWarnings(find_packages("plotting"))
 #' matched_pkgs
 #'
-#' matched_pkgs <- find_packages("machine learning")
+#' matched_pkgs <- suppressWarnings(find_packages("machine learning"))
 #' matched_pkgs
 #' }
 #' @export
