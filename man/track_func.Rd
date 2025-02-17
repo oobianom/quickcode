@@ -2,7 +2,7 @@
 % Please edit documentation in R/track.R
 \name{track_func}
 \alias{track_func}
-\title{A function that tracks usage of other functions}
+\title{Track Function Usage and Performance}
 \usage{
 track_func(output.dest = "output_tracking.csv")
 }
@@ -13,10 +13,21 @@ track_func(output.dest = "output_tracking.csv")
 the numeric count of a function usage
 }
 \description{
-Up count the number of times a particular function is called
+Up count the number of times a particular function is called. This function tracker is a higher-order function or decorator that wraps around other functions to monitor and record their execution patterns, including metrics like call frequency, execution time, argument patterns, and return values. It acts as a transparent layer that doesn't modify the original function's behavior but collects valuable metadata about its usage.
+}
+\note{
+The usefulness of function tracking spans several critical areas:\cr\cr
+\strong{Performance Optimization}: By measuring execution times and frequency, developers can identify bottlenecks and frequently called functions that need optimization\cr
+\strong{Debugging}: Tracking argument patterns and function call sequences helps pinpoint issues in complex applications\cr
+\strong{Usage Analytics}: Understanding which features (functions) are most commonly used helps guide development priorities and API design decisions\cr
+\strong{Resource Management}: Monitoring function behavior helps identify memory leaks, resource consumption patterns, and potential optimization opportunities\cr
+\strong{Testing}: Usage patterns can inform test case design and coverage requirements, ensuring critical paths are well-tested\cr
+\strong{Documentation}: Automatically gathering real-world usage examples helps maintain accurate and relevant documentation\cr
+\strong{Compliance}: In regulated environments, function tracking can help maintain audit trails of system behavior\cr
 }
 \examples{
 \dontrun{
+library(quickcode)
 # Track usage of type2 and type1 functions
 store.usage.file <- tempfile()
 type5 <- function(x) type2(x)
@@ -38,5 +49,8 @@ type2(number(10))
 type3(number(10))
 type4(number(10))
 type5(number(10))
+
+# check the stored function usage file
+print(read.csv(store.usage.file))
 }
 }
