@@ -204,9 +204,7 @@ normalize.vector <- function(x) {
   x_max <- max(x, na.rm = TRUE)
 
   # Normalize to the range [0, 1]
-  normalized <- (x - x_min) / (x_max - x_min)
-
-  return(normalized)
+  (x - x_min) / (x_max - x_min)
 }
 
 
