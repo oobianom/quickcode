@@ -1,3 +1,8 @@
+# quickcode 1.0.6
+
+- [ ] AI aided functions
+
+
 # quickcode 1.0.5
 
 - [x] Minor updates to functions and examples
