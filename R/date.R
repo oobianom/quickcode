@@ -44,7 +44,7 @@
 #' @param as.vector return output as vector, or leave as data frame
 #' @return date derived from combining values from three columns of a data frame
 #'
-#' @note
+#' @section Note:
 #' \strong{DATE FORMATS IN R}\cr
 #' \tabular{rrrrr}{
 #' \strong{Date Specification}   \tab \tab \strong{Description}          \tab \tab  \strong{Example} \cr
