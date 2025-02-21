@@ -9,6 +9,8 @@
 
 ## Official website: https://quickcode.obi.obianom.com
 
+## NEW Documentation: https://quickcode.rpkg.net/reference/index2.html
+
 ### R dependency: https://depends.rpkg.net/package/quickcode
 
 ### Package stats: https://rpkg.net/package/quickcode 
