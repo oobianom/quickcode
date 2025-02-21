@@ -43,7 +43,8 @@ The three input columns corresponding to "Year Month Day" must be numeric values
 For example, Do not provide the month variable as non-numeric such as "Mar", "Jul", or "Jan". \cr\cr
 If the values of the columns are non-numeric, the results will return an "NA" in the output.date column.
 }
-\note{
+\section{Note}{
+
 \strong{DATE FORMATS IN R}\cr
 \tabular{rrrrr}{
 \strong{Date Specification}   \tab \tab \strong{Description}          \tab \tab  \strong{Example} \cr
@@ -65,6 +66,7 @@ If the values of the columns are non-numeric, the results will return an "NA" in
 \%u  \tab \tab Weekday, Monday is 1            \tab \tab 7, 4 \cr
 }
 }
+
 \examples{
 # EXAMPLES FOR date3to1
 
