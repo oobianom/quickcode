@@ -348,11 +348,11 @@ detect_outlier2 <- function(x,
   results <- list()
 
   # Analyze overall data
-  results$overall <- analyze_dataset(x)
+  results$overall <- analyze_dataset(x, m = multiplier, m2 = method, zt = z_threshold,mzt = modified_z_threshold)
 
   # Analyze by group if groups provided
   if (!is.null(groups)) {
-    results$by_group <- lapply(split(x, groups), analyze_dataset)
+    results$by_group <- lapply(split(x, groups), function(data) analyze_dataset(data, m = multiplier, m2 = method,zt = z_threshold,mzt = modified_z_threshold))
   }
 
   # Generate plots
@@ -493,12 +493,12 @@ detect_outlier2 <- function(x,
 
 
 # Helper functions for outlier detection
-iqr_detect <- function(x, multiplier) {
+iqr_detect <- function(x, m) {
   q1 <- quantile(x, 0.25, na.rm = TRUE)
   q3 <- quantile(x, 0.75, na.rm = TRUE)
   iqr <- q3 - q1
-  lower_bound <- q1 - multiplier * iqr
-  upper_bound <- q3 + multiplier * iqr
+  lower_bound <- q1 - m * iqr
+  upper_bound <- q3 + m * iqr
 
   list(
     outliers = x[x < lower_bound | x > upper_bound],
@@ -551,24 +551,24 @@ compute_summary <- function(x) {
 }
 
 # Function to analyze a single dataset
-analyze_dataset <- function(data) {
+analyze_dataset <- function(data, m,zt,mzt,m2) {
   data_clean <- data[!is.na(data)]
   result <- list()
   result$summary <- compute_summary(data)
 
-  # Apply selected method(s)
-  if (method %in% c("iqr", "all")) {
-    result$iqr <- iqr_detect(data_clean, multiplier)
+  # Apply selected m(s)
+  if (m2 %in% c("iqr", "all")) {
+    result$iqr <- iqr_detect(data_clean, m)
   }
-  if (method %in% c("zscore", "all")) {
-    result$zscore <- zscore_detect(data_clean, z_threshold)
+  if (m2 %in% c("zscore", "all")) {
+    result$zscore <- zscore_detect(data_clean, zt)
   }
-  if (method %in% c("modified_zscore", "all")) {
-    result$modified_zscore <- modified_zscore_detect(data_clean, modified_z_threshold)
+  if (m2 %in% c("modified_zscore", "all")) {
+    result$modified_zscore <- modified_zscore_detect(data_clean, mzt)
   }
 
-  # Create comparison if multiple methods used
-  if (method == "all") {
+  # Create comparison if multiple ms used
+  if (m2 == "all") {
     result$comparison <- data.frame(
       value = data_clean,
       iqr_outlier = result$iqr$is_outlier,
@@ -584,3 +584,4 @@ analyze_dataset <- function(data) {
 
   return(result)
 }
+
