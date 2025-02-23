@@ -49,13 +49,13 @@ mode.calc <- function(x) {
 #' @examples
 #' # Example with a numeric vector
 #' numeric_vector <- c(1, 5, 3, 8, 2)
-#' range.diff(numeric_vector)
+#' sub.range(numeric_vector)
 #'
 #' # Example with missing values
-#' range.diff(c(NA, 4, 7, NA, 10))
+#' sub.range(c(NA, 4, 7, NA, 10))
 #'
 #' @export
-range.diff <- function(x) {
+sub.range <- function(x) {
   # Check if input is valid
   if (length(x) == 0 || all(is.na(x))) {
     return(NA)
@@ -78,13 +78,13 @@ range.diff <- function(x) {
 #' @examples
 #' # Example with numeric vector
 #' numeric_vector <- c(1, 2, NA, 4, 5)
-#' cumsum.na.rm(numeric_vector)
+#' na.cumsum(numeric_vector)
 #'
 #' # Example with all NAs
-#' cumsum.na.rm(c(NA, NA))
+#' na.cumsum(c(NA, NA))
 #'
 #' @export
-cumsum.na.rm <- function(x) {
+na.cumsum <- function(x) {
   # Check if input is valid
   if (length(x) == 0 || all(is.na(x))) {
     return(numeric(0)) # Return an empty numeric vector if all values are NA
@@ -113,13 +113,13 @@ cumsum.na.rm <- function(x) {
 #' @examples
 #' # Example with a simple data frame
 #' df <- data.frame(A = c(1, 2), B = c("x", "y"))
-#' rep.rows(df, 3)
+#' rows.rep(df, 3)
 #'
 #' # Example with no replication (n = 0)
-#' rep.rows(df, 0)
+#' rows.rep(df, 0)
 #'
 #' @export
-rep.rows <- function(data, n) {
+rows.rep <- function(data, n) {
   # Validate inputs
   if (!is.data.frame(data)) {
     stop("Input 'data' must be a data frame.")
@@ -147,13 +147,13 @@ rep.rows <- function(data, n) {
 #' @examples
 #' # Example with a simple data frame
 #' df <- data.frame(A = c(1, 2), B = c(3, 4))
-#' rep.cols(df, 3)
+#' cols.rep(df, 3)
 #'
 #' # Example with no replication (n = 0)
-#' rep.cols(df, 0)
+#' cols.rep(df, 0)
 #'
 #' @export
-rep.cols <- function(data, n) {
+cols.rep <- function(data, n) {
   # Validate inputs
   if (!is.data.frame(data)) {
     stop("Input 'data' must be a data frame.")
