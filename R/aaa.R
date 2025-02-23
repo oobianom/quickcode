@@ -1,5 +1,8 @@
 #INTERNAL FUNCTIONS and VARIABLES
 #' @importFrom utils adist
+#' @importFrom grDevices rainbow
+#' @importFrom graphics abline axis boxplot legend lines par points polygon rug
+#' @importFrom stats approx density mad median quantile
 utils::globalVariables(c("...dMywhole_", "..dd..", "..mm..", "..yyyy..","Function","size.bytes"))
 
 # fetch my environment
