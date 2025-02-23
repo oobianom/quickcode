@@ -8,9 +8,9 @@ detect_outlier2(
   x,
   groups = NULL,
   method = c("iqr", "zscore", "modified_zscore", "all"),
-  iqr_multiplier = 1.5,
-  zscore_threshold = 3,
-  modified_zscore_threshold = 3.5,
+  multiplier = 1.5,
+  z_threshold = 3,
+  modified_z_threshold = 3.5,
   plot = TRUE,
   plot_groups = TRUE
 )
@@ -23,13 +23,13 @@ detect_outlier2(
 \item{method}{Character string specifying the outlier detection method.
 Options are "iqr", "zscore", "modified_zscore", or "all". Default is "iqr"}
 
-\item{iqr_multiplier}{Numeric value specifying the IQR multiplier for
+\item{multiplier}{Numeric value specifying the IQR multiplier for
 outlier detection. Default is 1.5}
 
-\item{zscore_threshold}{Numeric value specifying the Z-score threshold.
+\item{z_threshold}{Numeric value specifying the Z-score threshold.
 Default is 3}
 
-\item{modified_zscore_threshold}{Numeric value specifying the modified Z-score
+\item{modified_z_threshold}{Numeric value specifying the modified Z-score
 threshold. Default is 3.5}
 
 \item{plot}{Logical indicating whether to generate visualization plots.
@@ -67,7 +67,7 @@ class_groups <- rep(c("Morning", "Afternoon"), each = 10)
 result <- detect_outlier2(test_scores,
                                    groups = class_groups,
                                    method = "all",
-                                   zscore_threshold = 2)
+                                   z_threshold = 2)
 result$overall
 result$by_group
 result$plots$overall$boxplot()
