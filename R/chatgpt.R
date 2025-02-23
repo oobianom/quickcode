@@ -8,14 +8,14 @@
 #' @examples
 #' # Example with a numeric vector
 #' numeric_vector <- c(1, 2, 2, 3, 3, 3, 4, 5)
-#' mode(numeric_vector)
+#' mode.calc(numeric_vector)
 #'
 #' # Example with a character vector
 #' character_vector <- c("apple", "banana", "apple", "orange", "banana", "banana")
-#' mode(character_vector)
+#' mode.calc(character_vector)
 #'
 #' @export
-mode <- function(x) {
+mode.calc <- function(x) {
   # Check for empty input
   if (length(x) == 0) {
     return(NA)
