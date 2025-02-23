@@ -280,11 +280,11 @@ detect_outlier <- function(x, method = "iqr", multiplier = 1.5, z_threshold = 3,
 #' @param groups Optional vector of group labels, must be same length as x
 #' @param method Character string specifying the outlier detection method.
 #'   Options are "iqr", "zscore", "modified_zscore", or "all". Default is "iqr"
-#' @param iqr_multiplier Numeric value specifying the IQR multiplier for
+#' @param multiplier Numeric value specifying the IQR multiplier for
 #'   outlier detection. Default is 1.5
-#' @param zscore_threshold Numeric value specifying the Z-score threshold.
+#' @param z_threshold Numeric value specifying the Z-score threshold.
 #'   Default is 3
-#' @param modified_zscore_threshold Numeric value specifying the modified Z-score
+#' @param modified_z_threshold Numeric value specifying the modified Z-score
 #'   threshold. Default is 3.5
 #' @param plot Logical indicating whether to generate visualization plots.
 #'   Default is TRUE
@@ -313,7 +313,7 @@ detect_outlier <- function(x, method = "iqr", multiplier = 1.5, z_threshold = 3,
 #' result <- detect_outlier2(test_scores,
 #'                                    groups = class_groups,
 #'                                    method = "all",
-#'                                    zscore_threshold = 2)
+#'                                    z_threshold = 2)
 #' result$overall
 #' result$by_group
 #' result$plots$overall$boxplot()
@@ -328,9 +328,9 @@ detect_outlier <- function(x, method = "iqr", multiplier = 1.5, z_threshold = 3,
 detect_outlier2 <- function(x,
                             groups = NULL,
                             method = c("iqr", "zscore", "modified_zscore", "all"),
-                            iqr_multiplier = 1.5,
-                            zscore_threshold = 3,
-                            modified_zscore_threshold = 3.5,
+                            multiplier = 1.5,
+                            z_threshold = 3,
+                            modified_z_threshold = 3.5,
                             plot = TRUE,
                             plot_groups = TRUE) {
   # Input validation
@@ -346,99 +346,6 @@ detect_outlier2 <- function(x,
 
   # Initialize results list
   results <- list()
-
-  # Helper functions for outlier detection
-  iqr_detect <- function(x, multiplier) {
-    q1 <- quantile(x, 0.25, na.rm = TRUE)
-    q3 <- quantile(x, 0.75, na.rm = TRUE)
-    iqr <- q3 - q1
-    lower_bound <- q1 - multiplier * iqr
-    upper_bound <- q3 + multiplier * iqr
-
-    list(
-      outliers = x[x < lower_bound | x > upper_bound],
-      indices = which(x < lower_bound | x > upper_bound),
-      bounds = c(lower = lower_bound, upper = upper_bound),
-      is_outlier = x < lower_bound | x > upper_bound
-    )
-  }
-
-  zscore_detect <- function(x, threshold) {
-    z_scores <- scale(x)
-    list(
-      outliers = x[abs(z_scores) > threshold],
-      indices = which(abs(z_scores) > threshold),
-      z_scores = z_scores,
-      is_outlier = abs(z_scores) > threshold
-    )
-  }
-
-  modified_zscore_detect <- function(x, threshold) {
-    median_x <- median(x, na.rm = TRUE)
-    mad_x <- mad(x, na.rm = TRUE)
-    modified_z_scores <- 0.6745 * (x - median_x) / mad_x
-
-    list(
-      outliers = x[abs(modified_z_scores) > threshold],
-      indices = which(abs(modified_z_scores) > threshold),
-      modified_z_scores = modified_z_scores,
-      is_outlier = abs(modified_z_scores) > threshold
-    )
-  }
-
-  # Function to compute summary statistics
-  compute_summary <- function(x) {
-    list(
-      n = length(x),
-      na_count = sum(is.na(x)),
-      mean = mean(x, na.rm = TRUE),
-      median = median(x, na.rm = TRUE),
-      sd = sd(x, na.rm = TRUE),
-      skewness = if(length(x) > 2) {
-        sum((x - mean(x, na.rm = TRUE))^3, na.rm = TRUE) /
-          (length(x[!is.na(x)]) * sd(x, na.rm = TRUE)^3)
-      } else NA,
-      kurtosis = if(length(x) > 2) {
-        sum((x - mean(x, na.rm = TRUE))^4, na.rm = TRUE) /
-          (length(x[!is.na(x)]) * sd(x, na.rm = TRUE)^4) - 3
-      } else NA
-    )
-  }
-
-  # Function to analyze a single dataset
-  analyze_dataset <- function(data) {
-    data_clean <- data[!is.na(data)]
-    result <- list()
-    result$input_summary <- compute_summary(data)
-
-    # Apply selected method(s)
-    if (method %in% c("iqr", "all")) {
-      result$iqr <- iqr_detect(data_clean, iqr_multiplier)
-    }
-    if (method %in% c("zscore", "all")) {
-      result$zscore <- zscore_detect(data_clean, zscore_threshold)
-    }
-    if (method %in% c("modified_zscore", "all")) {
-      result$modified_zscore <- modified_zscore_detect(data_clean, modified_zscore_threshold)
-    }
-
-    # Create comparison if multiple methods used
-    if (method == "all") {
-      result$comparison <- data.frame(
-        value = data_clean,
-        iqr_outlier = result$iqr$is_outlier,
-        zscore_outlier = result$zscore$is_outlier,
-        modified_zscore_outlier = result$modified_zscore$is_outlier,
-        methods_agreeing = rowSums(cbind(
-          result$iqr$is_outlier,
-          result$zscore$is_outlier,
-          result$modified_zscore$is_outlier
-        ))
-      )
-    }
-
-    return(result)
-  }
 
   # Analyze overall data
   results$overall <- analyze_dataset(x)
@@ -582,4 +489,98 @@ detect_outlier2 <- function(x,
 
   class(results) <- "outlier_analysis"
   return(results)
+}
+
+
+# Helper functions for outlier detection
+iqr_detect <- function(x, multiplier) {
+  q1 <- quantile(x, 0.25, na.rm = TRUE)
+  q3 <- quantile(x, 0.75, na.rm = TRUE)
+  iqr <- q3 - q1
+  lower_bound <- q1 - multiplier * iqr
+  upper_bound <- q3 + multiplier * iqr
+
+  list(
+    outliers = x[x < lower_bound | x > upper_bound],
+    indices = which(x < lower_bound | x > upper_bound),
+    bounds = c(lower = lower_bound, upper = upper_bound),
+    is_outlier = x < lower_bound | x > upper_bound
+  )
+}
+
+zscore_detect <- function(x, threshold) {
+  z_scores <- scale(x)
+  list(
+    outliers = x[abs(z_scores) > threshold],
+    indices = which(abs(z_scores) > threshold),
+    z_scores = z_scores,
+    is_outlier = abs(z_scores) > threshold
+  )
+}
+
+modified_zscore_detect <- function(x, threshold) {
+  median_x <- median(x, na.rm = TRUE)
+  mad_x <- mad(x, na.rm = TRUE)
+  modified_z_scores <- 0.6745 * (x - median_x) / mad_x
+
+  list(
+    outliers = x[abs(modified_z_scores) > threshold],
+    indices = which(abs(modified_z_scores) > threshold),
+    modified_z_scores = modified_z_scores,
+    is_outlier = abs(modified_z_scores) > threshold
+  )
+}
+
+# Function to compute summary statistics
+compute_summary <- function(x) {
+  list(
+    n = length(x),
+    na_count = sum(is.na(x)),
+    mean = mean(x, na.rm = TRUE),
+    median = median(x, na.rm = TRUE),
+    sd = sd(x, na.rm = TRUE),
+    skewness = if(length(x) > 2) {
+      sum((x - mean(x, na.rm = TRUE))^3, na.rm = TRUE) /
+        (length(x[!is.na(x)]) * sd(x, na.rm = TRUE)^3)
+    } else NA,
+    kurtosis = if(length(x) > 2) {
+      sum((x - mean(x, na.rm = TRUE))^4, na.rm = TRUE) /
+        (length(x[!is.na(x)]) * sd(x, na.rm = TRUE)^4) - 3
+    } else NA
+  )
+}
+
+# Function to analyze a single dataset
+analyze_dataset <- function(data) {
+  data_clean <- data[!is.na(data)]
+  result <- list()
+  result$summary <- compute_summary(data)
+
+  # Apply selected method(s)
+  if (method %in% c("iqr", "all")) {
+    result$iqr <- iqr_detect(data_clean, multiplier)
+  }
+  if (method %in% c("zscore", "all")) {
+    result$zscore <- zscore_detect(data_clean, z_threshold)
+  }
+  if (method %in% c("modified_zscore", "all")) {
+    result$modified_zscore <- modified_zscore_detect(data_clean, modified_z_threshold)
+  }
+
+  # Create comparison if multiple methods used
+  if (method == "all") {
+    result$comparison <- data.frame(
+      value = data_clean,
+      iqr_outlier = result$iqr$is_outlier,
+      zscore_outlier = result$zscore$is_outlier,
+      modified_zscore_outlier = result$modified_zscore$is_outlier,
+      methods_agreeing = rowSums(cbind(
+        result$iqr$is_outlier,
+        result$zscore$is_outlier,
+        result$modified_zscore$is_outlier
+      ))
+    )
+  }
+
+  return(result)
 }
