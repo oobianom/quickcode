@@ -1,6 +1,6 @@
 Name: Remove Empty Lines from Current File
 Description: Remove all empty lines and resave file
-Binding: rm_empty_lines
+Binding: trim.file
 Interactive: true
 
 Name: Add Header Comment 🌟(R)
