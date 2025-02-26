@@ -9,11 +9,12 @@
 #' @return NULL This function modifies the file in place and does not return a value.
 #'
 #' @examples
+#' \dontrun{
 #' # Remove empty lines from a file
-#' remove_empty_lines("path/to/your/file.txt")
-#'
+#' trim.file("path/to/your/file.txt")
+#' }
 #' @export
-rm_empty_lines <- function(file_path, resave = TRUE) {
+trim.file <- function(file_path, resave = TRUE) {
   if(missing(file_path)) file_path = rstudioapi::getActiveDocumentContext()$path
 
   # Read the file
