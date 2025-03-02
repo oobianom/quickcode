@@ -18,12 +18,14 @@
 #' @return date of creation of repository as a character
 #'
 #' @examples
+#' \donttest{
 #' # Use default date format
 #' getGitRepoStart(repo_name = "oobianom/quickcode")
 #'
 #' # Specify date format
 #' getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "%j|%Y")
 #' getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "%D|%j")
+#' }
 #'
 #' @export
 getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
@@ -43,8 +45,10 @@ getGitRepoStart = function(repo_name,out.format = "%Y-%m-%d"){
 #' @return date of the last update of repository as a character
 #'
 #' @examples
+#' \donttest{
 #' getGitRepoChange(repo_name = "oobianom/shinyStorePlus", out.format = "%d-%b-%Y")
 #' getGitRepoChange(repo_name = "oobianom/r2social", out.format = "%Y/%m/%d")
+#' }
 #'
 #' @export
 getGitRepoChange = function(repo_name,out.format = "%Y-%m-%d"){
