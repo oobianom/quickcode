@@ -20,7 +20,7 @@ install.packages("quickcode")
 ```
 
 
-# 70+ great R functions to add to your scripts!
+# 101+ great R functions to add to your scripts!
 
 ## Featured function 1
 ### Add one-line code in your R script to clear environment, clear console, set working directory and load files
@@ -363,7 +363,10 @@ print(p1)
 
 
 [![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
-
+![](https://quickcode.obi.obianom.com/writeit0.gif)
+![](https://quickcode.obi.obianom.com/writeit1.gif)
+![](https://quickcode.obi.obianom.com/writeit2.gif)
+![](https://quickcode.obi.obianom.com/writeit3.gif)
 
 
 ### And many more useful functions including list_shuffle, in.range ...
