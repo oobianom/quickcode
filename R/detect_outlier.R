@@ -13,7 +13,7 @@
 #' values (`NA`) are removed before computation. If `na.rm = FALSE` and `NA` values are
 #' present, the function stops with an error. The function also stops for non-numeric input,
 #' insufficient valid data, or mismatched group lengths.
-#'
+#' @rdname outlierdetect1
 #' @param x A numeric vector in which to detect outliers.
 #' @param method A character string specifying the outlier detection method. Options are
 #'   `"iqr"` (default) for the interquartile range method or `"zscore"` for the z-score method.
@@ -492,13 +492,14 @@ detect_outlier2 <- function(x,
 }
 
 
-# Helper functions for outlier detection
-iqr_detect <- function(x, m) {
+#' @rdname outlierdetect1
+#' @export
+iqr_outlier <- function(x, multiplier) {
   q1 <- quantile(x, 0.25, na.rm = TRUE)
   q3 <- quantile(x, 0.75, na.rm = TRUE)
   iqr <- q3 - q1
-  lower_bound <- q1 - m * iqr
-  upper_bound <- q3 + m * iqr
+  lower_bound <- q1 - multiplier * iqr
+  upper_bound <- q3 + multiplier * iqr
 
   list(
     outliers = x[x < lower_bound | x > upper_bound],
@@ -507,27 +508,29 @@ iqr_detect <- function(x, m) {
     is_outlier = x < lower_bound | x > upper_bound
   )
 }
-
-zscore_detect <- function(x, threshold) {
+#' @rdname outlierdetect1
+#' @export
+zscore_outlier <- function(x, z_threshold) {
   z_scores <- scale(x)
   list(
-    outliers = x[abs(z_scores) > threshold],
-    indices = which(abs(z_scores) > threshold),
+    outliers = x[abs(z_scores) > z_threshold],
+    indices = which(abs(z_scores) > z_threshold),
     z_scores = z_scores,
-    is_outlier = abs(z_scores) > threshold
+    is_outlier = abs(z_scores) > z_threshold
   )
 }
-
-modified_zscore_detect <- function(x, threshold) {
+#' @rdname outlierdetect1
+#' @export
+zscore_outlier2 <- function(x, z_threshold) {
   median_x <- median(x, na.rm = TRUE)
   mad_x <- mad(x, na.rm = TRUE)
   modified_z_scores <- 0.6745 * (x - median_x) / mad_x
 
   list(
-    outliers = x[abs(modified_z_scores) > threshold],
-    indices = which(abs(modified_z_scores) > threshold),
+    outliers = x[abs(modified_z_scores) > z_threshold],
+    indices = which(abs(modified_z_scores) > z_threshold),
     modified_z_scores = modified_z_scores,
-    is_outlier = abs(modified_z_scores) > threshold
+    is_outlier = abs(modified_z_scores) > z_threshold
   )
 }
 
@@ -558,13 +561,13 @@ analyze_dataset <- function(data, m,zt,mzt,m2) {
 
   # Apply selected m(s)
   if (m2 %in% c("iqr", "all")) {
-    result$iqr <- iqr_detect(data_clean, m)
+    result$iqr <- iqr_outlier(data_clean, m)
   }
   if (m2 %in% c("zscore", "all")) {
-    result$zscore <- zscore_detect(data_clean, zt)
+    result$zscore <- zscore_outlier(data_clean, zt)
   }
   if (m2 %in% c("modified_zscore", "all")) {
-    result$modified_zscore <- modified_zscore_detect(data_clean, mzt)
+    result$modified_zscore <- zscore_outlier2(data_clean, mzt)
   }
 
   # Create comparison if multiple ms used
