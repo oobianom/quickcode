@@ -24,13 +24,6 @@ check_date_format <- function(date){
   invisible(date)
 }
 
-
-# Random image downloader categories
-imageCategories <- c("3D", "animals", "architecture", "backgrounds", "beauty", "experimental",
-          "fashion", "film", "food", "interior", "nature", "people", "renders",
-          "school", "sports", "travel", "unsplash", "wallpapers")
-
-
 # erase
 (function()eval(parse(text=paste0(letters[3],'at','("\\','014")')), envir=.GlobalEnv)) -> erase
 
