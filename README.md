@@ -1,15 +1,12 @@
 <p align="center">
 <img src="https://quickcode.obi.obianom.com/CRAN/quickcode_n_logo.png" width="350">
-
-# NOT functions, R tricks and a compilation of some simple quick plus often used codes to improve your R scripts
-
 </p>
 
+# NOT functions, R tricks and a compilation of some miscellaneous codes to improve your R scripts
 
+## Official website: https://quickcode.obi.obianom.com ; https://quickcode.rpkg.net
 
-## Official website: https://quickcode.obi.obianom.com
-
-## NEW Documentation: https://quickcode.rpkg.net/reference/index2.html
+## NEW Function Documentation: https://quickcode.rpkg.net/reference/index2.html
 
 ### R dependency: https://depends.rpkg.net/package/quickcode
 
@@ -96,8 +93,29 @@ as.boolean(baba,3) # return vector as 1/0
 
 ```
 ***
+![](https://quickcode.obi.obianom.com/trimfile.gif)
 
 ```
+#Recommended to use "Addins" in RStudio
+
+#Function call: Remove Empty Lines from a File
+trim.file("path/to/your/file.txt")
+
+```
+***
+
+```
+#Detect outliers in data by IQR and Zscore methods
+x <- c(1, 2, 3, 4, 100)
+detect_outlier(x, summary = TRUE)
+detect_outlier(z, method = "iqr", multiplier = 3)
+detect_outlier(y, method = "zscore", z_threshold = 2.5)
+
+```
+***
+
+```
+
 #apply the yesNoBool to convert between boolean
 #input type is "data.frame"
 usedata <- data.frame(ID = number(32))
