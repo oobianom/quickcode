@@ -9,9 +9,11 @@
 #' @return NULL This function modifies the file in place and does not return a value.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' if(interactive()){
 #' # Remove empty lines from a file
 #' trim.file("path/to/your/file.txt")
+#' }
 #' }
 #' @export
 trim.file <- function(file_path, resave = TRUE) {
