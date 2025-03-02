@@ -1,6 +1,7 @@
 # quickcode 1.0.6
 
-- [ ] AI aided functions
+- [x] trim.file(), detect_outlier() and some new functions
+- [x] Edit to README and help documentation
 
 
 # quickcode 1.0.5
