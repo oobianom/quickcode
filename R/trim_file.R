@@ -18,15 +18,11 @@
 #' @export
 trim.file <- function(file_path, resave = TRUE) {
   if(missing(file_path)) file_path = rstudioapi::getActiveDocumentContext()$path
-
   # Read the file
   lines <- readLines(file_path)
-
   # Remove empty lines
   non_empty_lines <- lines[nzchar(lines)]
-
   message(paste0("Empty lines have been removed from ",basename(file_path)))
-
   # Write the non-empty lines back to the file
   if(resave) writeLines(non_empty_lines, file_path) else non_empty_lines
 }
