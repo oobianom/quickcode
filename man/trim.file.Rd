@@ -19,8 +19,10 @@ This function reads a text file, removes all empty lines, and saves the
 modified content back to the same file.
 }
 \examples{
-\dontrun{
+\donttest{
+if(interactive()){
 # Remove empty lines from a file
 trim.file("path/to/your/file.txt")
+}
 }
 }
