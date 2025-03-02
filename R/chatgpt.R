@@ -62,9 +62,7 @@ sub.range <- function(x) {
   }
 
   # Calculate the range difference
-  diff <- max(x, na.rm = TRUE) - min(x, na.rm = TRUE)
-
-  return(diff)
+ max(x, na.rm = TRUE) - min(x, na.rm = TRUE)
 }
 
 
@@ -91,12 +89,8 @@ na.cumsum <- function(x) {
   }
 
   # Remove NA values
-  x_no_na <- x[!is.na(x)]
-
   # Calculate the cumulative sum
-  cumsum_result <- cumsum(x_no_na)
-
-  return(cumsum_result)
+  cumsum(x[!is.na(x)])
 }
 
 
@@ -121,18 +115,12 @@ na.cumsum <- function(x) {
 #' @export
 rows.rep <- function(data, n) {
   # Validate inputs
-  if (!is.data.frame(data)) {
-    stop("Input 'data' must be a data frame.")
-  }
-  if (n <= 0) {
-    return(data.frame()) # Return an empty data frame if n <= 0
-  }
-
+  if (!is.data.frame(data))stop("Input 'data' must be a data frame.")
+  if (missing(n) | n <= 0) return(data)
   # Replicate rows
   replicated_data <- data[rep(1:nrow(data), each = n), ]
   rownames(replicated_data) <- NULL # Reset row names for clarity
-
-  return(replicated_data)
+  replicated_data
 }
 
 
@@ -155,20 +143,13 @@ rows.rep <- function(data, n) {
 #' @export
 cols.rep <- function(data, n) {
   # Validate inputs
-  if (!is.data.frame(data)) {
-    stop("Input 'data' must be a data frame.")
-  }
-  if (n <= 0) {
-    return(data.frame()) # Return an empty data frame if n <= 0
-  }
-
+  if (!is.data.frame(data)) stop("Input 'data' must be a data frame.")
+  if (missing(n) | n <= 0) return(data)
   # Replicate each column `n` times
   replicated_data <- do.call(cbind, replicate(n, data, simplify = FALSE))
-
   # Optionally reset column names to indicate replication
   colnames(replicated_data) <- make.names(rep(colnames(data), each = n), unique = TRUE)
-
-  return(replicated_data)
+  replicated_data
 }
 
 
@@ -224,31 +205,9 @@ from_tensor_slices <- function(data) {
   if (!is.data.frame(data) && !is.matrix(data)) {
     stop("Input must be a data frame or matrix.")
   }
-  slices <- split(data, seq(nrow(data)))
-  return(slices)
+  split(data, seq(nrow(data)))
 }
 
-
-#' Interpolate a Numeric Matrix or Tensor
-#'
-#' This function resizes a matrix or 2D array using simple interpolation methods (nearest-neighbor or linear).
-#'
-#' @param data A numeric matrix or 2D array to be resized.
-#' @param new_rows An integer specifying the new number of rows.
-#' @param new_cols An integer specifying the new number of columns.
-#' @return A resized matrix with interpolated values.
-#' @examples
-#' mat <- matrix(1:9, nrow = 3)
-#' interpolate_tensor(mat, 6, 6)
-#'
-#' @export
-interpolate_tensor <- function(data, new_rows, new_cols) {
-  if (!is.matrix(data)) {
-    stop("Input must be a matrix.")
-  }
-  approx(seq_len(nrow(data)), data, n = new_rows)
-
-}
 
 
 #' Multi-Head Attention
@@ -264,20 +223,17 @@ interpolate_tensor <- function(data, new_rows, new_cols) {
 #' query <- matrix(rnorm(12), nrow = 3)
 #' key <- matrix(rnorm(12), nrow = 3)
 #' value <- matrix(rnorm(12), nrow = 3)
-#' multihead_attention(query, key, value, num_heads = 2)
+#' multihead_att(query, key, value, num_heads = 2)
 #'
 #' @export
-multihead_attention <- function(query, key, value, num_heads) {
+multihead_att <- function(query, key, value, num_heads) {
   if (ncol(query) != ncol(key) || ncol(key) != ncol(value)) {
     stop("Query, key, and value must have the same number of columns.")
   }
-
   # Simple dot-product attention
   attention_scores <- query %*% t(key)
   attention_weights <- exp(attention_scores) / rowSums(exp(attention_scores))
-  output <- attention_weights %*% value
-
-  return(output)
+  attention_weights %*% value
 }
 
 
@@ -299,9 +255,7 @@ learn_rate_scheduler <- function(initial_lr, schedule, epochs) {
   if (!is.numeric(initial_lr) || initial_lr <= 0) {
     stop("Initial learning rate must be a positive number.")
   }
-
-  lr_schedule <- sapply(0:(epochs - 1), schedule)
-  return(lr_schedule)
+  sapply(0:(epochs - 1), schedule)
 }
 
 
