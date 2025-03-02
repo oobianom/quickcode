@@ -32,14 +32,18 @@ The two functions utilize the GitHub REST API to extract important temporal info
  - the getGitRepoChange function retrieves the date a GitHub repository was last updated.
 }
 \examples{
+\donttest{
 # Use default date format
 getGitRepoStart(repo_name = "oobianom/quickcode")
 
 # Specify date format
 getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "\%j|\%Y")
 getGitRepoStart(repo_name = "oobianom/quickcode", out.format = "\%D|\%j")
+}
 
+\donttest{
 getGitRepoChange(repo_name = "oobianom/shinyStorePlus", out.format = "\%d-\%b-\%Y")
 getGitRepoChange(repo_name = "oobianom/r2social", out.format = "\%Y/\%m/\%d")
+}
 
 }
