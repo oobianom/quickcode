@@ -364,7 +364,6 @@ print(p1)
 
 [![](https://quickcode.obi.obianom.com/writeit2.svg)](https://rpkg.net/package/quickcode)
 ![](https://quickcode.obi.obianom.com/writeit0.gif)
-![](https://quickcode.obi.obianom.com/writeit1.gif)
 ![](https://quickcode.obi.obianom.com/writeit2.gif)
 ![](https://quickcode.obi.obianom.com/writeit3.gif)
 
