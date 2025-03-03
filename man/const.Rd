@@ -13,4 +13,26 @@ const
 \description{
 List of mathematical functions
 }
+\details{
+const list contains a list of mathematical constants below\cr\cr
+- pi\cr
+- e: Euler's number\cr
+- golden_ratio\cr
+- euler_mascheroni: Euler-Mascheroni constant\cr
+- feigenbaum: Feigenbaum constant\cr
+- champernowne: Champernowne constant\cr
+- apery: Roger Apery's constant\cr
+- gelfond_schneider: Gelfond-Schneider constant\cr
+- khinchin: Aleksandr Khinchin constant\cr
+- ramanujan_soldner: Ramanujan-Soldner constant\cr
+}
+\examples{
+# definition of pi
+const$defs$pi
+
+# value of pi
+const$values$pi
+
+
+}
 \keyword{datasets}
