@@ -1,7 +1,7 @@
 Package: quickcode
 Type: Package
 Title: Quick and Essential 'R' Tricks for Better Scripts
-Version: 1.0.6
+Version: 1.0.7
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")),
     person("Brice", "Richard", email = "wem3mew@msn.com", role = "aut")
