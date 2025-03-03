@@ -7,12 +7,12 @@
 #' - pi\cr
 #' - e: Euler's number\cr
 #' - golden_ratio\cr
-#' - euler_mascheroni:Euler-Mascheroni constant\cr
+#' - euler_mascheroni: Euler-Mascheroni constant\cr
 #' - feigenbaum: Feigenbaum constant\cr
 #' - champernowne: Champernowne constant\cr
-#' - apery: Apery's constant\cr
+#' - apery: Roger Apery's constant\cr
 #' - gelfond_schneider: Gelfond-Schneider constant\cr
-#' - khinchin: Khinchin constant\cr
+#' - khinchin: Aleksandr Khinchin constant\cr
 #' - ramanujan_soldner: Ramanujan-Soldner constant\cr
 #'
 #' @examples
