@@ -45,9 +45,6 @@ list_shuffle <- function(., seed = NULL) {
   list1 <- get(as.character(..), envir = parent.frame())
 
   if(not.null(seed))set.seed(seed)
-  l2 <- sample(names(list1))
-  list2 <- list()
-  for(i in l2) list2[[i]] <- list1[[i]]
 
-  assign(as.character(..), list2, envir = parent.frame())
+  assign(as.character(..), sample(names(list1)), envir = parent.frame())
 }
