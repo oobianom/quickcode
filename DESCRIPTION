@@ -14,6 +14,8 @@ BugReports: https://github.com/oobianom/quickcode/issues
 Depends: 
     R (> 3.6)
 Imports: 
+    car,
+    ggplot2,
     utils,
     grDevices,
     stats,
