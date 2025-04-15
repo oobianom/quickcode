@@ -1,7 +1,10 @@
-#' Create geometric shapes with optional text using ggplot2
+#' Create geometric shapes with optional text
+
+#' @description
+#' This function creates various geometric shapes using base R graphics.
+#' It supports multiple shape types including circle, square, rectangle,
+#' triangle, hexagon, star, ellipse, and regular polygons with custom sides.
 #'
-#' @description This function creates various geometric shapes using ggplot2 with the
-#' option to add text inside the shape. It returns both the plot object and the shape's properties.
 #'
 #' @param shape Character string specifying the shape to create. Must be one of:
 #'   "circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon".
@@ -21,6 +24,9 @@
 #' @param text_size Numeric, size of the text. Default is 5.
 #' @param text_font Character string, font family for the text. Default is "".
 #' @param text_angle Numeric, rotation angle for the text in degrees. Default is 0.
+#' @param show_axes Logical. Whether to display the axes. Default is FALSE.
+#' @param show_ticks Logical. Whether to display axis ticks. Default is FALSE.
+#' @param show_axis_labels Logical. Whether to display axis labels (X and Y). Default is FALSE.
 #'
 #' @return A list containing:
 #'   \itemize{
@@ -149,10 +155,14 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
                          width = size, height = size, n_sides = 5, rotation = 0,
                          fill_color = NA, border_color = "black", line_width = 1,
                          title = "Geometric Shape", text = NULL, text_color = "black",
-                         text_size = 1, text_font = 1, text_angle = 0) {
-
+                         text_size = 1, text_font = 1, text_angle = 0,
+                         show_axes = FALSE, show_ticks = FALSE, show_axis_labels = FALSE) {
   # Define valid shapes
   shape = match.arg(shape)
+
+  # Check if the provided shape is valid
+  if (shape %nin% valid_shapes)
+    stop(paste0("Invalid shape: '", shape, "'. Please choose one of: ",paste(valid_shapes, collapse = ", "), "."))
 
   # Generate points based on the specified shape
   coords <- data.frame(x = numeric(), y = numeric())
@@ -165,7 +175,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + size * cos(theta)
     y <- y_center + size * sin(theta)
     coords <- data.frame(x = x, y = y)
-    title <- ifelse(title == "Geometric Shape", "Circle", title)
+    if (title == "Geometric Shape") title <- "Circle"
 
   } else if (shape == "square") {
     # Create square points (centered)
@@ -187,7 +197,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + points[,1]
     y <- y_center + points[,2]
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Square", title)
+    if (title == "Geometric Shape") title <- "Square"
 
   } else if (shape == "rectangle") {
     # Create rectangle points (centered)
@@ -209,7 +219,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + points[,1]
     y <- y_center + points[,2]
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Rectangle", title)
+    if (title == "Geometric Shape") title <- "Rectangle"
 
   } else if (shape == "triangle") {
     # Create equilateral triangle points (centered)
@@ -231,7 +241,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + points[,1]
     y <- y_center + points[,2]
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Triangle", title)
+    if (title == "Geometric Shape") title <- "Triangle"
 
   } else if (shape == "hexagon") {
     # Create regular hexagon
@@ -240,7 +250,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + size * cos(theta)
     y <- y_center + size * sin(theta)
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Hexagon", title)
+    if (title == "Geometric Shape") title <- "Hexagon"
 
   } else if (shape == "star") {
     # Create a 5-pointed star
@@ -262,7 +272,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + radii * cos(theta)
     y <- y_center + radii * sin(theta)
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Star", title)
+    if (title == "Geometric Shape") title <- "Star"
 
   } else if (shape == "ellipse") {
     theta <- seq(0, 2 * pi, length.out = 100)
@@ -283,7 +293,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     }
 
     coords <- data.frame(x = x, y = y)
-    title <- ifelse(title == "Geometric Shape", "Ellipse", title)
+    if (title == "Geometric Shape") title <- "Ellipse"
 
   } else if (shape == "polygon") {
     # Create regular polygon with n_sides
@@ -292,7 +302,7 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     x <- x_center + size * cos(theta)
     y <- y_center + size * sin(theta)
     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", paste0(n_sides, "-gon"), title)
+    if (title == "Geometric Shape") title <- paste0(n_sides, "-gon")
   }
 
   # Calculate margin for plot based on shape dimensions
@@ -300,16 +310,42 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
   y_range <- max(coords$y) - min(coords$y)
   margin <- max(x_range, y_range) * 0.2
 
-  # Create new plot
-  plot(
-    x = coords$x, y = coords$y,
-    type = "n",  # Don't plot points
-    xlim = c(min(coords$x) - margin, max(coords$x) + margin),
-    ylim = c(min(coords$y) - margin, max(coords$y) + margin),
-    xlab = "X", ylab = "Y",
-    main = title,
-    asp = 1  # Force aspect ratio 1:1
-  )
+  # Handle axis display settings
+  xlab <- ifelse(show_axis_labels, "X", "")
+  ylab <- ifelse(show_axis_labels, "Y", "")
+
+  # Set up axis parameters based on user preferences
+  axis_params <- list()
+  if (!show_axes) {
+    axis_params$axes <- FALSE
+  }
+
+  # Set title to NULL if it's empty string to properly remove it
+  if (is.null(title) || title == "") {
+    title_param <- NULL
+  } else {
+    title_param <- title
+  }
+
+  # Create new plot with adjusted parameters
+  do.call(plot, c(
+    list(
+      x = coords$x, y = coords$y,
+      type = "n",  # Don't plot points
+      xlim = c(min(coords$x) - margin, max(coords$x) + margin),
+      ylim = c(min(coords$y) - margin, max(coords$y) + margin),
+      xlab = xlab, ylab = ylab,
+      main = title_param,
+      asp = 1  # Force aspect ratio 1:1
+    ),
+    axis_params
+  ))
+
+  # Handle ticks display if axes are shown but ticks should be hidden
+  if (show_axes && !show_ticks) {
+    axis(1, labels = FALSE, tick = FALSE)
+    axis(2, labels = FALSE, tick = FALSE)
+  }
 
   # Draw the shape
   polygon(
@@ -542,3 +578,6 @@ create_shape2 <- function(shape = "circle", x_center = 0, y_center = 0, size = 1
     text = text
   ))
 }
+
+# Define valid shapes
+valid_shapes <- c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon")
