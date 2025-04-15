@@ -1,3 +1,12 @@
+# quickcode 1.0.8
+
+- [x] create_shape()
+
+# quickcode 1.0.7
+
+- [x] Bug fixes
+
+
 # quickcode 1.0.6
 
 - [x] trim.file(), detect_outlier() and some new functions
