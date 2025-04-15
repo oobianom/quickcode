@@ -34,21 +34,110 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Create a circle with text
-#' circle_obj <- create_shape("circle", size = 2,
-#'                          fill_color = "lightblue",
-#'                          text = "Hello!",
-#'                          text_color = "navy")
+#' # Example 1: Basic circle
+#' create_shape(shape = "circle", size = 2, fill_color = "lightblue")
 #'
-#' # Create a square with rotated text
-#' square_obj <- create_shape("square", size = 3,
-#'                          fill_color = "salmon",
-#'                          text = "Square",
-#'                          text_size = 6,
-#'                          text_angle = 45)
+#' # Example 2: Square with rotation and text
+#' create_shape(
+#'   shape = "square",
+#'   size = 3,
+#'   rotation = 45,
+#'   fill_color = "salmon",
+#'   border_color = "darkred",
+#'   line_width = 2,
+#'   text = "Rotated Square",
+#'   text_color = "darkblue",
+#'   text_size = 3
+#' )
 #'
+#' # Example 3: Hexagon with custom title
+#' create_shape(
+#'   shape = "hexagon",
+#'   size = 2.5,
+#'   fill_color = "lightgreen",
+#'   border_color = "darkgreen",
+#'   title = "My Hexagon"
+#' )
+#'
+#' # Example 4: Star with custom styling
+#' create_shape(
+#'   shape = "star",
+#'   size = 3,
+#'   rotation = 15,
+#'   fill_color = "gold",
+#'   border_color = "orange",
+#'   line_width = 2,
+#'   title = "Gold Star"
+#' )
+#'
+#' # Example 5: Rectangle with custom dimensions
+#' create_shape(
+#'   shape = "rectangle",
+#'   width = 4,
+#'   height = 2,
+#'   fill_color = "lavender",
+#'   text = "Rectangle",
+#'   text_size = 2.5
+#' )
+#'
+#' # Example 6: Triangle with rotation and styling
+#' create_shape(
+#'   shape = "triangle",
+#'   size = 3,
+#'   rotation = 180,
+#'   fill_color = "pink",
+#'   border_color = "purple",
+#'   line_width = 2,
+#'   text = "▲",
+#'   text_color = "black",
+#'   text_size = 4
+#' )
+#'
+#' # Example 7: Ellipse with custom dimensions
+#' create_shape(
+#'   shape = "ellipse",
+#'   width = 5,
+#'   height = 2,
+#'   rotation = 30,
+#'   fill_color = "lightcyan",
+#'   border_color = "steelblue",
+#'   title = "Rotated Ellipse"
+#' )
+#'
+#' # Example 8: Custom polygon (octagon)
+#' create_shape(
+#'   shape = "polygon",
+#'   n_sides = 8,
+#'   size = 2,
+#'   fill_color = "thistle",
+#'   border_color = "purple",
+#'   title = "Octagon",
+#'   text = "8",
+#'   text_color = "darkblue",
+#'   text_size = 3
+#' )
+#'
+#' # Example 9: Overlapping shapes (need to call par() between shapes)
+#' create_shape(
+#'   shape = "circle",
+#'   x_center = 0,
+#'   y_center = 0,
+#'   size = 3,
+#'   fill_color = rgb(1, 0, 0, 0.5),
+#'   title = "Overlapping Shapes"
+#' )
+#'
+#' par(new = TRUE)  # Allow adding to the existing plot
+#' create_shape(
+#'   shape = "circle",
+#'   x_center = 1,
+#'   y_center = 1,
+#'   size = 3,
+#'   fill_color = rgb(0, 0, 1, 0.5),
+#'   title = ""  # Empty title to avoid overwriting the previous title
+#' )
 #' # Create a star with text
-#' star_obj <- create_shape("star", size = 2,
+#' create_shape("star", size = 2,
 #'                        fill_color = "gold",
 #'                        text = "★",
 #'                        text_size = 8)
