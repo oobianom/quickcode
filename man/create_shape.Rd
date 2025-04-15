@@ -5,7 +5,8 @@
 \title{Create geometric shapes with optional text using ggplot2}
 \usage{
 create_shape(
-  shape = "circle",
+  shape = c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse",
+    "polygon"),
   x_center = 0,
   y_center = 0,
   size = 1,
@@ -19,8 +20,8 @@ create_shape(
   title = "Geometric Shape",
   text = NULL,
   text_color = "black",
-  text_size = 5,
-  text_font = "",
+  text_size = 1,
+  text_font = 1,
   text_angle = 0
 )
 }
