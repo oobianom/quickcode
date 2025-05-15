@@ -149,7 +149,6 @@
 #'                        text_size = 8)
 #' }
 #'
-#' @importFrom ggplot2 ggplot aes geom_polygon coord_fixed labs theme_minimal geom_text
 #' @export
 create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon"), x_center = 0, y_center = 0, size = 1,
                          width = size, height = size, n_sides = 5, rotation = 0,
