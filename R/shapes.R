@@ -381,203 +381,202 @@ create_shape <- function(shape = c("circle", "square", "rectangle", "triangle", 
     text = text
   ))
 }
-create_shape2 <- function(shape = "circle", x_center = 0, y_center = 0, size = 1,
-                         width = size, height = size, n_sides = 5, rotation = 0,
-                         fill_color = NA, border_color = "black", line_width = 1,
-                         title = "Geometric Shape", text = NULL, text_color = "black",
-                         text_size = 5, text_font = "", text_angle = 0) {
 
-  # Define valid shapes
-  valid_shapes <- c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon")
-
-  # Check if the provided shape is valid
-  if (!shape %in% valid_shapes) {
-    stop(paste0("Invalid shape: '", shape, "'. Please choose one of: ",
-                paste(valid_shapes, collapse = ", "), "."))
-  }
-
-  # Load required library
-  library(ggplot2)
-
-  # Generate points based on the specified shape
-  coords <- data.frame(x = numeric(), y = numeric())
-
-  # Convert rotation to radians
-  rotation_rad <- rotation * pi / 180
-
-  if (shape == "circle") {
-    theta <- seq(0, 2 * pi, length.out = 100)
-    x <- x_center + size * cos(theta)
-    y <- y_center + size * sin(theta)
-    coords <- data.frame(x = x, y = y)
-    title <- ifelse(title == "Geometric Shape", "Circle", title)
-
-  } else if (shape == "square") {
-    # Create square points (centered)
-    points <- matrix(c(
-      -size/2, -size/2,
-      size/2, -size/2,
-      size/2, size/2,
-      -size/2, size/2
-    ), ncol = 2, byrow = TRUE)
-
-    # Apply rotation
-    if (rotation != 0) {
-      rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
-                             sin(rotation_rad), cos(rotation_rad)), 2, 2)
-      points <- points %*% rot_matrix
-    }
-
-    # Translate to center position
-    x <- x_center + points[,1]
-    y <- y_center + points[,2]
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Square", title)
-
-  } else if (shape == "rectangle") {
-    # Create rectangle points (centered)
-    points <- matrix(c(
-      -width/2, -height/2,
-      width/2, -height/2,
-      width/2, height/2,
-      -width/2, height/2
-    ), ncol = 2, byrow = TRUE)
-
-    # Apply rotation
-    if (rotation != 0) {
-      rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
-                             sin(rotation_rad), cos(rotation_rad)), 2, 2)
-      points <- points %*% rot_matrix
-    }
-
-    # Translate to center position
-    x <- x_center + points[,1]
-    y <- y_center + points[,2]
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Rectangle", title)
-
-  } else if (shape == "triangle") {
-    # Create equilateral triangle points (centered)
-    height_tri <- size * sqrt(3) / 2
-    points <- matrix(c(
-      0, height_tri * 2/3,
-      -size/2, -height_tri/3,
-      size/2, -height_tri/3
-    ), ncol = 2, byrow = TRUE)
-
-    # Apply rotation
-    if (rotation != 0) {
-      rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
-                             sin(rotation_rad), cos(rotation_rad)), 2, 2)
-      points <- points %*% rot_matrix
-    }
-
-    # Translate to center position
-    x <- x_center + points[,1]
-    y <- y_center + points[,2]
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Triangle", title)
-
-  } else if (shape == "hexagon") {
-    # Create regular hexagon
-    theta <- seq(0, 2 * pi, length.out = 7)[1:6]
-    theta <- theta + rotation_rad  # Apply rotation
-    x <- x_center + size * cos(theta)
-    y <- y_center + size * sin(theta)
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Hexagon", title)
-
-  } else if (shape == "star") {
-    # Create a 5-pointed star
-    outer_points <- 5
-    theta_outer <- seq(0, 2 * pi, length.out = outer_points + 1)[1:outer_points]
-    theta_outer <- theta_outer + rotation_rad - pi/2  # Start from top, apply rotation
-
-    # Create interleaved points (outer and inner)
-    theta <- numeric(outer_points * 2)
-    theta[seq(1, outer_points * 2, 2)] <- theta_outer
-    theta[seq(2, outer_points * 2, 2)] <- theta_outer + pi/outer_points
-
-    # Radii for outer and inner points
-    radii <- numeric(outer_points * 2)
-    radii[seq(1, outer_points * 2, 2)] <- size  # Outer points
-    radii[seq(2, outer_points * 2, 2)] <- size * 0.4  # Inner points
-
-    # Calculate coordinates
-    x <- x_center + radii * cos(theta)
-    y <- y_center + radii * sin(theta)
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", "Star", title)
-
-  } else if (shape == "ellipse") {
-    theta <- seq(0, 2 * pi, length.out = 100)
-
-    # Create ellipse points
-    x_unrotated <- width/2 * cos(theta)
-    y_unrotated <- height/2 * sin(theta)
-
-    # Apply rotation if needed
-    if (rotation != 0) {
-      x_rot <- x_unrotated * cos(rotation_rad) - y_unrotated * sin(rotation_rad)
-      y_rot <- x_unrotated * sin(rotation_rad) + y_unrotated * cos(rotation_rad)
-      x <- x_center + x_rot
-      y <- y_center + y_rot
-    } else {
-      x <- x_center + x_unrotated
-      y <- y_center + y_unrotated
-    }
-
-    coords <- data.frame(x = x, y = y)
-    title <- ifelse(title == "Geometric Shape", "Ellipse", title)
-
-  } else if (shape == "polygon") {
-    # Create regular polygon with n_sides
-    theta <- seq(0, 2 * pi, length.out = n_sides + 1)[1:n_sides]
-    theta <- theta + rotation_rad  # Apply rotation
-    x <- x_center + size * cos(theta)
-    y <- y_center + size * sin(theta)
-    coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
-    title <- ifelse(title == "Geometric Shape", paste0(n_sides, "-gon"), title)
-  }
-
-  # Create the plot with ggplot2
-  p <- ggplot(coords, aes(x, y)) +
-    geom_polygon(fill = fill_color, color = border_color, size = line_width) +
-    coord_fixed(ratio = 1) +  # Ensure the shape isn't distorted
-    labs(title = title, x = "X", y = "Y") +
-    theme_minimal()
-
-  # Add text if provided
-  if (!is.null(text)) {
-    text_df <- data.frame(
-      x = x_center,
-      y = y_center,
-      label = text
-    )
-
-    p <- p + geom_text(
-      data = text_df,
-      aes(x, y, label = label),
-      color = text_color,
-      size = text_size,
-      family = text_font,
-      angle = text_angle
-    )
-  }
-
-  # Display the plot
-  print(p)
-
-  # Return the plot and shape properties
-  return(list(
-    plot = p,
-    coordinates = coords,
-    center = c(x_center = x_center, y_center = y_center),
-    size = size,
-    shape = shape,
-    text = text
-  ))
-}
+# ggplot version of the function
+# create_shape_ggplot <- function(shape = "circle", x_center = 0, y_center = 0, size = 1,
+#                          width = size, height = size, n_sides = 5, rotation = 0,
+#                          fill_color = NA, border_color = "black", line_width = 1,
+#                          title = "Geometric Shape", text = NULL, text_color = "black",
+#                          text_size = 5, text_font = "", text_angle = 0) {
+#
+#   # Define valid shapes
+#   valid_shapes <- c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon")
+#
+#   # Check if the provided shape is valid
+#   if (!shape %in% valid_shapes) {
+#     stop(paste0("Invalid shape: '", shape, "'. Please choose one of: ",
+#                 paste(valid_shapes, collapse = ", "), "."))
+#   }
+#
+#   # Generate points based on the specified shape
+#   coords <- data.frame(x = numeric(), y = numeric())
+#
+#   # Convert rotation to radians
+#   rotation_rad <- rotation * pi / 180
+#
+#   if (shape == "circle") {
+#     theta <- seq(0, 2 * pi, length.out = 100)
+#     x <- x_center + size * cos(theta)
+#     y <- y_center + size * sin(theta)
+#     coords <- data.frame(x = x, y = y)
+#     title <- ifelse(title == "Geometric Shape", "Circle", title)
+#
+#   } else if (shape == "square") {
+#     # Create square points (centered)
+#     points <- matrix(c(
+#       -size/2, -size/2,
+#       size/2, -size/2,
+#       size/2, size/2,
+#       -size/2, size/2
+#     ), ncol = 2, byrow = TRUE)
+#
+#     # Apply rotation
+#     if (rotation != 0) {
+#       rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
+#                              sin(rotation_rad), cos(rotation_rad)), 2, 2)
+#       points <- points %*% rot_matrix
+#     }
+#
+#     # Translate to center position
+#     x <- x_center + points[,1]
+#     y <- y_center + points[,2]
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", "Square", title)
+#
+#   } else if (shape == "rectangle") {
+#     # Create rectangle points (centered)
+#     points <- matrix(c(
+#       -width/2, -height/2,
+#       width/2, -height/2,
+#       width/2, height/2,
+#       -width/2, height/2
+#     ), ncol = 2, byrow = TRUE)
+#
+#     # Apply rotation
+#     if (rotation != 0) {
+#       rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
+#                              sin(rotation_rad), cos(rotation_rad)), 2, 2)
+#       points <- points %*% rot_matrix
+#     }
+#
+#     # Translate to center position
+#     x <- x_center + points[,1]
+#     y <- y_center + points[,2]
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", "Rectangle", title)
+#
+#   } else if (shape == "triangle") {
+#     # Create equilateral triangle points (centered)
+#     height_tri <- size * sqrt(3) / 2
+#     points <- matrix(c(
+#       0, height_tri * 2/3,
+#       -size/2, -height_tri/3,
+#       size/2, -height_tri/3
+#     ), ncol = 2, byrow = TRUE)
+#
+#     # Apply rotation
+#     if (rotation != 0) {
+#       rot_matrix <- matrix(c(cos(rotation_rad), -sin(rotation_rad),
+#                              sin(rotation_rad), cos(rotation_rad)), 2, 2)
+#       points <- points %*% rot_matrix
+#     }
+#
+#     # Translate to center position
+#     x <- x_center + points[,1]
+#     y <- y_center + points[,2]
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", "Triangle", title)
+#
+#   } else if (shape == "hexagon") {
+#     # Create regular hexagon
+#     theta <- seq(0, 2 * pi, length.out = 7)[1:6]
+#     theta <- theta + rotation_rad  # Apply rotation
+#     x <- x_center + size * cos(theta)
+#     y <- y_center + size * sin(theta)
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", "Hexagon", title)
+#
+#   } else if (shape == "star") {
+#     # Create a 5-pointed star
+#     outer_points <- 5
+#     theta_outer <- seq(0, 2 * pi, length.out = outer_points + 1)[1:outer_points]
+#     theta_outer <- theta_outer + rotation_rad - pi/2  # Start from top, apply rotation
+#
+#     # Create interleaved points (outer and inner)
+#     theta <- numeric(outer_points * 2)
+#     theta[seq(1, outer_points * 2, 2)] <- theta_outer
+#     theta[seq(2, outer_points * 2, 2)] <- theta_outer + pi/outer_points
+#
+#     # Radii for outer and inner points
+#     radii <- numeric(outer_points * 2)
+#     radii[seq(1, outer_points * 2, 2)] <- size  # Outer points
+#     radii[seq(2, outer_points * 2, 2)] <- size * 0.4  # Inner points
+#
+#     # Calculate coordinates
+#     x <- x_center + radii * cos(theta)
+#     y <- y_center + radii * sin(theta)
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", "Star", title)
+#
+#   } else if (shape == "ellipse") {
+#     theta <- seq(0, 2 * pi, length.out = 100)
+#
+#     # Create ellipse points
+#     x_unrotated <- width/2 * cos(theta)
+#     y_unrotated <- height/2 * sin(theta)
+#
+#     # Apply rotation if needed
+#     if (rotation != 0) {
+#       x_rot <- x_unrotated * cos(rotation_rad) - y_unrotated * sin(rotation_rad)
+#       y_rot <- x_unrotated * sin(rotation_rad) + y_unrotated * cos(rotation_rad)
+#       x <- x_center + x_rot
+#       y <- y_center + y_rot
+#     } else {
+#       x <- x_center + x_unrotated
+#       y <- y_center + y_unrotated
+#     }
+#
+#     coords <- data.frame(x = x, y = y)
+#     title <- ifelse(title == "Geometric Shape", "Ellipse", title)
+#
+#   } else if (shape == "polygon") {
+#     # Create regular polygon with n_sides
+#     theta <- seq(0, 2 * pi, length.out = n_sides + 1)[1:n_sides]
+#     theta <- theta + rotation_rad  # Apply rotation
+#     x <- x_center + size * cos(theta)
+#     y <- y_center + size * sin(theta)
+#     coords <- data.frame(x = c(x, x[1]), y = c(y, y[1]))
+#     title <- ifelse(title == "Geometric Shape", paste0(n_sides, "-gon"), title)
+#   }
+#
+#   # Create the plot with ggplot2
+#   p <- ggplot(coords, aes(x, y)) +
+#     geom_polygon(fill = fill_color, color = border_color, size = line_width) +
+#     coord_fixed(ratio = 1) +  # Ensure the shape isn't distorted
+#     labs(title = title, x = "X", y = "Y") +
+#     theme_minimal()
+#
+#   # Add text if provided
+#   if (!is.null(text)) {
+#     text_df <- data.frame(
+#       x = x_center,
+#       y = y_center,
+#       label = text
+#     )
+#
+#     p <- p + geom_text(
+#       data = text_df,
+#       aes(x, y, label = label),
+#       color = text_color,
+#       size = text_size,
+#       family = text_font,
+#       angle = text_angle
+#     )
+#   }
+#
+#   # Display the plot
+#   print(p)
+#
+#   # Return the plot and shape properties
+#   return(list(
+#     plot = p,
+#     coordinates = coords,
+#     center = c(x_center = x_center, y_center = y_center),
+#     size = size,
+#     shape = shape,
+#     text = text
+#   ))
+# }
 
 # Define valid shapes
 valid_shapes <- c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse", "polygon")
