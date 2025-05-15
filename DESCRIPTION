@@ -19,7 +19,7 @@ Imports:
     stats,
     rstudioapi,
     tools,
-    Polychrome,
+    Polychrome (1.5.1),
     fitdistrplus
 Suggests: 
     rmarkdown,
