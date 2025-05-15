@@ -2,7 +2,7 @@
 % Please edit documentation in R/shapes.R
 \name{create_shape}
 \alias{create_shape}
-\title{Create geometric shapes with optional text using ggplot2}
+\title{Create geometric shapes with optional text}
 \usage{
 create_shape(
   shape = c("circle", "square", "rectangle", "triangle", "hexagon", "star", "ellipse",
@@ -22,7 +22,10 @@ create_shape(
   text_color = "black",
   text_size = 1,
   text_font = 1,
-  text_angle = 0
+  text_angle = 0,
+  show_axes = FALSE,
+  show_ticks = FALSE,
+  show_axis_labels = FALSE
 )
 }
 \arguments{
@@ -60,6 +63,12 @@ create_shape(
 \item{text_font}{Character string, font family for the text. Default is "".}
 
 \item{text_angle}{Numeric, rotation angle for the text in degrees. Default is 0.}
+
+\item{show_axes}{Logical. Whether to display the axes. Default is FALSE.}
+
+\item{show_ticks}{Logical. Whether to display axis ticks. Default is FALSE.}
+
+\item{show_axis_labels}{Logical. Whether to display axis labels (X and Y). Default is FALSE.}
 }
 \value{
 A list containing:
@@ -73,8 +82,9 @@ A list containing:
   }
 }
 \description{
-This function creates various geometric shapes using ggplot2 with the
-option to add text inside the shape. It returns both the plot object and the shape's properties.
+This function creates various geometric shapes using base R graphics.
+It supports multiple shape types including circle, square, rectangle,
+triangle, hexagon, star, ellipse, and regular polygons with custom sides.
 }
 \examples{
 \dontrun{
