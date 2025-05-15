@@ -51,11 +51,11 @@ libraryAll <- function(..., lib.loc = NULL, quietly = FALSE, clear = TRUE, clear
   # load user requested libraries
   lib.names <- as.list(substitute(args(...))[-1L])
   if(!length(lib.names)) stop("Packages must be included to execute this function")
-  invisible(lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly))))
+  invisible(lapply(lib.names, function(lib) do.call("library", list(package = lib, lib.loc = lib.loc, quietly = quietly, warn.conflicts = FALSE))))
   if(clear){
     erase()
     message("Packages Loaded:")
-    #return only package versions
+    #return package versions
     invisible(lapply(lib.names, function(lib)
       message(paste0(lib,", version ",utils::packageVersion(lib)))))
   }
