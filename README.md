@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://quickcode.obi.obianom.com/CRAN/quickcode_n_logo.png" width="350">
+<img src="https://quickcode.rpkg.net/logo57.png" width="350">
 </p>
 
 # NOT functions, R tricks and a compilation of some miscellaneous codes to improve your R scripts
