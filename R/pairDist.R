@@ -5,8 +5,9 @@
 #'
 #' @rdname machine_learning
 #' @param data data frame object or a matrix/array object
-#' @param round round result to decimal place
-#' @return a named vector consisting of a row number and a pair-distance value
+#' @param scale Boolean used for scaling the dataset
+#' @param roundit Round x number of decimal places; min value is 0; max value is 6
+#' @param return a named vector consisting of a row number and a pair-distance value
 #'
 #' @section Function utility:
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
@@ -46,25 +47,35 @@
 #'
 #' @export
 
-pairDist <- function(data, round) {
-  if (!all(unique(unlist(sapply(data, class))) %in% c("numeric", "double", "integer")))
-    stop("The data should only include numeric values and NAs")
-
-  # Compute the column means ignoring NA values
-  mean_matrix <- matrix(colMeans(data, na.rm = TRUE), nrow = nrow(data), ncol = ncol(data), byrow = TRUE)
-
-  # Compute squared differences ignoring NA values
-  squared_diff <- (data - mean_matrix)^2
-  row_sums <- rowSums(squared_diff, na.rm = TRUE)
-
-  # Calculate the result
-  result <- sqrt(row_sums)
-
-  # Round the result if specified
-  if (!missing(round))result <- round(result, round)
-
-  # Apply function to check for NAs in each record
+pairDist <- function (data, scale = FALSE, roundit = NULL)
+{
+  if (!all(unique(unlist(sapply(data, class))) %in% c("numeric",
+  "double", "integer")))
+  stop("The data should only include numeric values and NAs")
+  
+  if (roundit > 6)
+  stop("The roundit argument cannot be a value larger than 6 or smaller than 0")
+  
+  if (!scale) {
+    mean_matrix <- matrix(colMeans(data, na.rm = TRUE), nrow = nrow(data),
+    ncol = ncol(data), byrow = TRUE)
+    squared_diff <- (data - mean_matrix)^2
+    row_sums <- rowSums(squared_diff, na.rm = TRUE)
+    result <- sqrt(row_sums)
+    result <- round(result, roundit)
+  
+  }
+  
+  if (scale) {
+    datascale <- scale(data)
+    
+    mean_matrix <- matrix(colMeans(datascale, na.rm = TRUE), nrow = nrow(datascale),
+                        ncol = ncol(datascale), byrow = TRUE)
+    squared_diff <- (datascale - mean_matrix)^2
+    row_sums <- rowSums(squared_diff, na.rm = TRUE)
+    result <- sqrt(row_sums)
+    result <- round(result, roundit)
+  }
+  
   data.frame(pdist = result, isNA = apply(data, 1, function(row) any(is.na(row))))
 }
-
-
