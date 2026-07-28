@@ -7,7 +7,7 @@
 #' @param data data frame object or a matrix/array object
 #' @param scale Boolean used for scaling the dataset
 #' @param roundit Round x number of decimal places; min value is 0; max value is 6
-#' @param return a named vector consisting of a row number and a pair-distance value
+#' @param return a dataframe consisting of a row number, the pair-distance value (pdist), and a Boolean value indicating whether one or more NAs exist (isNA)
 #'
 #' @section Function utility:
 #' Used to generate the computations needed to model pair-distance measures in three dimensions
