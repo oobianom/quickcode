@@ -4,15 +4,14 @@
 \alias{pairDist}
 \title{Calculate the distance of points from the center of a cluster}
 \usage{
-pairDist(data, round)
+pairDist(data, scale = FALSE, roundit = NULL)
 }
 \arguments{
 \item{data}{data frame object or a matrix/array object}
 
-\item{round}{round result to decimal place}
-}
-\value{
-a named vector consisting of a row number and a pair-distance value
+\item{scale}{Boolean used for scaling the dataset}
+
+\item{roundit}{Round x number of decimal places; min value is 0; max value is 6}
 }
 \description{
 This function operates on multivariate data and
@@ -35,25 +34,25 @@ calculations, pairDist output can also be used to model data in three dimensions
 
 \examples{
 
-data = attenu[,1:2]
+data(airquality)
+airq <- airquality[, 1:4]
 
-# example 1: basic example using data.frame
-pairDist(data)
+# example 1:
+x <- pairDist(airq, roundit = 3)
 
-# example 2: basic example using as.matrix
-pairDist(as.matrix(data))
+# example 2:
+y <- pairDist(airq, scale = TRUE, roundit = 5)
 
-# example 3: round results to 2 decimal points
-pairDist(data, 2)
+# example 3
 
-# example 4
-data = matrix(
-c(1, 5, NA, 4, 5, 6, NA, 8, 9, NA, 12, 23, 6, 0, 3, 3, 8, 15),
-ncol = 3,
-byrow = TRUE)
-x = pairDist(data, 3)
-data = data.frame(data)
-data = cbind(data, x)
+data <- matrix(
+  c(1, 5, NA, 4, 5, 6, NA, 8, 9, NA, 12, 23, 6, 0, 3, 3, 8, 15),
+  ncol = 3,
+  byrow = TRUE
+)
+
+dist <- pairDist(data, roundit = 2)
+dist_scaled <- pairDist(data, scale = TRUE, roundit = 6)
 
 }
 \references{
