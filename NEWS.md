@@ -1,149 +1,67 @@
-# quickcode 1.0.8
+# quickcode 1.1.0
 
-- [x] create_shape()
-- [x] updated recommendation for Polychrome version (use 1.5.1)
+This is the first entry in `NEWS.md` for quickcode. It documents the state of
+the package as of version 1.1.0, currently on CRAN.
 
-# quickcode 1.0.7
+## Highlights
 
-- [x] Bug fixes
+* Comprehensive set of `not.*` validation helpers (`not.null`, `not.na`,
+  `not.numeric`, `not.integer`, `not.logical`, `not.vector`, `not.data`,
+  `not.environment`, `not.duplicated`, `not.image`, `not.inherits`,
+  `not.exists`) alongside companions such as `has.error()`.
+* PHP-style array/data operations: `vector_push()`, `vector_pop()`,
+  `list_push()`, `data_push()`, `data_pop()`, `data_pop_filter()`,
+  `data_rep()`, `rows.rep()`, `cols.rep()`, `data_shuffle()`,
+  `list_shuffle()`, `vector_shuffle()`, `switch_rows()`, `switch_cols()`,
+  `sample_by_column()`, `mutate_filter()`, and `add_key()` (alias `indexed()`).
+* Custom operators: `%nin%` (alias `%!in%`) for "not in", `%or%` as a
+  nullish-coalescing operator, `%eo%` as an error-coalescing operator, and
+  `%match%` for percentage string similarity.
+* `init()` for one-line initialization of multiple variables/objects, and
+  `newSuperVar()` for variables that stay accessible and mutable across
+  scopes, with optional locking, class enforcement, and edit-count limits.
+* Environment management helpers: `refresh()`, `clean()`, `libraryAll()`,
+  `summarize.envobj()`, and `lastwd()`.
+* Statistics and outlier detection: `zscore()`, `zscore_outlier()`,
+  `zscore_outlier2()`, `detect_outlier()`, `detect_outlier2()`,
+  `iqr_outlier()`, plus distribution fit-checks
+  (`is.normal`, `is.lognormal`, `is.uniform`, `is.poisson`, `is.gamma`,
+  `is.weibull`, `is.cauchy`, `is.logistic`),
+  `getDistribution()`, `geo.mean()`, `geo.sd()`, `geo.cv()`, `mode.calc()`,
+  `na.cumsum()`, `normalize.vector()`, `sub.range()`, `in.range()`,
+  `unique_len()`, `pairDist()`, and `compHist()`.
+* Modeling utilities: `cat_to_num()`, `cat_to_num2()`, `from_tensor_slices()`,
+  `multihead_att()`, `learn_rate_scheduler()`, and `make_dosing_df()`.
+* String and text helpers: `bionic_txt()`, `randString()`, `strsplit.bool()`,
+  `strsplit.num()`, `percent_match()`, `ndecimal()`, `as.boolean()`,
+  `yesNoBool()`, `extract_comment()`, `remove_comment()`,
+  `remove_content_in_quotes()`, `getDate()`, and `extract_IP()`.
+* Date helpers: `date1to3()`, `date3to1()`, `getWeekSeq()`, `is.leap()`,
+  `fAddDate()`, `is.increasing()`, and `is.decreasing()`.
+* File and filesystem helpers: `duplicate()`, `ai.duplicate()`,
+  `trim.file()`, `sort_file_type()`, `sort_length()`, `read.csv.print()`,
+  `read.table.print()`, and `insertInText()`.
+* RStudio addins for interactive use: header/section comment insertion
+  (`add.header`, `header.rmd`, `add.sect.comment`), an environment-reset
+  snippet (`add.snippet.clear`), and prompt-guided file duplication
+  (`ai.duplicate`).
+* Color and shape utilities: `rcolorconst()`, `mix.color()`,
+  `mix.cols.btw()`, `setDisAlpha()`, `unsetDisAlpha()`, and
+  `create_shape()`.
+* Package/repo utilities: `find_packages()`, `archivedPkg()`,
+  `rDecomPkg()`, `getGitRepoStart()`, `getGitRepoChange()`, and
+  `track_func()` for tracking function call frequency, timing, and usage
+  patterns.
+* Math and misc helpers: `plus()`, `minus()`, `inc()`, `number()`,
+  `const()`, `math.mm()`, `math.qt()`, `error.out()` (`%eo%`), `or()`
+  (`%or%`), `chain_sep()` (`%.%`), and `chain_func()`.
+* Four vignettes covering the general introduction, appending dates to
+  filenames, the nullish-coalescing operator, and function-usage tracking.
 
+## Notes
 
-# quickcode 1.0.6
-
-- [x] trim.file(), detect_outlier() and some new functions
-- [x] Edit to README and help documentation
-
-
-# quickcode 1.0.5
-
-- [x] Minor updates to functions and examples
-- [x] Introduced cat_to_num() and cat_to_num2()
-- [x] Removed multiply() and genRandImg()
-
-# quickcode 1.0.4
-
-- [x] Minor updates to functions and examples
-
-# quickcode 1.0.3
-
-- [x] Minor updates to functions and examples
-
-# quickcode 1.0.2
-
-- [x] Expand functionality of data_pop, vector_pop, data_shuffle, vector_shuffle
-- [x] Update pairDist
-
-# quickcode 1.0.1
-
-- [x] Deprecate genRandImg function due to URL issues
-- [x] Update clean function
-
-# quickcode 1.0.0
-
-- [x] New functions
-    - [x] extract_comment: extract all comments from a file
-    - [x] clean_file: remove all comments from a file
-    - [x] extract_IP: extract IP addresses from a string
-    - [x] track_func: track usage of other functions
-    ... and many more.
-    
-# quickcode 0.9.1
-
-- [x] Quick bug fixes in functions 
-
-# quickcode 0.9
-
-- [x] Fixed bugs in functions
-    - [x] clean/refresh
-- [x] New functions 
-    - [x] getWeekSeq
-    - [x] zscore
-    - [x] getDistribution
-    - And many more...check documentation and website
-
-# quickcode 0.8
-
-- [x] Revisions to current functions
-    - [x] fAddDate
-- [x] New functions 
-    - [x] date1to3
-    - [x] date3to1
-    - [x] switch_rows
-    - [x] switch_cols
-    - [x] has.error
-    - [x] getGitRepoStart
-    - [x] getGitRepoChange
-    - [x] is.lognormal
-    - [x] is.normal
-    - [x] is.uniform
-    - [x] is.poisson
-    - [x] is.gamma
-    - [x] is.logistic
-    - [x] is.weibull
-    - [x] is.cauchy
-    - [x] setDisAlpha
-    - [x] unsetDisAlpha
-    
-# quickcode 0.7
-
-- [x] Revisions to current functions
-    - [x] in.range
-    - [x] archivedPkg 
-    - [x] rDecomPkg 
-    - [x] genRandImg
-- [x] New functions 
-    - [x] pairDist
-    - [x] strsplit.num
-    - [x] strsplit.bool
-    - [x] read.csv.print
-    - [x] read.table.print
-    
-# quickcode 0.6
-
-- [x] More 'Use case' section to major functions
-- [x] More addins for functions to add header and section comments
-- [x] New functions and revisions to old functions
-
-# quickcode 0.5
-
-- [x] Fix system errors with package imports
-- [x] Fix typos in manuals
-- [x] New functions
-  - [x] is.image
-  - [x] as.image
-
-# quickcode 0.4
-
-- [x] Add 'Use case' section to major functions
-- [x] Incorporation of features and functions by Brice
-  - [x] rcolorconst()
-  - [x] genRandImg()
-  - [x] archivedPkg()
-  - [x] as.boolean()
-  - [x] yesNoBool()
-      
-- [x] Bug fixes and update to existing functions
-  - [x] add_key()
-  - [x] vector_push()
-
-
-# quickcode 0.3
-
-- [x] Add initial tests using testthat
-- [x] New compilation of functions
-- [x] Improvement to clean and refresh functions
-
-
-# quickcode 0.2
-
-- [x] New functions
-- [x] Add 'seed' argument to functions using randomness
-- [x] Update to clean and refresh functions
-
-
-# quickcode 0.1
-
-- [x] Initial release
-- [x] Various "not" functions
-- [x] Shorthand functions
-- [x] Save variable in a way that saves memory usage
+* Package authors: Obinna Obianom (maintainer) and Brice Richard.
+* License: MIT.
+* Future releases should record their changes as new sections above this
+  one, following standard R package `NEWS.md` conventions (most recent
+  version first).
