@@ -94,7 +94,7 @@
 #'   fill_color = "pink",
 #'   border_color = "purple",
 #'   line_width = 2,
-#'   text = "▲",
+#'   text = "rpkg",
 #'   text_color = "black",
 #'   text_size = 4
 #' )
@@ -145,7 +145,7 @@
 #' # Create a star with text
 #' create_shape("star", size = 2,
 #'                        fill_color = "gold",
-#'                        text = "★",
+#'                        text = "*",
 #'                        text_size = 8)
 #' }
 #'

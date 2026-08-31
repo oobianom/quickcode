@@ -230,7 +230,8 @@ mix.cols.btw <- function(colors, max = 20, alpha = 1, preview = FALSE) {
   if (preview) {
     cls <- as.character(colors)
     names(cls) <- cls
-    Polychrome::swatch(cls, main = "Preview of color mix")
+    custom_swatch(cls, main = "Preview of color mix")
+    #Polychrome::swatch(cls, main = "Preview of color mix")
   }
 
   # return color
